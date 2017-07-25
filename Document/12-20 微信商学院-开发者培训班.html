@@ -1,0 +1,873 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="12-20 微信商学院-开发者培训班小程序是什么 https://mp.weixin.qq.com/ 开发者社区 http://developers.weixin.qq.com/ 一种连接用户和服务的方式 一个全新的生态 一套解决方案 AppService 应用逻辑层,实现交互和业务逻辑处理,生命周期管理 JSBrigdge   小程序的优点 不是H5(算是类web应用,基于H5开发但是可以调用微">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12-20 微信商学院-开发者培训班">
+<meta property="og:url" content="https://nameless13.github.io/Document/12-20 微信商学院-开发者培训班.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="12-20 微信商学院-开发者培训班小程序是什么 https://mp.weixin.qq.com/ 开发者社区 http://developers.weixin.qq.com/ 一种连接用户和服务的方式 一个全新的生态 一套解决方案 AppService 应用逻辑层,实现交互和业务逻辑处理,生命周期管理 JSBrigdge   小程序的优点 不是H5(算是类web应用,基于H5开发但是可以调用微">
+<meta property="og:updated_time" content="2017-07-20T14:28:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12-20 微信商学院-开发者培训班">
+<meta name="twitter:description" content="12-20 微信商学院-开发者培训班小程序是什么 https://mp.weixin.qq.com/ 开发者社区 http://developers.weixin.qq.com/ 一种连接用户和服务的方式 一个全新的生态 一套解决方案 AppService 应用逻辑层,实现交互和业务逻辑处理,生命周期管理 JSBrigdge   小程序的优点 不是H5(算是类web应用,基于H5开发但是可以调用微">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/Document/12-20 微信商学院-开发者培训班.html"/>
+
+
+
+
+
+  <title>12-20 微信商学院-开发者培训班 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/12-20 微信商学院-开发者培训班.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">12-20 微信商学院-开发者培训班</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
+                2016-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Document/" itemprop="url" rel="index">
+                    <span itemprop="name">Document</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="12-20-微信商学院-开发者培训班"><a href="#12-20-微信商学院-开发者培训班" class="headerlink" title="12-20 微信商学院-开发者培训班"></a>12-20 微信商学院-开发者培训班</h1><h3 id="小程序是什么"><a href="#小程序是什么" class="headerlink" title="小程序是什么"></a>小程序是什么</h3><ul>
+<li><a href="https://mp.weixin.qq.com/" target="_blank" rel="external">https://mp.weixin.qq.com/</a></li>
+<li>开发者社区 <a href="http://developers.weixin.qq.com/" target="_blank" rel="external">http://developers.weixin.qq.com/</a></li>
+<li>一种连接用户和服务的方式</li>
+<li>一个全新的生态</li>
+<li>一套解决方案</li>
+<li>AppService 应用逻辑层,实现交互和业务逻辑处理,生命周期管理</li>
+<li>JSBrigdge</li>
+</ul>
+<hr>
+<h3 id="小程序的优点"><a href="#小程序的优点" class="headerlink" title="小程序的优点"></a>小程序的优点</h3><ul>
+<li>不是H5(算是类web应用,基于H5开发但是可以调用微信native API,缺点是不能对API进行定制)</li>
+<li>基于微信</li>
+<li>原生体验</li>
+<li>解决方案</li>
+<li>即用即走,随手可得</li>
+<li>拥有离线能力</li>
+<li>一次开发,多端兼容</li>
+<li>优秀的操作系统</li>
+<li>在安卓上的适配是最优的</li>
+</ul>
+<h3 id="小程序的接入流程"><a href="#小程序的接入流程" class="headerlink" title="小程序的接入流程"></a>小程序的接入流程</h3><p>注册-&gt;开发-&gt;提交审核-&gt;发布</p>
+<p><em>邮箱不能注册过其他组件(公众号,企业号等)</em></p>
+<ul>
+<li>只有管理员才能上传代码</li>
+<li>公测期间不支持发布</li>
+<li>不能做营销和游戏</li>
+<li>不做收集用户隐私的接口</li>
+<li>便捷:尽量减少输入,避免误操作</li>
+<li>统一:视觉统一,WeUI(可以根据它来调整,由自己的品牌来定制)</li>
+<li>审核规范:判断原则<ul>
+<li>真实性,一致性(信息一一对应),稳定性,合法性</li>
+<li>常见拒绝原因:demo版本或trial版本,或仍存在bug<ul>
+<li>提供的服务属于暂未开放的服务范围</li>
+<li>名称,简介,logo,服务范围没有对应关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>单页面应用 Single Page Application</li>
+<li>动态加载</li>
+<li>Framework Overview</li>
+<li>10M稳定存储能力,</li>
+<li>jssdk -&gt;小程序的API</li>
+<li>API 拥有调取Native 系统层能力</li>
+<li>Page Frame<ul>
+<li>预先加载一个web view</li>
+<li>当打开指定页面时,无需请求额外资源,直接渲染</li>
+<li>init–&gt;ready–&gt;nav–&gt;ready-&gt;(从右边)push(100-200ms)(开发者最好自己也做一些点击态)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>App Service -Manager<ul>
+<li>App() 小程序入口</li>
+<li>Page() 页面入口</li>
+</ul>
+</li>
+<li>App Service -Life Cycle<ul>
+<li>Native加载两个线程 (view, App Service)</li>
+<li>redirect (越过5层页面层级限制)</li>
+</ul>
+</li>
+<li>App Service -API<ul>
+<li>通过JSbridge同客户端通信</li>
+<li>用户信息,微信支付,模版消息,网络通信,本地存储等等</li>
+</ul>
+</li>
+<li>View - Hybrid 混合应用<ul>
+<li>凌驾于web view</li>
+<li>web-like 开发方式</li>
+<li>App-like 用户体验</li>
+</ul>
+</li>
+<li>View -WXML<ul>
+<li>支持逻辑,算数计算</li>
+<li>支持模版,引用</li>
+<li>(WXML)compiler–&gt;(JS:generateFunc)date–&gt;(Virtual Tree)Virtual DOM–&gt;(View DOM)</li>
+</ul>
+</li>
+<li>View -WXSS<ul>
+<li>自适应单位RPX- Responsive Pixel</li>
+<li>无级联(但是其实还是可以用的用)-避免被组件内结构破坏(最好别用)</li>
+<li>(WXSS)Compiler–&gt;(JS)Width,DPR–&gt;(CSS)</li>
+</ul>
+</li>
+<li>View -Render<ul>
+<li>数据M 和视图V 完全分离</li>
+<li>逻辑层运行在独立的环境中,无法直接操作DOM</li>
+<li>使用WXML模版语言减少维护成本</li>
+<li>单项数据绑定</li>
+</ul>
+</li>
+</ul>
+<h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual-DOM"></a>Virtual-DOM</h3><ul>
+<li>生成和DOM tree – 对应的Virtual Tree</li>
+<li>对比新Tree和旧Tree的不同</li>
+<li>将这些不同的点应用到DOM Tree中</li>
+<li>动态改变的节点需要加上WX:key 来做节点的唯一标示</li>
+<li>wx:if,wx:for,template增加一个&lt;virtual/&gt;的节点</li>
+<li>diff</li>
+<li>native 凌驾于webview 有些webview层中的一些事件(比如滑动)不能在原生环境中监听</li>
+</ul>
+<hr>
+<h2 id="技术人员分享"><a href="#技术人员分享" class="headerlink" title="技术人员分享"></a>技术人员分享</h2><ul>
+<li>单向数据流 </li>
+<li>局部化组件</li>
+<li>不携带cookie</li>
+<li>globalData事件订阅</li>
+<li>页面传值</li>
+<li>server层</li>
+<li>1M限制(用图片替代代码来越过限制,不推荐)</li>
+<li>react与小程序语法替换关系<ul>
+<li>state ==&gt; data</li>
+<li>setState ==&gt; setData</li>
+<li>array.map ==&gt; war.map</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Document/weixin.html" rel="next" title="weixin">
+                <i class="fa fa-chevron-left"></i> weixin
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Upgrade/使用Packages升级到CDH 5.10.html" rel="prev" title="使用Packages升级到CDH 5.10">
+                使用Packages升级到CDH 5.10 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#12-20-微信商学院-开发者培训班"><span class="nav-number">1.</span> <span class="nav-text">12-20 微信商学院-开发者培训班</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序是什么"><span class="nav-number">1.0.1.</span> <span class="nav-text">小程序是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序的优点"><span class="nav-number">1.0.2.</span> <span class="nav-text">小程序的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序的接入流程"><span class="nav-number">1.0.3.</span> <span class="nav-text">小程序的接入流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">1.0.4.</span> <span class="nav-text">Virtual-DOM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术人员分享"><span class="nav-number">1.1.</span> <span class="nav-text">技术人员分享</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

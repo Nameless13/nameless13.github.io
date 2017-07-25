@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="## See slapd.conf(5) for details on configuration options.# This file should NOT be world readable.#include		/etc/openldap/schema/corba.schemainclude		/etc/openldap/schema/core.schemainclude		/etc/ope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="slapd配置文件">
+<meta property="og:url" content="https://nameless13.github.io/CDH/OpenLDAP/slapd配置文件.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="## See slapd.conf(5) for details on configuration options.# This file should NOT be world readable.#include		/etc/openldap/schema/corba.schemainclude		/etc/openldap/schema/core.schemainclude		/etc/ope">
+<meta property="og:updated_time" content="2017-07-20T14:20:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="slapd配置文件">
+<meta name="twitter:description" content="## See slapd.conf(5) for details on configuration options.# This file should NOT be world readable.#include		/etc/openldap/schema/corba.schemainclude		/etc/openldap/schema/core.schemainclude		/etc/ope">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/OpenLDAP/slapd配置文件.html"/>
+
+
+
+
+
+  <title>slapd配置文件 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/OpenLDAP/slapd配置文件.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">slapd配置文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/OpenLDAP/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenLDAP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#</div><div class="line"># See slapd.conf(5) for details on configuration options.</div><div class="line"># This file should NOT be world readable.</div><div class="line">#</div><div class="line"></div><div class="line">include		/etc/openldap/schema/corba.schema</div><div class="line">include		/etc/openldap/schema/core.schema</div><div class="line">include		/etc/openldap/schema/cosine.schema</div><div class="line">include		/etc/openldap/schema/duaconf.schema</div><div class="line">include		/etc/openldap/schema/dyngroup.schema</div><div class="line">include		/etc/openldap/schema/inetorgperson.schema</div><div class="line">include		/etc/openldap/schema/java.schema</div><div class="line">include		/etc/openldap/schema/misc.schema</div><div class="line">include		/etc/openldap/schema/nis.schema</div><div class="line">include		/etc/openldap/schema/openldap.schema</div><div class="line">include		/etc/openldap/schema/ppolicy.schema</div><div class="line">include		/etc/openldap/schema/collective.schema</div><div class="line"></div><div class="line"># Allow LDAPv2 client connections.  This is NOT the default.</div><div class="line">allow bind_v2</div><div class="line"></div><div class="line"># Do not enable referrals until AFTER you have a working directory</div><div class="line"># service AND an understanding of referrals.</div><div class="line">#referral	ldap://root.openldap.org</div><div class="line"></div><div class="line">pidfile		/var/run/openldap/slapd.pid</div><div class="line">argsfile	/var/run/openldap/slapd.args</div><div class="line"></div><div class="line"># Load dynamic backend modules</div><div class="line"># - modulepath is architecture dependent value (32/64-bit system)</div><div class="line"># - back_sql.la overlay requires openldap-server-sql package</div><div class="line"># - dyngroup.la and dynlist.la cannot be used at the same time</div><div class="line"></div><div class="line"># modulepath /usr/lib/openldap</div><div class="line"># modulepath /usr/lib64/openldap</div><div class="line"></div><div class="line"># moduleload accesslog.la</div><div class="line"># moduleload auditlog.la</div><div class="line"># moduleload back_sql.la</div><div class="line"># moduleload chain.la</div><div class="line"># moduleload collect.la</div><div class="line"># moduleload constraint.la</div><div class="line"># moduleload dds.la</div><div class="line"># moduleload deref.la</div><div class="line"># moduleload dyngroup.la</div><div class="line"># moduleload dynlist.la</div><div class="line"># moduleload memberof.la</div><div class="line"># moduleload pbind.la</div><div class="line"># moduleload pcache.la</div><div class="line"># moduleload ppolicy.la</div><div class="line"># moduleload refint.la</div><div class="line"># moduleload retcode.la</div><div class="line"># moduleload rwm.la</div><div class="line"># moduleload seqmod.la</div><div class="line"># moduleload smbk5pwd.la</div><div class="line"># moduleload sssvlv.la</div><div class="line"># moduleload syncprov.la</div><div class="line"># moduleload translucent.la</div><div class="line"># moduleload unique.la</div><div class="line"># moduleload valsort.la</div><div class="line"></div><div class="line"># The next three lines allow use of TLS for encrypting connections using a</div><div class="line"># dummy test certificate which you can generate by running</div><div class="line"># /usr/libexec/openldap/generate-server-cert.sh. Your client software may balk</div><div class="line"># at self-signed certificates, however.</div><div class="line">TLSCACertificatePath /etc/openldap/certs</div><div class="line">TLSCertificateFile &quot;\&quot;OpenLDAP Server\&quot;&quot;</div><div class="line">TLSCertificateKeyFile /etc/openldap/certs/password</div><div class="line"></div><div class="line"># Sample security restrictions</div><div class="line">#	Require integrity protection (prevent hijacking)</div><div class="line">#	Require 112-bit (3DES or better) encryption for updates</div><div class="line">#	Require 63-bit encryption for simple bind</div><div class="line"># security ssf=1 update_ssf=112 simple_bind=64</div><div class="line"></div><div class="line"># Sample access control policy:</div><div class="line">#	Root DSE: allow anyone to read it</div><div class="line">#	Subschema (sub)entry DSE: allow anyone to read it</div><div class="line">#	Other DSEs:</div><div class="line">#		Allow self write access</div><div class="line">#		Allow authenticated users read access</div><div class="line">#		Allow anonymous users to authenticate</div><div class="line">#	Directives needed to implement policy:</div><div class="line"># access to dn.base=&quot;&quot; by * read</div><div class="line"># access to dn.base=&quot;cn=Subschema&quot; by * read</div><div class="line"># access to *</div><div class="line">#	by self write</div><div class="line">#	by users read</div><div class="line">#	by anonymous auth</div><div class="line">#</div><div class="line"># if no access controls are present, the default policy</div><div class="line"># allows anyone and everyone to read anything but restricts</div><div class="line"># updates to rootdn.  (e.g., &quot;access to * by * read&quot;)</div><div class="line">#</div><div class="line"># rootdn can always read and write EVERYTHING!</div><div class="line"></div><div class="line"># enable on-the-fly configuration (cn=config)</div><div class="line">database config</div><div class="line">access to *</div><div class="line">	by dn.exact=&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth&quot; manage</div><div class="line">	by * none</div><div class="line"></div><div class="line"># enable server status monitoring (cn=monitor)</div><div class="line">database monitor</div><div class="line">access to *</div><div class="line">	by dn.exact=&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth&quot; read</div><div class="line">        by dn.exact=&quot;cn=Manager,dc=my-domain,dc=com&quot; read</div><div class="line">        by * none</div><div class="line"></div><div class="line">#######################################################################</div><div class="line"># database definitions</div><div class="line">#######################################################################</div><div class="line"></div><div class="line">database	bdb</div><div class="line">suffix		&quot;dc=my-domain,dc=com&quot;</div><div class="line">checkpoint	1024 15</div><div class="line">rootdn		&quot;cn=Manager,dc=my-domain,dc=com&quot;</div><div class="line"># Cleartext passwords, especially for the rootdn, should</div><div class="line"># be avoided.  See slappasswd(8) and slapd.conf(5) for details.</div><div class="line"># Use of strong authentication encouraged.</div><div class="line"># rootpw		secret</div><div class="line"># rootpw		&#123;crypt&#125;ijFYNcSNctBYg</div><div class="line"></div><div class="line"># The database directory MUST exist prior to running slapd AND </div><div class="line"># should only be accessible by the slapd and slap tools.</div><div class="line"># Mode 700 recommended.</div><div class="line">directory	/var/lib/ldap</div><div class="line"></div><div class="line"># Indices to maintain for this database</div><div class="line">index objectClass                       eq,pres</div><div class="line">index ou,cn,mail,surname,givenname      eq,pres,sub</div><div class="line">index uidNumber,gidNumber,loginShell    eq,pres</div><div class="line">index uid,memberUid                     eq,pres,sub</div><div class="line">index nisMapName,nisMapEntry            eq,pres,sub</div><div class="line"></div><div class="line"># Replicas of this database</div><div class="line">#replogfile /var/lib/ldap/openldap-master-replog</div><div class="line">#replica host=ldap-1.example.com:389 starttls=critical</div><div class="line">#     bindmethod=sasl saslmech=GSSAPI</div><div class="line">#     authcId=host/ldap-master.example.com@EXAMPLE.COM</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Sentry/hive Sentry 权限配置.html" rel="next" title="hive Sentry 权限配置">
+                <i class="fa fa-chevron-left"></i> hive Sentry 权限配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Kerberos MIT/kerberos配置.html" rel="prev" title="kerberos配置">
+                kerberos配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

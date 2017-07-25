@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="127.0.0.1:6379&amp;gt; info Serverredis_version:3.2.3redis_git_sha1:00000000redis_git_dirty:0redis_build_id:276113d15453bda8redis_mode:clusteros:Linux 3.0.76-0.11-default x86_64arch_bits:64multiplexing_ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis_version_3.2.4-sc">
+<meta property="og:url" content="https://nameless13.github.io/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="127.0.0.1:6379&amp;gt; info Serverredis_version:3.2.3redis_git_sha1:00000000redis_git_dirty:0redis_build_id:276113d15453bda8redis_mode:clusteros:Linux 3.0.76-0.11-default x86_64arch_bits:64multiplexing_ap">
+<meta property="og:updated_time" content="2017-07-20T14:41:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis_version_3.2.4-sc">
+<meta name="twitter:description" content="127.0.0.1:6379&amp;gt; info Serverredis_version:3.2.3redis_git_sha1:00000000redis_git_dirty:0redis_build_id:276113d15453bda8redis_mode:clusteros:Linux 3.0.76-0.11-default x86_64arch_bits:64multiplexing_ap">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html"/>
+
+
+
+
+
+  <title>redis_version_3.2.4-sc | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redis_version_3.2.4-sc</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
+                2016-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/redis-conf-笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">redis-conf-笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>127.0.0.1:6379&gt; info</p>
+<h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><p>redis_version:3.2.3<br>redis_git_sha1:00000000<br>redis_git_dirty:0<br>redis_build_id:276113d15453bda8<br>redis_mode:cluster<br>os:Linux 3.0.76-0.11-default x86_64<br>arch_bits:64<br>multiplexing_api:epoll<br>gcc_version:4.3.4<br>process_id:21542<br>run_id:9bb6d2f200729eb837c86510afcc7025dec26586<br>tcp_port:6379<br>uptime_in_seconds:6130854<br>uptime_in_days:70<br>hz:10<br>lru_clock:16723061<br>executable:/usr/local/bin/redis-server<br>config_file:/etc/redis/redis.conf</p>
+<h1 id="Clients"><a href="#Clients" class="headerlink" title="Clients"></a>Clients</h1><p>connected_clients:358<br>client_longest_output_list:0<br>client_biggest_input_buf:0<br>blocked_clients:0</p>
+<h1 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h1><p>used_memory:151730448<br>used_memory_human:144.70M<br>used_memory_rss:159973376<br>used_memory_rss_human:152.56M<br>used_memory_peak:677126784<br>used_memory_peak_human:645.76M<br>total_system_memory:16686497792<br>total_system_memory_human:15.54G<br>used_memory_lua:37888<br>used_memory_lua_human:37.00K<br>maxmemory:8589934592<br>maxmemory_human:8.00G<br>maxmemory_policy:noeviction<br>mem_fragmentation_ratio:1.05<br>mem_allocator:jemalloc-4.0.3</p>
+<h1 id="Persistence"><a href="#Persistence" class="headerlink" title="Persistence"></a>Persistence</h1><p>loading:0<br>rdb_changes_since_last_save:11820<br>rdb_bgsave_in_progress:0<br>rdb_last_save_time:1476340843<br>rdb_last_bgsave_status:ok<br>rdb_last_bgsave_time_sec:1<br>rdb_current_bgsave_time_sec:-1<br>aof_enabled:0<br>aof_rewrite_in_progress:0<br>aof_rewrite_scheduled:0<br>aof_last_rewrite_time_sec:-1<br>aof_current_rewrite_time_sec:-1<br>aof_last_bgrewrite_status:ok<br>aof_last_write_status:ok</p>
+<h1 id="Stats"><a href="#Stats" class="headerlink" title="Stats"></a>Stats</h1><p>total_connections_received:136623<br>total_commands_processed:3090632890<br>instantaneous_ops_per_sec:1288<br>total_net_input_bytes:274676332779<br>total_net_output_bytes:20528196260<br>instantaneous_input_kbps:108.62<br>instantaneous_output_kbps:8.95<br>rejected_connections:0<br>sync_full:0<br>sync_partial_ok:0<br>sync_partial_err:0<br>expired_keys:43<br>evicted_keys:0<br>keyspace_hits:512379822<br>keyspace_misses:419500843<br>pubsub_channels:0<br>pubsub_patterns:0<br>latest_fork_usec:3517<br>migrate_cached_sockets:0</p>
+<h1 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h1><p>role:master<br>connected_slaves:0<br>master_repl_offset:0<br>repl_backlog_active:0<br>repl_backlog_size:1048576<br>repl_backlog_first_byte_offset:0<br>repl_backlog_histlen:0</p>
+<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><p>used_cpu_sys:51186.74<br>used_cpu_user:45645.72<br>used_cpu_sys_children:2273.35<br>used_cpu_user_children:58689.30</p>
+<h1 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h1><p>cluster_enabled:1</p>
+<h1 id="Keyspace"><a href="#Keyspace" class="headerlink" title="Keyspace"></a>Keyspace</h1><p>db0:keys=3,expires=2,avg_ttl=86397596</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Redis/redis-conf-笔记/redis_version_3.2.4.html" rel="next" title="redis_version_3.2.4">
+                <i class="fa fa-chevron-left"></i> redis_version_3.2.4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Document/YAML.html" rel="prev" title="YAML">
+                YAML <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Server"><span class="nav-number">1.</span> <span class="nav-text">Server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Clients"><span class="nav-number">2.</span> <span class="nav-text">Clients</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Memory"><span class="nav-number">3.</span> <span class="nav-text">Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Persistence"><span class="nav-number">4.</span> <span class="nav-text">Persistence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stats"><span class="nav-number">5.</span> <span class="nav-text">Stats</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Replication"><span class="nav-number">6.</span> <span class="nav-text">Replication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU"><span class="nav-number">7.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cluster"><span class="nav-number">8.</span> <span class="nav-text">Cluster</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Keyspace"><span class="nav-number">9.</span> <span class="nav-text">Keyspace</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

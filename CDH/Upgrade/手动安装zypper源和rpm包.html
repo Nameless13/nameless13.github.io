@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="因大数据cloudera manager 平台升级,请将所有大数据服务器安装python-psycopg2-2.6.2-3.3.x86_64.rpm这个包,大数据服务器列表见附件 CM前端管理方式安装CDH失败:  主机密码不对 先手工卸载旧rpm包,手工配zypper源安装 zypper源指向不对,删除无效的zypper源 用户目录下的host影响,或者/etc/hosts和CM节点不一致  U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手动安装zypper源和rpm包">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Upgrade/手动安装zypper源和rpm包.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="因大数据cloudera manager 平台升级,请将所有大数据服务器安装python-psycopg2-2.6.2-3.3.x86_64.rpm这个包,大数据服务器列表见附件 CM前端管理方式安装CDH失败:  主机密码不对 先手工卸载旧rpm包,手工配zypper源安装 zypper源指向不对,删除无效的zypper源 用户目录下的host影响,或者/etc/hosts和CM节点不一致  U">
+<meta property="og:updated_time" content="2017-07-20T14:26:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手动安装zypper源和rpm包">
+<meta name="twitter:description" content="因大数据cloudera manager 平台升级,请将所有大数据服务器安装python-psycopg2-2.6.2-3.3.x86_64.rpm这个包,大数据服务器列表见附件 CM前端管理方式安装CDH失败:  主机密码不对 先手工卸载旧rpm包,手工配zypper源安装 zypper源指向不对,删除无效的zypper源 用户目录下的host影响,或者/etc/hosts和CM节点不一致  U">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Upgrade/手动安装zypper源和rpm包.html"/>
+
+
+
+
+
+  <title>手动安装zypper源和rpm包 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Upgrade/手动安装zypper源和rpm包.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">手动安装zypper源和rpm包</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Upgrade/" itemprop="url" rel="index">
+                    <span itemprop="name">Upgrade</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>因大数据cloudera manager 平台升级,请将所有大数据服务器安装python-psycopg2-2.6.2-3.3.x86_64.rpm这个包,大数据服务器列表见附件</p>
+<p>CM前端管理方式安装CDH失败:</p>
+<ol>
+<li>主机密码不对</li>
+<li>先手工卸载旧rpm包,手工配zypper源安装</li>
+<li>zypper源指向不对,删除无效的zypper源</li>
+<li>用户目录下的host影响,或者/etc/hosts和CM节点不一致</li>
+</ol>
+<p>Usage: 本地Zypper源使用 [适用SUSE]</p>
+<ol>
+<li>Backup repository.<br>find /etc/zypp/repos.d -name “*.repo” -exec mv {} {}.bak \;</li>
+<li>Install<br>zypper ar <a href="http://10.200.58.43/" target="_blank" rel="external">http://10.200.58.43/</a> local.main</li>
+<li>Update cache<br>zypper ref</li>
+</ol>
+<p>zyppzy</p>
+<p>ps aux|grep  supervisord |grep -v grep | awk ‘{print “kill -9 “$2}’|sh</p>
+<p>zypper in cloudera-manager-daemons-5.11.1-1.cm5111.p0.9.sles11<br>zypper in cloudera-manager-agent-5.11.1-1.cm5111.p0.9.sles11<br>下载地址:<a href="https://software.opensuse.org/download.html?project=server%3Adatabase%3Apostgresql&amp;package=python-psycopg2" target="_blank" rel="external">https://software.opensuse.org/download.html?project=server%3Adatabase%3Apostgresql&amp;package=python-psycopg2</a></p>
+<p>如果安装时报出缺少   libpq.so.5()(64bit) 依赖,需要先安装系统ISO镜像自带的postgresql91-9.1.9-0.3.1.x86_64.rpm（需要用到此包中的libpq库）,之后再安装python-psycopg2-2.6.2-3.3.x86_64.rpm</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">zypper in postgresql91</div><div class="line">rpm -ivh python-psycopg2-2.6.2-3.2.x86_64.rpm</div></pre></td></tr></table></figure>
+</p>
+<hr>
+<p><a href="http://stackoverflow.com/questions/35544155/how-to-access-a-zookeeper-ensemble-as-a-super-user-via-zookeeper-shell/35654757#35654757" target="_blank" rel="external">Zookeeper 绕过密码注册超级管理员</a></p>
+<p>SERVER_JVMFLAGS=-Dzookeeper.DigestAuthenticationProvider.superDigest=super:DyNYQEQvajljsxlhf5uS4PJ9R28=</p>
+<p><a href="http://www.tuicool.com/articles/neY7Vrq" target="_blank" rel="external">http://www.tuicool.com/articles/neY7Vrq</a></p>
+<p>suse http zypper源 http<br>apache2<br>分发服务器<br>/srv/www/<br>HA namenode snamenode<br>zypper 源配置 添加http源 ar 指定源名字</p>
+<p>/mnt/suse/x86_64/postgresql91-9.1.24-1.1.x86_64.rpm</p>
+<p><a href="http://ftp.rrzn.uni-hannover.de/opensuse/repositories/server:/database:/postgresql/SLE_11_SP3/x86_64/?winzoom=1" target="_blank" rel="external">http://ftp.rrzn.uni-hannover.de/opensuse/repositories/server:/database:/postgresql/SLE_11_SP3/x86_64/?winzoom=1</a></p>
+<p>sudo /usr/sbin/groupadd manage</p>
+<p>manage@ddp-dn-101:/home&gt; sudo chown manage:manage manage/</p>
+<p><code>zypper ar http://10.200.58.43/ local.main</code></p>
+<p><code>sudo zypper mr -d &quot;SUSE-Linux-Enterprise-Server-11-SP3 11.3.3-1.138&quot;</code><br>Repository ‘SUSE-Linux-Enterprise-Server-11-SP3 11.3.3-1.138’ has been successfully disabled.<br><code>sudo zypper ref</code></p>
+<p>sudo zypper in postgresql91<br>sudo rpm -ivh python-psycopg2-2.6.2-3.2.x86_64.rpm</p>
+<p>密码不对</p>
+<p>先手工卸载旧rpm包</p>
+<p>host mv usr</p>
+<p>/etc/hosts 没配</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Upgrade/Impala_swapp.html" rel="next" title="Impala_swapp">
+                <i class="fa fa-chevron-left"></i> Impala_swapp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/ZooKeeper/ZooKeeper中的基本概念.html" rel="prev" title="ZooKeeper中的基本概念">
+                ZooKeeper中的基本概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

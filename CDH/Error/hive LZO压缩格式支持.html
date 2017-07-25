@@ -1,0 +1,769 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="LZO配置  hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入暂时先删除LZO配置ddp-hb-01:~ # beeline -u &amp;apos;jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM&amp;apos;scan complete in 3msConnecting to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive LZO压缩格式支持">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Error/hive LZO压缩格式支持.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="LZO配置  hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入暂时先删除LZO配置ddp-hb-01:~ # beeline -u &amp;apos;jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM&amp;apos;scan complete in 3msConnecting to">
+<meta property="og:updated_time" content="2017-07-20T14:08:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hive LZO压缩格式支持">
+<meta name="twitter:description" content="LZO配置  hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入暂时先删除LZO配置ddp-hb-01:~ # beeline -u &amp;apos;jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM&amp;apos;scan complete in 3msConnecting to">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Error/hive LZO压缩格式支持.html"/>
+
+
+
+
+
+  <title>hive LZO压缩格式支持 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/hive LZO压缩格式支持.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hive LZO压缩格式支持</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/admin_data_compression_performance.html" target="_blank" rel="external">LZO配置</a></p>
+</blockquote>
+<h2 id="hive-因为仅仅添加了LZO压缩格式的配置路径-却没有导入"><a href="#hive-因为仅仅添加了LZO压缩格式的配置路径-却没有导入" class="headerlink" title="hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入"></a>hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入</h2><p>暂时先删除LZO配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-hb-01:~ # beeline -u &apos;jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM&apos;</div><div class="line">scan complete in 3ms</div><div class="line">Connecting to jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM</div><div class="line">Connected to: Apache Hive (version 1.1.0-cdh5.4.7)</div><div class="line">Driver: Hive JDBC (version 1.1.0-cdh5.4.7)</div><div class="line">Transaction isolation: TRANSACTION_REPEATABLE_READ</div><div class="line">Beeline version 1.1.0-cdh5.4.7 by Apache Hive</div><div class="line">[INFO] Unable to bind key for unsupported operation: backward-delete-word</div><div class="line">[INFO] Unable to bind key for unsupported operation: backward-delete-word</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">0: jdbc:hive2://10.200.60.99:10000/yanfa&gt; show databases;</div><div class="line">0: jdbc:hive2://10.200.60.99:10000/yanfa&gt; show tables;</div><div class="line">0: jdbc:hive2://10.200.60.99:10000/yanfa&gt; select * from tk_user_his limit 10;</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">11	11	</div><div class="line">     &lt;value&gt;1&lt;/value&gt;</div><div class="line">12	12	</div><div class="line">   &lt;/property&gt;</div><div class="line">13	13	</div><div class="line">   &lt;property&gt;</div><div class="line">14	14	</div><div class="line">     &lt;name&gt;io.compression.codecs&lt;/name&gt;</div><div class="line">15		</div><div class="line">-    &lt;value&gt;org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.DeflateCodec,org.apache.hadoop.io.compress.SnappyCodec,org.apache.hadoop.io.compress.Lz4Codec&lt;/value&gt;</div><div class="line">15	</div><div class="line">+    &lt;value&gt;org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.DeflateCodec,org.apache.hadoop.io.compress.SnappyCodec,org.apache.hadoop.io.compress.Lz4Codec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec&lt;/value&gt;</div><div class="line">16	16	</div><div class="line">   &lt;/property&gt;</div><div class="line">17	17	</div><div class="line">   &lt;property&gt;</div><div class="line">18	18	</div><div class="line">     &lt;name&gt;hadoop.security.authentication&lt;/name&gt;</div><div class="line">19	19	</div><div class="line">     &lt;value&gt;kerberos&lt;/value&gt;</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">93	93	</div><div class="line">   &lt;node name=&quot;ddp-dn-041.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">94	94	</div><div class="line">   &lt;node name=&quot;10.200.60.123&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">95	95	</div><div class="line">   &lt;node name=&quot;ddp-dn-042.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">96	96	</div><div class="line">   &lt;node name=&quot;10.200.60.124&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">97		</div><div class="line">-  &lt;node name=&quot;ddp-dn-043.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">98		</div><div class="line">-  &lt;node name=&quot;10.200.60.125&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">99	97	</div><div class="line">   &lt;node name=&quot;ddp-dn-044.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">100	98	</div><div class="line">   &lt;node name=&quot;10.200.60.126&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">101	99	</div><div class="line">   &lt;node name=&quot;ddp-dn-045.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">102	100	</div><div class="line">   &lt;node name=&quot;10.200.60.127&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">...	...	</div><div class="line">@@ -339,8 +337,10 @@</div><div class="line">339	337	</div><div class="line">   &lt;node name=&quot;ddp-dn-170.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">340	338	</div><div class="line">   &lt;node name=&quot;10.200.60.81&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">341	339	</div><div class="line">   &lt;node name=&quot;ddp-dn-171.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">342	340	</div><div class="line">   &lt;node name=&quot;10.200.60.82&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">341	</div><div class="line">+  &lt;node name=&quot;ddp-dn-172.cmdmp.com&quot; rack=&quot;/default&quot;/&gt;</div><div class="line">342	</div><div class="line">+  &lt;node name=&quot;10.200.60.83&quot; rack=&quot;/default&quot;/&gt;</div><div class="line">343	343	</div><div class="line">   &lt;node name=&quot;ddp-dn-173.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">344	344	</div><div class="line">   &lt;node name=&quot;10.200.60.84&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">345	345	</div><div class="line">   &lt;node name=&quot;ddp-dn-174.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">346	346	</div><div class="line">   &lt;node name=&quot;10.200.60.85&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">```     </div><div class="line"></div><div class="line">3月 22, 下午2点53:37.282	WARN	org.apache.hive.service.cli.thrift.ThriftCLIService	</div><div class="line">Error fetching results: </div><div class="line">org.apache.hive.service.cli.HiveSQLException: java.io.IOException: java.lang.RuntimeException: Error in configuring object</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation.getNextRowSet(SQLOperation.java:329)</div><div class="line">	at org.apache.hive.service.cli.operation.OperationManager.getOperationNextRowSet(OperationManager.java:250)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionImpl.fetchResults(HiveSessionImpl.java:699)</div><div class="line">	at sun.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:78)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy.access$000(HiveSessionProxy.java:36)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy$1.run(HiveSessionProxy.java:63)</div><div class="line">	at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">	at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1671)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:59)</div><div class="line">	at com.sun.proxy.$Proxy23.fetchResults(Unknown Source)</div><div class="line">	at org.apache.hive.service.cli.CLIService.fetchResults(CLIService.java:438)</div><div class="line">	at org.apache.hive.service.cli.thrift.ThriftCLIService.FetchResults(ThriftCLIService.java:676)</div><div class="line">	at org.apache.hive.service.cli.thrift.TCLIService$Processor$FetchResults.getResult(TCLIService.java:1553)</div><div class="line">	at org.apache.hive.service.cli.thrift.TCLIService$Processor$FetchResults.getResult(TCLIService.java:1538)</div><div class="line">	at org.apache.thrift.ProcessFunction.process(ProcessFunction.java:39)</div><div class="line">	at org.apache.thrift.TBaseProcessor.process(TBaseProcessor.java:39)</div><div class="line">	at org.apache.hadoop.hive.thrift.HadoopThriftAuthBridge$Server$TUGIAssumingProcessor.process(HadoopThriftAuthBridge.java:692)</div><div class="line">	at org.apache.thrift.server.TThreadPoolServer$WorkerProcess.run(TThreadPoolServer.java:285)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)</div><div class="line">	at java.lang.Thread.run(Thread.java:745)</div><div class="line">Caused by: java.io.IOException: java.lang.RuntimeException: Error in configuring object</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getNextRow(FetchOperator.java:507)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.pushRow(FetchOperator.java:414)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchTask.fetch(FetchTask.java:138)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.getResults(Driver.java:1655)</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation.getNextRowSet(SQLOperation.java:324)</div><div class="line">	... 24 more</div><div class="line">Caused by: java.lang.RuntimeException: Error in configuring object</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:109)</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:75)</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:133)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getInputFormatFromCache(FetchOperator.java:206)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getNextSplits(FetchOperator.java:360)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getRecordReader(FetchOperator.java:294)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getNextRow(FetchOperator.java:445)</div><div class="line">	... 28 more</div><div class="line">Caused by: java.lang.reflect.InvocationTargetException</div><div class="line">	at sun.reflect.GeneratedMethodAccessor43.invoke(Unknown Source)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:106)</div><div class="line">	... 34 more</div><div class="line">Caused by: java.lang.IllegalArgumentException: Compression codec com.hadoop.compression.lzo.LzoCodec not found.</div><div class="line">	at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:135)</div><div class="line">	at org.apache.hadoop.io.compress.CompressionCodecFactory.&lt;init&gt;(CompressionCodecFactory.java:175)</div><div class="line">	at org.apache.hadoop.mapred.TextInputFormat.configure(TextInputFormat.java:45)</div><div class="line">	... 38 more</div><div class="line">Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found</div><div class="line">	at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018)</div><div class="line">	at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128)</div><div class="line">	... 40 more</div></pre></td></tr></table></figure>
+</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/ZooKeeper/ZooKeeper运维.html" rel="next" title="ZooKeeper运维">
+                <i class="fa fa-chevron-left"></i> ZooKeeper运维
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/ZooKeeper/Zookeeper应用场景.html" rel="prev" title="Zookeeper应用场景">
+                Zookeeper应用场景 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hive-因为仅仅添加了LZO压缩格式的配置路径-却没有导入"><span class="nav-number">1.</span> <span class="nav-text">hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

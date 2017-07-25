@@ -1,0 +1,795 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="hbase 连接超时最开始是inood块权限有问题6月 7, 早上8点24:55.119分    WARN    org.apache.hadoop.security.UserGroupInformation PriviledgedActionException as:hbase (auth:SIMPLE) cause:org.apache.hadoop.security.AccessContro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hbase 连接超时">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Error/hbase 连接超时.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="hbase 连接超时最开始是inood块权限有问题6月 7, 早上8点24:55.119分    WARN    org.apache.hadoop.security.UserGroupInformation PriviledgedActionException as:hbase (auth:SIMPLE) cause:org.apache.hadoop.security.AccessContro">
+<meta property="og:updated_time" content="2017-07-20T14:06:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hbase 连接超时">
+<meta name="twitter:description" content="hbase 连接超时最开始是inood块权限有问题6月 7, 早上8点24:55.119分    WARN    org.apache.hadoop.security.UserGroupInformation PriviledgedActionException as:hbase (auth:SIMPLE) cause:org.apache.hadoop.security.AccessContro">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Error/hbase 连接超时.html"/>
+
+
+
+
+
+  <title>hbase 连接超时 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/hbase 连接超时.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hbase 连接超时</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="hbase-连接超时"><a href="#hbase-连接超时" class="headerlink" title="hbase 连接超时"></a>hbase 连接超时</h1><p>最开始是inood块权限有问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 早上8点24:55.119分    WARN    org.apache.hadoop.security.UserGroupInformation </div><div class="line">PriviledgedActionException as:hbase (auth:SIMPLE) cause:org.apache.hadoop.security.AccessControlException: Permission denied: user=hbase, access=WRITE, inode=&quot;/hbase/data/default/user_info/cc019437cc8b9ea29ab57461d9538945/info/4c3bafa7a4164b21bf71c6b3a80c0439_SeqId_222_&quot;:hadoop:supergroup:-rw-r--r--</div><div class="line">6月 7, 早上8点24:55.119分    INFO    org.apache.hadoop.ipc.Server    </div><div class="line">IPC Server handler 40 on 8020, call org.apache.hadoop.hdfs.protocol.ClientProtocol.setTimes from 10.200.60.145:34847 Call#9611380 Retry#0: org.apache.hadoop.security.AccessControlException: Permission denied: user=hbase, access=WRITE, inode=&quot;/hbase/data/default/user_info/cc019437cc8b9ea29ab57461d9538945/info/4c3bafa7a4164b21bf71c6b3a80c0439_SeqId_222_&quot;:hadoop:supergroup:-rw-r--r--</div></pre></td></tr></table></figure></p>
+<p>手动修改后发现接连不断报出来 ,后来发现类似的bluk太多,直接修改chown上级目录 </p>
+<p>之后发现 有很多的连接超时<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 下午1点38:29.634分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:30.006分	INFO	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Accepted socket connection from /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.010分	INFO	org.apache.zookeeper.server.ZooKeeperServer	</div><div class="line">Client attempting to establish new session at /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.019分	INFO	org.apache.zookeeper.server.ZooKeeperServer	</div><div class="line">Established session 0x25c62548f45168a with negotiated timeout 60000 for client /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.205分	INFO	org.apache.zookeeper.server.NIOServerCnxn	</div><div class="line">Closed socket connection for client /172.16.70.43:41978 which had sessionid 0x25c62548f45168a</div><div class="line">6月 7, 下午1点38:30.211分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:30.399分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:31.321分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:32.097分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:32.314分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div></pre></td></tr></table></figure></p>
+<p>这个问题 前几天一直有报错误但是没有表明哪一台连接数特别多 今天达到max后才报出来</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 上午9点37:02.713分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Client attempting to establish new session at /10.200.65.40:52131</div><div class="line">6月 7, 上午9点37:02.717分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Established session 0x25c62548f450748 with negotiated timeout 60000 for client /10.200.65.40:52131</div><div class="line">6月 7, 上午9点37:02.731分    WARN    org.apache.zookeeper.server.NIOServerCnxnFactory    </div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 上午9点37:02.862分    INFO    org.apache.zookeeper.server.NIOServerCnxnFactory    </div><div class="line">Accepted socket connection from /10.200.65.40:52369</div><div class="line">6月 7, 上午9点37:02.862分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Client attempting to establish new session at /10.200.65.40:52369</div><div class="line">6月 7, 上午9点37:02.874分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Established session 0x25c62548f450749 with negotiated timeout 60000 for client /10.200.65.40:52369</div></pre></td></tr></table></figure>
+</p>
+<p>123 </p>
+<p>在123这台机器上看到与145的连接全部的端口都是2181</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Component</th>
+<th style="text-align:left">Service</th>
+<th style="text-align:left">Qualifier</th>
+<th style="text-align:left">Port</th>
+<th style="text-align:left">Access Requirement</th>
+<th>Configuration</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Hadoop HDFS</td>
+<td style="text-align:left">HQuorumPeer</td>
+<td style="text-align:left">2181</td>
+<td style="text-align:left">Internal</td>
+<td style="text-align:left">hbase. zookeeper. property. clientPort</td>
+<td>HBase-managed ZooKeeper mode</td>
+</tr>
+</tbody>
+</table>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-041:~ # netstat -lantp|grep 2181  </div><div class="line">tcp        0      0 10.200.60.123:34306     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56126     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47177     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57633     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32828     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57625     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48795     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47189     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57635     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:52033     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:53245     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57591     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48781     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48779     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56177     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47183     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56165     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:39211     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34249     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47164     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48857     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56148     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57610     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57615     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48612     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34291     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57686     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34300     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57623     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56172     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56168     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47170     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32904     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32817     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57590     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48615     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48792     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56371     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57589     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56163     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56123     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48646     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56178     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34280     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48633     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56180     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56152     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56162     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57594     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51789     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57628     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56375     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32819     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48651     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47172     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57616     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56127     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56149     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48640     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56396     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56380     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56160     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34293     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48620     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57618     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47185     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48638     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57620     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57592     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57595     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56173     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51992     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56158     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56171     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56167     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48785     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57602     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32851     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57609     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:53145     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34549     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56154     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56391     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56170     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48790     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57772     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57606     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34297     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32830     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56142     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47168     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51980     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56146     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57599     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47158     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57603     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57587     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57612     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47312     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32844     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32836     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56138     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48783     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34308     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56179     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56145     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47166     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47338     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57583     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34359     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32908     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34282     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56175     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56137     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56366     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57614     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48787     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56399     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34284     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57593     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">ddp-dn-041:~ # ps aux|grep 32710</div><div class="line">root       475  0.0  0.0   4532   564 pts/7    S+   13:47   0:00 grep 32710</div><div class="line">root     32710  0.0  3.2 33279488 4239192 ?    Sl   May12  19:45 /usr/java/jdk1.7.0_67-cloudera/bin/java -Djava.util.logging.config.file=/home/hadoop/bin/apache-tomcat-7.0.73/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.endorsed.dirs=/home/hadoop/bin/apache-tomcat-7.0.73/endorsed -classpath /home/hadoop/bin/apache-tomcat-7.0.73/bin/bootstrap.jar:/home/hadoop/bin/apache-tomcat-7.0.73/bin/tomcat-juli.jar -Dcatalina.base=/home/hadoop/bin/apache-tomcat-7.0.73 -Dcatalina.home=/home/hadoop/bin/apache-tomcat-7.0.73 -Djava.io.tmpdir=/home/hadoop/bin/apache-tomcat-7.0.73/temp org.apache.catalina.startup.Bootstrap start</div></pre></td></tr></table></figure>
+</p>
+<p>145<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-hb-178:~ #  netstat -lantp|grep 2181</div><div class="line">tcp        0      0 0.0.0.0:2181            0.0.0.0:*               LISTEN      18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42563      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57625     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34359     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.155:35202     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34291     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48781     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.147:47393     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10906      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57606     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48615     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39053      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39081      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34297     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34280     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45361     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.151:36084     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45352     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:53245     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39062      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48790     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57612     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.148:58812     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.155:35191     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.147:47384     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48795     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48646     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34308     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45351     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57614     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48779     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.47:51835      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57592     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.145:59735     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10903      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34306     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57620     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39085      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10905      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51915     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57602     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48640     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34282     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42535      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57583     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48620     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57603     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42534      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48783     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48612     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34293     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34300     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.156:44113     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57599     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57594     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57615     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:49370      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10904      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48638     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48651     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.33:18797      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57609     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57590     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57623     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48633     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57633     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42558      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57589     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57616     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34549     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34284     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57618     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57591     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51909     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48857     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48785     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48792     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45358     10.200.60.144:2181      ESTABLISHED 15007/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.148:58809     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.24.54:36651      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57628     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57587     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57610     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57686     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57593     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:38108     10.200.60.147:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57595     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:53145     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34249     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.114:54498     TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48787     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42543      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39071      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57772     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:39211     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.146:50729     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51912     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:49368      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57635     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.33:18798      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:59735     10.200.60.145:2181      ESTABLISHED 17996/java          </div><div class="line">ddp-hb-178:~ # ps aux|grep 18867</div><div class="line">root      1402  0.0  0.0   4532   560 pts/1    S+   13:51   0:00 grep 18867</div><div class="line">112      18867  0.5  0.4 1546620 596552 ?      Sl   Jun01  45:48 /usr/java/jdk1.7.0_67-cloudera/bin/java -cp /var/run/cloudera-scm-agent/process/47146-zookeeper-server:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/lib/log4j.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/build/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/build/lib/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/lib/*:/usr/share/cmf/lib/plugins/tt-instrumentation-5.10.0.jar:/usr/share/cmf/lib/plugins/event-publish-5.10.0-shaded.jar -Djava.net.preferIPv4Stack=true -Dzookeeper.log.file=zookeeper-cmf-zookeeper2-SERVER-ddp-hb-178.cmdmp.com.log -Dzookeeper.log.dir=/var/log/zookeeper -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.rmi.port=9010 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djute.maxbuffer=4194304 -Dzookeeper.datadir.autocreate=false -Xms1073741824 -Xmx1073741824 -XX:OnOutOfMemoryError=/usr/lib64/cmf/service/common/killparent.sh org.apache.zookeeper.server.quorum.QuorumPeerMain /var/run/cloudera-scm-agent/process/47146-zookeeper-server/zoo.cfg</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Error/HDFS-diskbalance.html" rel="next" title="HDFS-diskbalance">
+                <i class="fa fa-chevron-left"></i> HDFS-diskbalance
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Hive/添加HiveServer2.html" rel="prev" title="添加HiveServer2角色">
+                添加HiveServer2角色 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hbase-连接超时"><span class="nav-number">1.</span> <span class="nav-text">hbase 连接超时</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

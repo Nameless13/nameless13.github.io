@@ -1,0 +1,801 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="配置HiveServer2负载平衡代理 操作系统:SUSE11 SP3CM版本:CM5.10.041CDH版本:CDH5.10.041使用root用户对集群进行部署cloudera对应文档   下载负载平衡代理软件到需要的主机上。haproxy-1.5.14-91.1.x86_64.rpm 安装,配置开机启动,修改配置文件后启动haproxy,并检查对应端口是否开启    Set the port">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hiveserver2 haproxy">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Hive/hiveserver2 haproxy.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="配置HiveServer2负载平衡代理 操作系统:SUSE11 SP3CM版本:CM5.10.041CDH版本:CDH5.10.041使用root用户对集群进行部署cloudera对应文档   下载负载平衡代理软件到需要的主机上。haproxy-1.5.14-91.1.x86_64.rpm 安装,配置开机启动,修改配置文件后启动haproxy,并检查对应端口是否开启    Set the port">
+<meta property="og:updated_time" content="2017-07-20T14:19:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hiveserver2 haproxy">
+<meta name="twitter:description" content="配置HiveServer2负载平衡代理 操作系统:SUSE11 SP3CM版本:CM5.10.041CDH版本:CDH5.10.041使用root用户对集群进行部署cloudera对应文档   下载负载平衡代理软件到需要的主机上。haproxy-1.5.14-91.1.x86_64.rpm 安装,配置开机启动,修改配置文件后启动haproxy,并检查对应端口是否开启    Set the port">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Hive/hiveserver2 haproxy.html"/>
+
+
+
+
+
+  <title>hiveserver2 haproxy | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/hiveserver2 haproxy.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hiveserver2 haproxy</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-06T00:00:00+08:00">
+                2017-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="配置HiveServer2负载平衡代理"><a href="#配置HiveServer2负载平衡代理" class="headerlink" title="配置HiveServer2负载平衡代理"></a>配置HiveServer2负载平衡代理</h1><blockquote>
+<p>操作系统:SUSE11 SP3<br>CM版本:CM5.10.041<br>CDH版本:CDH5.10.041<br>使用root用户对集群进行部署<br><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/admin_ha_hiveserver2.html" target="_blank" rel="external">cloudera对应文档</a></p>
+</blockquote>
+<ol>
+<li>下载负载平衡代理软件到需要的主机上。<a href="http://rpm.pbone.net/index.php3/stat/4/idpl/33562430/dir/opensuse/com/haproxy-1.5.14-91.1.x86_64.rpm.html" target="_blank" rel="external">haproxy-1.5.14-91.1.x86_64.rpm</a></li>
+<li><p>安装,配置开机启动,修改配置文件后启动haproxy,并检查对应端口是否开启  </p>
+<ol>
+<li>Set the port for the load balancer to listen on and relay HiveServer2 requests back and forth.</li>
+<li>Set the port and hostname for each HiveServer2 host—that is, the hosts from which the load balancer chooses when relaying each query. </li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rpm -ihv haproxy-1.5.14-91.1.x86_64.rpm </div><div class="line">chkconfig haproxy on</div><div class="line">chkconfig --list haproxy </div><div class="line">cp /etc/haproxy/haproxy.cfg /etc/haproxy/bak.cfg</div><div class="line">vi /etc/haproxy/haproxy.cfg </div><div class="line">/etc/init.d/haproxy start</div><div class="line"></div><div class="line">ss -an |grep 10003</div></pre></td></tr></table></figure>
+</p>
+<p>配置文件:<a href="https://issues.cloudera.org/browse/HUE-4990" target="_blank" rel="external">因为balance模式选择导致HUE请求超时</a>  </p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">global</div><div class="line">    # To have these messages end up in /var/log/haproxy.log you will</div><div class="line">    # need to:</div><div class="line">    #</div><div class="line">    # 1) configure syslog to accept network log events.  This is done</div><div class="line">    #    by adding the &apos;-r&apos; option to the SYSLOGD_OPTIONS in</div><div class="line">    #    /etc/sysconfig/syslog</div><div class="line">    #</div><div class="line">    # 2) configure local2 events to go to the /var/log/haproxy.log</div><div class="line">    #   file. A line like the following can be added to</div><div class="line">    #   /etc/sysconfig/syslog</div><div class="line">    #</div><div class="line">    #    local2.*                       /var/log/haproxy.log</div><div class="line">    #</div><div class="line">    pidfile     /var/run/haproxy.pid</div><div class="line">    nbproc 1</div><div class="line">    maxconn     4000</div><div class="line">    daemon</div><div class="line"></div><div class="line">    # turn on stats unix socket</div><div class="line">    #stats socket /var/lib/haproxy/stats</div><div class="line"></div><div class="line">#---------------------------------------------------------------------</div><div class="line"># common defaults that all the &apos;listen&apos; and &apos;backend&apos; sections will</div><div class="line"># use if not designated in their block</div><div class="line">#</div><div class="line"># You might need to adjust timing values to prevent timeouts.</div><div class="line">#---------------------------------------------------------------------</div><div class="line">defaults</div><div class="line">    mode                    tcp</div><div class="line">    log                     127.0.0.1 local0 err</div><div class="line">    option                  redispatch</div><div class="line">    retries                 3</div><div class="line">    maxconn                 3000</div><div class="line">    contimeout 1800000</div><div class="line">    timeout client 1800000</div><div class="line">    timeout server 1800000</div><div class="line"></div><div class="line">#</div><div class="line"># This sets up the admin page for HA Proxy at port 25002.</div><div class="line">#</div><div class="line">listen stats</div><div class="line">    bind 10.200.65.71:25002</div><div class="line">    balance</div><div class="line">    mode http</div><div class="line">    stats enable</div><div class="line">    stats auth username:password</div><div class="line"></div><div class="line"># This is the setup for Impala. Impala client connect to load_balancer_host:25003.</div><div class="line"># HAProxy will balance connections among the list of servers listed below.</div><div class="line"># The list of Impalad is listening at port 21000 for beeswax (impala-shell) or original ODBC driver.</div><div class="line"># For JDBC or ODBC version 2.x driver, use port 21050 instead of 21000.</div><div class="line">listen hive</div><div class="line">    bind 10.200.65.71:10003</div><div class="line">    mode tcp</div><div class="line">    balance source</div><div class="line">    maxconn 1024</div><div class="line">    server ddp-cm ddp-cm.cmdmp.com:10000 check inter 1800000 rise 1 fall 2</div><div class="line">    server ddp-dn-12 ddp-dn-12.cmdmp.com:10000 check inter 1800000 rise 1 fall 2</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>如果开启hiveserver UDF 配置,需要将之前hiveserver2对应路径下的jar包,放在与之一致的路径里,之后如果更新jar包需要同时更新所有的hiveserver2节点下对应的目录以及haproxy节点下对应的目录</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir -p /opt/local/hive/lib/</div><div class="line">mkdir -p /opt/local/hive/reloadable/</div><div class="line">scp root@10.200.65.50:/opt/local/hive/lib/* /opt/local/hive/lib/</div><div class="line">scp root@10.200.65.50:/opt/local/hive/reloadable/* /opt/local/hive/reloadable/</div><div class="line"></div><div class="line">chown hadoop:hadoop -R /opt/local/hive/lib/</div><div class="line">chown hadoop:hadoop -R /opt/local/hive/reloadable/</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>Run the load-balancing proxy server and point it at the configuration file.</p>
+</li>
+<li><p>In Cloudera Manager, configure HiveServer2 Load Balancer for the proxy server.</p>
+<ol>
+<li>Go to the Hive service.</li>
+<li>Click the Configuration tab.</li>
+<li>Select Scope &gt; HiveServer2.</li>
+<li>Select Category &gt; Main. </li>
+<li>Locate the HiveServer2 Load Balancer property or search for it by typing its name in the Search box.</li>
+<li>Enter values for <code>hostname:port number</code>.</li>
+<li>Click Save Changes to commit the changes.</li>
+<li>Restart the Hive service.<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Note:When you set the HiveServer2 Load Balancer property, Cloudera Manager regenerates the keytabs for HiveServer2 roles. The principal in these keytabs contains the load balancer hostname. If there is a Hue service that depends on this Hive service, it also uses the load balancer to communicate with Hive.</div></pre></td></tr></table></figure>
+</p>
+</li>
+</ol>
+</li>
+<li><p>Point all scripts, jobs, or application configurations to the new proxy server instead of any specific HiveServer2 instance.一旦CM中hive配置配上balance后,原先所有的hiveserver2都将无法继续使用</p>
+</li>
+</ol>
+<p>附录:<a href="http://blog.cloudera.com/blog/2013/08/how-to-achieve-higher-availability-for-hue/" target="_blank" rel="external">Higher Availability</a>    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Error/Yarn磁盘检查.html" rel="next" title="Yarn磁盘检查">
+                <i class="fa fa-chevron-left"></i> Yarn磁盘检查
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/python/Django.html" rel="prev" title="Django">
+                Django <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置HiveServer2负载平衡代理"><span class="nav-number">1.</span> <span class="nav-text">配置HiveServer2负载平衡代理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

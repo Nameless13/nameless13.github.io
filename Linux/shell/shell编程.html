@@ -1,0 +1,799 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="在shell编程中，”EOF“通常与”&amp;lt;&amp;lt;“结合使用，“&amp;lt;&amp;lt;EOF“表示后续的输入作为子命令或子shell的输入，直到遇到”EOF“，再次返回到主调shell，可将其理解为分界符（delimiter）。既然是分界符，那么形式自然不是固定的，这里可以将”EOF“可以进行自定义，但是前后的”EOF“必须成对出现且不能和shell命令冲突。其使用形式如下： 交互式程序(命令)&amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell编程">
+<meta property="og:url" content="https://nameless13.github.io/Linux/shell/shell编程.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="在shell编程中，”EOF“通常与”&amp;lt;&amp;lt;“结合使用，“&amp;lt;&amp;lt;EOF“表示后续的输入作为子命令或子shell的输入，直到遇到”EOF“，再次返回到主调shell，可将其理解为分界符（delimiter）。既然是分界符，那么形式自然不是固定的，这里可以将”EOF“可以进行自定义，但是前后的”EOF“必须成对出现且不能和shell命令冲突。其使用形式如下： 交互式程序(命令)&amp;l">
+<meta property="og:updated_time" content="2017-07-20T14:36:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell编程">
+<meta name="twitter:description" content="在shell编程中，”EOF“通常与”&amp;lt;&amp;lt;“结合使用，“&amp;lt;&amp;lt;EOF“表示后续的输入作为子命令或子shell的输入，直到遇到”EOF“，再次返回到主调shell，可将其理解为分界符（delimiter）。既然是分界符，那么形式自然不是固定的，这里可以将”EOF“可以进行自定义，但是前后的”EOF“必须成对出现且不能和shell命令冲突。其使用形式如下： 交互式程序(命令)&amp;l">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/Linux/shell/shell编程.html"/>
+
+
+
+
+
+  <title>shell编程 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/shell/shell编程.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在shell编程中，”EOF“通常与”&lt;&lt;“结合使用，“&lt;&lt;EOF“表示后续的输入作为子命令或子shell的输入，直到遇到”EOF“，再次返回到主调shell，可将其理解为分界符（delimiter）。既然是分界符，那么形式自然不是固定的，这里可以将”EOF“可以进行自定义，但是前后的”EOF“必须成对出现且不能和shell命令冲突。其使用形式如下：</p>
+<pre><code>交互式程序(命令)&lt;&lt;EOF
+command1
+command2
+...
+EOF
+
+
+</code></pre><p>  ”EOF“中间的内容将以标准输入的形式输入到”交互式程序“，当shell看到”&lt;&lt;“知道其后面输入的分界符，当shell再次看到分界符时，两个分界符中间的部分将作为标准输入。<br>       “EOF”一般常和cat命令连用。<br>注意，最后的”EOF“必须单独占一行。</p>
+<p>下面以cat命令为例讲解”EOF“使用。一般有以下两种形式<br>1.cat&lt;&lt;EOF
+2.cat&lt;&lt;EOF&gt;filename或者cat&lt;&lt;EOF&gt;&gt;filename(cat&lt;&lt;EOF&gt;filename或者cat&lt;&lt;EOF&gt;&gt;filename )<br>其实，第一种形式和第二种形式没有什么本质的区别，第一种形式将内容直接输出到标准输出（屏幕），而第二种形式将标准输出进行重定向，将本应输出到屏幕的内容重定向到文件而已。</p>
+<p>例1：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#cat&lt;&lt;EOF</div><div class="line">&gt;12</div><div class="line">&gt;34D</div><div class="line">&gt;EOF</div><div class="line">12</div><div class="line">34D</div></pre></td></tr></table></figure></p>
+<p>例2：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#cat&gt;&gt;filename&lt;&lt;EOF</div><div class="line">&gt;DHA</div><div class="line">&gt;23</div><div class="line">&gt;EOF</div><div class="line">#cat filename</div><div class="line">DHA</div><div class="line">23</div></pre></td></tr></table></figure></p>
+<p>$# 表示提供到shell脚本或者函数的参数总数。<br>$0 表示第一个参数。</p>
+<pre><code>整数比较
+-eq     等于,如:if [&quot;$a&quot; -eq &quot;$b&quot; ]
+-ne     不等于,如:if [&quot;$a&quot; -ne &quot;$b&quot; ]
+-gt     大于,如:if [&quot;$a&quot; -gt &quot;$b&quot; ]
+-ge    大于等于,如:if [&quot;$a&quot; -ge &quot;$b&quot; ]
+-lt      小于,如:if [&quot;$a&quot; -lt &quot;$b&quot; ]
+-le      小于等于,如:if [&quot;$a&quot; -le &quot;$b&quot; ]
+&lt;  小于(需要双括号),如:((&quot;$a&quot; &lt; &quot;$b&quot;))
+&lt;=  小于等于(需要双括号),如:((&quot;$a&quot; &lt;= &quot;$b&quot;))
+&gt;  大于(需要双括号),如:((&quot;$a&quot; &gt; &quot;$b&quot;))
+&gt;=  大于等于(需要双括号),如:((&quot;$a&quot; &gt;= &quot;$b&quot;))
+
+
+
+
+</code></pre><h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>在命令中调用a w k时,a w k脚本由各种操作和模式组成。<br>如果设置了 - F选项,则 a w k每次读一条记录或一行,并使用指定的分隔符分隔指定域,但<br>如果未设置- F选项,a w k假定空格为域分隔符,并保持这个设置直到发现一新行。当新行出现<br>时,a w k命令获悉已读完整条记录,然后在下一个记录启动读命令,这个读进程将持续到文件<br>尾或文件不再存在。</p>
+<p>在碰到 a w k错误时,可相应查找:<br>• 确保整个a w k命令用单引号括起来。<br>• 确保命令内所有引号成对出现。<br>• 确保用花括号括起动作语句,用圆括号括起条件语句。<br>• 可能忘记使用花括号,也许你认为没有必要,但 a w k不这样认为,将按之解释语法。<br>如果查询文件不存在,将得到下述错误信息:</p>
+<p>s e d脚本文件 [选项] 输入文件<br>不管是使用 s h e l l命令行方式或脚本文件方式,如果没有指定输入文件, s e d从标准输入中<br>接受输入,一般是键盘或重定向结果。<br>s e d选项如下:<br>n 不打印;s e d不写编辑行到标准输出,缺省为打印所有行(编辑和未编辑)。p命令可以<br>用来打印编辑行。<br>c 下一命令是编辑命令。使用多项编辑时加入此选项。如果只用到一条 s e d命令,<br>此选项无用,但指定它也没有关系。<br>f 如果正在调用 s e d脚本文件,使用此选项。此选项通知 s e d一个脚本文件支持所有的 s e d<br>命令,例如:sed -f myscript.sed input_file,这里m y s c r i p t . s e d即为支持s e d命令的文件。</p>
+<p>&lt;EOT&gt; 就是CTRL+D</p>
+<p>如果使用 { }来代替(),那么相应的命令将在子 s h e l l而不是当前 s h e l l中作为一个整体被执<br>行,只有在 { }中所有命令的输出作为一个整体被重定向时,其中的命令才被放到子 s h e l l中执<br>行,否则在当前 s h e l l执行。</p>
+<h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h3><p>注意^符号的使用,当直接用在第一个括号里,意指否定或不匹配括号里内容<br>[ ^a-z A-Z] 匹配任一非字母型字符<br>[ ^ 0 - 9 ]     匹配任一非数字型字符</p>
+<p>如果要抽出记录,使其行首不是 4 8,可以在方括号中使用 ^记号,表明查询在行首开始<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@CentOS3 devops]# grep &apos;^[^48]&apos; data.f </div><div class="line">219     dec     2CC1999 CAD     23.00   PLV2C   68</div><div class="line">216     sept    3ZL1998 USP     86.00   KVM9E   234</div></pre></td></tr></table></figure></p>
+<p>awk 有许多内置变量用来设置环境信息<br>A R G C                     命令行参数个数<br>A R G V                     命令行参数排列<br>E N V I R O N          支持队列中系统环境变量的使用<br>FILENAME               a w k浏览的文件名<br>F N R                         浏览文件的记录数<br>F S                             设置输入域分隔符,等价于命令行 - F选项<br>NF                              浏览记录的域个数<br>N R                             已读的记录数<br>O F S                          输出域分隔符<br>O R S                          输出记录分隔符<br>R S                              控制记录分隔符</p>
+<p>s e d选项如下:<br>n 不打印;s e d不写编辑行到标准输出,缺省为打印所有行(编辑和未编辑)。p命令可以<br>用来打印编辑行。<br>c 下一命令是编辑命令。使用多项编辑时加入此选项。如果只用到一条 s e d命令,<br>此选项无用,但指定它也没有关系。<br>f 如果正在调用 s e d脚本文件,使用此选项。此选项通知 s e d一个脚本文件支持所有的 s e d<br>命令,例如:sed -f myscript.sed input_file,这里m y s c r i p t . s e d即为支持s e d命令的文件。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/sed/sed.html" rel="next" title="sed">
+                <i class="fa fa-chevron-left"></i> sed
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Kafka/kafka的相关概念.html" rel="prev" title="kafka的相关概念">
+                kafka的相关概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">1.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则"><span class="nav-number">1.1.</span> <span class="nav-text">正则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

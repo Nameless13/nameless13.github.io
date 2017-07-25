@@ -1,0 +1,830 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="hive Sentry用户授权配置Hive SQL Syntax for Use with Sentry 为Hive用户添加全局的权限。目前的管理员为Hive，用户授权的操作都需要由Hive完成。这里使用Hive用户的Kerberos账户进入Beeline为hive用户获取principal  kinit -kt hive.keytab  hive 列出了当前缓存中保存的Kerberos主体和Ke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive Sentry 权限配置">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Sentry/hive Sentry 权限配置.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="hive Sentry用户授权配置Hive SQL Syntax for Use with Sentry 为Hive用户添加全局的权限。目前的管理员为Hive，用户授权的操作都需要由Hive完成。这里使用Hive用户的Kerberos账户进入Beeline为hive用户获取principal  kinit -kt hive.keytab  hive 列出了当前缓存中保存的Kerberos主体和Ke">
+<meta property="og:updated_time" content="2017-07-20T14:21:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hive Sentry 权限配置">
+<meta name="twitter:description" content="hive Sentry用户授权配置Hive SQL Syntax for Use with Sentry 为Hive用户添加全局的权限。目前的管理员为Hive，用户授权的操作都需要由Hive完成。这里使用Hive用户的Kerberos账户进入Beeline为hive用户获取principal  kinit -kt hive.keytab  hive 列出了当前缓存中保存的Kerberos主体和Ke">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Sentry/hive Sentry 权限配置.html"/>
+
+
+
+
+
+  <title>hive Sentry 权限配置 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Sentry/hive Sentry 权限配置.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hive Sentry 权限配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Sentry/" itemprop="url" rel="index">
+                    <span itemprop="name">Sentry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="hive-Sentry用户授权配置"><a href="#hive-Sentry用户授权配置" class="headerlink" title="hive Sentry用户授权配置"></a>hive Sentry用户授权配置</h1><p><a href="www.cloudera.com/documentation/enterprise/latest/topics/sg_hive_sql.html#concept_c2q_4qx_p4__section_t5x_pg4_rp">Hive SQL Syntax for Use with Sentry</a></p>
+<h2 id="为Hive用户添加全局的权限。"><a href="#为Hive用户添加全局的权限。" class="headerlink" title="为Hive用户添加全局的权限。"></a>为Hive用户添加全局的权限。</h2><p>目前的管理员为Hive，用户授权的操作都需要由Hive完成。这里使用Hive用户的Kerberos账户进入Beeline<br>为hive用户获取principal </p>
+<p><code>kinit -kt hive.keytab  hive</code></p>
+<p>列出了当前缓存中保存的Kerberos主体和Kerberos principal</p>
+<p><code>klist</code></p>
+<p>由于我们使用的是sentry基于数据库的存储方式,我们直接建在了hive的元数据库中</p>
+<p><code>beeline -u &#39;jdbc:hive2://xx.xxx.xx.xx:xxxx/rptdata;principal=hive/xxxx@XXXX&#39;</code></p>
+<p>在beeline中，添加管理员角色，然后将Sentry服务器上的所有权限付给hive用户，然后将admin的角色赋给hive组，让hive组能够自由的建立数据库。</p>
+<h3 id="创建角色声明"><a href="#创建角色声明" class="headerlink" title="创建角色声明"></a>创建角色声明</h3><p>语句创建一个可以授予权限的角色。权限可以授予角色，然后可以将其分配给用户。已分配角色的用户只能行使该角色的权限。<br>只有具有管理权限的用户才能创建/删除角色。默认情况下hive, impala 和 hue用户在Sentry中拥有管理员权限。(然而并没有)</p>
+<p><code>CREATE ROLE [role_name];</code></p>
+<h3 id="删除角色声明"><a href="#删除角色声明" class="headerlink" title="删除角色声明"></a>删除角色声明</h3><p>一旦删除，该角色将被撤销给以前分配给它的所有用户。已经执行的查询不会受到影响。但是，由于Hive在执行每个查询之前检查用户权限，因此角色已启用的活动用户会话将受到影响。</p>
+<p><code>DROP ROLE [role_name];</code></p>
+<h3 id="授权角色声明"><a href="#授权角色声明" class="headerlink" title="授权角色声明"></a>授权角色声明</h3><p>只有Sentry管理员用户可以将角色授予组。</p>
+<p><code>GRANT ROLE role_name [, role_name] TO GROUP &lt;groupName&gt; [,GROUP &lt;groupName&gt;]</code></p>
+<h3 id="撤销角色声明"><a href="#撤销角色声明" class="headerlink" title="撤销角色声明"></a>撤销角色声明</h3><p>可用于从组中撤销角色。只有Sentry管理员用户可以从组中撤销该角色。</p>
+<p><code>REVOKE ROLE role_name [, role_name] FROM GROUP &lt;groupName&gt; [,GROUP &lt;groupName&gt;]</code></p>
+<h3 id="赋予角色权限声明"><a href="#赋予角色权限声明" class="headerlink" title="赋予角色权限声明"></a>赋予角色权限声明</h3><p>用户必须是Sentry admin用户。</p>
+<p><code>GRANT &lt;PRIVILEGE&gt; [, &lt;PRIVILEGE&gt; ] ON &lt;OBJECT&gt; &lt;object_name&gt; TO ROLE &lt;roleName&gt; [,ROLE &lt;roleName&gt;]</code></p>
+<h3 id="赋予角色外部表权限"><a href="#赋予角色外部表权限" class="headerlink" title="赋予角色外部表权限"></a>赋予角色外部表权限</h3><p><code>GRANT ALL ON URI &#39;hdfs://namenode:XXX/path/to/table&#39;</code></p>
+<p><code>grant all on URI &#39;hdfs://nameservice1/user/thadoop/ods&#39; to role thadoop</code></p>
+<h3 id="撤销角色权限"><a href="#撤销角色权限" class="headerlink" title="撤销角色权限"></a>撤销角色权限</h3><p>只有Sentry管理员用户可以从组中撤销权限</p>
+<p><code>REVOKE &lt;PRIVILEGE&gt; [, &lt;PRIVILEGE&gt; ] ON &lt;OBJECT&gt; &lt;object_name&gt; FROM ROLE &lt;roleName&gt; [,ROLE &lt;roleName&gt;]</code></p>
+<h3 id="指定角色声明"><a href="#指定角色声明" class="headerlink" title="指定角色声明"></a>指定角色声明</h3><p>用于指定当前会话启用的角色。用户只能启用已授予他们的角色。任何未列出，尚未启用的角色均将禁用当前会话。如果没有指定启用任何角色，用户将具有由他所属的所有角色授予的权限。</p>
+<ul>
+<li>启用特定角色</li>
+</ul>
+<p><code>SET ROLE &lt;roleName&gt;;</code></p>
+<ul>
+<li>启用所有角色：</li>
+</ul>
+<p><code>SET ROLE ALL;</code></p>
+<ul>
+<li>未启用角色：</li>
+</ul>
+<p><code>SET ROLE NONE;</code></p>
+<h3 id="show声明"><a href="#show声明" class="headerlink" title="show声明"></a>show声明</h3><ul>
+<li>列出当前用户具有数据库，表或列级访问的数据库：</li>
+</ul>
+<p><code>SHOW DATABASES;</code></p>
+<ul>
+<li>列出当前用户具有表或列级访问权限的表：</li>
+</ul>
+<p><code>SHOW TABLES;</code></p>
+<ul>
+<li>列出当前用户拥有的列的访问：</li>
+</ul>
+<p><code>SHOW COLUMNS;</code></p>
+<ul>
+<li>列出系统中的所有角色（仅适用于哨兵管理员用户）：</li>
+</ul>
+<p><code>SHOW ROLES;</code></p>
+<ul>
+<li>列出当前用户会话有效的所有角色：</li>
+</ul>
+<p><code>SHOW CURRENT ROLES;</code></p>
+<ul>
+<li>列出分配给给定的所有角色 &lt;groupName&gt; （仅允许Sentry管理员用户和属于指定的组的其他用户 &lt;groupName&gt;）：</li>
+</ul>
+<p><code>SHOW ROLE GRANT GROUP &lt;groupName&gt;;</code></p>
+<ul>
+<li>SHOW语句也可以用于列出授予角色的特权或给予特定对象的角色的所有特权</li>
+</ul>
+<p><code>SHOW GRANT ROLE &lt;roleName&gt;;</code></p>
+<ul>
+<li>列出给定的角色的所有授权</li>
+</ul>
+<p><code>SHOW GRANT ROLE &lt;roleName&gt; on OBJECT &lt;objectName&gt;;</code></p>
+<h2 id="操作样例"><a href="#操作样例" class="headerlink" title="操作样例:"></a>操作样例:</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; create role test_role;</div><div class="line">&gt; grant all on server hive to role test_role;</div><div class="line">&gt; show roles;</div><div class="line">+---------------+--+</div><div class="line">|     role      |</div><div class="line">+---------------+--+</div><div class="line">| test_role     |</div><div class="line">| thadoop       |</div><div class="line">| admin_role    |</div><div class="line">| thadoop_role  |</div><div class="line">+---------------+--+</div><div class="line">4 rows selected (0.179 seconds)</div><div class="line">&gt; show grant role test_role;</div><div class="line">+-----------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">| database  | table  | partition  | column  | principal_name  | principal_type  | privilege  | grant_option  |    grant_time     | grantor  |</div><div class="line">+-----------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">| *         |        |            |         | test_role       | ROLE            | *          | false         | 1493690779745000  | --       |</div><div class="line">+-----------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">1 row selected (0.146 seconds)</div><div class="line">&gt; show grant role admin_role;</div><div class="line"></div><div class="line">+-----------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">| database  | table  | partition  | column  | principal_name  | principal_type  | privilege  | grant_option  |    grant_time     | grantor  |</div><div class="line">+-----------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">| *         |        |            |         | admin_role      | ROLE            | *          | false         | 1490532327514000  | --       |</div><div class="line">+-----------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">1 row selected (0.167 seconds)</div><div class="line"></div><div class="line">&gt; drop role test_role;</div><div class="line">&gt; show roles;</div><div class="line">+---------------+--+</div><div class="line">|     role      |</div><div class="line">+---------------+--+</div><div class="line">| thadoop       |</div><div class="line">| admin_role    |</div><div class="line">| thadoop_role  |</div><div class="line">+---------------+--+</div><div class="line">&gt; grant select on database rpt to role thadoop;</div><div class="line">&gt; grant insert on database rpt to role thadoop;</div><div class="line">&gt; grant all on database rptdata to role thadoop;</div><div class="line"></div><div class="line">#对于建表权限 必须先把要要建的表的权限赋给相应的role</div><div class="line">&gt; grant all on database ods to role thadoop;</div><div class="line">&gt; show grant role thadoop;</div><div class="line">+---------------------------------------+-----------------------------------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">|               database                |               table               | partition  | column  | principal_name  | principal_type  | privilege  | grant_option  |    grant_time     | grantor  |</div><div class="line">+---------------------------------------+-----------------------------------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">| hdfs://nameservice1/user/thadoop/ods  |                                   |            |         | thadoop         | ROLE            | *          | false         | 1493369887314000  | --       |</div><div class="line">| ods                                   | pub_50118_visit_log_voms_tour_ex  |            |         | thadoop         | ROLE            | select     | false         | 1492593741232000  | --       |</div><div class="line">| rptdata                               |                                   |            |         | thadoop         | ROLE            | *          | false         | 1492619387707000  | --       |</div><div class="line">| rpt                                   |                                   |            |         | thadoop         | ROLE            | *          | false         | 1493023378368000  | --       |</div><div class="line">| ods                                   |                                   |            |         | thadoop         | ROLE            | *          | false         | 1493369642620000  | --       |</div><div class="line">+---------------------------------------+-----------------------------------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">5 rows selected (0.159 seconds)</div><div class="line">&gt; use ods;</div><div class="line">&gt; revoke select on table pub_50118_visit_log_voms_tour_ex from role thadoop;</div><div class="line">&gt; show grant role thadoop;</div><div class="line">+---------------------------------------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">|               database                | table  | partition  | column  | principal_name  | principal_type  | privilege  | grant_option  |    grant_time     | grantor  |</div><div class="line">+---------------------------------------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">| ods                                   |        |            |         | thadoop         | ROLE            | *          | false         | 1493369642620000  | --       |</div><div class="line">| hdfs://nameservice1/user/thadoop/ods  |        |            |         | thadoop         | ROLE            | *          | false         | 1493369887314000  | --       |</div><div class="line">| rptdata                               |        |            |         | thadoop         | ROLE            | *          | false         | 1492619387707000  | --       |</div><div class="line">| rpt                                   |        |            |         | thadoop         | ROLE            | *          | false         | 1493023378368000  | --       |</div><div class="line">+---------------------------------------+--------+------------+---------+-----------------+-----------------+------------+---------------+-------------------+----------+--+</div><div class="line">4 rows selected (0.142 seconds)</div></pre></td></tr></table></figure>
+</p>
+<h4 id="此外发现hive开启sentry后-hue中对应的用户也得是sentry最终授权的用户-否则将无法访问元数据"><a href="#此外发现hive开启sentry后-hue中对应的用户也得是sentry最终授权的用户-否则将无法访问元数据" class="headerlink" title="此外发现hive开启sentry后 hue中对应的用户也得是sentry最终授权的用户,否则将无法访问元数据"></a>此外发现hive开启sentry后 hue中对应的用户也得是sentry最终授权的用户,否则将无法访问元数据</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/linux系统安全日志分析.html" rel="next" title="linux系统安全日志分析">
+                <i class="fa fa-chevron-left"></i> linux系统安全日志分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/OpenLDAP/slapd配置文件.html" rel="prev" title="slapd配置文件">
+                slapd配置文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hive-Sentry用户授权配置"><span class="nav-number">1.</span> <span class="nav-text">hive Sentry用户授权配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为Hive用户添加全局的权限。"><span class="nav-number">1.1.</span> <span class="nav-text">为Hive用户添加全局的权限。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建角色声明"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除角色声明"><span class="nav-number">1.1.2.</span> <span class="nav-text">删除角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权角色声明"><span class="nav-number">1.1.3.</span> <span class="nav-text">授权角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销角色声明"><span class="nav-number">1.1.4.</span> <span class="nav-text">撤销角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋予角色权限声明"><span class="nav-number">1.1.5.</span> <span class="nav-text">赋予角色权限声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋予角色外部表权限"><span class="nav-number">1.1.6.</span> <span class="nav-text">赋予角色外部表权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销角色权限"><span class="nav-number">1.1.7.</span> <span class="nav-text">撤销角色权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定角色声明"><span class="nav-number">1.1.8.</span> <span class="nav-text">指定角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#show声明"><span class="nav-number">1.1.9.</span> <span class="nav-text">show声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作样例"><span class="nav-number">1.2.</span> <span class="nav-text">操作样例:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#此外发现hive开启sentry后-hue中对应的用户也得是sentry最终授权的用户-否则将无法访问元数据"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">此外发现hive开启sentry后 hue中对应的用户也得是sentry最终授权的用户,否则将无法访问元数据</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

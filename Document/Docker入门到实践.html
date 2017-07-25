@@ -1,0 +1,862 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Docker–入门到实践Virtuial Machineseach virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries,but also an entire guest operating system - which">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker入门到实践">
+<meta property="og:url" content="https://nameless13.github.io/Document/Docker入门到实践.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="Docker–入门到实践Virtuial Machineseach virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries,but also an entire guest operating system - which">
+<meta property="og:updated_time" content="2017-07-20T14:28:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker入门到实践">
+<meta name="twitter:description" content="Docker–入门到实践Virtuial Machineseach virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries,but also an entire guest operating system - which">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/Document/Docker入门到实践.html"/>
+
+
+
+
+
+  <title>Docker入门到实践 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Docker入门到实践.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker入门到实践</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">
+                2016-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Document/" itemprop="url" rel="index">
+                    <span itemprop="name">Document</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Docker–入门到实践"><a href="#Docker–入门到实践" class="headerlink" title="Docker–入门到实践"></a>Docker–入门到实践</h1><p>Virtuial Machines<br>each virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries,but also an entire guest operating system - which may weigh 10s of GB</p>
+<hr>
+<p>Docker<br>The Docker Engine container comprises just the application and its dependencies. it runs aas an isolated process in userspace on the host operating system,sharing the kernel with other containers. Thus,it enjoys the resource and allocation benefits of VMs but is much more portable and efficient.</p>
+<hr>
+<p>容器除了运行其中的应用外,基本不消耗额外的系统资源,使得应用性能很高,同事系统的开销尽量小,相比传统虚拟机方式运行10个不同的应用要起10个虚拟机,而Docker只需要启动10个隔离应用即可.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">容器</th>
+<th style="text-align:left">虚拟机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">启动</td>
+<td style="text-align:left">秒级</td>
+<td style="text-align:left">分钟级</td>
+</tr>
+<tr>
+<td style="text-align:left">硬盘使用</td>
+<td style="text-align:left">一般为MB</td>
+<td style="text-align:left">一般为GB</td>
+</tr>
+<tr>
+<td style="text-align:left">性能</td>
+<td style="text-align:left">接近原生</td>
+<td style="text-align:left">弱于</td>
+</tr>
+<tr>
+<td style="text-align:left">系统支持量</td>
+<td style="text-align:left">单机支持上千个容器</td>
+<td style="text-align:left">一般几十个</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>镜像(Image)</li>
+</ul>
+<p>Docker镜像就是一个只读的模版,如可以包含一个完整的操作系统里面仅安装了Apache<br>镜像可以用来创建Docker容器<br>Docker提供了一个很简单的机制来创建镜像或者更新现有镜像,或者拿一个做好的镜像直接使用</p>
+<hr>
+<ul>
+<li>容器(Container)</li>
+</ul>
+<p>Docker利用容器俩运行运用<br>容器是从镜像创建的运行实例.可以被启动,开始停止,删除.每个容器容器都是相互隔离的,保证安全的平台<br>可以把容器看作是一个简易版的Linux环境 (包括root用户权限,进程空间,用户空间和网络空间等)和运行在其中的应用程序</p>
+<p>// 镜像是只读的,容器在启动的时候创建一层<code>可写层</code>作为最上层</p>
+<hr>
+<ul>
+<li>仓库(Repository)</li>
+</ul>
+<p>仓库是几种存放镜像文件的场所.仓库注册服务器上往往存放多个仓库,每个仓库中又包含多个镜像,每个镜像有不同的标签(tag)</p>
+<p>仓库分为公开仓库(Public)和私有仓库(Private)</p>
+<p>最大的公开仓库是Docker Hub,国内公开仓库有Docker Pool</p>
+<p>用户可以本地网络内创建一个私有仓库,当创建了自己的镜像后可使用<code>push</code>命令上传到仓库,命令<code>pull</code>从仓库下载</p>
+<hr>
+<h2 id="CentOS-系列安装Docker"><a href="#CentOS-系列安装Docker" class="headerlink" title="CentOS 系列安装Docker"></a>CentOS 系列安装Docker</h2><p><code>docker pull hub.c.163.com/public/&lt;centos:7 class=&quot;0&quot;&gt;&lt;/centos:7&gt;</code></p>
+<p><code>docker run -t -i hub.c.163.com/public/centos:7.0 /bin/bash</code><br>-t  选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i  则让容器的标准输入保持打开</p>
+<p><code>docker run -t -i training/sinatra /bin/bash</code>  //会下载一个新的…镜像</p>
+<p>当利用<code>docker run</code> 创建容器时,Docker在后台运行的标准是:</p>
+<ul>
+<li>检查本地是否存在指定的镜像,不存在就从公有仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统,并在只读的镜像层外面挂载一层可读写成</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中去</li>
+<li>从地址池配置一个IP地址给容器</li>
+<li>执行用户指定的应用程序</li>
+</ul>
+<p><code>docker commit -m &quot;Added git&quot; -a &quot;Docker Newbee&quot; 40c9fe0a35ef centos:v2</code></p>
+<hr>
+<p><code>docker run -t -i hub.c.163.com/public/centos:7.0 /bin/bash</code><br><code>-t 让Docker分配一个伪终端(pseudo-tty)并绑定到容器的标准输入上,-i 让容器的标准输入保持打开</code></p>
+<p>当利用docker run 创建容器时,Docker在后台运行的标准操作包括:</p>
+<ul>
+<li>检查本地是否存在指定的镜像,不存在就从公有仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统,并在只读的镜像层外面挂载一层可读写层</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中去</li>
+<li>从地址池配置一个ip地址给容器</li>
+<li>执行用户指定的应用程序</li>
+<li>执行完毕后容器被终止</li>
+</ul>
+<h4 id="启动已终止容器"><a href="#启动已终止容器" class="headerlink" title="启动已终止容器"></a>启动已终止容器</h4><p>利用 <code>docker start</code> ,直接将一个已经终止的容器启动运行<br>容器的核心为所执行的应用程序,所需要的资源都是应用程序运行必需的.</p>
+<h4 id="后台background运行"><a href="#后台background运行" class="headerlink" title="后台background运行"></a>后台background运行</h4><p>需要让docker在后台运行</p>
+<hr>
+<p>安装 `.bashrc_docker</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">wget -P ~ https://github.com/yeasy/docker_practice/raw/master/_local/.bashrc_docker</div><div class="line"><span class="built_in">echo</span> <span class="string">"[ -f ~/.bashrc_docker ] &amp;&amp; . ~/.bashrc_docker"</span> &gt;&gt; ~/.bashrc; <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="built_in">echo</span> $(docker-pid docker)</div></pre></td></tr></table></figure>
+</p>
+<hr>
+<h2 id="redis-master"><a href="#redis-master" class="headerlink" title="redis-master"></a>redis-master</h2><p><code>docker run --name redis-master -v /home/testuser/docker/master-redis.conf:/usr/local/etc/master-redis.conf -d -p 16397:16379 redis redis-server /usr/local/etc/master-redis.conf</code></p>
+<h2 id="redis-slave"><a href="#redis-slave" class="headerlink" title="redis-slave"></a>redis-slave</h2><p><code>docker run --link redis-master:redis-master -v /home/testuser/docker/slave-redis.conf:/usr/local/etc/slave-redis.conf --name redis-slave1 -d redis redis-server /usr/local/etc/slave-redis.conf</code></p>
+<h4 id="宿主机上如何获得-docker-container-容器的-ip-地址？"><a href="#宿主机上如何获得-docker-container-容器的-ip-地址？" class="headerlink" title="宿主机上如何获得 docker container 容器的 ip 地址？"></a>宿主机上如何获得 docker container 容器的 ip 地址？</h4><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">docker inspect --format=&apos;&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;&apos; $CONTAINER_ID</div></pre></td></tr></table></figure>
+</p>
+<h3 id="在Docker容器内外互相拷贝数据"><a href="#在Docker容器内外互相拷贝数据" class="headerlink" title="在Docker容器内外互相拷贝数据"></a>在Docker容器内外互相拷贝数据</h3><h4 id="从容器内拷贝文件到主机上"><a href="#从容器内拷贝文件到主机上" class="headerlink" title="从容器内拷贝文件到主机上"></a>从容器内拷贝文件到主机上</h4><p><code>docker cp &lt;containerId&gt;:/file/path/within/container /host/path/target</code></p>
+<p>没试验过</p>
+<h4 id="从主机上拷贝文件到容器内"><a href="#从主机上拷贝文件到容器内" class="headerlink" title="从主机上拷贝文件到容器内"></a>从主机上拷贝文件到容器内</h4><ol>
+<li><p>用-v挂载主机数据卷到容器内<br><code>docker run -v /path/to/hostdir:/mnt $container</code><br>在容器内拷贝<br><code>cp /mnt/sourcefile /path/to/destfile</code></p>
+</li>
+<li><p>直接在主机上拷贝到容器物理存储系统</p>
+<ol>
+<li>获取容器名称或者id : <code>docker ps</code></li>
+<li><p>获取整个容器的id: </p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker inspect -f   <span class="string">'&#123;&#123;.Id&#125;&#125;'</span>  [获取的名称或者id]</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>在主机上拷贝文件: <code>cp path-file-host /var/lib/docker/devicemapper/mnt/[获取的名称或者id]/rootfs/root</code></p>
+</li>
+</ol>
+</li>
+</ol>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"></div><div class="line">1.</div><div class="line">[testuser@CentOS1 docker]<span class="variable">$docker</span> ps</div><div class="line">CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                                NAMES</div><div class="line">01a349ea86bd        redis               <span class="string">"docker-entrypoint.s   42 minutes ago      Up 42 minutes       6379/tcp                             redis-slave3        </span></div><div class="line">bd45650a61f6        redis               "docker-entrypoint.s   43 minutes ago      Up 43 minutes       6379/tcp                             redis-slave2        </div><div class="line">ce2321f0d4d5        redis               <span class="string">"docker-entrypoint.s   46 minutes ago      Up 46 minutes       6379/tcp                             redis-slave1        </span></div><div class="line">9408dd71f9e9        redis               "docker-entrypoint.s   54 minutes ago      Up 54 minutes       6379/tcp, 0.0.0.0:16397-&gt;16379/tcp   redis-master </div><div class="line"></div><div class="line"></div><div class="line">2. </div><div class="line">[testuser@CentOS1 docker]$ docker inspect -f <span class="string">'&#123;&#123;.Id&#125;&#125;'</span> 9408dd71f9e9</div><div class="line">9408dd71f9e943b6ed08dd146e20700439eef280db7ce914852452340bfbfbbe</div><div class="line"></div><div class="line"></div><div class="line">3.</div><div class="line">[root@CentOS1 ~]<span class="comment">#cp sentinel.conf /var/lib/docker/devicemapper/mnt/9408dd71f9e943b6ed08dd146e20700439eef280db7ce914852452340bfbfbbe/rootfs/root/</span></div></pre></td></tr></table></figure>
+</p>
+<h4 id="退出容器而不停止容器"><a href="#退出容器而不停止容器" class="headerlink" title="退出容器而不停止容器"></a>退出容器而不停止容器</h4><p>组合键：Ctrl+P+Q</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Document/mongod error.html" rel="next" title="mongod error">
+                <i class="fa fa-chevron-left"></i> mongod error
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Document/weixin.html" rel="prev" title="weixin">
+                weixin <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker–入门到实践"><span class="nav-number">1.</span> <span class="nav-text">Docker–入门到实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-系列安装Docker"><span class="nav-number">1.2.</span> <span class="nav-text">CentOS 系列安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动已终止容器"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">启动已终止容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后台background运行"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">后台background运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-master"><span class="nav-number">1.3.</span> <span class="nav-text">redis-master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-slave"><span class="nav-number">1.4.</span> <span class="nav-text">redis-slave</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#宿主机上如何获得-docker-container-容器的-ip-地址？"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">宿主机上如何获得 docker container 容器的 ip 地址？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Docker容器内外互相拷贝数据"><span class="nav-number">1.4.1.</span> <span class="nav-text">在Docker容器内外互相拷贝数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从容器内拷贝文件到主机上"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">从容器内拷贝文件到主机上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从主机上拷贝文件到容器内"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">从主机上拷贝文件到容器内</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#退出容器而不停止容器"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">退出容器而不停止容器</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

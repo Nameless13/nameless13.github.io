@@ -1,0 +1,990 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="使用Packages升级到CDH 5.10 v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator   步骤1：收集升级信息开始升级之前，请收集以下信息：  主机凭据。您必须具有SSH访问权限，并且能够使用root帐户或具有无密码sudo权限的帐户登录。 集群中使用的Cloudera Manager版本。转到支持 &amp;gt; 关于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Packages升级到CDH 5.10">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Upgrade/使用Packages升级到CDH 5.10.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="使用Packages升级到CDH 5.10 v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator   步骤1：收集升级信息开始升级之前，请收集以下信息：  主机凭据。您必须具有SSH访问权限，并且能够使用root帐户或具有无密码sudo权限的帐户登录。 集群中使用的Cloudera Manager版本。转到支持 &amp;gt; 关于">
+<meta property="og:updated_time" content="2017-07-20T14:26:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Packages升级到CDH 5.10">
+<meta name="twitter:description" content="使用Packages升级到CDH 5.10 v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator   步骤1：收集升级信息开始升级之前，请收集以下信息：  主机凭据。您必须具有SSH访问权限，并且能够使用root帐户或具有无密码sudo权限的帐户登录。 集群中使用的Cloudera Manager版本。转到支持 &amp;gt; 关于">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Upgrade/使用Packages升级到CDH 5.10.html"/>
+
+
+
+
+
+  <title>使用Packages升级到CDH 5.10 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Upgrade/使用Packages升级到CDH 5.10.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Packages升级到CDH 5.10</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-22T00:00:00+08:00">
+                2017-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Upgrade/" itemprop="url" rel="index">
+                    <span itemprop="name">Upgrade</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="使用Packages升级到CDH-5-10"><a href="#使用Packages升级到CDH-5-10" class="headerlink" title="使用Packages升级到CDH 5.10"></a>使用Packages升级到CDH 5.10</h1><blockquote>
+<p><strong>v1.0</strong> updated:2017-03-22 Nameless13<br>角色最低要求：Cluster Administrator </p>
+</blockquote>
+<h2 id="步骤1：收集升级信息"><a href="#步骤1：收集升级信息" class="headerlink" title="步骤1：收集升级信息"></a>步骤1：收集升级信息</h2><p>开始升级之前，请收集以下信息：</p>
+<ol>
+<li>主机凭据。您必须具有SSH访问权限，并且能够使用root帐户或具有无密码sudo权限的帐户登录。</li>
+<li>集群中使用的Cloudera Manager版本。转到支持 &gt; 关于。( Cloudera Enterprise 5.4.7)</li>
+<li>在集群中部署的JDK的版本。转到支持 &gt; 关于。(Java 版本: 1.7.0_67)</li>
+<li>CDH的版本。CDH版本号显示在主页上的集群名称旁边。(CDH 5.10.0, Parcel)</li>
+<li>群集是使用Parcels或packages安装的。此信息显示在Cloudera Manager 主页上的CDH版本旁边。</li>
+<li>集群中启用的服务。转到 Clusters &gt; Cluster name。</li>
+<li>操作系统类型和版本。转到主机并单击列表中的主机名。操作系统类型和版本显示在“ 详细信息”部分的“ 分发”行中。</li>
+<li>Sqoop，Oozie，Hue，Hive Metastore和Sentry Server使用的数据库的数据库信息（仅在集群中启用这些服务时才需要信息）。</li>
+<li>收集以下信息：<ul>
+<li>数据库类型（PostgreSQL，嵌入式PostgreSQL，MySQL，MariaDB或Oracle）</li>
+<li>数据库的主机名</li>
+<li>数据库的Credentials </li>
+</ul>
+</li>
+</ol>
+<p>如何查找数据库信息：</p>
+<ul>
+<li>Sqoop，Oozie和Hue - 转到群集名称 &gt; 配置 &gt; 数据库设置。</li>
+<li>Hive Metastore - 转到Hive服务，选择配置，然后选择Hive Metastore Database类别。</li>
+<li>Sentry - 转到Sentry服务，选择配置，然后选择Sentry服务器数据库类别。</li>
+</ul>
+<h2 id="步骤2：完成升级前步骤"><a href="#步骤2：完成升级前步骤" class="headerlink" title="步骤2：完成升级前步骤"></a>步骤2：完成升级前步骤</h2><ol>
+<li>查看要升级到的新版本的CDH 5和Cloudera Manager 5要求和支持的版本。</li>
+<li>阅读CDH 5发行说明。</li>
+<li>阅读Cloudera安全公告。</li>
+<li>确保跨集群安装了Java 1.7或1.8。有关安装说明和建议，请参阅在Cloudera Manager部署中升级到Oracle JDK 1.7或升级到Oracle JDK 1.8，并确保在继续升级之前已阅读Cloudera Manager 5中的已知问题和解决方法。</li>
+<li><p>确保Cloudera Manager次要版本等于或大于 CDH次要版本。例如：</p>
+<ul>
+<li><p>目标CDH版本： 5.0.5<br>最低Cloudera Manager版本： 5.0.x</p>
+</li>
+<li><p>目标CDH版本： 5.8.2<br>最低Cloudera Manager版本： 5.8.x</p>
+</li>
+</ul>
+</li>
+<li><p>如果要从CDH 5.1或更低版本升级，并使用 Hive Date partition columns，则可能需要更新日期格式。请参阅日期分区列。</p>
+</li>
+<li>如果集群使用Impala，请检查您的SQL与&lt;a href=&quot;https://www.cloudera.com/documentation/enterprise/latest/topics/impala_incompatible_changes.html#incompatible_changes&quot;&gt;不兼容更改文档&lt;/a&gt;中列出的最新保留字冲突。如果在多个版本之间升级或出现任何问题，请检查Impala关键字的完整列表。</li>
+<li>运行主机检查器并解决每个问题。转到Cluster &gt; Inspect Hosts。</li>
+<li>运行安全检查器，修复错误报告。（转到  Administration &gt; Security，然后单击Security Inspector。）</li>
+<li>以hdfs用户身份登录到任何集群节点，运行以下命令，并更正所有的错误报告<br><code>hdfs fsck /</code><br><strong>注意：在fsck 命令可能需要10分钟或更长时间才能完成，具体取决于集群中的文件数。</strong><br><code>hdfs dfsadmin -report</code></li>
+<li>以hdfs用户身份登录到任何DataNode，运行以下命令，并更正任何报告的错误<br><code>hbase hbck</code></li>
+<li>查看升级过程并保留分配足够时间以执行所有步骤的维护窗口。对于生产集群，Cloudera建议根据主机数量，使用Hadoop和Linux的经验以及您使用的特定硬件，分配一整天的维护时段来执行升级。</li>
+<li>为了避免在升级过程中出现不必要的警报，请在开始升级之前在集群上启用维护模式。这会停止发送电子邮件警报和SNMP陷阱，但不会停止检查和配置验证。完成升级后，务必退出维护模式以重新启用Cloudera Manager警报。</li>
+<li>如果已将Hue配置为使用TLS / SSL，并且正在从CDH 5.2或更低版本升级到CDH 5.3或更高版本，则Hue会验证CA证书并需要信任库。要创建信任库，请按照Hue中的说明作为TLS / SSL客户端。</li>
+<li>如果群集使用Flume Kafka客户端，并且要升级到CDH 5.8.0或CDH 5.8.1，请在使用Flume Kafka Client时执行升级到CDH 5.8.0或CDH 5.8.1中描述的其他步骤，然后继续与本主题中的程序。</li>
+<li><p>如果集群使用Impala和Llama，则该角色从CDH 5.9起已被弃用，并且必须在开始升级之前从Impala服务中删除该角色。如果不删除此角色，升级向导将暂停升级。</p>
+<p>要确定Impala是否使用Llama：</p>
+<ol>
+<li>转到Impala服务。</li>
+<li>选择实例选项卡。</li>
+<li>检查“ 角色类型”列中的角色列表。如果出现Llama，Impala服务正在使用Llama。</li>
+</ol>
+<p>要删除Llama角色：</p>
+<ol>
+<li><p>转到Impala服务，选择操作 &gt; 禁用YARN和Impala集成资源管理。</p>
+<p>将显示“ 禁用YARN和Impala集成资源管理”向导。</p>
+</li>
+<li><p>单击继续。</p>
+<p>该禁止纱线和Impala的综合资源管理命令页面显示命令的进度禁用的作用。</p>
+</li>
+<li><p>命令完成后，单击完成。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="步骤3：停止群集服务"><a href="#步骤3：停止群集服务" class="headerlink" title="步骤3：停止群集服务"></a>步骤3：停止群集服务</h2><p>本节中的步骤仅需进行以下升级：</p>
+<pre><code>CDH 5.0或5.1至5.2或更高
+CDH 5.2或5.3至5.4或更高
+
+
+</code></pre><ol>
+<li>在主页 &gt; 状态选项卡上，单击集群名称的右侧，然后选择停止。</li>
+<li>在确认屏幕中单击停止。“ 命令详细信息 ”窗口显示停止服务的进度。当所有服务成功停止时，任务完成，您可以关闭“ 命令详细信息 ”窗口。</li>
+</ol>
+<h2 id="步骤4：备份NameNode上的HDFS元数据"><a href="#步骤4：备份NameNode上的HDFS元数据" class="headerlink" title="步骤4：备份NameNode上的HDFS元数据"></a>步骤4：备份NameNode上的HDFS元数据</h2><p>本节中的步骤仅需进行以下升级：</p>
+<pre><code>CDH 5.0或5.1至5.2或更高
+CDH 5.2或5.3至5.4或更高
+
+
+</code></pre><ol>
+<li>转到HDFS服务。</li>
+<li>单击配置选项卡。</li>
+<li>在搜索字段中，搜索“NameNode Data Directories”并记下该值。</li>
+<li>在活动的NameNode主机上，备份NameNode Data Directories属性中列出的目录。如果列出了多个目录，请备份一个目录，因为每个目录是完整的副本。例如，如果NameNode数据目录是/ data / dfs / nn，请以root身份执行以下操作：<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># cd /data/dfs/nn</div><div class="line"># tar -cvf /root/nn_backup_data.tar .</div></pre></td></tr></table></figure>
+</p>
+</li>
+</ol>
+<p>你应该看到这样的输出：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">./</div><div class="line">./current/</div><div class="line">./current/fsimage</div><div class="line">./current/fstime</div><div class="line">./current/VERSION</div><div class="line">./current/edits</div><div class="line">./image/</div><div class="line">./image/fsimage</div></pre></td></tr></table></figure></p>
+<p>如果NameNode数据目录中存在具有 extension <em>lock</em>的文件，则NameNode很有可能仍在运行。重复这些步骤，从关闭NameNode角色开始。</p>
+<h2 id="步骤5：备份数据库"><a href="#步骤5：备份数据库" class="headerlink" title="步骤5：备份数据库"></a>步骤5：备份数据库</h2><p><strong>注意：备份数据库需要停止某些服务，这可能会使其在备份期间不可用</strong><br>备份部署在群集中的以下任何服务的数据库：</p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>在哪里可以找到数据库信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sqoop</td>
+<td>转到集群 &gt; 集群名称 &gt; Sqoop服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>HUE</td>
+<td>转到集群 &gt; 集群名称 &gt; Hue服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>Oozie</td>
+<td>转到群集 &gt; 群集名称 &gt; Oozie服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>Cloudera Navigator Audit Server</td>
+<td>转到集群 &gt; Cloudera管理服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>Cloudera Navigator Metadata Server</td>
+<td>转到集群 &gt; Cloudera管理服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>Activity Monitor</td>
+<td>转到集群 &gt; Cloudera管理服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>Reports Manager</td>
+<td>转到集群 &gt; Cloudera管理服务 &gt; 配置并选择数据库类别。</td>
+</tr>
+<tr>
+<td>Sentry Server</td>
+<td>转到群集 &gt; 群集名称 &gt; Sentry服务 &gt; 配置并选择Sentry服务器数据库类别。</td>
+</tr>
+<tr>
+<td>Hive Metastore</td>
+<td>转到集群 &gt; 集群名称 &gt; Hive服务 &gt; 配置并选择Hive Metastore数据库类别。</td>
+</tr>
+</tbody>
+</table>
+<p>备份数据库：</p>
+<ol>
+<li>如果尚未停止，请停止服务：<ol>
+<li>在主页 &gt; 状态选项卡上，单击服务名称的右侧，然后选择停止。</li>
+<li>在下一个屏幕中单击停止以确认。当您看到已完成状态时，服务已停止。</li>
+</ol>
+</li>
+<li>备份数据库。有关每种支持的数据库类型的详细说明，请参阅备份数据库。</li>
+<li>重新启动服务：<ol>
+<li>在主页 &gt; 状态选项卡上，单击服务名称的右侧，然后选择开始。</li>
+<li>单击出现在下一屏幕中的开始以确认。当您看到已完成状态时，服务已启动。</li>
+</ol>
+</li>
+</ol>
+<h2 id="步骤6：运行升级向导"><a href="#步骤6：运行升级向导" class="headerlink" title="步骤6：运行升级向导"></a>步骤6：运行升级向导</h2><ol>
+<li>从主页 &gt; 状态选项卡，单击集群名称旁边的并选择升级集群。<br>此时将显示升级向导的“ 入门”页面。</li>
+<li>如果显示在packages and parcels 之间选择的选项，请选择 <strong>Use Parcels</strong>。</li>
+<li>在“ 选择CDH版本（Parcels）”字段中，选择CDH版本。如果未列出Parcels，或者要升级到其他版本，请单击“ 修改远程Parcels存储库URL”链接，转到远程Parcels存储库URL的配置页面，并将相应的URL添加到配置。有关输入Parcels存储库的正确URL的信息，请参阅&lt;a href=&quot;https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_parcels.html#cmug_topic_7_11_5&quot;&gt;Parcel配置设置&lt;/a&gt;。单击继续。</li>
+<li>阅读升级前必须完成的步骤的注意事项，完成步骤后单击 <strong>Yes, I …</strong>复选框，然后单击继续。Cloudera Manager验证主机是否安装了正确的软件。</li>
+<li>单击继续。     Host Inspector运行并在主机上显示CDH版本。</li>
+<li><p>单击继续。    “ Choose Upgrade Procedure”屏幕显示可用的升级类型：</p>
+<ul>
+<li>Full Cluster Restart - Cloudera Manager执行所有服务升级并重新启动集群。</li>
+<li>Manual upgrade Cloudera Manager将群集配置为指定的CDH版本，但不执行任何升级或服务重新启动。手动升级很困难，只适用于高级用户。要执行手动升级：<ol>
+<li>选中”Let me upgrade the cluster”复选框。</li>
+<li>单击继续。</li>
+<li>有关所需的步骤，请参阅手动执行升级向导操作。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>选择<strong>Full Cluster Restart</strong>。</p>
+</li>
+<li><p>单击继续。<br>“Upgrade Cluster Command”屏幕显示向导在关闭所有服务，激活新Parcels，升级服务，部署客户端配置文件和重新启动服务时运行的命令的结果。如果任何步骤失败，请更正所有错误报告，然后单击重试按钮。如果单击“ 中止 ”按钮，则将启用右上方的“ 重试 ”按钮。</p>
+<p>单击重试以重试该步骤并继续向导，或单击Cloudera Manager徽标返回<strong>Home</strong> &gt; <strong>Status</strong>选项卡，然后手动执行失败的步骤和所有后续步骤。</p>
+</li>
+<li><p>单击继续。</p>
+<p>向导将报告升级的结果。</p>
+<p>如果先前使用packages安装或升级了集群，向导可能会指示某些服务无法启动，因为其Parcels不可用。要下载所需的Parcels：</p>
+<pre><code>1. 在另一个浏览器选项卡中，打开Cloudera Manager Admin Console。
+1. 选择 Hosts  &gt; Parcels。
+1. 找到包含缺少的Parcels的行，然后单击按钮以下载，Distribute，然后激活Parcels。
+1. 返回升级向导并单击重试按钮。
+1. 升级向导继续升级集群。
+
+</code></pre></li>
+<li><p>单击完成返回主页。</p>
+</li>
+</ol>
+<h2 id="步骤7：从失败的步骤恢复或执行手动升级"><a href="#步骤7：从失败的步骤恢复或执行手动升级" class="headerlink" title="步骤7：从失败的步骤恢复或执行手动升级"></a>步骤7：从失败的步骤恢复或执行手动升级</h2><p>“手动执行升级向导操作”中列出了升级向导执行的操作。如果“ 升级群集命令”屏幕中的任何步骤失败，请在继续之前完成该部分中所述的步骤。</p>
+<h2 id="步骤8：删除以前的CDH版本包和刷新符号链接"><a href="#步骤8：删除以前的CDH版本包和刷新符号链接" class="headerlink" title="步骤8：删除以前的CDH版本包和刷新符号链接"></a>步骤8：删除以前的CDH版本包和刷新符号链接</h2><p>如果先前的安装或升级使用Parcels，请跳过此步骤。</p>
+<p>如果先前安装的CDH是使用packages完成的，请在安装了packages的所有主机上删除这些packages，并刷新符号链接，以便客户端运行新的软件版本。</p>
+<ol>
+<li>如果您的Hue服务使用嵌入式SQLite数据库，请备份 /var/lib/hue/desktop.db 到 /var/lib/hue以外的位置因为在删除packages时会删除此目录。</li>
+<li><p>卸载每个主机上的CDHpackages：</p>
+<ul>
+<li>不包括Impala和Search<br><code>sudo zypper remove bigtop-utils bigtop-jsvc bigtop-tomcat hue-common sqoop2-client</code></li>
+<li>包括Impala和Search<br><code>sudo zypper remove&#39;bigtop- *&#39;hue-common impala-shell solr-server sqoop2-client hbase-solr-doc avro-libs crunch-doc avro-doc solr-doc</code></li>
+</ul>
+</li>
+<li><p>重新启动所有Cloudera Manager Agent以强制更新符号链接，以指向每个主机上新安装的组件：<br><code>sudo service cloudera-scm-agent restart</code></p>
+</li>
+<li>如果您的Hue服务使用嵌入式SQLite数据库，请还原您备份的数据库：<ol>
+<li>停止Hue服务。</li>
+<li>将备份从临时位置复制到新创建的Hue数据库目录中，/var/lib/hue。</li>
+<li>启动Hue服务。</li>
+</ol>
+</li>
+</ol>
+<h2 id="步骤9：完成HDFS元数据升级"><a href="#步骤9：完成HDFS元数据升级" class="headerlink" title="步骤9：完成HDFS元数据升级"></a>步骤9：完成HDFS元数据升级</h2><p>本节中的步骤仅需进行以下升级：</p>
+<pre><code>CDH 5.0或5.1至5.2或更高
+CDH 5.2或5.3至5.4或更高
+
+
+</code></pre><p>要确定是否可以完成，请以important workloads运行以确保它们能成功。一旦升级完成后，将无法使用备份即无法回滚到先前版本的HDFS。验证您是否已完成升级可能需要很长时间。</p>
+<p>请确保您有足够的可用磁盘空间，请记住以下行为，直到升级完成：</p>
+<ul>
+<li>删除文件不会释放磁盘空间。</li>
+<li>使用balancer会导致所有移动的副本被复制。</li>
+<li>表示NameNodes元数据的所有磁盘数据都被保留，这可以将NameNode和JournalNode磁盘所需的空间大小增加一倍。</li>
+</ul>
+<p>要完成元数据升级：</p>
+<ul>
+<li>转到HDFS服务。</li>
+<li>单击Instances选项卡。</li>
+<li>单击NameNode实例。</li>
+<li>选择Actions&gt;Finalize Metadata Upgrade，然后单击 Finalize Metadata Upgrade以确认。<h2 id="步骤10：退出维护模式"><a href="#步骤10：退出维护模式" class="headerlink" title="步骤10：退出维护模式"></a>步骤10：退出维护模式</h2>如果在此升级期间进入维护模式，请退出维护模式。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Document/12-20 微信商学院-开发者培训班.html" rel="next" title="12-20 微信商学院-开发者培训班">
+                <i class="fa fa-chevron-left"></i> 12-20 微信商学院-开发者培训班
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Error/Impala复杂查询报错.html" rel="prev" title="Impala复杂查询报错">
+                Impala复杂查询报错 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Packages升级到CDH-5-10"><span class="nav-number">1.</span> <span class="nav-text">使用Packages升级到CDH 5.10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤1：收集升级信息"><span class="nav-number">1.1.</span> <span class="nav-text">步骤1：收集升级信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤2：完成升级前步骤"><span class="nav-number">1.2.</span> <span class="nav-text">步骤2：完成升级前步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤3：停止群集服务"><span class="nav-number">1.3.</span> <span class="nav-text">步骤3：停止群集服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤4：备份NameNode上的HDFS元数据"><span class="nav-number">1.4.</span> <span class="nav-text">步骤4：备份NameNode上的HDFS元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤5：备份数据库"><span class="nav-number">1.5.</span> <span class="nav-text">步骤5：备份数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤6：运行升级向导"><span class="nav-number">1.6.</span> <span class="nav-text">步骤6：运行升级向导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤7：从失败的步骤恢复或执行手动升级"><span class="nav-number">1.7.</span> <span class="nav-text">步骤7：从失败的步骤恢复或执行手动升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤8：删除以前的CDH版本包和刷新符号链接"><span class="nav-number">1.8.</span> <span class="nav-text">步骤8：删除以前的CDH版本包和刷新符号链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤9：完成HDFS元数据升级"><span class="nav-number">1.9.</span> <span class="nav-text">步骤9：完成HDFS元数据升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤10：退出维护模式"><span class="nav-number">1.10.</span> <span class="nav-text">步骤10：退出维护模式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

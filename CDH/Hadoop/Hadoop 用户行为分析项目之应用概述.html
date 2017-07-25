@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="hadoop用户行为分析项目之应用概述应用概述hadoop业务场景,应用场景 业务场景: 时延 吞吐量   应用场景: MapReduce计算模型 海量数据的离线分析 静态数据源    用户行为分析平台搭建注意事项: 高可用性 NNA和NNS节点配置注意事项&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop 用户行为分析项目之应用概述">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Hadoop/Hadoop 用户行为分析项目之应用概述.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="hadoop用户行为分析项目之应用概述应用概述hadoop业务场景,应用场景 业务场景: 时延 吞吐量   应用场景: MapReduce计算模型 海量数据的离线分析 静态数据源    用户行为分析平台搭建注意事项: 高可用性 NNA和NNS节点配置注意事项&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;con">
+<meta property="og:updated_time" content="2017-07-20T14:18:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop 用户行为分析项目之应用概述">
+<meta name="twitter:description" content="hadoop用户行为分析项目之应用概述应用概述hadoop业务场景,应用场景 业务场景: 时延 吞吐量   应用场景: MapReduce计算模型 海量数据的离线分析 静态数据源    用户行为分析平台搭建注意事项: 高可用性 NNA和NNS节点配置注意事项&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;con">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Hadoop/Hadoop 用户行为分析项目之应用概述.html"/>
+
+
+
+
+
+  <title>Hadoop 用户行为分析项目之应用概述 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hadoop/Hadoop 用户行为分析项目之应用概述.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hadoop 用户行为分析项目之应用概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="hadoop用户行为分析项目之应用概述"><a href="#hadoop用户行为分析项目之应用概述" class="headerlink" title="hadoop用户行为分析项目之应用概述"></a>hadoop用户行为分析项目之应用概述</h1><h2 id="应用概述"><a href="#应用概述" class="headerlink" title="应用概述"></a>应用概述</h2><h3 id="hadoop业务场景-应用场景"><a href="#hadoop业务场景-应用场景" class="headerlink" title="hadoop业务场景,应用场景"></a>hadoop业务场景,应用场景</h3><ul>
+<li>业务场景:<ul>
+<li>时延</li>
+<li>吞吐量</li>
+</ul>
+</li>
+<li>应用场景:<ul>
+<li>MapReduce计算模型</li>
+<li>海量数据的离线分析</li>
+<li>静态数据源</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户行为分析平台搭建注意事项"><a href="#用户行为分析平台搭建注意事项" class="headerlink" title="用户行为分析平台搭建注意事项:"></a>用户行为分析平台搭建注意事项:</h3><ul>
+<li>高可用性</li>
+<li>NNA和NNS节点配置注意事项<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;configuration&gt;</div><div class="line">    &lt;!-- 指定HDFS的NameService为cluster1,需要和core-site.xml中的保持一致 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.nameservice&lt;/name&gt;</div><div class="line">        &lt;value&gt;cluster1&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- cluster1下面又两个NameNode,分别是nna,nns --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.ha.namenodes.cluster1&lt;/name&gt;</div><div class="line">        &lt;value&gt;nna,nns&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- nna的RPC通信地址 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.rpc-address.cluster1.nna&lt;/name&gt;</div><div class="line">        &lt;value&gt;nna:9000&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- nns的RPC通信地址 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.rpc.address.cluster.nns&lt;/name&gt;</div><div class="line">        &lt;value&gt;nns:9000&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- nna的http通信地址 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.rpc.address.cluster.nna&lt;/name&gt;</div><div class="line">        &lt;value&gt;nna:50070&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- nns的http通信地址 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.rpc.address.cluster.nns&lt;/name&gt;</div><div class="line">        &lt;value&gt;nns:50070&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 共享存储目录地址,节点保证是奇数 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;qjournal://dn1:8485;dn2:8485;dn3:8485/cluster1&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 配置失败自动切换实现方式 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.client.failover.proxy.provider.cluster1&lt;/name&gt;</div><div class="line">        &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfigureFailoverProxyProvider&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 配置隔离机制 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;</div><div class="line">        &lt;value&gt;sshfence&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 使用隔离机制是需要ssh免密码登录 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;</div><div class="line">        &lt;value&gt;/home/hadoop/.ssh/id_rsa&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定NameNode的元数据在JournalNode上的存放位置 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;/home/hadoop/tmp/journal&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定高可用自动转换机制 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;</div><div class="line">        &lt;value&gt;true&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定 --&gt;</div><div class="line">    &lt;!-- 指定DataNode数据存储地址 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;/home/hadoop/dfs/data&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定数据冗余份数 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">        &lt;value&gt;3&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定可以通过web访问HDFS目录 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</div><div class="line">        &lt;value&gt;true&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 保证数据恢复 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.journalnode.http-address&lt;/name&gt;</div><div class="line">        &lt;value&gt;0.0.0.0:8480&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.journalnode.rpc-address&lt;/name&gt;</div><div class="line">        &lt;value&gt;0.0.0.0:8485&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- ZooKeeper集群的地址和端口,注意,数量一定是奇数,且不少于三个节点 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</div><div class="line">        &lt;value&gt;dn1:2181.dn2:2181,dn3:2181&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+</p>
+</li>
+</ul>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">    &lt;!-- 指定hdfs的nameservice为cluster1,是NameNode的URI --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.defaultFS&lt;/name&gt;</div><div class="line">        &lt;value&gt;hdfs://cluster1&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;io.file.buffer.size&lt;/name&gt;</div><div class="line">        &lt;value&gt;131072&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定hadoop临时目录 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dhadoop.tmp.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;/home/hadoop/tmp&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定可以在任何IP访问 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;hadoop.proxyuser.hduser.hosts&lt;/name&gt;</div><div class="line">        &lt;value&gt;*&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定所有用户可以访问 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;hadoop.proxyuser.hduser.groups&lt;/name&gt;</div><div class="line">        &lt;value&gt;*&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!-- 指定zookeeper地址 --&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</div><div class="line">        &lt;value&gt;dn1:2181.dn2:2181,dn3:2181&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Hadoop/Hadoop性能调优与运维.html" rel="next" title="Hadoop 性能调优与运维">
+                <i class="fa fa-chevron-left"></i> Hadoop 性能调优与运维
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Hadoop/HQL执行过程.html" rel="prev" title="HQL执行过程">
+                HQL执行过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hadoop用户行为分析项目之应用概述"><span class="nav-number">1.</span> <span class="nav-text">hadoop用户行为分析项目之应用概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用概述"><span class="nav-number">1.1.</span> <span class="nav-text">应用概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop业务场景-应用场景"><span class="nav-number">1.1.1.</span> <span class="nav-text">hadoop业务场景,应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户行为分析平台搭建注意事项"><span class="nav-number">1.1.2.</span> <span class="nav-text">用户行为分析平台搭建注意事项:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

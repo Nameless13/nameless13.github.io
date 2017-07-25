@@ -1,0 +1,903 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="agendaa brief discussion of 6 facets of Linux performance:  observalility Methodologies benchmarking profiling tracing tuning   observability tools Tools showcase common metrics lenrning linux tools i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Performance Observability Tools">
+<meta property="og:url" content="https://nameless13.github.io/Linux/Linux Performance Observability Tools.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="agendaa brief discussion of 6 facets of Linux performance:  observalility Methodologies benchmarking profiling tracing tuning   observability tools Tools showcase common metrics lenrning linux tools i">
+<meta property="og:updated_time" content="2017-07-20T14:37:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux Performance Observability Tools">
+<meta name="twitter:description" content="agendaa brief discussion of 6 facets of Linux performance:  observalility Methodologies benchmarking profiling tracing tuning   observability tools Tools showcase common metrics lenrning linux tools i">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/Linux/Linux Performance Observability Tools.html"/>
+
+
+
+
+
+  <title>Linux Performance Observability Tools | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux Performance Observability Tools.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux Performance Observability Tools</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
+                2016-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="agenda"><a href="#agenda" class="headerlink" title="agenda"></a>agenda</h2><p>a brief discussion of 6 facets of Linux performance:</p>
+<ol>
+<li>observalility</li>
+<li>Methodologies</li>
+<li>benchmarking</li>
+<li>profiling</li>
+<li>tracing</li>
+<li>tuning</li>
+</ol>
+<hr>
+<h3 id="observability-tools"><a href="#observability-tools" class="headerlink" title="observability tools"></a>observability tools</h3><ul>
+<li>Tools showcase common metrics<ul>
+<li>lenrning linux tools is useful even if you never use them:<br>the same metrics are in GUIs</li>
+</ul>
+</li>
+<li>we usually use these metrics via:<ul>
+<li>netflix atlas: cloud-wide monitoring</li>
+<li>netflix vector: instance analysis</li>
+</ul>
+</li>
+<li>Linux has many tools<ul>
+<li>plus many extra kernel sourcse of data that lack tools,are harder to use ,and are practically undocumented</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><ul>
+<li>one way to print load averages:</li>
+<li>a measure of resource demand: CPUs + disk<ul>
+<li>other OSes only show CPUs: easier to interpret</li>
+</ul>
+</li>
+<li>exponentially-damped moving averages</li>
+<li>time constants of 1,5,and 15 minutes<ul>
+<li>historic trend without the line graph</li>
+</ul>
+</li>
+<li>Load &gt; # of CPUs,may mean CPU saturation<ul>
+<li>Don’t spent more than 5 seconds studying these </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="top-or-htop"><a href="#top-or-htop" class="headerlink" title="top (or htop)"></a>top (or htop)</h4><ul>
+<li>system and per-process interval summary:</li>
+<li>%CPU is summed across all CPUs</li>
+<li>Can miss short-lives processes(atop won’t)</li>
+<li>Can consume noticeable CPU to read/proc</li>
+</ul>
+<hr>
+<h4 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h4><ul>
+<li>Virtual memory statistics and more:</li>
+<li>USAGE:vmstat [interval[count]]</li>
+<li>First output line has some summary since boot values <ul>
+<li>Should be all;partial is confusing</li>
+</ul>
+</li>
+<li>High level CPU summary<ul>
+<li>“r” is runnable tasks</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h4><ul>
+<li>Block I/O (disk)stats.1st output is since boot.</li>
+<li>very useful set of stats</li>
+</ul>
+<hr>
+<h4 id="free"><a href="#free" class="headerlink" title="free"></a>free</h4><ul>
+<li>Main memory usage:</li>
+<li>buffers: block device I/O cache</li>
+<li>cached: virtua; page cache</li>
+</ul>
+<hr>
+<h4 id="strace"><a href="#strace" class="headerlink" title="strace"></a>strace</h4><ul>
+<li>System call tracer:</li>
+<li>Eg, -ttt:time (us) since epoch;-T:syscall time(s)</li>
+<li>Translates syscall arges<ul>
+<li>very helpful for solving system usage issues</li>
+</ul>
+</li>
+<li>Currently has massive overhead(ptrace based)<ul>
+<li>can slow the target by &gt; 100x.Use extreme caution.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h4><ul>
+<li>sniff network packets for post analysis:</li>
+<li>study packet sequences with timestamps(us)</li>
+<li>CPU overhead optimized (socket ring buffers),but can still be significant.use caution.</li>
+</ul>
+<hr>
+<p>netstat</p>
+<ul>
+<li>various network protocol statistics using -s:</li>
+<li>a multi-tool:<ul>
+<li>i:interface stats</li>
+<li>r:route table<br>default:list conns</li>
+</ul>
+</li>
+<li>netstat -p:shows process details!</li>
+<li>Per-second interval with -c</li>
+</ul>
+<hr>
+<h4 id="slabtop"><a href="#slabtop" class="headerlink" title="slabtop"></a>slabtop</h4><ul>
+<li>Kernel slab allocator memory usage</li>
+</ul>
+<hr>
+<h4 id="pcstat"><a href="#pcstat" class="headerlink" title="pcstat"></a>pcstat</h4><ul>
+<li>show page cache residency </li>
+<li>Uses the mincore(2)syscall.Useful for database performance analysis.</li>
+</ul>
+<hr>
+<h4 id="perf-events"><a href="#perf-events" class="headerlink" title="perf_events"></a>perf_events</h4><ul>
+<li>Provides the “perf” command</li>
+<li>in Linux source code:tools/perf<ul>
+<li>Usually pkg added by linux-tools-common.etc.</li>
+</ul>
+</li>
+<li><code>Multi-tool</code> with many capabilities<ul>
+<li>CPU profiling</li>
+<li>PMC profiling</li>
+<li>Static &amp; dynamic tracing</li>
+</ul>
+</li>
+<li>Covered later in Profiling &amp; Tracing</li>
+</ul>
+<hr>
+<h3 id="Methodologies"><a href="#Methodologies" class="headerlink" title="Methodologies"></a>Methodologies</h3><h4 id="anti-Methodologies"><a href="#anti-Methodologies" class="headerlink" title="anti-Methodologies"></a>anti-Methodologies</h4><ul>
+<li>The lack of a deliberate methodology…</li>
+<li>Street Light Anti-Method:<ol>
+<li>Pick observability tools that are<ul>
+<li>Familiar</li>
+<li>Found on the Internet</li>
+<li>Found at random</li>
+</ul>
+</li>
+<li>Run tools</li>
+<li>Look for obvious issues</li>
+</ol>
+</li>
+<li>Drunk Man Anti-Method:<ul>
+<li>Tune things at random until the problem goes away</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>在Linux世界，进程不能直接访问硬件设备，当进程需要访问硬件设备(比如读取磁盘文件，接收网络数据等等)时，必须由用户态模式切换至内核态模式，通 过系统调用访问硬件设备。strace可以跟踪到一个进程产生的系统调用,包括参数，返回值，执行消耗的时间。</p>
+<hr>
+<h4 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h4><p>ss -l 显示本地打开的所有端口<br>ss -pl 显示每个进程具体打开的socket<br>ss -t -a 显示所有tcp socket<br>ss -u -a 显示所有的UDP Socekt<br>ss -o state established ‘( dport = :smtp or sport = :smtp )’ 显示所有已建立的SMTP连接<br>ss -o state established ‘( dport = :http or sport = :http )’ 显示所有已建立的HTTP连接<br>ss -x src /tmp/.X11-unix/* 找出所有连接X服务器的进程<br>ss -s 列出当前socket详细信息:</p>
+<hr>
+<h4 id="strace-1"><a href="#strace-1" class="headerlink" title="strace"></a>strace</h4><p>-c 统计每一系统调用的所执行的时间,次数和出错的次数等.<br>-d 输出strace关于标准错误的调试信息.<br>-f 跟踪由fork调用所产生的子进程.<br>-ff 如果提供-o filename,则所有进程的跟踪结果输出到相应的filename.pid中,pid是各进程的进程号.<br>-F 尝试跟踪vfork调用.在-f时,vfork不被跟踪.<br>-h 输出简要的帮助信息.<br>-i 输出系统调用的入口指针.<br>-q 禁止输出关于脱离的消息.<br>-r 打印出相对时间关于,,每一个系统调用.<br>-t 在输出中的每一行前加上时间信息.<br>-tt 在输出中的每一行前加上时间信息,微秒级.<br>-ttt 微秒级输出,以秒了表示时间.<br>-T 显示每一调用所耗的时间.<br>-v 输出所有的系统调用.一些调用关于环境变量,状态,输入输出等调用由于使用频繁,默认不输出.<br>-V 输出strace的版本信息.<br>-x 以十六进制形式输出非标准字符串<br>-xx 所有字符串以十六进制形式输出.<br>-a column<br>设置返回值的输出位置.默认 为40.<br>-e expr<br>指定一个表达式,用来控制如何跟踪.格式如下:<br>[qualifier=][!]value1[,value2]…<br>qualifier只能是 trace,abbrev,verbose,raw,signal,read,write其中之一.value是用来限定的符号或数字.默认的 qualifier是 trace.感叹号是否定符号.例如:<br>-eopen等价于 -e trace=open,表示只跟踪open调用.而-etrace!=open表示跟踪除了open以外的其他调用.有两个特殊的符号 all 和 none.<br>注意有些shell使用!来执行历史记录里的命令,所以要使用\.<br>-e trace=set<br>只跟踪指定的系统 调用.例如:-e trace=open,close,rean,write表示只跟踪这四个系统调用.默认的为set=all.<br>-e trace=file<br>只跟踪有关文件操作的系统调用.<br>-e trace=process<br>只跟踪有关进程控制的系统调用.<br>-e trace=network<br>跟踪与网络有关的所有系统调用.<br>-e strace=signal<br>跟踪所有与系统信号有关的 系统调用<br>-e trace=ipc<br>跟踪所有与进程通讯有关的系统调用<br>-e abbrev=set<br>设定 strace输出的系统调用的结果集.-v 等与 abbrev=none.默认为abbrev=all.<br>-e raw=set<br>将指 定的系统调用的参数以十六进制显示.<br>-e signal=set<br>指定跟踪的系统信号.默认为all.如 signal=!SIGIO(或者signal=!io),表示不跟踪SIGIO信号.<br>-e read=set<br>输出从指定文件中读出 的数据.例如:<br>-e read=3,5<br>-e write=set<br>输出写入到指定文件中的数据.<br>-o filename<br>将strace的输出写入文件filename<br>-p pid<br>跟踪指定的进程pid.<br>-s strsize<br>指定输出的字符串的最大长度.默认为32.文件名一直全部输出.<br>-u username<br>以username 的UID和GID执行被跟踪的命令</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/Linux 防火墙.html" rel="next" title="Linux 防火墙">
+                <i class="fa fa-chevron-left"></i> Linux 防火墙
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Redis/Redis.html" rel="prev" title="Redis">
+                Redis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#agenda"><span class="nav-number">1.</span> <span class="nav-text">agenda</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#observability-tools"><span class="nav-number">1.1.</span> <span class="nav-text">observability tools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#uptime"><span class="nav-number">1.1.1.</span> <span class="nav-text">uptime</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#top-or-htop"><span class="nav-number">1.1.2.</span> <span class="nav-text">top (or htop)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vmstat"><span class="nav-number">1.1.3.</span> <span class="nav-text">vmstat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iostat"><span class="nav-number">1.1.4.</span> <span class="nav-text">iostat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#free"><span class="nav-number">1.1.5.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strace"><span class="nav-number">1.1.6.</span> <span class="nav-text">strace</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcpdump"><span class="nav-number">1.1.7.</span> <span class="nav-text">tcpdump</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slabtop"><span class="nav-number">1.1.8.</span> <span class="nav-text">slabtop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pcstat"><span class="nav-number">1.1.9.</span> <span class="nav-text">pcstat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#perf-events"><span class="nav-number">1.1.10.</span> <span class="nav-text">perf_events</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Methodologies"><span class="nav-number">1.2.</span> <span class="nav-text">Methodologies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#anti-Methodologies"><span class="nav-number">1.2.1.</span> <span class="nav-text">anti-Methodologies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ss"><span class="nav-number">1.2.2.</span> <span class="nav-text">ss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strace-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">strace</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

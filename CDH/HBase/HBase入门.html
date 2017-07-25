@@ -1,0 +1,834 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="HBase入门HBase概述–Hbase表特点 大:一个表可以有数十亿行,上百万列 面向列:面向列(族)的存储和权限访问,列(族)独立索引 稀疏:对于为空(null)的列,并不占用存储空间,因此,表可以设计的非常稀疏 数据类型单一:HBase的数据类型都是字符串 无模式:每行都有一个可以排序的主键和任意多的列,列可以诶根据需要动态增加,同一张表中的不同的行可以有截然不同的列   HBase VS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HBase入门">
+<meta property="og:url" content="https://nameless13.github.io/CDH/HBase/HBase入门.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="HBase入门HBase概述–Hbase表特点 大:一个表可以有数十亿行,上百万列 面向列:面向列(族)的存储和权限访问,列(族)独立索引 稀疏:对于为空(null)的列,并不占用存储空间,因此,表可以设计的非常稀疏 数据类型单一:HBase的数据类型都是字符串 无模式:每行都有一个可以排序的主键和任意多的列,列可以诶根据需要动态增加,同一张表中的不同的行可以有截然不同的列   HBase VS">
+<meta property="og:updated_time" content="2017-07-20T14:18:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HBase入门">
+<meta name="twitter:description" content="HBase入门HBase概述–Hbase表特点 大:一个表可以有数十亿行,上百万列 面向列:面向列(族)的存储和权限访问,列(族)独立索引 稀疏:对于为空(null)的列,并不占用存储空间,因此,表可以设计的非常稀疏 数据类型单一:HBase的数据类型都是字符串 无模式:每行都有一个可以排序的主键和任意多的列,列可以诶根据需要动态增加,同一张表中的不同的行可以有截然不同的列   HBase VS">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/HBase/HBase入门.html"/>
+
+
+
+
+
+  <title>HBase入门 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/HBase入门.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HBase入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
+                    <span itemprop="name">HBase</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HBase入门"><a href="#HBase入门" class="headerlink" title="HBase入门"></a>HBase入门</h1><h2 id="HBase概述–Hbase表特点"><a href="#HBase概述–Hbase表特点" class="headerlink" title="HBase概述–Hbase表特点"></a>HBase概述–Hbase表特点</h2><ul>
+<li>大:一个表可以有数十亿行,上百万列</li>
+<li>面向列:面向列(族)的存储和权限访问,列(族)独立索引</li>
+<li>稀疏:对于为空(null)的列,并不占用存储空间,因此,表可以设计的非常稀疏</li>
+<li>数据类型单一:HBase的数据类型都是字符串</li>
+<li>无模式:每行都有一个可以排序的主键和任意多的列,列可以诶根据需要动态增加,同一张表中的不同的行可以有截然不同的列</li>
+</ul>
+<hr>
+<h3 id="HBase-VS-RDBMS"><a href="#HBase-VS-RDBMS" class="headerlink" title="HBase VS RDBMS"></a>HBase VS RDBMS</h3><ul>
+<li>HBase中的数据都是字符串类型</li>
+<li>HBase只有普通的增删改查等操作,没有表之间的关联查询</li>
+<li>HBase是基于列式存储的,而RDBMS是基于行式存储的</li>
+<li>HBase适合存储大量数据,查询效果极高</li>
+</ul>
+<h3 id="术语说明"><a href="#术语说明" class="headerlink" title="术语说明"></a>术语说明</h3><h4 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h4><ul>
+<li>用来检索记录的主键</li>
+<li>访问HBasw表中的行,只有三种方式<ul>
+<li>通过单个Row Key访问</li>
+<li>通过Row Key的range</li>
+<li>全表扫描</li>
+</ul>
+</li>
+<li>主键为任意字符串,最大长度为64kb,按字典顺序存储,在HBase内部保存为字节数组</li>
+</ul>
+<h4 id="列族-Column-Family"><a href="#列族-Column-Family" class="headerlink" title="列族 (Column Family )"></a>列族 (Column Family )</h4><ul>
+<li>列族在创建表的适合声明,一个列族可以包含多个列,列中的数据都是以二进制形式存在,没有数据类型</li>
+<li>列族是一些列的集合</li>
+<li>一个列族所有列成员是有着相同的前缀,比如,列courses:histor 和 courses:math都是 列族courses的成员.冒号(:)是列族的分隔符,用来区分前缀和列名</li>
+</ul>
+<h4 id="时间戳和存储单元"><a href="#时间戳和存储单元" class="headerlink" title="时间戳和存储单元"></a>时间戳和存储单元</h4><ul>
+<li>HBase中通过row和columns确定的为一个存贮单元称为cell,每个cell都保存着同一份数据的多个版本</li>
+<li>写入数据时,时间戳可以由HBase自动赋值(当前系统时间精确到毫秒),可以显示赋值</li>
+<li>每个cell中,不同版本的数据按照时间的倒序排列</li>
+<li>{row,column,version}元组就是一个HBase中的一个cell</li>
+</ul>
+<h2 id="HBase-HDFS目录分析"><a href="#HBase-HDFS目录分析" class="headerlink" title="HBase HDFS目录分析"></a>HBase HDFS目录分析</h2><h3 id="Region"><a href="#Region" class="headerlink" title="Region"></a>Region</h3><ul>
+<li>WAL是RegionServer在处理数据插入和删除的过程中用来记录操作内容的一种日志,在0.94.x叫做.logs</li>
+<li>向Hbase写入数据:<ul>
+<li>存HLog文件,存储在HDFS上</li>
+<li>存Region:<ul>
+<li>内存</li>
+<li>spill到磁盘,文件,hdfs文件</li>
+</ul>
+</li>
+<li>公式:内存 * 0.4/60</li>
+</ul>
+</li>
+</ul>
+<h3 id="HDFS目录"><a href="#HDFS目录" class="headerlink" title="HDFS目录"></a>HDFS目录</h3><ul>
+<li>/hbase/.tmp: 临时目录,当对表做创建和删除的适合,会将表move到该目录下,然后进行操作</li>
+<li>/hbase/data: 核心目录,存储Hbase表的数据</li>
+<li>默认情况下,目录下游两个子目录<ul>
+<li>/hbase/data/default<ul>
+<li>在用户创建表的时候,没有指定namespace时,表就创建在此目录下</li>
+</ul>
+</li>
+<li>/hbase/data/hbase <ul>
+<li>系统内部创建的表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>/hbase/hbase.id<ul>
+<li>存储的是集群的唯一的cluster id(uuid)</li>
+</ul>
+</li>
+<li>/hbase/hbase.version: 集群版本号</li>
+<li>/hbase/oldWALs<ul>
+<li>对应的0.94.X版本中的.oldlogs目录</li>
+<li>当/hbase/WALs目录中的logs没有用之后,会将这些logs移动到此目录下,HMaster会定期的进行清理</li>
+</ul>
+</li>
+</ul>
+<h2 id="HBase-Shell-操作"><a href="#HBase-Shell-操作" class="headerlink" title="HBase Shell 操作"></a>HBase Shell 操作</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/HBase/HBase架构详解.html" rel="next" title="HBase架构详解">
+                <i class="fa fa-chevron-left"></i> HBase架构详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Test/CDH.html" rel="prev" title="CDH">
+                CDH <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase入门"><span class="nav-number">1.</span> <span class="nav-text">HBase入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase概述–Hbase表特点"><span class="nav-number">1.1.</span> <span class="nav-text">HBase概述–Hbase表特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase-VS-RDBMS"><span class="nav-number">1.1.1.</span> <span class="nav-text">HBase VS RDBMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#术语说明"><span class="nav-number">1.1.2.</span> <span class="nav-text">术语说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主键"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列族-Column-Family"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">列族 (Column Family )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间戳和存储单元"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">时间戳和存储单元</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-HDFS目录分析"><span class="nav-number">1.2.</span> <span class="nav-text">HBase HDFS目录分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Region"><span class="nav-number">1.2.1.</span> <span class="nav-text">Region</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS目录"><span class="nav-number">1.2.2.</span> <span class="nav-text">HDFS目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-Shell-操作"><span class="nav-number">1.3.</span> <span class="nav-text">HBase Shell 操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

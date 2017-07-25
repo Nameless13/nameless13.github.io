@@ -1,0 +1,864 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Redis SentinelSentinel介绍Sentinel是Redis官方为集群提供的高可用解决方案。 在实际项目中可以使用sentinel去做redis自动故障转移，减少人工介入的工作量。另外sentinel也给客户端提供了监控消息的通知，这样客户端就可根据消息类型去判断服务器的状态，去做对应的适配操作。 Sentinel主要功能列表:  Monitoring：Sentinel持续检查集群">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis Sentinel">
+<meta property="og:url" content="https://nameless13.github.io/Redis/redis服务搭建/Redis Sentinel.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="Redis SentinelSentinel介绍Sentinel是Redis官方为集群提供的高可用解决方案。 在实际项目中可以使用sentinel去做redis自动故障转移，减少人工介入的工作量。另外sentinel也给客户端提供了监控消息的通知，这样客户端就可根据消息类型去判断服务器的状态，去做对应的适配操作。 Sentinel主要功能列表:  Monitoring：Sentinel持续检查集群">
+<meta property="og:updated_time" content="2017-07-20T14:41:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis Sentinel">
+<meta name="twitter:description" content="Redis SentinelSentinel介绍Sentinel是Redis官方为集群提供的高可用解决方案。 在实际项目中可以使用sentinel去做redis自动故障转移，减少人工介入的工作量。另外sentinel也给客户端提供了监控消息的通知，这样客户端就可根据消息类型去判断服务器的状态，去做对应的适配操作。 Sentinel主要功能列表:  Monitoring：Sentinel持续检查集群">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/Redis/redis服务搭建/Redis Sentinel.html"/>
+
+
+
+
+
+  <title>Redis Sentinel | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis服务搭建/Redis Sentinel.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis Sentinel</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
+                2016-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/redis服务搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">redis服务搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Redis-Sentinel"><a href="#Redis-Sentinel" class="headerlink" title="Redis Sentinel"></a>Redis Sentinel</h1><h2 id="Sentinel介绍"><a href="#Sentinel介绍" class="headerlink" title="Sentinel介绍"></a>Sentinel介绍</h2><p>Sentinel是Redis官方为集群提供的高可用解决方案。 在实际项目中可以使用sentinel去做redis自动故障转移，减少人工介入的工作量。另外sentinel也给客户端提供了监控消息的通知，这样客户端就可根据消息类型去判断服务器的状态，去做对应的适配操作。</p>
+<p>Sentinel主要功能列表:</p>
+<ul>
+<li>Monitoring：Sentinel持续检查集群中的master、slave状态，判断是否存活。</li>
+<li>Notification：在发现某个redis实例死的情况下，Sentinel能通过API通知系统管理员或其他程序脚本。</li>
+<li>Automatic failover：如果一个master挂掉后，sentinel立马启动故障转移，把某个slave提升为master。其他的slave重新配置指向新master。</li>
+<li>Configuration provider：对于客户端来说sentinel通知是有效可信赖的。客户端会连接sentinel去请求当前master的地址，一旦发生故障sentinel会提供新地址给客户端。</li>
+</ul>
+<h2 id="Sentinel配置"><a href="#Sentinel配置" class="headerlink" title="Sentinel配置"></a>Sentinel配置</h2><p>Sentinel本质上只是一个运行在特殊模式下的redis服务器，通过不同配置来区分提供服务。 sentinel.conf配置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">[监控名称]</th>
+<th style="text-align:left">[ip]</th>
+<th style="text-align:left">[port]</th>
+<th style="text-align:left">[多少sentinel同意才发生故障转移]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sentinel</td>
+<td style="text-align:left">monitor mymaster</td>
+<td style="text-align:left">127.0.0.1</td>
+<td style="text-align:left">6379</td>
+<td style="text-align:left">2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">[监控名称]</th>
+<th style="text-align:left">[Master多少毫秒后不回应ping命令，就认为master是主观下线状态]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sentinel</td>
+<td style="text-align:left">down-after-milliseconds mymaster</td>
+<td style="text-align:left">60000</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">[故障转移超时时间]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sentinel</td>
+<td style="text-align:left">failover-timeout mymaster</td>
+<td style="text-align:left">180000</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">[在执行故障转移时,最多可以有多少个从服务器同时对新的主服务器进行同步]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sentinel</td>
+<td style="text-align:left">parallel-syncs mymaster</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
+<p>sentinel需要使用redis2.8版本以上，启动如下：<br><code>redis-sentinel sentinel.conf</code><br>启动后Sentinel会：</p>
+<ul>
+<li>以10秒一次的频率，向被监视的master发送info命令，根据回复获取master当前信息。</li>
+<li>以1秒一次的频率，向所有redis服务器、包含sentinel在内发送PING命令，通过回复判断服务器是否在线。</li>
+<li>以2秒一次的频率，通过向所有被监视的master，slave服务器发送包含当前sentinel，master信息的消息。</li>
+</ul>
+<p>另外建议sentinel至少起3个实例以上，并配置2个实例同意即可发生转移。 5个实例，配置3个实例同意以此类推。</p>
+<h2 id="故障转移消息接收的3种方式"><a href="#故障转移消息接收的3种方式" class="headerlink" title="故障转移消息接收的3种方式"></a>故障转移消息接收的3种方式</h2><p>Redis服务器一旦发送故障后，sentinel通过raft算法投票选举新master。 故障转移过程可以通过sentinel的API获取/订阅接收事件消息。</p>
+<h3 id="脚本接收"><a href="#脚本接收" class="headerlink" title="脚本接收"></a>脚本接收</h3><p>//当故障转移期间，可以指定一个“通知”脚本用来告知系统管理员，当前集群的情况。<br>//脚本被允许执行的最大时间为60秒，如果超时，脚本将会被终止(KILL)<br><code>sentinel notification-script mymaster /var/redis/notify.sh</code><br>//故障转移期之后，配置通知客户端的脚本.<br><code>sentinel client-reconfig-script mymaster /var/redis/notifyReconfig.sh</code></p>
+<h3 id="客户端直接接收"><a href="#客户端直接接收" class="headerlink" title="客户端直接接收"></a>客户端直接接收</h3><p>Sentinel的故障转移消息通知使用的是redis发布订阅(详解Redis发布订阅及客户端编程)。就是说在故障转移期间所有产生的事件信息，都通过频道(channel)发布出去。比如我们加台slave服务器，sentinel监听到后会发布加slave的消息到”+slave”频道上，客户端只需要订阅”+slave”频道即可接收到对应消息。</p>
+<p>其消息格式如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[实例类型] [事件服务器名称] [服务器ip] [服务器端口] @[master名称] [ip] [端口]</div><div class="line"></div><div class="line">&lt;instance-type&gt; &lt;name&gt; &lt;ip&gt; &lt;port&gt; @ &lt;master-name&gt; &lt;master-ip&gt; &lt;master-port&gt;</div></pre></td></tr></table></figure></p>
+<p>通知消息格式示例：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">*          //订阅类型， *即订阅所有事件消息。</div><div class="line">-sdown     //消息类型</div><div class="line">slave 127.0.0.1:6379 127.0.0.1 6379 @ mymaster 127.0.0.1 6381</div></pre></td></tr></table></figure></p>
+<p>订阅消息示例：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">using (RedisSentinel rs = new RedisSentinel(CurrentNode.Host, CurrentNode.Port))</div><div class="line">            &#123;</div><div class="line">                var redisPubSub = new RedisPubSub(node.Host, node.Port);</div><div class="line">                redisPubSub.OnMessage += OnMessage;</div><div class="line">                redisPubSub.OnSuccess += (msg) =&gt;&#123;&#125;;</div><div class="line">                redisPubSub.OnUnSubscribe += (obj) =&gt;&#123;&#125;;</div><div class="line">                redisPubSub.OnError = (exception) =&gt;&#123; &#125;;</div><div class="line">                redisPubSub.PSubscribe(&quot;*&quot;);</div><div class="line">            &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="服务间接接收"><a href="#服务间接接收" class="headerlink" title="服务间接接收"></a>服务间接接收</h3><p>这种方式在第二种基础上扩展了一层，即应用端不直接订阅sentinel。 单独做服务去干这件事情，然后应用端提供API供这个服务回调通知。 这样做的好处在于：</p>
+<ul>
+<li>减少应用端监听失败出错的可能性。</li>
+<li>应用端由主动方变成被动方，降低耦合。</li>
+<li>性能提高，轮询变回调。</li>
+<li>独立成服务可扩展性更高。</li>
+</ul>
+<p>比如:</p>
+<ol>
+<li><p>以后换掉sentinel，我们只需要动服务即可，应用端无需更改。</p>
+</li>
+<li><p>可以在服务内多增加一层守护线程去主动拉取redis状态，这样可确保即使sentinel不生效，也能及时察觉redis状态，并通知到应用端。 当然这种情况很极端，因为sentinel配的也是多节点，同时挂的几率非常小。 </p>
+</li>
+</ol>
+<p>示例：<br>应用端提供回调API，在这个API逻辑下去刷新内存中的Redis连接。<br><code>http://127.0.0.1/redis/notify.api</code><br>独立服务监控到状况后，调用API通知应用端：<br><code>httprequest.post(&quot;http://127.0.0/redis/notify.api&quot;);</code></p>
+<h2 id="整体设计"><a href="#整体设计" class="headerlink" title="整体设计"></a>整体设计</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Redis/redis服务搭建/redis-sentinel docker集群.html" rel="next" title="redis-sentinel docker集群">
+                <i class="fa fa-chevron-left"></i> redis-sentinel docker集群
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Redis/redis-conf-笔记/redis_version_3.2.4.html" rel="prev" title="redis_version_3.2.4">
+                redis_version_3.2.4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Sentinel"><span class="nav-number">1.</span> <span class="nav-text">Redis Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Sentinel介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel配置"><span class="nav-number">1.2.</span> <span class="nav-text">Sentinel配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障转移消息接收的3种方式"><span class="nav-number">1.3.</span> <span class="nav-text">故障转移消息接收的3种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本接收"><span class="nav-number">1.3.1.</span> <span class="nav-text">脚本接收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端直接接收"><span class="nav-number">1.3.2.</span> <span class="nav-text">客户端直接接收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务间接接收"><span class="nav-number">1.3.3.</span> <span class="nav-text">服务间接接收</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体设计"><span class="nav-number">1.4.</span> <span class="nav-text">整体设计</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

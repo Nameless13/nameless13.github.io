@@ -1,0 +1,1047 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="SQL基础 DDL (Data Definition Languages):数据定义语音,这些语句定义了不同的数据段,数据库,表,列,索引等数据库对象.常用的语句关键字主要包括create,drop,alter等; DML (Data Manipulation Languages): 数据操纵语句,用于添加,删除,更新和查询数据库记录,并检查数据完整性,常用的语句关键字主要包括 insert,de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL基础">
+<meta property="og:url" content="https://nameless13.github.io/MySQL/SQL基础.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="SQL基础 DDL (Data Definition Languages):数据定义语音,这些语句定义了不同的数据段,数据库,表,列,索引等数据库对象.常用的语句关键字主要包括create,drop,alter等; DML (Data Manipulation Languages): 数据操纵语句,用于添加,删除,更新和查询数据库记录,并检查数据完整性,常用的语句关键字主要包括 insert,de">
+<meta property="og:updated_time" content="2017-07-20T14:38:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL基础">
+<meta name="twitter:description" content="SQL基础 DDL (Data Definition Languages):数据定义语音,这些语句定义了不同的数据段,数据库,表,列,索引等数据库对象.常用的语句关键字主要包括create,drop,alter等; DML (Data Manipulation Languages): 数据操纵语句,用于添加,删除,更新和查询数据库记录,并检查数据完整性,常用的语句关键字主要包括 insert,de">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/MySQL/SQL基础.html"/>
+
+
+
+
+
+  <title>SQL基础 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/MySQL/SQL基础.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h1><ul>
+<li>DDL (Data Definition Languages):数据定义语音,这些语句定义了不同的数据段,数据库,表,列,索引等数据库对象.常用的语句关键字主要包括create,drop,alter等;</li>
+<li>DML (Data Manipulation Languages): 数据操纵语句,用于添加,删除,更新和查询数据库记录,并检查数据完整性,常用的语句关键字主要包括 insert,delete,update,select等;</li>
+<li>DCL (Data Control Language): 数据控制语句,用于控制不同数据段直接的许可和访问级别的语句.这些语句定义了数据库,表,字段,用户的访问权限和安全级别.主要的语句关键字包括grant,revoke<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2>对数据库内部的对象进行创建.删除,修改等操作的语音.和DML最大的差别是DML只是对表内部数据操作,而不涉及表的定义,结构的修改,更不涉及其他对象,DDL语句更多地由数据库管理员(DBA)使用<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><code>create database test1;</code><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><code>drop database test1;</code><br>drop操作语句的结果都显示’0 rows affected’<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><code>create table emp(ename varchar(10),hiredate date,sal decimal(10,2),deptno int(2));</code><h4 id="查看表"><a href="#查看表" class="headerlink" title="查看表"></a>查看表</h4><code>desc emp;</code><h4 id="查看创建表的SQL语句"><a href="#查看创建表的SQL语句" class="headerlink" title="查看创建表的SQL语句"></a>查看创建表的SQL语句</h4><code>show create table emp \G;</code><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MariaDB [test1]&gt; show create table emp \G;</div><div class="line">*************************** 1. row ***************************</div><div class="line">       Table: emp</div><div class="line">Create Table: CREATE TABLE `emp` (</div><div class="line">  `ename` varchar(20) DEFAULT NULL,</div><div class="line">  `hiredate` date DEFAULT NULL,</div><div class="line">  `sal` decimal(10,2) DEFAULT NULL,</div><div class="line">  `deptno` int(2) DEFAULT NULL</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">ERROR: No query specified</div></pre></td></tr></table></figure>
+</p>
+</li>
+</ul>
+<hr>
+<p>除了可以看到表定义以外,还可以看到表的engine(存储引擎)和charset(字符集)等信息.”\G”选项的含义是使得记录能够按照字段竖向排列,以便更好地显示内容较长的记录.</p>
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p><code>drop table emp;</code></p>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><h4 id="1-修改表类型"><a href="#1-修改表类型" class="headerlink" title="1. 修改表类型:"></a>1. 修改表类型:</h4><p><code>ALTER TABLE tablename MODIFY [COLUMN] column_definition [FIRST|AFTER col_name]</code></p>
+<p><code>alter table emp modify ename varchar(20);</code></p>
+<h4 id="2-增加表字段"><a href="#2-增加表字段" class="headerlink" title="2. 增加表字段:"></a>2. 增加表字段:</h4><p><code>ALTER TABLE tablename ADD [COLUMN] column_definition [FIRST|AFTER col_name]</code></p>
+<p><code>alter table emp add [column] age int(3);</code></p>
+<h4 id="3-删除表字段"><a href="#3-删除表字段" class="headerlink" title="3. 删除表字段"></a>3. 删除表字段</h4><p><code>ALTER TABLE tablename DROP[COLUMN] column_name</code></p>
+<p><code>alter table emp drop [column] age;</code></p>
+<h4 id="4-字段改名"><a href="#4-字段改名" class="headerlink" title="4. 字段改名"></a>4. 字段改名</h4><p><code>ALTER TABLE tablename CHANGE [COLUMN] old_col_name column_definition  [FIRST|AFTER col_name]</code></p>
+<p><code>alter table emp change age age1 int(4);</code></p>
+<p>change和modify都可以修改表的定义,不同的是change后面需要两次列名,不方便,但是change的优点是可以修改列名称,modify则不能.</p>
+<h4 id="5-修改字段排列顺序"><a href="#5-修改字段排列顺序" class="headerlink" title="5. 修改字段排列顺序"></a>5. 修改字段排列顺序</h4><p>  前面介绍的极端增加和修改语法(ADD/CHANGE/MODIFY)中,都有一个可选项first|after column name,这个选项可以用来修改字段在表中的位置,ADD增加的新字段默认是加载标的最后位置,而CHANGE/MODIFY 默认不会改变字段的位置.</p>
+<p>将新增的字段birth date 加在ename之后:</p>
+<p><code>alter table emp add birth date after ename;</code></p>
+<p>修改字段age,将他放在最前面:</p>
+<p><code>alter table emp modify age int(3) first;</code></p>
+<h4 id="6-更改表名"><a href="#6-更改表名" class="headerlink" title="6. 更改表名"></a>6. 更改表名</h4><p><code>ALTER TABLE tablename RENAME [TO] new_tablename</code><br>将<br><code>alter table emp rename emp1</code></p>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML操作是指对数据库中表记录的操作,主要包括表记录的插入(insert),更新(update),删除(delete)和查询(select),是开发人员日常使用最为频繁的操作.</p>
+<h3 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h3><p><code>INSERT INTO tablename(field1,field2,...fieldn) VALUES(value1,value2,...,valuen);</code></p>
+<p><code>insert into emp(ename,hiredate,sal,deptno) values(&#39;zzzx1&#39;,&#39;2000-01-01&#39;,&#39;2000&#39;,1);</code></p>
+<p><code>insert into dept values(5,&#39;dept5&#39;),(6,&#39;dept6&#39;);</code></p>
+<h3 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h3><p><code>UPDATE tablename SET field1=value1,field2=value2,...,fieldn=valuen [WHERE CONDITION]</code></p>
+<p>将wmp表中ename 为’lisa’的薪水(sal)从3000改为4000:</p>
+<p><code>update emp set sal=4000 where ename=&#39;lisa&#39;;</code></p>
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><p><code>DELETE FROM tablename [WHERE CONDITION]</code></p>
+<p>在MySQL中可以一次删除多个表的数据,</p>
+<p><code>DELETE t1,t2,...,tn FROM t1,t2,...tn [WHERE CONDITION]</code></p>
+<p>同时删除表emp和dept中deptno为3的记录:</p>
+<p><code>delete a,b from emp a,dept b where a.deptno=b.deptno and a.deptno=3;</code></p>
+<h3 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h3><p><code>SELECT * FROM tablename [WHERE CONDITION]</code></p>
+<h4 id="1-查询不重复的记录"><a href="#1-查询不重复的记录" class="headerlink" title="1 查询不重复的记录"></a>1 查询不重复的记录</h4><p><code>select distinct deptno from emp;</code></p>
+<h4 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2 条件查询"></a>2 条件查询</h4><p><code>select * from emp where deptno=1;</code></p>
+<p>上面例子中,where后面的条件是一个字段的=比较,除了=之外,还可以使用&lt;,&gt;,&gt;=,&lt;=,!=等比较运算符;多个条件之间还可以使用<em>or,and</em>等逻辑运算符进行多条件联合查询.</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno=1 and sal&lt;3000;
++-------+------------+---------+--------+
+| ename | hiredate   | sal     | deptno |
++-------+------------+---------+--------+
+| zzx   | 2000-01-01 | 2000.00 |      1 |
++-------+------------+---------+--------+
+1 row in set (0.00 sec)
+
+
+</code></pre><h4 id="排序和限制"><a href="#排序和限制" class="headerlink" title="排序和限制"></a>排序和限制</h4><p>取出按照某个字段进行排序后的记录结果集,用到了数据库的排序操作,用关键字<em>ORDER BY</em>来实现</p>
+<p><code>SELECT * FROM tablename [WHERE CONDITION] [ORDER BY field1 [DESC|ASC],field2 [DESC|ASC],...,fieldn[DESC|ASC]]</code></p>
+<p>其中DESC和ASC是排序顺序关键字,DESV表示按照字段进行降序排列,ASC则表示升序序列，如果不写此关键字默认是升序排列．ORDER BY 后面可以跟多个不同的排序字段，并且每个排序字段可以有不同的排序顺序．</p>
+<p>例如，把emp表中的记录按照工资高低进行显示:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by sal;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| dony   | 2005-02-05 | 2000.00 |      4 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
++--------+------------+---------+--------+
+
+</code></pre><p>如果排序字段的值一样,则值相同的字段按照第二个排序字段进行排序,依次类推.如果只有一个排序字段,则这些字段相同的记录将会无序排列</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by deptno;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| dony   | 2005-02-05 | 2000.00 |      4 |
++--------+------------+---------+--------+
+
+</code></pre><p>对于deptno相同的前两条记录,如果要按照工资由高到低排序,可以使用以下命令:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by deptno,sal desc;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| dony   | 2005-02-05 | 2000.00 |      4 |
++--------+------------+---------+--------+
+
+</code></pre><p>对于排序后的记录,如果希望只显示一部分,而不是全部,这时,就可以使用LIMIT关键字来实现</p>
+<p><code>SELECT ...[LIMIT offset_start,roe_count]</code></p>
+<p>其中<em>offset_start</em>表示记录的起始偏移量,<em>row_count</em>表示显示的行数.在默认情况下,起始偏移量为0,只需要写记录行数就可以,这时实际显示的是前n条记录.例如显示emp表中按照sal排序后的前3条记录:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by sal limit 3;
++-------+------------+---------+--------+
+| ename | hiredate   | sal     | deptno |
++-------+------------+---------+--------+
+| zzx   | 2000-01-01 | 2000.00 |      1 |
+| dony  | 2005-02-05 | 2000.00 |      4 |
+| lisa  | 2003-02-01 | 4000.00 |      2 |
++-------+------------+---------+--------+
+
+</code></pre><p>如果要显示emp表中按照sal排序后从第二条记录开始的3条记录</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by sal limit 1,3;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| dony   | 2005-02-05 | 2000.00 |      4 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
++--------+------------+---------+--------+
+
+</code></pre><h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p><code>SELECT [field1,field2,...,fieldn] fun_name FROM tablename [WHERE where_contition] [GROUP BY field1,field2,...,fieldn [WITH ROLLUP]][HAVING where_contition]</code></p>
+<ul>
+<li>fun_name 表示要做的聚合操作,也就是聚合函数,常用的有sum(求和),count(*)(记录数),max(最大值),min(最小值).</li>
+<li>GROUP BY 关键字表示要进行分类聚合的字段,比如要按照部门分类统计员工数量,部门就应该写在group by后面.</li>
+<li>WITH ROLLUP [可选语法] 表明是否分类聚合后的结果进行在汇总.</li>
+<li>HAVING 关键字表示对分类后的结果再进行条件的过滤.</li>
+</ul>
+<p>having 和 where 的区别在于,having是对聚合后的结果进行条件的过滤,而where实在聚合前就对记录进行过滤,如果逻辑允许,我们尽可能用where先过滤记录,这样因为结果集减小,将对聚合的效率大大提高,最后在根据逻辑看是否用having进行再过滤.</p>
+<p>在emp表中统计公司总人数:</p>
+<pre><code>MariaDB [test1]&gt; select count(1) from emp;
++----------+
+| count(1) |
++----------+
+|        4 |
++----------+
+
+</code></pre><p>在此基础上要统计各个部门人数:</p>
+<pre><code>MariaDB [test1]&gt; select deptno,count(1) from emp group by deptno;
++--------+----------+
+| deptno | count(1) |
++--------+----------+
+|      1 |        2 |
+|      2 |        1 |
+|      4 |        1 |
++--------+----------+
+
+</code></pre><p>既要统计各部门人数,又要统计总人数:</p>
+<pre><code>MariaDB [test1]&gt; select deptno,count(1) from emp group by deptno with rollup;
++--------+----------+
+| deptno | count(1) |
++--------+----------+
+|      1 |        2 |
+|      2 |        1 |
+|      4 |        1 |
+|   NULL |        4 |
++--------+----------+
+
+
+</code></pre><p>统计人数大于1的部门:</p>
+<pre><code>MariaDB [test1]&gt; select deptno,count(1) from  emp group by deptno having count(1)&gt;1;
++--------+----------+
+| deptno | count(1) |
++--------+----------+
+|      1 |        2 |
++--------+----------+
+
+</code></pre><p>统计公司所有员工的薪水总额,最高和最低薪水:</p>
+<pre><code>MariaDB [test1]&gt; select sum(sal),max(sal),min(sal) from emp;
++----------+----------+----------+
+| sum(sal) | max(sal) | min(sal) |
++----------+----------+----------+
+| 13000.00 |  5000.00 |  2000.00 |
++----------+----------+----------+
+
+</code></pre><h3 id="表连接"><a href="#表连接" class="headerlink" title="表连接"></a>表连接</h3><p>当需要同时显示多个表中的字段时,就可以用表连接来实现这样的功能.从大类上分,表连接分为内连接和外连接,他们之间的最主要区别是,内连接仅选出两张表中互相匹配的记录,而外连接胡选出其他不匹配的记录.我们最常用的是内连接.</p>
+<p>查询出所有雇员的名字和所在部门名称,因为雇员名称和部门分别存放在表emp和dept中,因此,需要使用表连接来查询:</p>
+<pre><code>MariaDB [test1]&gt; select ename,deptname from emp,dept where emp.deptno=dept.deptno;
++--------+----------+
+| ename  | deptname |
++--------+----------+
+| zzx    | tech     |
+| lisa   | sale     |
+| bjguan | tech     |
+| dony   | hr       |
++--------+----------+
+
+
+</code></pre><p>外连接又分为<strong>左连接</strong>和<strong>右连接</strong></p>
+<ul>
+<li>左连接:包含所有的左边表中的记录甚至是右边表中没有和它匹配的记录;</li>
+<li><p>右连接:包含所有的右边表中的记录甚至是左边表中没有和它匹配的记录;<br>查询emp中所有用户名和所在部门名称:</p>
+<pre><code>MariaDB [test1]&gt; select ename,deptname from emp left join dept on emp.deptno=dept.deptno;
++--------+----------+
+| ename  | deptname |
++--------+----------+
+| zzx    | tech     |
+| bjguan | tech     |
+| lisa   | sale     |
+| dzshen | hr       |
+| dony   | NULL     |
++--------+----------+
+
+MariaDB [test1]&gt; select ename,deptname from dept right join emp on dept.deptno=emp.deptno;
++--------+----------+
+| ename  | deptname |
++--------+----------+
+| zzx    | tech     |
+| bjguan | tech     |
+| lisa   | sale     |
+| dzshen | hr       |
+| dony   | NULL     |
++--------+----------+
+
+</code></pre><p>比较这个查询和上例中的查询,都是查询用户名和部门名,两者的区别在于本例中列出来所有的用户名,即使有的用户名(dony)并不存在合法的部门名称;而上例中仅仅列出了存在合法部门的用户名和部门名称.</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>某些情况下,当进行查询的时候,需要的条件是另外一个select语句的结果,这个时候就要用到子查询.用于子查询的关键字主要包括in,not in,=,!=,exitst,not exists等.</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno in(select deptno from dept);
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| dzshen | 2005-04-01 | 4000.00 |      3 |
++--------+------------+---------+--------+
+
+</code></pre><p>如果子查询记录数唯一,还可以用=代替in:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno = (select deptno from dept limit 1);
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
++--------+------------+---------+--------+
+
+</code></pre><p>某些情况下子查询可以转化(等效)为表连接,</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno in(select deptno from dept);
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| dzshen | 2005-04-01 | 4000.00 |      3 |
++--------+------------+---------+--------+
+
+</code></pre><p>转化为表连接后:</p>
+<pre><code>MariaDB [test1]&gt; select emp.* from emp,dept where emp.deptno=dept.deptno;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| dzshen | 2005-04-01 | 4000.00 |      3 |
++--------+------------+---------+--------+
+
+</code></pre><p>子查询和表连接之间的转换主要应用在两个方面</p>
+</li>
+<li>MySQL 4.1 以前的版本不支持子查询,需要用表连接来实现子查询的功能</li>
+<li>表连接在很多情况下用于优化子查询</li>
+</ul>
+<h4 id="记录联合"><a href="#记录联合" class="headerlink" title="记录联合"></a>记录联合</h4><p>将两个表的数据按照一定的查询条件查询出来后,将结果合并到一起显示出来,这个时候就需要union和union all 关键字来实现这样的功能</p>
+<p><code>SELECT * FROM t1  UNION|UNION ALL  SELECT * FROM t2 ...UNION|UNION ALL SELECT * FROM tn;</code></p>
+<pre><code>MariaDB [test1]&gt; select deptno from emp
+    -&gt; union all
+    -&gt; select deptno from dept;
++--------+
+| deptno |
++--------+
+|      1 |
+|      2 |
+|      1 |
+|      4 |
+|      3 |
+|      1 |
+|      2 |
+|      3 |
+|      5 |
++--------+
+
+</code></pre><p>将结果去掉重复记录后显示如下:</p>
+<pre><code>MariaDB [test1]&gt; select deptno from emp union  select deptno from dept;
++--------+
+| deptno |
++--------+
+|      1 |
+|      2 |
+|      4 |
+|      3 |
+|      5 |
++--------+
+
+
+</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><p>DCL主要是DBA用来管理系统中的对象权限时使用</p>
+<p>创建一个数据库用户z1,具有对sakila数据库中所有表的SELECT/INSERT权限:</p>
+<pre><code>MariaDB [test1]&gt; grant select,insert on sakila.* to &apos;z1&apos;@&apos;localhost&apos; identified by &apos;123&apos;;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [test1]&gt; exit
+Bye
+[root@CentOS3 bin]# mysql -uz1 -p
+
+
+</code></pre><p>收回z1,INSERT,只能对数据进行SELECT操作:</p>
+<pre><code>MariaDB [(none)]&gt; revoke insert on sakila.* from &apos;z1&apos;@&apos;localhost&apos;;
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/impala hdfs hbase等用户的nproc的设置.html" rel="next" title="impala hdfs hbase等用户的nproc的设置">
+                <i class="fa fa-chevron-left"></i> impala hdfs hbase等用户的nproc的设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/影响linux系统的硬件因素.html" rel="prev" title="影响linux系统的硬件因素">
+                影响linux系统的硬件因素 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        .post-toc .nav ol .nav-child { display: block; }
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL基础"><span class="nav-number">1.</span> <span class="nav-text">SQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL"><span class="nav-number">1.1.</span> <span class="nav-text">DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据库"><span class="nav-number">1.1.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">1.1.3.</span> <span class="nav-text">创建表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看表"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">查看表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看创建表的SQL语句"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">查看创建表的SQL语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除表"><span class="nav-number">1.1.4.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改表"><span class="nav-number">1.1.5.</span> <span class="nav-text">修改表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-修改表类型"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">1. 修改表类型:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-增加表字段"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">2. 增加表字段:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-删除表字段"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">3. 删除表字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-字段改名"><span class="nav-number">1.1.5.4.</span> <span class="nav-text">4. 字段改名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-修改字段排列顺序"><span class="nav-number">1.1.5.5.</span> <span class="nav-text">5. 修改字段排列顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-更改表名"><span class="nav-number">1.1.5.6.</span> <span class="nav-text">6. 更改表名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML"><span class="nav-number">1.2.</span> <span class="nav-text">DML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入记录"><span class="nav-number">1.2.1.</span> <span class="nav-text">插入记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新记录"><span class="nav-number">1.2.2.</span> <span class="nav-text">更新记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除记录"><span class="nav-number">1.2.3.</span> <span class="nav-text">删除记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询记录"><span class="nav-number">1.2.4.</span> <span class="nav-text">查询记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-查询不重复的记录"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">1 查询不重复的记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-条件查询"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">2 条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序和限制"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">排序和限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">聚合</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表连接"><span class="nav-number">1.2.5.</span> <span class="nav-text">表连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记录联合"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">记录联合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DCL"><span class="nav-number">1.3.</span> <span class="nav-text">DCL</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
