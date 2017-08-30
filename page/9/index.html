@@ -304,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Test/快速启动VM管理信息.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Test/reload_UDF.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -323,7 +323,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Test/快速启动VM管理信息.html" itemprop="url">快速启动VM管理信息</a></h1>
+                <a class="post-title-link" href="/CDH/Test/reload_UDF.html" itemprop="url">reload_UDF</a></h1>
         
 
         <div class="post-meta">
@@ -405,12 +405,12 @@
       
         
           
-          快速启动VM管理信息在大多数情况下，除了管理已安装的产品和服务之外，QuickStart VM不需要管理。如果需要其他管理或出现问题，本主题提供有关帐户的信息，以及一些常见问题的可能解释和解决方案。Cloudera-Training-Get2EC2-VM-1.2-vmware
-帐户一旦启动VM，您将
-          ...
+          步骤就是先在beeline drop对应函数然后本地(每个hiveserver 和hivemetastore机器上) 替换对应jar包然后 beeline 里面 打reload;最后重新create
+
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CDH/Test/快速启动VM管理信息.html#more" rel="contents">
+            <a class="btn" href="/CDH/Test/reload_UDF.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -456,7 +456,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Test/配置fstab.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Test/Cloudera Manager和CDH快速入门指南.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -475,7 +475,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Test/配置fstab.html" itemprop="url">配置fstab</a></h1>
+                <a class="post-title-link" href="/CDH/Test/Cloudera Manager和CDH快速入门指南.html" itemprop="url">Cloudera Manager和CDH快速入门指南</a></h1>
         
 
         <div class="post-meta">
@@ -557,11 +557,15 @@
       
         
           
-          配置fstab开机自动挂载磁盘和nasddp-nn-01:~ # cat /etc/fstab/dev/disk/by-id/scsi-3600605b00aa90f901dd8c1c109e9a38b-part4 /                    ext3       acl,user_x
+          Cloudera Manager和CDH快速入门指南本快速入门指南介绍如何在四台主机的集群上快速创建Cloudera Manager 5，CDH 5和托管服务的新安装。生成的部署可用于演示和概念验证应用程序，但不推荐用于生产。
+继续阅读：
+
+快速启动群集主机要求
+下载并运行Cloudera Mana
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CDH/Test/配置fstab.html#more" rel="contents">
+            <a class="btn" href="/CDH/Test/Cloudera Manager和CDH快速入门指南.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -607,7 +611,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/执行数据节点的磁盘热插拔.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Test/CDH.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -626,7 +630,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/执行数据节点的磁盘热插拔.html" itemprop="url">执行数据节点的磁盘热插拔</a></h1>
+                <a class="post-title-link" href="/CDH/Test/CDH.html" itemprop="url">CDH</a></h1>
         
 
         <div class="post-meta">
@@ -638,8 +642,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T00:00:00+08:00">
-                2017-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -672,8 +676,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
+                  <a href="/categories/CDH/Test/" itemprop="url" rel="index">
+                    <span itemprop="name">Test</span>
                   </a>
                 </span>
 
@@ -708,15 +712,12 @@
       
         
           
-          执行数据节点的磁盘热插拔
-v1.0 updated:2017-04-01 何常通
-
-在不关闭DataNode的情况下替换HDFS磁盘,这被称为热插拔
-警告:要求和限制CDH 5.4及更高版本支持热插拔。热插拔只能添加带有空数据目录的磁盘。删除磁盘不会将数据移出磁盘，这可能会导致数据丢失。不要同时在多
+          Process Management在Cloudera Manager受管集群中，您只能使用Cloudera Manager启动或停止角色实例进程。
+Cloudera Manager使用名为supervisord的开源过程管理工具,启动进程，负责重定向日志文件，通知进程失败，将调用进程的有效用户ID
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CDH/Error/执行数据节点的磁盘热插拔.html#more" rel="contents">
+            <a class="btn" href="/CDH/Test/CDH.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -762,7 +763,7 @@ v1.0 updated:2017-04-01 何常通
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/Impala复杂查询报错.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/Installation.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -781,7 +782,7 @@ v1.0 updated:2017-04-01 何常通
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/Impala复杂查询报错.html" itemprop="url">Impala复杂查询报错</a></h1>
+                <a class="post-title-link" href="/CDH/Kerberos MIT/Installation.html" itemprop="url">Installation</a></h1>
         
 
         <div class="post-meta">
@@ -793,8 +794,8 @@ v1.0 updated:2017-04-01 何常通
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T00:00:00+08:00">
-                2017-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -827,8 +828,8 @@ v1.0 updated:2017-04-01 何常通
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
+                  <a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index">
+                    <span itemprop="name">Kerberos MIT</span>
                   </a>
                 </span>
 
@@ -863,14 +864,11 @@ v1.0 updated:2017-04-01 何常通
       
         
           
-          Impala Error: Couldn’t open transport(未解决)
-v1.0 updated:2017-03-30 何常通原地址
-
-当运行复杂查询的时候会报出这种错误When we try to run more complex Impala queries, we often r
+          初始化➜  ~ kdb5_util create -sLoading random dataInitializing database &apos;/var/kerberos/krb5kdc/principal&apos; for realm &apos;EXAMPLE.COM&apos;,mast
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CDH/Error/Impala复杂查询报错.html#more" rel="contents">
+            <a class="btn" href="/CDH/Kerberos MIT/Installation.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -916,7 +914,7 @@ v1.0 updated:2017-03-30 何常通原地址
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Upgrade/使用Packages升级到CDH 5.10.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/MIT Kerberos Documentation.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -935,7 +933,7 @@ v1.0 updated:2017-03-30 何常通原地址
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Upgrade/使用Packages升级到CDH 5.10.html" itemprop="url">使用Packages升级到CDH 5.10</a></h1>
+                <a class="post-title-link" href="/CDH/Kerberos MIT/MIT Kerberos Documentation.html" itemprop="url">MIT Kerberos Documentation</a></h1>
         
 
         <div class="post-meta">
@@ -947,8 +945,8 @@ v1.0 updated:2017-03-30 何常通原地址
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-22T00:00:00+08:00">
-                2017-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -981,8 +979,8 @@ v1.0 updated:2017-03-30 何常通原地址
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Upgrade/" itemprop="url" rel="index">
-                    <span itemprop="name">Upgrade</span>
+                  <a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index">
+                    <span itemprop="name">Kerberos MIT</span>
                   </a>
                 </span>
 
@@ -1017,16 +1015,13 @@ v1.0 updated:2017-03-30 何常通原地址
       
         
           
-          使用Packages升级到CDH 5.10
-v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator 
+          MIT Kerberos DocumentationFor user密码管理kpasswd
+### 
 
-步骤1：收集升级信息开始升级之前，请收集以下信息：
-
-主机凭据。您必须具有SSH访问权限，并且能够使用root帐户或具有无密码
-          ...
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CDH/Upgrade/使用Packages升级到CDH 5.10.html#more" rel="contents">
+            <a class="btn" href="/CDH/Kerberos MIT/MIT Kerberos Documentation.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1072,7 +1067,7 @@ v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/12-20 微信商学院-开发者培训班.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/impala hdfs hbase等用户的nproc的设置.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -1091,7 +1086,7 @@ v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/12-20 微信商学院-开发者培训班.html" itemprop="url">12-20 微信商学院-开发者培训班</a></h1>
+                <a class="post-title-link" href="/CDH/impala hdfs hbase等用户的nproc的设置.html" itemprop="url">impala hdfs hbase等用户的nproc的设置</a></h1>
         
 
         <div class="post-meta">
@@ -1103,8 +1098,8 @@ v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
-                2016-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -1126,8 +1121,8 @@ v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
                   </a>
                 </span>
 
@@ -1162,17 +1157,12 @@ v1.0 updated:2017-03-22 Nameless13角色最低要求：Cluster Administrator
       
         
           
-          12-20 微信商学院-开发者培训班小程序是什么
-https://mp.weixin.qq.com/
-开发者社区 http://developers.weixin.qq.com/
-一种连接用户和服务的方式
-一个全新的生态
-一套解决方案
-AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
+          请参考下面的方法，检查一下impala／hdfs／hbase等用户的nproc的设置是否符合cloudera推荐的值
+ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each line descr
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Document/12-20 微信商学院-开发者培训班.html#more" rel="contents">
+            <a class="btn" href="/CDH/impala hdfs hbase等用户的nproc的设置.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1218,7 +1208,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/weixin.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/kerberos配置.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -1237,7 +1227,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/weixin.html" itemprop="url">weixin</a></h1>
+                <a class="post-title-link" href="/CDH/Kerberos MIT/kerberos配置.html" itemprop="url">kerberos配置</a></h1>
         
 
         <div class="post-meta">
@@ -1249,8 +1239,8 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
-                2016-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -1272,8 +1262,19 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index">
+                    <span itemprop="name">Kerberos MIT</span>
                   </a>
                 </span>
 
@@ -1308,13 +1309,11 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
       
         
           
-          微信小程序中的每一个页面的【路径+页面名】都需要写在 app.json 的 pages 中，且 pages 中的第一个页面是小程序的首页。
-通过全局函数 getApp() 可以获取全局的应用实例，如果需要全局的数据可以在 App() 中设置
-对象&lt;template is=&quot;objec
+          虚拟机上配置cd /etc/sysconfig/network-scripts cp ifcfg-eth0 ifcfg-eth0.bak vi ifcfg-eth0 service network restartvi /etc/hosts vi /etc/sysconfig/networkNETWO
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Document/weixin.html#more" rel="contents">
+            <a class="btn" href="/CDH/Kerberos MIT/kerberos配置.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1360,7 +1359,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Docker入门到实践.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/选择和配置数据压缩.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -1379,7 +1378,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/Docker入门到实践.html" itemprop="url">Docker入门到实践</a></h1>
+                <a class="post-title-link" href="/CDH/选择和配置数据压缩.html" itemprop="url">选择和配置数据压缩</a></h1>
         
 
         <div class="post-meta">
@@ -1391,8 +1390,8 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">
-                2016-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -1414,8 +1413,8 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
                   </a>
                 </span>
 
@@ -1450,11 +1449,13 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
       
         
           
-          Docker–入门到实践Virtuial Machineseach virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries
+          选择和配置数据压缩选择压缩类型的指导
+GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩比。GZip通常是冷数据的不错选择，不经常访问。 Snappy或LZO是热门数据的更好选择，频繁访问。
+对于某些类型的文件，BZip2还可以产生比GZip更多的压缩，压缩和解压缩时需要一定
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Document/Docker入门到实践.html#more" rel="contents">
+            <a class="btn" href="/CDH/选择和配置数据压缩.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1500,7 +1501,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/mongod error.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/OpenLDAP/slapd配置文件.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -1519,7 +1520,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/mongod error.html" itemprop="url">mongod error</a></h1>
+                <a class="post-title-link" href="/CDH/OpenLDAP/slapd配置文件.html" itemprop="url">slapd配置文件</a></h1>
         
 
         <div class="post-meta">
@@ -1531,8 +1532,8 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">
-                2016-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -1554,8 +1555,19 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/OpenLDAP/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenLDAP</span>
                   </a>
                 </span>
 
@@ -1590,11 +1602,11 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
       
         
           
-          mongod startabout to fork child process, waiting until server is ready for connections.forked process: 23987ERROR: child process failed, exited with e
+          ## See slapd.conf(5) for details on configuration options.# This file should NOT be world readable.#include		/etc/openldap/schema/corba.schemainclude	
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Document/mongod error.html#more" rel="contents">
+            <a class="btn" href="/CDH/OpenLDAP/slapd配置文件.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1640,7 +1652,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/ubuntu的网络配置.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Sentry/hive Sentry 权限配置.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
@@ -1659,7 +1671,7 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/ubuntu的网络配置.html" itemprop="url">ubuntu的网络配置</a></h1>
+                <a class="post-title-link" href="/CDH/Sentry/hive Sentry 权限配置.html" itemprop="url">hive Sentry 权限配置</a></h1>
         
 
         <div class="post-meta">
@@ -1671,8 +1683,8 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">
-                2016-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
               </time>
             
 
@@ -1694,8 +1706,19 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Sentry/" itemprop="url" rel="index">
+                    <span itemprop="name">Sentry</span>
                   </a>
                 </span>
 
@@ -1730,12 +1753,13 @@ AppService 应用逻辑层,实现交互和业务逻辑处理,生命周
       
         
           
-          ubuntu的网络配置有线连接互联网
-Ubuntu使用两条配置线路   /etc/network/interfaces这个配置文件主要用于服务器版本的Ubuntu系统使用;当/etc/NetworkManager/NetworkManager.conf  中managed=false ，以inter
+          hive Sentry用户授权配置Hive SQL Syntax for Use with Sentry
+为Hive用户添加全局的权限。目前的管理员为Hive，用户授权的操作都需要由Hive完成。这里使用Hive用户的Kerberos账户进入Beeline为hive用户获取principal 
+ki
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Document/ubuntu的网络配置.html#more" rel="contents">
+            <a class="btn" href="/CDH/Sentry/hive Sentry 权限配置.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1776,7 +1800,7 @@ Ubuntu使用两条配置线路   /etc/network/interfaces这个配置文件主要
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1821,7 +1845,7 @@ Ubuntu使用两条配置线路   /etc/network/interfaces这个配置文件主要
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1854,8 +1878,7 @@ Ubuntu使用两条配置线路   /etc/network/interfaces这个配置文件主要
         
         
 
-        .post-toc .nav ol .nav-child { display: block; }
-
+        
 
       </section>
 
