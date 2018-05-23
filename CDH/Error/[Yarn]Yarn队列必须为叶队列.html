@@ -1,0 +1,762 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Yarn队列必须为叶队列INFO  : Compiling command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06): select count(*) from cdmp_dw.td_cms_content_class_d where src_file_day=&amp;apos;20171013&amp;apos; lim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yarn队列必须为叶队列">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Error/[Yarn]Yarn队列必须为叶队列.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="Yarn队列必须为叶队列INFO  : Compiling command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06): select count(*) from cdmp_dw.td_cms_content_class_d where src_file_day=&amp;apos;20171013&amp;apos; lim">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T15:15:34.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yarn队列必须为叶队列">
+<meta name="twitter:description" content="Yarn队列必须为叶队列INFO  : Compiling command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06): select count(*) from cdmp_dw.td_cms_content_class_d where src_file_day=&amp;apos;20171013&amp;apos; lim">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Error/[Yarn]Yarn队列必须为叶队列.html"/>
+
+
+
+
+
+  <title>Yarn队列必须为叶队列 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Yarn]Yarn队列必须为叶队列.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Yarn队列必须为叶队列</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T00:00:00+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/YARN/" itemprop="url" rel="index">
+                    <span itemprop="name">YARN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Yarn队列必须为叶队列"><a href="#Yarn队列必须为叶队列" class="headerlink" title="Yarn队列必须为叶队列"></a>Yarn队列必须为叶队列</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">INFO  : Compiling command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06): select count(*) from cdmp_dw.td_cms_content_class_d where src_file_day=&apos;20171013&apos; limit 10</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:_c0, type:bigint, comment:null)], properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06); Time taken: 0.214 seconds</div><div class="line">INFO  : Executing command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06): select count(*) from cdmp_dw.td_cms_content_class_d where src_file_day=&apos;20171013&apos; limit 10</div><div class="line">INFO  : Query ID = hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06</div><div class="line">INFO  : Total jobs = 1</div><div class="line">INFO  : Launching Job 1 out of 1</div><div class="line">INFO  : Starting task [Stage-1:MAPRED] in serial mode</div><div class="line">INFO  : Number of reduce tasks determined at compile time: 1</div><div class="line">INFO  : In order to change the average load for a reducer (in bytes):</div><div class="line">INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;</div><div class="line">INFO  : In order to limit the maximum number of reducers:</div><div class="line">INFO  :   set hive.exec.reducers.max=&lt;number&gt;</div><div class="line">INFO  : In order to set a constant number of reducers:</div><div class="line">INFO  :   set mapreduce.job.reduces=&lt;number&gt;</div><div class="line">INFO  : number of splits:10</div><div class="line">INFO  : Submitting tokens for job: job_1507886429302_10129</div><div class="line">INFO  : Kind: HDFS_DELEGATION_TOKEN, Service: ha-hdfs:ns1, Ident: (token for hive: HDFS_DELEGATION_TOKEN owner=hive/ddp-cm.cmdmp.com@CMDMP.COM, renewer=yarn, realUser=, issueDate=1507949231769, maxDate=1508554031769, sequenceNumber=5622438, masterKeyId=763)</div><div class="line">INFO  : Cleaning up the staging area /user/hive/.staging/job_1507886429302_10129</div><div class="line">ERROR : Job Submission failed with exception &apos;java.io.IOException(org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit application_1507886429302_10129 to YARN : root.users.cdmpview is not a leaf queue)&apos;</div><div class="line">java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit application_1507886429302_10129 to YARN : root.users.cdmpview is not a leaf queue</div><div class="line">	at org.apache.hadoop.mapred.YARNRunner.submitJob(YARNRunner.java:306)</div><div class="line">	at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:244)</div><div class="line">	at org.apache.hadoop.mapreduce.Job$10.run(Job.java:1307)</div><div class="line">	at org.apache.hadoop.mapreduce.Job$10.run(Job.java:1304)</div><div class="line">	at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">	at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">	at org.apache.hadoop.mapreduce.Job.submit(Job.java:1304)</div><div class="line">	at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:578)</div><div class="line">	at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:573)</div><div class="line">	at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">	at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">	at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:573)</div><div class="line">	at org.apache.hadoop.mapred.JobClient.submitJob(JobClient.java:564)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.mr.ExecDriver.execute(ExecDriver.java:418)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.mr.MapRedTask.execute(MapRedTask.java:142)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:100)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.launchTask(Driver.java:1976)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:1689)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1421)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1205)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1200)</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:237)</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation.access$300(SQLOperation.java:88)</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation$3$1.run(SQLOperation.java:293)</div><div class="line">	at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">	at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation$3.run(SQLOperation.java:306)</div><div class="line">	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)</div><div class="line">	at java.util.concurrent.FutureTask.run(FutureTask.java:262)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)</div><div class="line">	at java.lang.Thread.run(Thread.java:745)</div><div class="line">Caused by: org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit application_1507886429302_10129 to YARN : root.users.cdmpview is not a leaf queue</div><div class="line">	at org.apache.hadoop.yarn.client.api.impl.YarnClientImpl.submitApplication(YarnClientImpl.java:257)</div><div class="line">	at org.apache.hadoop.mapred.ResourceMgrDelegate.submitApplication(ResourceMgrDelegate.java:290)</div><div class="line">	at org.apache.hadoop.mapred.YARNRunner.submitJob(YARNRunner.java:290)</div><div class="line">	... 35 more</div><div class="line"></div><div class="line">ERROR : FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.mr.MapRedTask</div><div class="line">INFO  : Completed executing command(queryId=hive_20171014104747_ef9adfe5-dd2b-493b-8557-7bce196ebf06); Time taken: 1.268 seconds</div><div class="line">Query History</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Error/[Flume]flume agent任务失败.html" rel="next" title="flume agent任务失败">
+                <i class="fa fa-chevron-left"></i> flume agent任务失败
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/S3/S3服务中oozie配置.html" rel="prev" title="S3服务中oozie配置">
+                S3服务中oozie配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">153</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn队列必须为叶队列"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Yarn&#x961F;&#x5217;&#x5FC5;&#x987B;&#x4E3A;&#x53F6;&#x961F;&#x5217;" class="headerlink" title="Yarn&#x961F;&#x5217;&#x5FC5;&#x987B;&#x4E3A;&#x53F6;&#x961F;&#x5217;"></a>Yarn&#x961F;&#x5217;&#x5FC5;&#x987B;&#x4E3A;&#x53F6;&#x961F;&#x5217;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

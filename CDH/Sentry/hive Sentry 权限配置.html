@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/Sentry/hive Sentry 权限配置.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="hive Sentry用户授权配置Hive SQL Syntax for Use with Sentry 为Hive用户添加全局的权限。目前的管理员为Hive，用户授权的操作都需要由Hive完成。这里使用Hive用户的Kerberos账户进入Beeline为hive用户获取principal  kinit -kt hive.keytab  hive 列出了当前缓存中保存的Kerberos主体和Ke">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive Sentry 权限配置">
@@ -505,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/nginx/nginx.html" rel="next" title="nginx">
-                <i class="fa fa-chevron-left"></i> nginx
+              <a href="/CDH/Error/[HDFS]执行数据节点的磁盘热插拔.html" rel="next" title="执行数据节点的磁盘热插拔">
+                <i class="fa fa-chevron-left"></i> 执行数据节点的磁盘热插拔
               </a>
             
           </div>
@@ -515,8 +516,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/OpenLDAP/slapd配置文件.html" rel="prev" title="slapd配置文件">
-                slapd配置文件 <i class="fa fa-chevron-right"></i>
+              <a href="/java/轮询 心跳.html" rel="prev" title="轮询 心跳">
+                轮询 心跳 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -581,7 +582,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -589,7 +590,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -600,7 +601,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -636,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hive-Sentry用户授权配置"><span class="nav-number">1.</span> <span class="nav-text">hive Sentry用户授权配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为Hive用户添加全局的权限。"><span class="nav-number">1.1.</span> <span class="nav-text">为Hive用户添加全局的权限。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建角色声明"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除角色声明"><span class="nav-number">1.1.2.</span> <span class="nav-text">删除角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权角色声明"><span class="nav-number">1.1.3.</span> <span class="nav-text">授权角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销角色声明"><span class="nav-number">1.1.4.</span> <span class="nav-text">撤销角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋予角色权限声明"><span class="nav-number">1.1.5.</span> <span class="nav-text">赋予角色权限声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋予角色外部表权限"><span class="nav-number">1.1.6.</span> <span class="nav-text">赋予角色外部表权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销角色权限"><span class="nav-number">1.1.7.</span> <span class="nav-text">撤销角色权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定角色声明"><span class="nav-number">1.1.8.</span> <span class="nav-text">指定角色声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#show声明"><span class="nav-number">1.1.9.</span> <span class="nav-text">show声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作样例"><span class="nav-number">1.2.</span> <span class="nav-text">操作样例:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#此外发现hive开启sentry后-hue中对应的用户也得是sentry最终授权的用户-否则将无法访问元数据"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">此外发现hive开启sentry后 hue中对应的用户也得是sentry最终授权的用户,否则将无法访问元数据</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hive-Sentry用户授权配置"><span class="nav-number">1.</span> <span class="nav-text"><a href="#hive-Sentry&#x7528;&#x6237;&#x6388;&#x6743;&#x914D;&#x7F6E;" class="headerlink" title="hive Sentry&#x7528;&#x6237;&#x6388;&#x6743;&#x914D;&#x7F6E;"></a>hive Sentry&#x7528;&#x6237;&#x6388;&#x6743;&#x914D;&#x7F6E;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为Hive用户添加全局的权限。"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4E3A;Hive&#x7528;&#x6237;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x7684;&#x6743;&#x9650;&#x3002;" class="headerlink" title="&#x4E3A;Hive&#x7528;&#x6237;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x7684;&#x6743;&#x9650;&#x3002;"></a>&#x4E3A;Hive&#x7528;&#x6237;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x7684;&#x6743;&#x9650;&#x3002;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建角色声明"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x89D2;&#x8272;&#x58F0;&#x660E;" class="headerlink" title="&#x521B;&#x5EFA;&#x89D2;&#x8272;&#x58F0;&#x660E;"></a>&#x521B;&#x5EFA;&#x89D2;&#x8272;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除角色声明"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#&#x5220;&#x9664;&#x89D2;&#x8272;&#x58F0;&#x660E;" class="headerlink" title="&#x5220;&#x9664;&#x89D2;&#x8272;&#x58F0;&#x660E;"></a>&#x5220;&#x9664;&#x89D2;&#x8272;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权角色声明"><span class="nav-number">1.1.3.</span> <span class="nav-text"><a href="#&#x6388;&#x6743;&#x89D2;&#x8272;&#x58F0;&#x660E;" class="headerlink" title="&#x6388;&#x6743;&#x89D2;&#x8272;&#x58F0;&#x660E;"></a>&#x6388;&#x6743;&#x89D2;&#x8272;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销角色声明"><span class="nav-number">1.1.4.</span> <span class="nav-text"><a href="#&#x64A4;&#x9500;&#x89D2;&#x8272;&#x58F0;&#x660E;" class="headerlink" title="&#x64A4;&#x9500;&#x89D2;&#x8272;&#x58F0;&#x660E;"></a>&#x64A4;&#x9500;&#x89D2;&#x8272;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋予角色权限声明"><span class="nav-number">1.1.5.</span> <span class="nav-text"><a href="#&#x8D4B;&#x4E88;&#x89D2;&#x8272;&#x6743;&#x9650;&#x58F0;&#x660E;" class="headerlink" title="&#x8D4B;&#x4E88;&#x89D2;&#x8272;&#x6743;&#x9650;&#x58F0;&#x660E;"></a>&#x8D4B;&#x4E88;&#x89D2;&#x8272;&#x6743;&#x9650;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋予角色外部表权限"><span class="nav-number">1.1.6.</span> <span class="nav-text"><a href="#&#x8D4B;&#x4E88;&#x89D2;&#x8272;&#x5916;&#x90E8;&#x8868;&#x6743;&#x9650;" class="headerlink" title="&#x8D4B;&#x4E88;&#x89D2;&#x8272;&#x5916;&#x90E8;&#x8868;&#x6743;&#x9650;"></a>&#x8D4B;&#x4E88;&#x89D2;&#x8272;&#x5916;&#x90E8;&#x8868;&#x6743;&#x9650;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销角色权限"><span class="nav-number">1.1.7.</span> <span class="nav-text"><a href="#&#x64A4;&#x9500;&#x89D2;&#x8272;&#x6743;&#x9650;" class="headerlink" title="&#x64A4;&#x9500;&#x89D2;&#x8272;&#x6743;&#x9650;"></a>&#x64A4;&#x9500;&#x89D2;&#x8272;&#x6743;&#x9650;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定角色声明"><span class="nav-number">1.1.8.</span> <span class="nav-text"><a href="#&#x6307;&#x5B9A;&#x89D2;&#x8272;&#x58F0;&#x660E;" class="headerlink" title="&#x6307;&#x5B9A;&#x89D2;&#x8272;&#x58F0;&#x660E;"></a>&#x6307;&#x5B9A;&#x89D2;&#x8272;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#show声明"><span class="nav-number">1.1.9.</span> <span class="nav-text"><a href="#show&#x58F0;&#x660E;" class="headerlink" title="show&#x58F0;&#x660E;"></a>show&#x58F0;&#x660E;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作样例"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x6837;&#x4F8B;" class="headerlink" title="&#x64CD;&#x4F5C;&#x6837;&#x4F8B;:"></a>&#x64CD;&#x4F5C;&#x6837;&#x4F8B;:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#此外发现hive开启sentry后-hue中对应的用户也得是sentry最终授权的用户-否则将无法访问元数据"><span class="nav-number">1.2.0.1.</span> <span class="nav-text"><a href="#&#x6B64;&#x5916;&#x53D1;&#x73B0;hive&#x5F00;&#x542F;sentry&#x540E;-hue&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x7528;&#x6237;&#x4E5F;&#x5F97;&#x662F;sentry&#x6700;&#x7EC8;&#x6388;&#x6743;&#x7684;&#x7528;&#x6237;-&#x5426;&#x5219;&#x5C06;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x5143;&#x6570;&#x636E;" class="headerlink" title="&#x6B64;&#x5916;&#x53D1;&#x73B0;hive&#x5F00;&#x542F;sentry&#x540E; hue&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x7528;&#x6237;&#x4E5F;&#x5F97;&#x662F;sentry&#x6700;&#x7EC8;&#x6388;&#x6743;&#x7684;&#x7528;&#x6237;,&#x5426;&#x5219;&#x5C06;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x5143;&#x6570;&#x636E;"></a>&#x6B64;&#x5916;&#x53D1;&#x73B0;hive&#x5F00;&#x542F;sentry&#x540E; hue&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x7528;&#x6237;&#x4E5F;&#x5F97;&#x662F;sentry&#x6700;&#x7EC8;&#x6388;&#x6743;&#x7684;&#x7528;&#x6237;,&#x5426;&#x5219;&#x5C06;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x5143;&#x6570;&#x636E;</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -659,7 +660,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

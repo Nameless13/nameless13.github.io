@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/Kerberos MIT/密码管理.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="用户密码管理更改密码要更改您的Kerberos密码，请使用kpasswd命令。它会要求您输入您的旧密码（以防止别人在不在线时更换电脑，并更改密码），然后再提示两次。（您必须键入两次的原因是确保您已正确键入。）例如，用户david将执行以下操作： shell% kpasswdPassword for david:    &amp;lt;- Type your old password.Enter new p">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-25T16:13:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码管理">
@@ -415,7 +416,7 @@
 <li>Kerberos保留谁获得门票的日志，所以系统管理员可以在必要时了解谁能够在特定时间使用您的用户ID。<br>一个常见的应用是在root的主目录中设置一个.k5login文件，将该机器的root访问权限授予列出的Kerberos主体。这允许系统管理员允许用户在本地进行本地登录，或者以root用户身份远程登录，而无需发出root密码，无需任何人在网络上键入root密码。</li>
 </ul>
 <h2 id="票务管理"><a href="#票务管理" class="headerlink" title="票务管理"></a>票务管理</h2><p>在许多系统上，Kerberos内置在登录程序中，您可以在登录时自动获取票证。其他程序（如ssh）可将票据的副本转发到远程主机。大部分这些节目也会在退出时自动销毁您的门票。但是，麻省理工学院建议您通过它们，销毁您的Kerberos门票。一种方法是将kdestroy命令添加到.logout文件中。另外，如果您将远离机器，并且关心使用您的权限的入侵者，最安全的方式是销毁所有票证副本，或使用锁定屏幕的屏幕保护程序。</p>
-<h3 id="Kerberos票证属性"><a href="#Kerberos票证属性" class="headerlink" title="Kerberos票证属性"></a>Kerberos票证属性</h3><p><a href="http://web.mit.edu/kerberos/www/krb5-latest/doc/user/tkt_mgmt.html" target="_blank" rel="external">http://web.mit.edu/kerberos/www/krb5-latest/doc/user/tkt_mgmt.html</a></p>
+<h3 id="Kerberos票证属性"><a href="#Kerberos票证属性" class="headerlink" title="Kerberos票证属性"></a>Kerberos票证属性</h3><p><a href="http://web.mit.edu/kerberos/www/krb5-latest/doc/user/tkt_mgmt.html" target="_blank" rel="noopener">http://web.mit.edu/kerberos/www/krb5-latest/doc/user/tkt_mgmt.html</a></p>
 <h3 id="获得门票使用kinit"><a href="#获得门票使用kinit" class="headerlink" title="获得门票使用kinit"></a>获得门票使用kinit</h3><p>如果站点已将Kerberos V5与登录系统集成，登录时将自动获取Kerberos票证，否则您可能需要使用kinit程序显式获取Kerberos票证 。同样，如果您的Kerberos票证过期，请使用kinit程序获取新的。</p>
 <p>要使用kinit程序，只需键入kinit，然后在提示符下键入密码。例如，Jennifer（其用户名为 jennifer）适用于Bleep，Inc.（一家域名为mit.edu和Kerberos领域ATHENA.MIT.EDU的虚构公司）。她会输入：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">shell% kinit</div><div class="line">Password for jennifer@ATHENA.MIT.EDU: &lt;-- [Type jennifer&apos;s password here.]</div><div class="line">shell%</div></pre></td></tr></table></figure></p>
 <p>默认情况下，kinit假定您希望在您的默认领域使用自己的用户名。假设詹妮弗的朋友大卫正在拜访，他想借一个窗口来检查他的邮件。大卫需要在自己的领域EXAMPLE.COM上获得门票。他会输入：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">shell% kinit david@EXAMPLE.COM</div><div class="line">Password for david@EXAMPLE.COM: &lt;-- [Type david&apos;s password here.]</div><div class="line">shell%</div></pre></td></tr></table></figure></p>
@@ -497,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/Error/spark提交任务失败.html" rel="next" title="spark提交任务失败">
-                <i class="fa fa-chevron-left"></i> spark提交任务失败
+              <a href="/Tips/hirecut.html" rel="next" title="hirecut">
+                <i class="fa fa-chevron-left"></i> hirecut
               </a>
             
           </div>
@@ -507,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Error/flume agent任务失败.html" rel="prev" title="flume agent任务失败">
-                flume agent任务失败 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/CM/Path of CDH config.html" rel="prev" title="Path of CDH config">
+                Path of CDH config <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,7 +574,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -581,7 +582,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -592,7 +593,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -628,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户"><span class="nav-number">1.</span> <span class="nav-text">用户</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码管理"><span class="nav-number">1.1.</span> <span class="nav-text">密码管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更改密码"><span class="nav-number">1.1.1.</span> <span class="nav-text">更改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授予访问您的帐户"><span class="nav-number">1.1.2.</span> <span class="nav-text">授予访问您的帐户</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#票务管理"><span class="nav-number">1.2.</span> <span class="nav-text">票务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kerberos票证属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">Kerberos票证属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获得门票使用kinit"><span class="nav-number">1.2.2.</span> <span class="nav-text">获得门票使用kinit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用klist查看门票"><span class="nav-number">1.2.3.</span> <span class="nav-text">用klist查看门票</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用kdestroy摧毁门票"><span class="nav-number">1.2.4.</span> <span class="nav-text">用kdestroy摧毁门票</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">用户配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k5login"><span class="nav-number">1.3.1.</span> <span class="nav-text">.k5login</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#说明"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k5identity"><span class="nav-number">1.3.2.</span> <span class="nav-text">.k5identity</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户命令"><span class="nav-number">1.4.</span> <span class="nav-text">用户命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x7528;&#x6237;" class="headerlink" title="&#x7528;&#x6237;"></a>&#x7528;&#x6237;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码管理"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x5BC6;&#x7801;&#x7BA1;&#x7406;" class="headerlink" title="&#x5BC6;&#x7801;&#x7BA1;&#x7406;"></a>&#x5BC6;&#x7801;&#x7BA1;&#x7406;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更改密码"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#&#x66F4;&#x6539;&#x5BC6;&#x7801;" class="headerlink" title="&#x66F4;&#x6539;&#x5BC6;&#x7801;"></a>&#x66F4;&#x6539;&#x5BC6;&#x7801;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授予访问您的帐户"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#&#x6388;&#x4E88;&#x8BBF;&#x95EE;&#x60A8;&#x7684;&#x5E10;&#x6237;" class="headerlink" title="&#x6388;&#x4E88;&#x8BBF;&#x95EE;&#x60A8;&#x7684;&#x5E10;&#x6237;"></a>&#x6388;&#x4E88;&#x8BBF;&#x95EE;&#x60A8;&#x7684;&#x5E10;&#x6237;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#票务管理"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x7968;&#x52A1;&#x7BA1;&#x7406;" class="headerlink" title="&#x7968;&#x52A1;&#x7BA1;&#x7406;"></a>&#x7968;&#x52A1;&#x7BA1;&#x7406;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kerberos票证属性"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#Kerberos&#x7968;&#x8BC1;&#x5C5E;&#x6027;" class="headerlink" title="Kerberos&#x7968;&#x8BC1;&#x5C5E;&#x6027;"></a>Kerberos&#x7968;&#x8BC1;&#x5C5E;&#x6027;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获得门票使用kinit"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#&#x83B7;&#x5F97;&#x95E8;&#x7968;&#x4F7F;&#x7528;kinit" class="headerlink" title="&#x83B7;&#x5F97;&#x95E8;&#x7968;&#x4F7F;&#x7528;kinit"></a>&#x83B7;&#x5F97;&#x95E8;&#x7968;&#x4F7F;&#x7528;kinit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用klist查看门票"><span class="nav-number">1.2.3.</span> <span class="nav-text"><a href="#&#x7528;klist&#x67E5;&#x770B;&#x95E8;&#x7968;" class="headerlink" title="&#x7528;klist&#x67E5;&#x770B;&#x95E8;&#x7968;"></a>&#x7528;klist&#x67E5;&#x770B;&#x95E8;&#x7968;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用kdestroy摧毁门票"><span class="nav-number">1.2.4.</span> <span class="nav-text"><a href="#&#x7528;kdestroy&#x6467;&#x6BC1;&#x95E8;&#x7968;" class="headerlink" title="&#x7528;kdestroy&#x6467;&#x6BC1;&#x95E8;&#x7968;"></a>&#x7528;kdestroy&#x6467;&#x6BC1;&#x95E8;&#x7968;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户配置文件"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x7528;&#x6237;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="headerlink" title="&#x7528;&#x6237;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"></a>&#x7528;&#x6237;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k5login"><span class="nav-number">1.3.1.</span> <span class="nav-text"><a href="#k5login" class="headerlink" title=".k5login"></a>.k5login</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#说明"><span class="nav-number">1.3.1.1.</span> <span class="nav-text"><a href="#&#x8BF4;&#x660E;" class="headerlink" title="&#x8BF4;&#x660E;"></a>&#x8BF4;&#x660E;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">1.3.1.2.</span> <span class="nav-text"><a href="#&#x793A;&#x4F8B;" class="headerlink" title="&#x793A;&#x4F8B;"></a>&#x793A;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k5identity"><span class="nav-number">1.3.2.</span> <span class="nav-text"><a href="#k5identity" class="headerlink" title=".k5identity"></a>.k5identity</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text"><a href="#&#x793A;&#x4F8B;-1" class="headerlink" title="&#x793A;&#x4F8B;"></a>&#x793A;&#x4F8B;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户命令"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x7528;&#x6237;&#x547D;&#x4EE4;" class="headerlink" title="&#x7528;&#x6237;&#x547D;&#x4EE4;"></a>&#x7528;&#x6237;&#x547D;&#x4EE4;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -651,7 +652,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

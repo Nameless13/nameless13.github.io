@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="127.0.0.1:6379&amp;gt; info Serverredis_version:3.2.3redis_git_sha1:00000000redis_git_dirty:0redis_build_id:276113d15453bda8redis_mode:clusteros:Linux 3.0.76-0.11-default x86_64arch_bits:64multiplexing_ap">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis_version_3.2.4-sc">
@@ -456,8 +457,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Document/YAML.html" rel="prev" title="YAML">
-                YAML <i class="fa fa-chevron-right"></i>
+              <a href="/Linux/Linux 防火墙.html" rel="prev" title="Linux 防火墙">
+                Linux 防火墙 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -522,7 +523,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -530,7 +531,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -541,7 +542,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -577,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Server"><span class="nav-number">1.</span> <span class="nav-text">Server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Clients"><span class="nav-number">2.</span> <span class="nav-text">Clients</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Memory"><span class="nav-number">3.</span> <span class="nav-text">Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Persistence"><span class="nav-number">4.</span> <span class="nav-text">Persistence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stats"><span class="nav-number">5.</span> <span class="nav-text">Stats</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Replication"><span class="nav-number">6.</span> <span class="nav-text">Replication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU"><span class="nav-number">7.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cluster"><span class="nav-number">8.</span> <span class="nav-text">Cluster</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Keyspace"><span class="nav-number">9.</span> <span class="nav-text">Keyspace</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Server"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Server" class="headerlink" title="Server"></a>Server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Clients"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Clients" class="headerlink" title="Clients"></a>Clients</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Memory"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Persistence"><span class="nav-number">4.</span> <span class="nav-text"><a href="#Persistence" class="headerlink" title="Persistence"></a>Persistence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stats"><span class="nav-number">5.</span> <span class="nav-text"><a href="#Stats" class="headerlink" title="Stats"></a>Stats</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Replication"><span class="nav-number">6.</span> <span class="nav-text"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU"><span class="nav-number">7.</span> <span class="nav-text"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cluster"><span class="nav-number">8.</span> <span class="nav-text"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Keyspace"><span class="nav-number">9.</span> <span class="nav-text"><a href="#Keyspace" class="headerlink" title="Keyspace"></a>Keyspace</span></a></li></ol></div>
             
 
           </div>
@@ -600,7 +601,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

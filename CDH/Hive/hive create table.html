@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/Hive/hive create table.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="创建表的语句：Create [EXTERNAL] TABLE [IF NOT EXISTS] table_name [(col_name data_type [COMMENT col_comment], ...)] [COMMENT table_comment] [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] [CL">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive create table">
@@ -449,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/Error/hbase 连接超时.html" rel="next" title="hbase 连接超时">
-                <i class="fa fa-chevron-left"></i> hbase 连接超时
+              <a href="/CDH/Spark/Cloudera平台安装Apache Spark 2.0 Beta版本.html" rel="next" title="选择和配置数据压缩">
+                <i class="fa fa-chevron-left"></i> 选择和配置数据压缩
               </a>
             
           </div>
@@ -459,8 +460,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Cloudera部署SUSE.html" rel="prev" title="Cloudera部署SUSE">
-                Cloudera部署SUSE <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Error/[HDFS]HDFS-diskbalance.html" rel="prev" title="HDFS-diskbalance">
+                HDFS-diskbalance <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -525,7 +526,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -533,7 +534,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -544,7 +545,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -580,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建表的语句："><span class="nav-number">1.</span> <span class="nav-text">创建表的语句：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建普通的表："><span class="nav-number">1.1.</span> <span class="nav-text">创建普通的表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建带有partition的表："><span class="nav-number">1.2.</span> <span class="nav-text">创建带有partition的表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建带有Bucket的表："><span class="nav-number">1.3.</span> <span class="nav-text">创建带有Bucket的表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建external表："><span class="nav-number">1.4.</span> <span class="nav-text">创建external表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建与已知表相同结构的表Like："><span class="nav-number">1.5.</span> <span class="nav-text">创建与已知表相同结构的表Like：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建表的语句："><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x8868;&#x7684;&#x8BED;&#x53E5;&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;&#x8868;&#x7684;&#x8BED;&#x53E5;&#xFF1A;"></a>&#x521B;&#x5EFA;&#x8868;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建普通的表："><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x666E;&#x901A;&#x7684;&#x8868;&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;&#x666E;&#x901A;&#x7684;&#x8868;&#xFF1A;"></a>&#x521B;&#x5EFA;&#x666E;&#x901A;&#x7684;&#x8868;&#xFF1A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建带有partition的表："><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x5E26;&#x6709;partition&#x7684;&#x8868;&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;&#x5E26;&#x6709;partition&#x7684;&#x8868;&#xFF1A;"></a>&#x521B;&#x5EFA;&#x5E26;&#x6709;partition&#x7684;&#x8868;&#xFF1A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建带有Bucket的表："><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x5E26;&#x6709;Bucket&#x7684;&#x8868;&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;&#x5E26;&#x6709;Bucket&#x7684;&#x8868;&#xFF1A;"></a>&#x521B;&#x5EFA;&#x5E26;&#x6709;Bucket&#x7684;&#x8868;&#xFF1A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建external表："><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;external&#x8868;&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;external&#x8868;&#xFF1A;"></a>&#x521B;&#x5EFA;external&#x8868;&#xFF1A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建与已知表相同结构的表Like："><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x4E0E;&#x5DF2;&#x77E5;&#x8868;&#x76F8;&#x540C;&#x7ED3;&#x6784;&#x7684;&#x8868;Like&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;&#x4E0E;&#x5DF2;&#x77E5;&#x8868;&#x76F8;&#x540C;&#x7ED3;&#x6784;&#x7684;&#x8868;Like&#xFF1A;"></a>&#x521B;&#x5EFA;&#x4E0E;&#x5DF2;&#x77E5;&#x8868;&#x76F8;&#x540C;&#x7ED3;&#x6784;&#x7684;&#x8868;Like&#xFF1A;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -603,7 +604,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

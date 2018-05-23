@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/HBase/MapReduce on HBase.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="MapReduce on HBaseHBase自带MapReduce工具使用导入环境变量 HADOOP_HOME HBASE_HOME HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导入HBaseHBase BulkLoadBulkLoad源码分析">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapReduce on HBase">
@@ -437,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux/linux系统安全日志分析.html" rel="next" title="linux系统安全日志分析">
-                <i class="fa fa-chevron-left"></i> linux系统安全日志分析
+              <a href="/Linux/linux系统中常见的性能分析工具.html" rel="next" title="linux系统中常见的性能分析工具">
+                <i class="fa fa-chevron-left"></i> linux系统中常见的性能分析工具
               </a>
             
           </div>
@@ -447,8 +448,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/HBase/HBase入门.html" rel="prev" title="HBase入门">
-                HBase入门 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/HBase/HBase架构详解.html" rel="prev" title="HBase架构详解">
+                HBase架构详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -513,7 +514,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -521,7 +522,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -532,7 +533,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -568,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MapReduce-on-HBase"><span class="nav-number">1.</span> <span class="nav-text">MapReduce on HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase自带MapReduce工具使用"><span class="nav-number">1.1.</span> <span class="nav-text">HBase自带MapReduce工具使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase自带命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">HBase自带命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tsv与BulkLoad"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tsv与BulkLoad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sqoop集成HBase"><span class="nav-number">1.1.3.</span> <span class="nav-text">Sqoop集成HBase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase表数据迁移"><span class="nav-number">1.2.</span> <span class="nav-text">HBase表数据迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS数据导入HBase"><span class="nav-number">1.3.</span> <span class="nav-text">HDFS数据导入HBase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-BulkLoad"><span class="nav-number">1.4.</span> <span class="nav-text">HBase BulkLoad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BulkLoad源码分析"><span class="nav-number">1.5.</span> <span class="nav-text">BulkLoad源码分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MapReduce-on-HBase"><span class="nav-number">1.</span> <span class="nav-text"><a href="#MapReduce-on-HBase" class="headerlink" title="MapReduce on HBase"></a>MapReduce on HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase自带MapReduce工具使用"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#HBase&#x81EA;&#x5E26;MapReduce&#x5DE5;&#x5177;&#x4F7F;&#x7528;" class="headerlink" title="HBase&#x81EA;&#x5E26;MapReduce&#x5DE5;&#x5177;&#x4F7F;&#x7528;"></a>HBase&#x81EA;&#x5E26;MapReduce&#x5DE5;&#x5177;&#x4F7F;&#x7528;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase自带命令"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#HBase&#x81EA;&#x5E26;&#x547D;&#x4EE4;" class="headerlink" title="HBase&#x81EA;&#x5E26;&#x547D;&#x4EE4;"></a>HBase&#x81EA;&#x5E26;&#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tsv与BulkLoad"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#Tsv&#x4E0E;BulkLoad" class="headerlink" title="Tsv&#x4E0E;BulkLoad"></a>Tsv&#x4E0E;BulkLoad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sqoop集成HBase"><span class="nav-number">1.1.3.</span> <span class="nav-text"><a href="#Sqoop&#x96C6;&#x6210;HBase" class="headerlink" title="Sqoop&#x96C6;&#x6210;HBase"></a>Sqoop&#x96C6;&#x6210;HBase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase表数据迁移"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#HBase&#x8868;&#x6570;&#x636E;&#x8FC1;&#x79FB;" class="headerlink" title="HBase&#x8868;&#x6570;&#x636E;&#x8FC1;&#x79FB;"></a>HBase&#x8868;&#x6570;&#x636E;&#x8FC1;&#x79FB;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS数据导入HBase"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#HDFS&#x6570;&#x636E;&#x5BFC;&#x5165;HBase" class="headerlink" title="HDFS&#x6570;&#x636E;&#x5BFC;&#x5165;HBase"></a>HDFS&#x6570;&#x636E;&#x5BFC;&#x5165;HBase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-BulkLoad"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#HBase-BulkLoad" class="headerlink" title="HBase BulkLoad"></a>HBase BulkLoad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BulkLoad源码分析"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#BulkLoad&#x6E90;&#x7801;&#x5206;&#x6790;" class="headerlink" title="BulkLoad&#x6E90;&#x7801;&#x5206;&#x6790;"></a>BulkLoad&#x6E90;&#x7801;&#x5206;&#x6790;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -591,7 +592,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

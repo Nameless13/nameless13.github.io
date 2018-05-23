@@ -1,0 +1,748 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="错误日志:Got user-level KeeperException when processing sessionid:0x15bfba733be2c2b type:create cxid:0x8621e1c zxid:0x170a4b8e0d txntype:-1 reqpath:n/a Error Path:/hive_zookeeper_namespace_hive/rptdata/fa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive zk 锁分区">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Error/[Hive]hive zk 锁分区.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="错误日志:Got user-level KeeperException when processing sessionid:0x15bfba733be2c2b type:create cxid:0x8621e1c zxid:0x170a4b8e0d txntype:-1 reqpath:n/a Error Path:/hive_zookeeper_namespace_hive/rptdata/fa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-22T17:22:01.217Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hive zk 锁分区">
+<meta name="twitter:description" content="错误日志:Got user-level KeeperException when processing sessionid:0x15bfba733be2c2b type:create cxid:0x8621e1c zxid:0x170a4b8e0d txntype:-1 reqpath:n/a Error Path:/hive_zookeeper_namespace_hive/rptdata/fa">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Error/[Hive]hive zk 锁分区.html"/>
+
+
+
+
+
+  <title>hive zk 锁分区 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hive]hive zk 锁分区.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hive zk 锁分区</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>错误日志:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Got user-level KeeperException when processing sessionid:0x15bfba733be2c2b type:create cxid:0x8621e1c zxid:0x170a4b8e0d txntype:-1 reqpath:n/a Error Path:/hive_zookeeper_namespace_hive/rptdata/fact_kesheng_sdk_new_device_hourly/src_file_day=20170414/src_file_hour=07 Error:KeeperErrorCode = NodeExists for /hive_zookeeper_namespace_hive/rptdata/fact_kesheng_sdk_new_device_hourly/src_file_day=20170414/src_file_hour=07</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2013-11-04 23:52:40,485 ERROR ZooKeeperHiveLockManager (ZooKeeperHiveLockManager.java:unlockPrimitive(447)) - Failed to release ZooKeeper lock:</div><div class="line">org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /hive_zookeeper_namespace/&lt;hiveDBName&gt;/&lt;Table&gt;/&lt;PARTITION&gt;/LOCK-SHARED-0000000000</div></pre></td></tr></table></figure>
+</p>
+<p>在ZK中可以看到对应的分区锁住了<br><code>/hive_zookeeper_namespace_hive/&lt;hiveDBName&gt;/&lt;Table&gt;/LOCK-SHARED-</code></p>
+<p>在beeline中查看被锁的表和分区<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show locks &lt;hiveDBName&gt;.&lt;Table&gt;</div><div class="line"></div><div class="line">show locks &lt;hiveDBName&gt;.&lt;Table&gt; partition (src_file_day=&apos;20170218&apos; , src_file_our=&apos;17&apos;); </div><div class="line">show locks app.mgba_client_event_detail partition(src_file_day=&apos;20171114&apos;);</div><div class="line">unlock table</div></pre></td></tr></table></figure></p>
+<p>可以看到<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">| &lt;hiveDBName&gt;@ugc_90103_bossmonthorderlog_test@&lt;PARTITION&gt;/&lt;PARTITION&gt; | SHARED     |</div></pre></td></tr></table></figure></p>
+<p>解锁:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">unlock table &lt;hiveDBName&gt;.&lt;Table&gt;;</div></pre></td></tr></table></figure></p>
+<p>依旧在beeline中:<br><code>set hive.support.concurrency=false;</code><br>然后把分区删了,重建</p>
+<p>之后又被锁了一次,详细过程如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show locks quancheng.ugc_secondline_order_v;</div><div class="line"></div><div class="line">+-----------------------------------+---------+--+</div><div class="line">|             tab_name              |  mode   |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">set hive.support.concurrency=false;</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; show locks quancheng.ugc_secondline_order_v;</div><div class="line">INFO  : Compiling command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9): show locks quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer), FieldSchema(name:mode, type:string, comment:from deserializer)], properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9); Time taken: 0.07 seconds</div><div class="line">INFO  : Concurrency mode is disabled, not creating a lock manager</div><div class="line">INFO  : Executing command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9): show locks quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9); Time taken: 0.034 seconds</div><div class="line">INFO  : OK</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">|             tab_name              |  mode   |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">3 rows selected (0.144 seconds)</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; drop quancheng.ugc_secondline_order_v;</div><div class="line">Error: Error while compiling statement: FAILED: ParseException line 1:5 cannot recognize input near &apos;drop&apos; &apos;quancheng&apos; &apos;.&apos; in ddl statement (state=42000,code=40000)</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; drop view quancheng.ugc_secondline_order_v;</div><div class="line">INFO  : Compiling command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e): drop view quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e); Time taken: 0.168 seconds</div><div class="line">INFO  : Concurrency mode is disabled, not creating a lock manager</div><div class="line">INFO  : Executing command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e): drop view quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e); Time taken: 0.061 seconds</div><div class="line">INFO  : OK</div><div class="line">No rows affected (0.238 seconds)</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; show tables;</div><div class="line">INFO  : Compiling command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058): show tables</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058); Time taken: 0.068 seconds</div><div class="line">INFO  : Concurrency mode is disabled, not creating a lock manager</div><div class="line">INFO  : Executing command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058): show tables</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058); Time taken: 0.1 seconds</div><div class="line">INFO  : OK</div><div class="line">+-----------+--+</div><div class="line">| tab_name  |</div><div class="line">+-----------+--+</div><div class="line">+-----------+--+</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;show locks ods.migulive_10108_func_use_log_ex;</div><div class="line"></div><div class="line">+-------------------------------------+---------+--+</div><div class="line">|              tab_name               |  mode   |</div><div class="line">+-------------------------------------+---------+--+</div><div class="line">| ods@migulive_10108_func_use_log_ex  | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex  | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex  | SHARED  |</div><div class="line">+-------------------------------------+---------+--+</div><div class="line">3 rows selected (0.27 seconds)</div><div class="line">&gt;show locks ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;);</div><div class="line">+----------------------------------------------------+---------+--+</div><div class="line">|                      tab_name                      |  mode   |</div><div class="line">+----------------------------------------------------+---------+--+</div><div class="line">| ods@migulive_10108_func_use_log_ex@src_file_day=20171114/src_file_hour=00 | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex@src_file_day=20171114/src_file_hour=00 | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex@src_file_day=20171114/src_file_hour=00 | SHARED  |</div><div class="line">+----------------------------------------------------+---------+--+</div></pre></td></tr></table></figure>
+</p>
+<p>解锁分区<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;);</div><div class="line">INFO  : Compiling command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;)</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1); Time taken: 0.083 seconds</div><div class="line">INFO  : Executing command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;)</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1); Time taken: 0.025 seconds</div><div class="line">INFO  : OK</div><div class="line">No rows affected (0.117 seconds)</div><div class="line">&gt; unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;01&apos;);</div><div class="line">INFO  : Compiling command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;01&apos;)</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2); Time taken: 0.084 seconds</div><div class="line">INFO  : Executing command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;01&apos;)</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2); Time taken: 0.025 seconds</div><div class="line">INFO  : OK</div><div class="line">No rows affected (0.117 seconds)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MySQL/mysql命令.html" rel="next" title="mysql命令">
+                <i class="fa fa-chevron-left"></i> mysql命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Error/[HDFS]Yarn磁盘检查.html" rel="prev" title="Yarn磁盘检查">
+                Yarn磁盘检查 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">153</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

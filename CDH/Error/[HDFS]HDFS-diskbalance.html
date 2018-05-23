@@ -1,0 +1,786 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="HDFS-diskbalance问题开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限create role hdfs_role;grant role hdfs_role to group hdfs;grant all on URI &amp;apos;hdfs:///system/diskbalancer&amp;apos; to role hdfs_role; 发现问题依旧h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDFS-diskbalance">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Error/[HDFS]HDFS-diskbalance.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="HDFS-diskbalance问题开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限create role hdfs_role;grant role hdfs_role to group hdfs;grant all on URI &amp;apos;hdfs:///system/diskbalancer&amp;apos; to role hdfs_role; 发现问题依旧h">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-22T17:22:01.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HDFS-diskbalance">
+<meta name="twitter:description" content="HDFS-diskbalance问题开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限create role hdfs_role;grant role hdfs_role to group hdfs;grant all on URI &amp;apos;hdfs:///system/diskbalancer&amp;apos; to role hdfs_role; 发现问题依旧h">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Error/[HDFS]HDFS-diskbalance.html"/>
+
+
+
+
+
+  <title>HDFS-diskbalance | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]HDFS-diskbalance.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HDFS-diskbalance</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HDFS-diskbalance问题"><a href="#HDFS-diskbalance问题" class="headerlink" title="HDFS-diskbalance问题"></a>HDFS-diskbalance问题</h1><p>开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create role hdfs_role;</div><div class="line">grant role hdfs_role to group hdfs;</div><div class="line">grant all on URI &apos;hdfs:///system/diskbalancer&apos; to role hdfs_role;</div></pre></td></tr></table></figure></p>
+<p>发现问题依旧<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs dfs -ls /system/diskbalancer</div><div class="line">hdfs diskbalancer -plan ddp-dn-04.cmdmp.com</div><div class="line">hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line"></div><div class="line">hdfs@ddp-dn-129:~&gt; hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/12 13:42:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/12 13:42:32 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:33 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:34 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:35 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:36 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:37 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:38 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 6 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:39 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 7 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:40 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 8 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 ERROR tools.DiskBalancerCLI: java.net.ConnectException: Call From ddp-dn-129.cmdmp.com/10.200.60.40 to ddp-dn-129.cmdmp.com:50020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-04:~ # hdfs diskbalancer -help plan</div><div class="line">usage: hdfs diskbalancer -plan &lt;hostname&gt; [options]</div><div class="line">Creates a plan that describes how much data should be moved between disks.</div><div class="line"></div><div class="line">    --bandwidth &lt;arg&gt;             Maximum disk bandwidth (MB/s) in integer</div><div class="line">                                  to be consumed by diskBalancer. e.g. 10</div><div class="line">                                  MB/s.</div><div class="line">    --maxerror &lt;arg&gt;              Describes how many errors can be</div><div class="line">                                  tolerated while copying between a pair</div><div class="line">                                  of disks.</div><div class="line">    --out &lt;arg&gt;                   Local path of file to write output to,</div><div class="line">                                  if not specified defaults will be used.</div><div class="line">    --plan &lt;arg&gt;                  Hostname, IP address or UUID of datanode</div><div class="line">                                  for which a plan is created.</div><div class="line">    --thresholdPercentage &lt;arg&gt;   Percentage of data skew that is</div><div class="line">                                  tolerated before disk balancer starts</div><div class="line">                                  working. For example, if total data on a</div><div class="line">                                  2 disk node is 100 GB then disk balancer</div><div class="line">                                  calculates the expected value on each</div><div class="line">                                  disk, which is 50 GB. If the tolerance</div><div class="line">                                  is 10% then data on a single disk needs</div><div class="line">                                  to be more than 60 GB (50 GB + 10%</div><div class="line">                                  tolerance value) for Disk balancer to</div><div class="line">                                  balance the disks.</div><div class="line">    --v                           Print out the summary of the plan on</div><div class="line">                                  console</div><div class="line"></div><div class="line">Plan command creates a set of steps that represent a planned data move. A</div><div class="line">plan file can be executed on a data node, which will balance the data.</div><div class="line"></div><div class="line"></div><div class="line">ddp-nn-02:/etc/hadoop/conf # hdfs getconf -confkey dfs.disk.balancer.enabled</div><div class="line">false</div><div class="line"></div><div class="line">ddp-dn-01:~ # hdfs diskbalancer --plan ddp-dn-12.cmdmp.com</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/13 16:54:09 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/13 16:54:09 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">  at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">  at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">  at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">  at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">  at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">  at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">  at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+</p>
+<hr>
+<h1 id="hdfs-diskbalancer"><a href="#hdfs-diskbalancer" class="headerlink" title="hdfs diskbalancer"></a>hdfs diskbalancer</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-033:~ # hdfs diskbalancer -plan ddp-dn-033.cmdmp.com</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/10/27 11:01:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/10/27 11:01:31 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">    at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">    at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">    at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">    at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">    at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">    at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">    at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+</p>
+<p>一般来说，对于需要HDFS超级用户权限的命令，使用任何HDFS主体去kinit都是有效的。然而，为了增加datanodes安全性在CDH 5.10.0中增加了一个变化。–HDFS11069<br>这一更改确保了对任何datanode运行一个超级用户命令，您必须首先执行kinit并使用和datanode相同服务主体</p>
+<p>To run the intra node balancer, you must do the following:</p>
+<ol>
+<li>Ensure that the HDFS Gateway is deployed on the Datanode you wish to run it against.(个人认为只需要保证本机使用HDFS-cli能连上nn就好,自己配置也行当然通过cm配置会比较块)</li>
+<li><p>Login to the datanode you wish to balance, and kinit as follows:</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |</div><div class="line">sort -n | tail -1`</div><div class="line">    kinit -kt hdfs.keytab hdfs/$(hostname -f)</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>Run the intra node balancer as usual:<br>hdfs diskbalancer -plan datanode.hostname.com<br>hdfs diskbalancer -plan $(hostname -f)</p>
+</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |sort -n | tail -1`</div><div class="line">kinit -kt hdfs.keytab hdfs/$(hostname -f)</div><div class="line">hdfs diskbalancer -plan $(hostname -f)</div><div class="line"></div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">    17/11/15 10:41:25 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Disk Volume set 9006e969-abee-4719-b2fa-be1b5a1bb0a0 Type : DISK plan completed.</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 11 ms </div><div class="line">    17/11/15 10:41:26 INFO command.Command: Writing plan to : /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs dfs -ls /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/2017-Nov-15-10-41-25/$(hostname -f).plan.json</div><div class="line"></div><div class="line">hdfs diskbalancer -query $(hostname) --v</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /root/hdfs-diskplan --thresholdPercentage 5</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/26 10:14:44 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Disk Volume set 25e83c15-13e4-4429-96c1-cec44fe8c94c Type : DISK plan completed.</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 8 ms </div><div class="line">18/02/26 10:14:45 INFO command.Command: Writing plan to : /root/hdfs-diskplan</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -plan $(hostname -f)  --thresholdPercentage 5</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/28 09:44:08 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Disk Volume set 6a0d20f1-3936-40f7-a4dd-207c228a676a Type : DISK plan completed.</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 7 ms </div><div class="line">18/02/28 09:44:09 INFO command.Command: Writing plan to : /system/diskbalancer/2018-Feb-28-09-44-08</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs dfs -ls /system/diskbalancer/2018-Feb-28-09-44-08/</div><div class="line">Found 2 items</div><div class="line">-rw-r--r--   3 hdfs supergroup     606859 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.before.json</div><div class="line">-rw-r--r--   3 hdfs supergroup        928 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -execute /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">18/02/28 09:44:46 INFO command.Command: Executing &quot;execute plan&quot; command</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -query  $(hostname) --v</div><div class="line">18/02/28 09:44:54 INFO command.Command: Executing &quot;query plan&quot; command.</div><div class="line">Plan File: /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">Plan ID: bf4e1d912cf52fb2df81d1af4406ba3f8fcb4cb05023711a64d1f4101a2379ff8a0e36cedbc901ddbda4c17bc0a851fddfb55361e347c580a0792f6e08d935ac</div><div class="line">Result: PLAN_UNDER_PROGRESS</div><div class="line">[&#123;&quot;sourcePath&quot;:&quot;/mnt/sdf1/dfs/dn&quot;,&quot;destPath&quot;:&quot;/mnt/sdl1/dfs/dn&quot;,&quot;workItem&quot;:&#123;&quot;bytesToCopy&quot;:195547775977,&quot;bytesCopied&quot;:134219396,&quot;errorCount&quot;:0,&quot;errMsg&quot;:null,&quot;blocksCopied&quot;:2,&quot;maxDiskErrors&quot;:0,&quot;tolerancePercent&quot;:0,&quot;bandwidth&quot;:0&#125;&#125;]</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /system/diskbalancer/$(hostname -f)  --thresholdPercentage 5</div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/$(hostname -f)/$(hostname -f).plan.json</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Hive/hive create table.html" rel="next" title="hive create table">
+                <i class="fa fa-chevron-left"></i> hive create table
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Shell/Cloudera Manager API.html" rel="prev" title="Cloudera Manager API">
+                Cloudera Manager API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">153</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-diskbalance问题"><span class="nav-number">1.</span> <span class="nav-text"><a href="#HDFS-diskbalance&#x95EE;&#x9898;" class="headerlink" title="HDFS-diskbalance&#x95EE;&#x9898;"></a>HDFS-diskbalance&#x95EE;&#x9898;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdfs-diskbalancer"><span class="nav-number">2.</span> <span class="nav-text"><a href="#hdfs-diskbalancer" class="headerlink" title="hdfs diskbalancer"></a>hdfs diskbalancer</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

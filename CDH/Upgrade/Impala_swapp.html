@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/Upgrade/Impala_swapp.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="Impala_swapp部分组件HDFS,YARN,HBAS有黄色警告是因为系统默认SWAP默认值为60，导致内存未使用满便使用swap memory导致的，已经修改过配对应系统的配置值为SWAP=0。echo 0 &amp;gt;/proc/sys/vm/swappinessecho &amp;apos;vm.swappiness=0&amp;apos;&amp;gt;&amp;gt; /etc/sysctl.confcat /pro">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Impala_swapp">
@@ -437,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/Error/spark-streaming 与kafka的结合.html" rel="next" title="spark-streaming 与kafka的结合">
-                <i class="fa fa-chevron-left"></i> spark-streaming 与kafka的结合
+              <a href="/MySQL/SQL基础.html" rel="next" title="SQL基础">
+                <i class="fa fa-chevron-left"></i> SQL基础
               </a>
             
           </div>
@@ -447,7 +448,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Test/CDH.html" rel="prev" title="CDH">
+              <a href="/CDH/Notes/CDH.html" rel="prev" title="CDH">
                 CDH <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -513,7 +514,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -521,7 +522,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -532,7 +533,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -568,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Impala-swapp"><span class="nav-number">1.</span> <span class="nav-text">Impala_swapp</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Impala-swapp"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Impala-swapp" class="headerlink" title="Impala_swapp"></a>Impala_swapp</span></a></li></ol></div>
             
 
           </div>
@@ -591,7 +592,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

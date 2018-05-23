@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Document/Linux中history历史命令使用方法详解.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="Linux中history历史命令使用方法详解使用HISTTIMEFORMAT在历史中显示TIMESTAMPexport HISTTIMEFORMAT=’%F %T ‘也可以设置alias语句来查看最近的历史命令alias h1=’history 10’alias h2=’history 20’alias h3=’history 30’ 用Ctrl ＋ R搜索历史命令按下Ctrl +R然后输入关键">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-25T16:13:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux中history历史命令使用方法详解">
@@ -439,7 +440,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/Path of CDH config.html" rel="next" title="Path of CDH config">
+              <a href="/CDH/CM/Path of CDH config.html" rel="next" title="Path of CDH config">
                 <i class="fa fa-chevron-left"></i> Path of CDH config
               </a>
             
@@ -449,8 +450,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Error/is not a leaf queue.html" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Spark/动态资源分配.html" rel="prev" title="动态资源分配">
+                动态资源分配 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -515,7 +516,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -523,7 +524,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -534,7 +535,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -570,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中history历史命令使用方法详解"><span class="nav-number">1.</span> <span class="nav-text">Linux中history历史命令使用方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用HISTTIMEFORMAT在历史中显示TIMESTAMP"><span class="nav-number">1.1.</span> <span class="nav-text">使用HISTTIMEFORMAT在历史中显示TIMESTAMP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Ctrl-＋-R搜索历史命令"><span class="nav-number">1.2.</span> <span class="nav-text">用Ctrl ＋ R搜索历史命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四种不同的方法快速执行之前的命令"><span class="nav-number">1.3.</span> <span class="nav-text">四种不同的方法快速执行之前的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用HISTFILE改变历史文件名"><span class="nav-number">1.4.</span> <span class="nav-text">使用HISTFILE改变历史文件名</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中history历史命令使用方法详解"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Linux&#x4E2D;history&#x5386;&#x53F2;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8BE6;&#x89E3;" class="headerlink" title="Linux&#x4E2D;history&#x5386;&#x53F2;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8BE6;&#x89E3;"></a>Linux&#x4E2D;history&#x5386;&#x53F2;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8BE6;&#x89E3;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用HISTTIMEFORMAT在历史中显示TIMESTAMP"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;HISTTIMEFORMAT&#x5728;&#x5386;&#x53F2;&#x4E2D;&#x663E;&#x793A;TIMESTAMP" class="headerlink" title="&#x4F7F;&#x7528;HISTTIMEFORMAT&#x5728;&#x5386;&#x53F2;&#x4E2D;&#x663E;&#x793A;TIMESTAMP"></a>&#x4F7F;&#x7528;HISTTIMEFORMAT&#x5728;&#x5386;&#x53F2;&#x4E2D;&#x663E;&#x793A;TIMESTAMP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Ctrl-＋-R搜索历史命令"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x7528;Ctrl-&#xFF0B;-R&#x641C;&#x7D22;&#x5386;&#x53F2;&#x547D;&#x4EE4;" class="headerlink" title="&#x7528;Ctrl &#xFF0B; R&#x641C;&#x7D22;&#x5386;&#x53F2;&#x547D;&#x4EE4;"></a>&#x7528;Ctrl &#xFF0B; R&#x641C;&#x7D22;&#x5386;&#x53F2;&#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四种不同的方法快速执行之前的命令"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x56DB;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5FEB;&#x901F;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x547D;&#x4EE4;" class="headerlink" title="&#x56DB;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5FEB;&#x901F;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x547D;&#x4EE4;"></a>&#x56DB;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5FEB;&#x901F;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用HISTFILE改变历史文件名"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;HISTFILE&#x6539;&#x53D8;&#x5386;&#x53F2;&#x6587;&#x4EF6;&#x540D;" class="headerlink" title="&#x4F7F;&#x7528;HISTFILE&#x6539;&#x53D8;&#x5386;&#x53F2;&#x6587;&#x4EF6;&#x540D;"></a>&#x4F7F;&#x7528;HISTFILE&#x6539;&#x53D8;&#x5386;&#x53F2;&#x6587;&#x4EF6;&#x540D;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -593,7 +594,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

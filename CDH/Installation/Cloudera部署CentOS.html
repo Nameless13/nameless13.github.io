@@ -1,0 +1,790 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="操作系统:CentOS 6.5CM版本:CM5.10.041CDH版本:CDH5.10.041使用version用户对集群进行部署  服务器配置 关闭防火墙 配置时钟同步服务 检查数据盘是否挂载  安装的机器ip:192.168.86.119,192.168.86.120,  安装操作系统，建议对操作系统盘做RAID1 如果不能连接互联网，先创建OS的repository，以便yum或zyppe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cloudera部署CentOS">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Installation/Cloudera部署CentOS.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="操作系统:CentOS 6.5CM版本:CM5.10.041CDH版本:CDH5.10.041使用version用户对集群进行部署  服务器配置 关闭防火墙 配置时钟同步服务 检查数据盘是否挂载  安装的机器ip:192.168.86.119,192.168.86.120,  安装操作系统，建议对操作系统盘做RAID1 如果不能连接互联网，先创建OS的repository，以便yum或zyppe">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-22T17:22:01.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cloudera部署CentOS">
+<meta name="twitter:description" content="操作系统:CentOS 6.5CM版本:CM5.10.041CDH版本:CDH5.10.041使用version用户对集群进行部署  服务器配置 关闭防火墙 配置时钟同步服务 检查数据盘是否挂载  安装的机器ip:192.168.86.119,192.168.86.120,  安装操作系统，建议对操作系统盘做RAID1 如果不能连接互联网，先创建OS的repository，以便yum或zyppe">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Installation/Cloudera部署CentOS.html"/>
+
+
+
+
+
+  <title>Cloudera部署CentOS | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Cloudera部署CentOS.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Cloudera部署CentOS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Installation/" itemprop="url" rel="index">
+                    <span itemprop="name">Installation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>操作系统:CentOS 6.5<br>CM版本:CM5.10.041<br>CDH版本:CDH5.10.041<br>使用version用户对集群进行部署</p>
+</blockquote>
+<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><ul>
+<li>关闭防火墙</li>
+<li>配置时钟同步服务</li>
+<li>检查数据盘是否挂载</li>
+</ul>
+<p>安装的机器ip:<br>192.168.86.119,192.168.86.120,</p>
+<ol>
+<li>安装操作系统，建议对操作系统盘做RAID1</li>
+<li>如果不能连接互联网，先创建OS的repository，以便yum或zypper可以访问OS镜像</li>
+<li>为了使集群中各个节点之间能互相通信，需要静态或动态配置节点的IP地址。如果使用动态配置，请安装DHCP和DNS服务器，具体请参见对应软件的安装文档，此不赘述；如果使用静态IP地址，请正确配置各节点的IP，并在/etc/hosts配置所有节点的静态DNS解析。<br>以cm节点为例：<code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">DEVICE=&quot;bond0&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">IPV6INIT=&quot;no&quot;</div><div class="line">MTU=&quot;1500&quot;</div><div class="line">NM_CONTROLLED=&quot;no&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">TYPE=&quot;Ethernet&quot;</div><div class="line">IPADDR=192.168.60.25</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.60.1</div></pre></td></tr></table></figure>
+</p>
+<p>/etc/hosts样例<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">10.200.65.50    ddp-cm.cmdmp.com    ddp-cm</div><div class="line">10.200.65.51    ddp-nn-01.cmdmp.com ddp-nn-01</div><div class="line">10.200.65.52    ddp-nn-02.cmdmp.com ddp-nn-02</div><div class="line">10.200.65.53    ddp-dn-01.cmdmp.com ddp-dn-01</div><div class="line">10.200.65.54    ddp-dn-02.cmdmp.com ddp-dn-02</div><div class="line">10.200.65.55    ddp-dn-03.cmdmp.com ddp-dn-03</div><div class="line">10.200.65.56    ddp-dn-04.cmdmp.com ddp-dn-04</div><div class="line">10.200.65.57    ddp-dn-05.cmdmp.com ddp-dn-05</div><div class="line">10.200.65.58    ddp-dn-06.cmdmp.com ddp-dn-06</div><div class="line">10.200.65.59    ddp-dn-07.cmdmp.com ddp-dn-07</div><div class="line">10.200.65.60    ddp-dn-08.cmdmp.com ddp-dn-08</div><div class="line">10.200.65.61    ddp-dn-09.cmdmp.com ddp-dn-09</div><div class="line">10.200.65.62    ddp-dn-10.cmdmp.com ddp-dn-10</div><div class="line">10.200.65.63    ddp-dn-11.cmdmp.com ddp-dn-11</div><div class="line">10.200.65.64    ddp-dn-12.cmdmp.com ddp-dn-12</div><div class="line">10.200.65.71    ddp-kettle-02.cmdmp.com ddp-kettle-02</div><div class="line">10.200.63.132   ddp-yonghong-test1.cmdmp.com    ddp-yonghong-test1.cmdmp.com</div><div class="line">10.200.86.119   ddp-sunflower-test1.cmdmp.com   ddp-sunflower-test1.cmdmp.com</div><div class="line">10.200.86.120   ddp-sunflower-test2.cmdmp.com   ddp-sunflower-test2.cmdmp.com</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service network restart</div><div class="line">ping 10.200.86.1</div><div class="line">cd vmware-tools-distrib/</div><div class="line">./vmware-install.pl </div><div class="line">reboot</div><div class="line">groupadd version</div><div class="line">useradd -m -g version version</div><div class="line">echo 2wsx@WSX|passwd --stdin version</div><div class="line">yes|cp -p /etc/sudoers /etc/sudoers_bak</div><div class="line">chmod +x /etc/sudoers</div><div class="line">sed -i &quot;/NOPASSWD: ALL/c %version ALL=(ALL) NOPASSWD: ALL&quot; /etc/sudoers</div><div class="line">chmod -x /etc/sudoers</div><div class="line">yum install daemontools</div><div class="line">route</div><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line">service network restart</div><div class="line">vim /etc/ntp.conf </div><div class="line">/etc/init.d/ntpd start</div></pre></td></tr></table></figure>
+</p>
+<ol>
+<li>关闭并禁用防火墙<br><code>/etc/init.d/iptables stop</code><br><code>/etc/init.d/iptables status</code><br><code>/sbin/chkconfig --level 2345 iptables off</code></li>
+<li>关闭SELinux<br><code>echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux ;</code></li>
+<li>重启网络服务，并初始化网络<br><code>/etc/init.d/network restart</code></li>
+<li>修改transparent_hugepage参数，这一参数默认值可能会导致CDH性能下降<br>在/etc/init.d/after.local中增加一行：<br><code>if test -f /sys/kernel/mm/transparent_hugepage/enabled; then echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled fi</code></li>
+<li>禁用交换内存<br>vi /etc/sysconfig/selinux<br>vi /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo never &gt; /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>vi /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>sudo sysctl vm.swappiness=0<br>vim /etc/sysctl.conf<br>reboot </li>
+<li>如果机器配置有双网卡，可以做双网卡绑定；</li>
+</ol>
+<hr>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hostname ddp-sunflower-test1.cmdmp.com</div><div class="line">hostname </div><div class="line"></div><div class="line">vi /etc/hosts</div><div class="line">vi /etc/krb5.conf </div><div class="line">scp root@10.200.65.71:/home/sunflower/sunflower.keytab .</div><div class="line">ll</div><div class="line">mkdir rpm</div><div class="line">cd rpm/</div><div class="line">scp root@10.200.65.50:/srv/www/htdocs/cloudera/centos_cm/* .</div><div class="line">ll</div><div class="line">yum install ntp</div><div class="line">vi /etc/yum.repos.d/myrepo.repo</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">yum updata</div><div class="line">yum --help</div><div class="line">yum clean</div><div class="line">yum upgrade</div><div class="line">yum repolist</div><div class="line">vi /etc/yum.repos.d/CentOS-Base.repo </div><div class="line">yum upgrade</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">vi /etc/yum.repos.d/CentOS-Base.repo </div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">yum clean</div><div class="line">yum clean all</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">rpm -ivh oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm </div><div class="line">rpm -ivh cloudera-manager-daemons-5.10.0-1.cm5100.p0.85.el6.x86_64.rpm </div><div class="line">find /etc/yum.repos.d/ -name &quot;*.repo&quot; -exec mv &#123;&#125; &#123;&#125;.bak \; </div><div class="line">rpm -ivh --force --nodeps http://10.200.58.39/pub/centos6-1.0-1.el6.x86_64.rpm </div><div class="line">yum clean all </div><div class="line">yum makecache </div><div class="line">mv /etc/yum.repos.d/myrepo.repo.bak /etc/yum.repos.d/myrepo.repo</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">history</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Hive/reload_UDF.html" rel="next" title="reload_UDF">
+                <i class="fa fa-chevron-left"></i> reload_UDF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Hive/Hive配置Sentry(无Kerboros认证).html" rel="prev" title="Hive集成Sentry(无Kerboros认证)">
+                Hive集成Sentry(无Kerboros认证) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">153</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器配置"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;" class="headerlink" title="&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;"></a>&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/Upgrade/手动安装zypper源和rpm包.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="因大数据cloudera manager 平台升级,请将所有大数据服务器安装python-psycopg2-2.6.2-3.3.x86_64.rpm这个包,大数据服务器列表见附件 CM前端管理方式安装CDH失败:  主机密码不对 先手工卸载旧rpm包,手工配zypper源安装 zypper源指向不对,删除无效的zypper源 用户目录下的host影响,或者/etc/hosts和CM节点不一致  U">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手动安装zypper源和rpm包">
@@ -411,22 +412,22 @@
 <p>Usage: 本地Zypper源使用 [适用SUSE]</p>
 <ol>
 <li>Backup repository.<br>find /etc/zypp/repos.d -name “*.repo” -exec mv {} {}.bak \;</li>
-<li>Install<br>zypper ar <a href="http://10.200.58.43/" target="_blank" rel="external">http://10.200.58.43/</a> local.main</li>
+<li>Install<br>zypper ar <a href="http://10.200.58.43/" target="_blank" rel="noopener">http://10.200.58.43/</a> local.main</li>
 <li>Update cache<br>zypper ref</li>
 </ol>
 <p>zyppzy</p>
 <p>ps aux|grep  supervisord |grep -v grep | awk ‘{print “kill -9 “$2}’|sh</p>
-<p>zypper in cloudera-manager-daemons-5.11.1-1.cm5111.p0.9.sles11<br>zypper in cloudera-manager-agent-5.11.1-1.cm5111.p0.9.sles11<br>下载地址:<a href="https://software.opensuse.org/download.html?project=server%3Adatabase%3Apostgresql&amp;package=python-psycopg2" target="_blank" rel="external">https://software.opensuse.org/download.html?project=server%3Adatabase%3Apostgresql&amp;package=python-psycopg2</a></p>
+<p>zypper in cloudera-manager-daemons-5.11.1-1.cm5111.p0.9.sles11<br>zypper in cloudera-manager-agent-5.11.1-1.cm5111.p0.9.sles11<br>下载地址:<a href="https://software.opensuse.org/download.html?project=server%3Adatabase%3Apostgresql&amp;package=python-psycopg2" target="_blank" rel="noopener">https://software.opensuse.org/download.html?project=server%3Adatabase%3Apostgresql&amp;package=python-psycopg2</a></p>
 <p>如果安装时报出缺少   libpq.so.5()(64bit) 依赖,需要先安装系统ISO镜像自带的postgresql91-9.1.9-0.3.1.x86_64.rpm（需要用到此包中的libpq库）,之后再安装python-psycopg2-2.6.2-3.3.x86_64.rpm</p>
 <p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">zypper in postgresql91</div><div class="line">rpm -ivh python-psycopg2-2.6.2-3.2.x86_64.rpm</div></pre></td></tr></table></figure>
 </p>
 <hr>
-<p><a href="http://stackoverflow.com/questions/35544155/how-to-access-a-zookeeper-ensemble-as-a-super-user-via-zookeeper-shell/35654757#35654757" target="_blank" rel="external">Zookeeper 绕过密码注册超级管理员</a></p>
+<p><a href="http://stackoverflow.com/questions/35544155/how-to-access-a-zookeeper-ensemble-as-a-super-user-via-zookeeper-shell/35654757#35654757" target="_blank" rel="noopener">Zookeeper 绕过密码注册超级管理员</a></p>
 <p>SERVER_JVMFLAGS=-Dzookeeper.DigestAuthenticationProvider.superDigest=super:DyNYQEQvajljsxlhf5uS4PJ9R28=</p>
-<p><a href="http://www.tuicool.com/articles/neY7Vrq" target="_blank" rel="external">http://www.tuicool.com/articles/neY7Vrq</a></p>
+<p><a href="http://www.tuicool.com/articles/neY7Vrq" target="_blank" rel="noopener">http://www.tuicool.com/articles/neY7Vrq</a></p>
 <p>suse http zypper源 http<br>apache2<br>分发服务器<br>/srv/www/<br>HA namenode snamenode<br>zypper 源配置 添加http源 ar 指定源名字</p>
 <p>/mnt/suse/x86_64/postgresql91-9.1.24-1.1.x86_64.rpm</p>
-<p><a href="http://ftp.rrzn.uni-hannover.de/opensuse/repositories/server:/database:/postgresql/SLE_11_SP3/x86_64/?winzoom=1" target="_blank" rel="external">http://ftp.rrzn.uni-hannover.de/opensuse/repositories/server:/database:/postgresql/SLE_11_SP3/x86_64/?winzoom=1</a></p>
+<p><a href="http://ftp.rrzn.uni-hannover.de/opensuse/repositories/server:/database:/postgresql/SLE_11_SP3/x86_64/?winzoom=1" target="_blank" rel="noopener">http://ftp.rrzn.uni-hannover.de/opensuse/repositories/server:/database:/postgresql/SLE_11_SP3/x86_64/?winzoom=1</a></p>
 <p>sudo /usr/sbin/groupadd manage</p>
 <p>manage@ddp-dn-101:/home&gt; sudo chown manage:manage manage/</p>
 <p><code>zypper ar http://10.200.58.43/ local.main</code></p>
@@ -472,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Ruby/Ruby入门.html" rel="next" title="Ruby入门">
-                <i class="fa fa-chevron-left"></i> Ruby入门
+              <a href="/Kafka/kafka的相关概念.html" rel="next" title="kafka的相关概念">
+                <i class="fa fa-chevron-left"></i> kafka的相关概念
               </a>
             
           </div>
@@ -482,8 +483,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/选择和配置数据压缩.html" rel="prev" title="选择和配置数据压缩">
-                选择和配置数据压缩 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Error/[HDFS]Namenode日志存储空间问题.html" rel="prev" title="Namenode日志存储空间问题">
+                Namenode日志存储空间问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -539,7 +540,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -547,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -558,7 +559,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -601,7 +602,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

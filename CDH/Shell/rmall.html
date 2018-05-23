@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="for i in cat ~/servers.txtdo    echo “————–begin to change ntpd to $i————–” ssh $i &amp;apos;service cloudera-scm-agent stop&amp;apos; ssh $i &amp;apos;umount /var/run/cloudera-scm-agent/process&amp;apos; ssh $i &amp;apo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rmall">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Shell/rmall.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="for i in cat ~/servers.txtdo    echo “————–begin to change ntpd to $i————–” ssh $i &amp;apos;service cloudera-scm-agent stop&amp;apos; ssh $i &amp;apos;umount /var/run/cloudera-scm-agent/process&amp;apos; ssh $i &amp;apo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T15:12:06.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rmall">
+<meta name="twitter:description" content="for i in cat ~/servers.txtdo    echo “————–begin to change ntpd to $i————–” ssh $i &amp;apos;service cloudera-scm-agent stop&amp;apos; ssh $i &amp;apos;umount /var/run/cloudera-scm-agent/process&amp;apos; ssh $i &amp;apo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Shell/rmall.html"/>
+
+
+
+
+
+  <title>rmall | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Shell/rmall.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">rmall</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>for i in <code>cat ~/servers.txt</code><br>do<br>    echo “————–begin to change ntpd to $i————–”</p>
+<pre><code>ssh $i &apos;service cloudera-scm-agent stop&apos;
+ssh $i &apos;umount /var/run/cloudera-scm-agent/process&apos;
+ssh $i &apos;rm -rf /usr/share/cmf /var/lib/cloudera* /var/cache/zypp/packages/cloudera-* /var/cache/zypp/raw/cloudera-* /var/cache/zypp/solv/cloudera-* /var/log/cloudera-scm-* /var/run/&apos;cloudera-scm-* /etc/cloudera-scm-server*&apos;
+ssh $i &apos;rpm -qa |grep cloudera&apos;
+ssh $i &apos;rpm -e cloudera-manager-agent-5.13.0-1.cm5130.p0.55.el7.x86_64&apos;
+ssh $i &apos;rpm -e cloudera-manager-daemons-5.13.0-1.cm5130.p0.55.el7.x86_64&apos;
+ssh $i rm -rf /var/lib/hadoop-* /var/lib/impala /var/lib/solr /var/lib/zookeeper /var/lib/hue /var/lib/oozie  /var/lib/pgsql  /var/lib/sqoop2  /data/dfs/  /data/impala/ /data/yarn/  /dfs/ /impala/ /yarn/  /var/run/hadoop-*/ /var/run/hdfs-*/ /usr/bin/hadoop* /usr/bin/zookeeper* /usr/bin/hbase* /usr/bin/hive* /usr/bin/hdfs /usr/bin/mapred /usr/bin/yarn /usr/&apos;bin/sqoop* /usr/bin/oozie /etc/hadoop* /etc/zookeeper* /etc/hive* /etc/hue /etc/impala /etc/sqoop* /etc/oozie /etc/hbase* /etc/hcatalog &apos;
+ssh $i &apos;rm -rf /opt/cloudera/parcel-cache /opt/cloudera/parcels&apos;
+ssh $i &apos;ps aux|grep  supervisord |grep -v grep | awk &apos;{print &quot;kill -9 &quot;$2}&apos;|sh&apos;
+
+
+
+
+</code></pre><p>done</p>
+<hr>
+<p>[root@tddp-nm-5 ~]# route del default gw 10.151.0.1<br>[root@tddp-nm-5 ~]# route add default gw 10.150.4.1</p>
+<hr>
+<h2 id="Zypper-源配置"><a href="#Zypper-源配置" class="headerlink" title="Zypper 源配置"></a>Zypper 源配置</h2><p>zypper ar <a href="http://10.200.58.39/suse/" target="_blank" rel="noopener">http://10.200.58.39/suse/</a> local.main<br>zypper update</p>
+<h2 id="备份源地址："><a href="#备份源地址：" class="headerlink" title="备份源地址："></a>备份源地址：</h2><p>zypper ar <a href="http://10.200.58.43" target="_blank" rel="noopener">http://10.200.58.43</a> local.main<br>zypper ar <a href="http://10.200.58.70/SLES-11-SP3/x86_64/" target="_blank" rel="noopener">http://10.200.58.70/SLES-11-SP3/x86_64/</a> main</p>
+<p>zypper 常用命令：<br>      repos, lr     List all defined repositories.<br>addrepo, ar     Add a new repository.<br>removerepo, rr      Remove specified repository.<br>renamerepo, nr      Rename specified repository.<br>modifyrepo, mr      Modify specified repository.<br>refresh, ref        Refresh all repositories.<br>clean           Clean local caches.</p>
+<hr>
+<h2 id="角色启动失败-报错supervisor"><a href="#角色启动失败-报错supervisor" class="headerlink" title="角色启动失败 报错supervisor"></a>角色启动失败 报错supervisor</h2><p>检查一下,客户端配置是否部署<br>检查 krb5.conf</p>
+<hr>
+<p>for i in <code>cat ~/servers.txt</code><br>do<br>    echo “————–begin to rm cloudera to $i————–”</p>
+<pre><code>scp /root/rmall.sh $i:/root/
+ssh $i &apos;sh /root/rmall.sh&apos;
+
+
+</code></pre><p>done</p>
+<p>service cloudera-scm-server stop<br>service cloudera-scm-agent stop<br>umount /var/run/cloudera-scm-agent/process<br>rm -rf /usr/share/cmf /var/lib/cloudera<em> /var/cache/zypp/packages/cloudera-</em> /var/cache/zypp/raw/cloudera-<em> /var/cache/zypp/solv/cloudera-</em> /var/log/cloudera-scm-<em> /var/run/cloudera-scm-</em> /etc/cloudera-scm-server<em><br>rpm -qa |grep cloudera<br>rpm -e cloudera-manager-agent-5.13.0-1.cm5130.p0.55.el7.x86_64<br>rpm -e cloudera-manager-server-5.13.0-1.cm5130.p0.55.el7.x86_64<br>rpm -e cloudera-manager-daemons-5.13.0-1.cm5130.p0.55.el7.x86_64<br>rm -rf /var/lib/hadoop-</em> /var/lib/impala /var/lib/solr /var/lib/zookeeper /var/lib/hue /var/lib/oozie  /var/lib/pgsql  /var/lib/sqoop2  /data/dfs/  /data/impala/ /data/yarn/  /dfs/ /impala/ /yarn/  /var/run/hadoop-<em>/ /var/run/hdfs-</em>/ /usr/bin/hadoop<em> /usr/bin/zookeeper</em> /usr/bin/hbase<em> /usr/bin/hive</em> /usr/bin/hdfs /usr/bin/mapred /usr/bin/yarn /usr/bin/sqoop<em> /usr/bin/oozie /etc/hadoop</em> /etc/zookeeper<em> /etc/hive</em> /etc/hue /etc/impala /etc/sqoop<em> /etc/oozie /etc/hbase</em> /etc/hcatalog<br>rm -rf /opt/cloudera/parcel-cache /opt/cloudera/parcels<br>ps aux|grep  supervisord |grep -v grep | awk ‘{print “kill -9 “ $2}’|sh</p>
+<p>drop database amon_test;<br>drop database hue_test;<br>drop database cm_test;<br>drop database metastore_test;<br>drop database nav_test;<br>drop database navms_test;<br>drop database oozie_test;<br>drop database rman_test;<br>drop database sentry_test;<br>show databases;</p>
+<p>create database metastore_test default character set utf8;<br>GRANT ALL PRIVILEGES ON metastore_test. <em> TO ‘hive’@’%’;<br>create database amon_test default character set utf8;<br>grant all privileges on amon_test.</em> to ‘amon’@’%’;<br>create database rman_test default character set utf8;<br>grant all privileges on rman_test.<em> to ‘rman’@’%’;<br>create database sentry_test default character set utf8;<br>grant all privileges on sentry_test.</em> to ‘sentry’@’%’;<br>create database nav_test default character set utf8;<br>grant all privileges on nav_test.<em> to ‘nav’@’%’;<br>create database navms_test default character set utf8;<br>grant all privileges on navms_test.</em> to ‘navms’@’%’;<br>create database cm_test default character set utf8;<br>grant all privileges on cm_test.<em> to ‘cm’@’%’;<br>create database hue_test default character set utf8;<br>GRANT ALL PRIVILEGES ON hue_test.</em> TO ‘hue’@’%’;<br>create database oozie_test default character set utf8;<br>GRANT ALL PRIVILEGES ON oozie_test.* TO ‘oozie’@’%’;<br>FLUSH PRIVILEGES;</p>
+<p>[root@tddp-nm-5 ~]# route del default gw 10.151.0.1<br>[root@tddp-nm-5 ~]# route add default gw 10.150.4.1</p>
+<p>route del default gw 10.151.0.1<br>route add default gw 10.150.4.1</p>
+<p>route add -net 10.200.0.0/16 gw 10.151.0.1<br>route add -net 10.125.137.0/24 gw 10.151.0.1</p>
+<p>route add -net 10.150.4.0/16 gw 10.150.4.1<br>(删除路由 route del -net 10.125.137.0/24 gw 10.150.4.1<br>显示路由 netstat -rn)</p>
+<p>yum install cloudera-manager-daemons cloudera-manager-server<br>/usr/share/cmf/schema/scm_prepare_database.sh -h 10.150.4.88 mysql cm_test cm Cloudera@123<br>vi /etc/hosts<br>sh sync_hosts.sh<br>service cloudera-scm-server start</p>
+<p>tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log </p>
+<p><a href="http://10.151.0.147:7180/cmf/login" target="_blank" rel="noopener">http://10.151.0.147:7180/cmf/login</a></p>
+<p>10.150.4.88<br>10.150.4.96<br>10.150.4.97<br>10.150.4.98<br>10.150.4.90<br>10.150.4.92<br>10.150.4.89<br>10.150.4.95<br>10.150.4.94<br>10.150.4.93<br>10.150.4.86<br>10.150.4.85<br>10.150.4.84<br>10.150.4.83<br>10.150.4.81</p>
+<p><a href="http://10.150.4.81/cloudera/cdh/cdh5.13/" target="_blank" rel="noopener">http://10.150.4.81/cloudera/cdh/cdh5.13/</a></p>
+<p><a href="http://10.150.4.81/cloudera/cm5/redhat/7/5.13.0/" target="_blank" rel="noopener">http://10.150.4.81/cloudera/cm5/redhat/7/5.13.0/</a></p>
+<p>[root@tddp-zk-2 ~]# tail -f /var/log/cloudera-scm-agent/cloudera-scm-agent.log </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/OpenLDAP,AD,Samba,FreeIPA介绍.html" rel="next" title="OpenLDAP,AD,Samba,FreeIPA介绍">
+                <i class="fa fa-chevron-left"></i> OpenLDAP,AD,Samba,FreeIPA介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/Linux下解压,压缩JAR包的方法.html" rel="prev" title="Linux下解压,压缩JAR包的方法">
+                Linux下解压,压缩JAR包的方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">153</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zypper-源配置"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Zypper-&#x6E90;&#x914D;&#x7F6E;" class="headerlink" title="Zypper &#x6E90;&#x914D;&#x7F6E;"></a>Zypper &#x6E90;&#x914D;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备份源地址："><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5907;&#x4EFD;&#x6E90;&#x5730;&#x5740;&#xFF1A;" class="headerlink" title="&#x5907;&#x4EFD;&#x6E90;&#x5730;&#x5740;&#xFF1A;"></a>&#x5907;&#x4EFD;&#x6E90;&#x5730;&#x5740;&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角色启动失败-报错supervisor"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x89D2;&#x8272;&#x542F;&#x52A8;&#x5931;&#x8D25;-&#x62A5;&#x9519;supervisor" class="headerlink" title="&#x89D2;&#x8272;&#x542F;&#x52A8;&#x5931;&#x8D25; &#x62A5;&#x9519;supervisor"></a>&#x89D2;&#x8272;&#x542F;&#x52A8;&#x5931;&#x8D25; &#x62A5;&#x9519;supervisor</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

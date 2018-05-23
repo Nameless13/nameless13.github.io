@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Document/Docker入门到实践.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="Docker–入门到实践Virtuial Machineseach virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries,but also an entire guest operating system - which">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker入门到实践">
@@ -613,7 +614,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -621,7 +622,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -632,7 +633,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -668,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker–入门到实践"><span class="nav-number">1.</span> <span class="nav-text">Docker–入门到实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-系列安装Docker"><span class="nav-number">1.2.</span> <span class="nav-text">CentOS 系列安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动已终止容器"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">启动已终止容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后台background运行"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">后台background运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-master"><span class="nav-number">1.3.</span> <span class="nav-text">redis-master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-slave"><span class="nav-number">1.4.</span> <span class="nav-text">redis-slave</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#宿主机上如何获得-docker-container-容器的-ip-地址？"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">宿主机上如何获得 docker container 容器的 ip 地址？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Docker容器内外互相拷贝数据"><span class="nav-number">1.4.1.</span> <span class="nav-text">在Docker容器内外互相拷贝数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从容器内拷贝文件到主机上"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">从容器内拷贝文件到主机上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从主机上拷贝文件到容器内"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">从主机上拷贝文件到容器内</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#退出容器而不停止容器"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">退出容器而不停止容器</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker–入门到实践"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Docker&#x2013;&#x5165;&#x95E8;&#x5230;&#x5B9E;&#x8DF5;" class="headerlink" title="Docker&#x2013;&#x5165;&#x95E8;&#x5230;&#x5B9E;&#x8DF5;"></a>Docker&#x2013;&#x5165;&#x95E8;&#x5230;&#x5B9E;&#x8DF5;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="headerlink" title="&#x57FA;&#x672C;&#x6982;&#x5FF5;"></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-系列安装Docker"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#CentOS-&#x7CFB;&#x5217;&#x5B89;&#x88C5;Docker" class="headerlink" title="CentOS &#x7CFB;&#x5217;&#x5B89;&#x88C5;Docker"></a>CentOS &#x7CFB;&#x5217;&#x5B89;&#x88C5;Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动已终止容器"><span class="nav-number">1.2.0.1.</span> <span class="nav-text"><a href="#&#x542F;&#x52A8;&#x5DF2;&#x7EC8;&#x6B62;&#x5BB9;&#x5668;" class="headerlink" title="&#x542F;&#x52A8;&#x5DF2;&#x7EC8;&#x6B62;&#x5BB9;&#x5668;"></a>&#x542F;&#x52A8;&#x5DF2;&#x7EC8;&#x6B62;&#x5BB9;&#x5668;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后台background运行"><span class="nav-number">1.2.0.2.</span> <span class="nav-text"><a href="#&#x540E;&#x53F0;background&#x8FD0;&#x884C;" class="headerlink" title="&#x540E;&#x53F0;background&#x8FD0;&#x884C;"></a>&#x540E;&#x53F0;background&#x8FD0;&#x884C;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-master"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#redis-master" class="headerlink" title="redis-master"></a>redis-master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-slave"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#redis-slave" class="headerlink" title="redis-slave"></a>redis-slave</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#宿主机上如何获得-docker-container-容器的-ip-地址？"><span class="nav-number">1.4.0.1.</span> <span class="nav-text"><a href="#&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x5982;&#x4F55;&#x83B7;&#x5F97;-docker-container-&#x5BB9;&#x5668;&#x7684;-ip-&#x5730;&#x5740;&#xFF1F;" class="headerlink" title="&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x5982;&#x4F55;&#x83B7;&#x5F97; docker container &#x5BB9;&#x5668;&#x7684; ip &#x5730;&#x5740;&#xFF1F;"></a>&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x5982;&#x4F55;&#x83B7;&#x5F97; docker container &#x5BB9;&#x5668;&#x7684; ip &#x5730;&#x5740;&#xFF1F;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Docker容器内外互相拷贝数据"><span class="nav-number">1.4.1.</span> <span class="nav-text"><a href="#&#x5728;Docker&#x5BB9;&#x5668;&#x5185;&#x5916;&#x4E92;&#x76F8;&#x62F7;&#x8D1D;&#x6570;&#x636E;" class="headerlink" title="&#x5728;Docker&#x5BB9;&#x5668;&#x5185;&#x5916;&#x4E92;&#x76F8;&#x62F7;&#x8D1D;&#x6570;&#x636E;"></a>&#x5728;Docker&#x5BB9;&#x5668;&#x5185;&#x5916;&#x4E92;&#x76F8;&#x62F7;&#x8D1D;&#x6570;&#x636E;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从容器内拷贝文件到主机上"><span class="nav-number">1.4.1.1.</span> <span class="nav-text"><a href="#&#x4ECE;&#x5BB9;&#x5668;&#x5185;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5230;&#x4E3B;&#x673A;&#x4E0A;" class="headerlink" title="&#x4ECE;&#x5BB9;&#x5668;&#x5185;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5230;&#x4E3B;&#x673A;&#x4E0A;"></a>&#x4ECE;&#x5BB9;&#x5668;&#x5185;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5230;&#x4E3B;&#x673A;&#x4E0A;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从主机上拷贝文件到容器内"><span class="nav-number">1.4.1.2.</span> <span class="nav-text"><a href="#&#x4ECE;&#x4E3B;&#x673A;&#x4E0A;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5230;&#x5BB9;&#x5668;&#x5185;" class="headerlink" title="&#x4ECE;&#x4E3B;&#x673A;&#x4E0A;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5230;&#x5BB9;&#x5668;&#x5185;"></a>&#x4ECE;&#x4E3B;&#x673A;&#x4E0A;&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5230;&#x5BB9;&#x5668;&#x5185;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#退出容器而不停止容器"><span class="nav-number">1.4.1.3.</span> <span class="nav-text"><a href="#&#x9000;&#x51FA;&#x5BB9;&#x5668;&#x800C;&#x4E0D;&#x505C;&#x6B62;&#x5BB9;&#x5668;" class="headerlink" title="&#x9000;&#x51FA;&#x5BB9;&#x5668;&#x800C;&#x4E0D;&#x505C;&#x6B62;&#x5BB9;&#x5668;"></a>&#x9000;&#x51FA;&#x5BB9;&#x5668;&#x800C;&#x4E0D;&#x505C;&#x6B62;&#x5BB9;&#x5668;</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -691,7 +692,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

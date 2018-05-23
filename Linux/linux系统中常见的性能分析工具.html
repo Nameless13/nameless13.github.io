@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Linux/linux系统中常见的性能分析工具.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="linux系统中常见的性能分析工具 vmstatvmstat是linux/unix上一个监控工具，能展示给定时间间隔的服务器的状态，包括操作系统的内存信息，CPU使用状态、进程信息等。  语法：vmstat [-V] [delay [count]] #-V     打印出vmstat工具的版本信息 #delay  设置两次输出的时间间隔 #count  设置总共输出的次数    host-xxx-">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux系统中常见的性能分析工具">
@@ -467,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/HBase/HBase架构详解.html" rel="next" title="HBase架构详解">
-                <i class="fa fa-chevron-left"></i> HBase架构详解
+              <a href="/CDH/Error/[CM]CM日志迁移.html" rel="next" title="CM日志迁移">
+                <i class="fa fa-chevron-left"></i> CM日志迁移
               </a>
             
           </div>
@@ -477,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Error/大数据平台-Zabbix agent恢复.html" rel="prev" title="大数据平台-Zabbix agent恢复">
-                大数据平台-Zabbix agent恢复 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/HBase/MapReduce on HBase.html" rel="prev" title="MapReduce on HBase">
+                MapReduce on HBase <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -543,7 +544,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -551,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -562,7 +563,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -598,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vmstat"><span class="nav-number">1.</span> <span class="nav-text">vmstat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sar命令"><span class="nav-number">2.</span> <span class="nav-text">sar命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iostat"><span class="nav-number">3.</span> <span class="nav-text">iostat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#netstat"><span class="nav-number">4.</span> <span class="nav-text">netstat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#free"><span class="nav-number">5.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uptime"><span class="nav-number">6.</span> <span class="nav-text">uptime</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vmstat"><span class="nav-number">1.</span> <span class="nav-text"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sar命令"><span class="nav-number">2.</span> <span class="nav-text"><a href="#sar&#x547D;&#x4EE4;" class="headerlink" title="sar&#x547D;&#x4EE4;"></a>sar&#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iostat"><span class="nav-number">3.</span> <span class="nav-text"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#netstat"><span class="nav-number">4.</span> <span class="nav-text"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#free"><span class="nav-number">5.</span> <span class="nav-text"><a href="#free" class="headerlink" title="free"></a>free</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uptime"><span class="nav-number">6.</span> <span class="nav-text"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</span></a></li></ol></div>
             
 
           </div>
@@ -621,7 +622,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Kafka/kafka的相关概念.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="kafka的相关概念AMPQ协议一些基本的概念:  消费者(Consumer):从消息队列中请求消息的客户端应用程序 生产者(Producer):向broker发布消息的客户端应用程序 AMQP服务器端(broker):用来接收生产者发送的消息并将这些消息路由给服务器中的队列  kafka支持的客户端语言支持当前大部分主流语言(变形自己的consumer和producer程序) kafka架构一些">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka的相关概念">
@@ -448,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/java/java加密解密.html" rel="next" title="java加密解密">
-                <i class="fa fa-chevron-left"></i> java加密解密
+              <a href="/Linux/shell/shell编程.html" rel="next" title="shell编程">
+                <i class="fa fa-chevron-left"></i> shell编程
               </a>
             
           </div>
@@ -458,8 +459,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Kerberos MIT/kerberos配置.html" rel="prev" title="kerberos配置">
-                kerberos配置 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Upgrade/手动安装zypper源和rpm包.html" rel="prev" title="手动安装zypper源和rpm包">
+                手动安装zypper源和rpm包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,7 +525,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -532,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -543,7 +544,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -579,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka的相关概念"><span class="nav-number">1.</span> <span class="nav-text">kafka的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMPQ协议"><span class="nav-number">1.1.</span> <span class="nav-text">AMPQ协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka支持的客户端语言"><span class="nav-number">1.2.</span> <span class="nav-text">kafka支持的客户端语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka架构"><span class="nav-number">1.3.</span> <span class="nav-text">kafka架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper集群搭建"><span class="nav-number">2.</span> <span class="nav-text">Zookeeper集群搭建</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka的相关概念"><span class="nav-number">1.</span> <span class="nav-text"><a href="#kafka&#x7684;&#x76F8;&#x5173;&#x6982;&#x5FF5;" class="headerlink" title="kafka&#x7684;&#x76F8;&#x5173;&#x6982;&#x5FF5;"></a>kafka&#x7684;&#x76F8;&#x5173;&#x6982;&#x5FF5;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMPQ协议"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#AMPQ&#x534F;&#x8BAE;" class="headerlink" title="AMPQ&#x534F;&#x8BAE;"></a>AMPQ&#x534F;&#x8BAE;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka支持的客户端语言"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#kafka&#x652F;&#x6301;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8BED;&#x8A00;" class="headerlink" title="kafka&#x652F;&#x6301;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8BED;&#x8A00;"></a>kafka&#x652F;&#x6301;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8BED;&#x8A00;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka架构"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#kafka&#x67B6;&#x6784;" class="headerlink" title="kafka&#x67B6;&#x6784;"></a>kafka&#x67B6;&#x6784;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper集群搭建"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Zookeeper&#x96C6;&#x7FA4;&#x642D;&#x5EFA;" class="headerlink" title="Zookeeper&#x96C6;&#x7FA4;&#x642D;&#x5EFA;"></a>Zookeeper&#x96C6;&#x7FA4;&#x642D;&#x5EFA;</span></a></li></ol></div>
             
 
           </div>
@@ -602,7 +603,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Linux/sed/sed.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="sed流处理编辑器 文本或管道输入 读入一行到模式空间(临时缓冲区) sed命令处理(处理后接着读下一行) 输出到屏幕  文本处理正则选定文本sed进行处理 格式 命令行格式 $sed [option] &amp;#39;command&amp;#39; file(s) optians: -e ; -n command: 行定位(正则) + sed命令(操作) $sed -n &amp;#39;/root/p&amp;#39;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed">
@@ -472,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/python/readme.html" rel="next" title="readme">
-                <i class="fa fa-chevron-left"></i> readme
+              <a href="/CDH/ZooKeeper/Zookeeper应用场景.html" rel="next" title="Zookeeper应用场景">
+                <i class="fa fa-chevron-left"></i> Zookeeper应用场景
               </a>
             
           </div>
@@ -482,8 +483,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux/shell/shell编程.html" rel="prev" title="shell编程">
-                shell编程 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Error/[Hive]hive LZO压缩格式支持.html" rel="prev" title="hive LZO压缩格式支持">
+                hive LZO压缩格式支持 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -548,7 +549,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -556,7 +557,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +568,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -603,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sed"><span class="nav-number">1.</span> <span class="nav-text">sed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流处理编辑器"><span class="nav-number">1.1.</span> <span class="nav-text">流处理编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理"><span class="nav-number">1.2.</span> <span class="nav-text">文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式"><span class="nav-number">1.2.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作命令"><span class="nav-number">1.2.2.</span> <span class="nav-text">操作命令</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sed"><span class="nav-number">1.</span> <span class="nav-text"><a href="#sed" class="headerlink" title="sed"></a>sed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流处理编辑器"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x6D41;&#x5904;&#x7406;&#x7F16;&#x8F91;&#x5668;" class="headerlink" title="&#x6D41;&#x5904;&#x7406;&#x7F16;&#x8F91;&#x5668;"></a>&#x6D41;&#x5904;&#x7406;&#x7F16;&#x8F91;&#x5668;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x6587;&#x672C;&#x5904;&#x7406;" class="headerlink" title="&#x6587;&#x672C;&#x5904;&#x7406;"></a>&#x6587;&#x672C;&#x5904;&#x7406;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#&#x683C;&#x5F0F;" class="headerlink" title="&#x683C;&#x5F0F;"></a>&#x683C;&#x5F0F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作命令"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x547D;&#x4EE4;" class="headerlink" title="&#x64CD;&#x4F5C;&#x547D;&#x4EE4;"></a>&#x64CD;&#x4F5C;&#x547D;&#x4EE4;</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -626,7 +627,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

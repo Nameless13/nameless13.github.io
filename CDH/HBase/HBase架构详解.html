@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/HBase/HBase架构详解.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="HBase架构详解Hbase架构Hbase组件client 整个Hbase集群的入口 使用Hbase RPC机制与HMaster和HRegionserver通信 与HMaster通信进行管理类的操作 与HRegionserver通信进行读写类操作 包含访问HBase的接口,并维护cache来加快对HBase的访问,与HRegionserver交互  程序协调服务ZooKeeper 保证任何时候,集">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HBase架构详解">
@@ -552,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/HBase/HBase入门.html" rel="next" title="HBase入门">
-                <i class="fa fa-chevron-left"></i> HBase入门
+              <a href="/CDH/HBase/MapReduce on HBase.html" rel="next" title="MapReduce on HBase">
+                <i class="fa fa-chevron-left"></i> MapReduce on HBase
               </a>
             
           </div>
@@ -562,8 +563,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux/linux系统中常见的性能分析工具.html" rel="prev" title="linux系统中常见的性能分析工具">
-                linux系统中常见的性能分析工具 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/HBase/HBase入门.html" rel="prev" title="HBase入门">
+                HBase入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -628,7 +629,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -636,7 +637,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -647,7 +648,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -683,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase架构详解"><span class="nav-number">1.</span> <span class="nav-text">HBase架构详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase架构"><span class="nav-number">1.1.</span> <span class="nav-text">Hbase架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase组件"><span class="nav-number">1.1.1.</span> <span class="nav-text">Hbase组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#client"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">client</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序协调服务ZooKeeper"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">程序协调服务ZooKeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hbase主节点Master"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Hbase主节点Master</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HRegionServer节点"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">HRegionServer节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase架构-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">Hbase架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hbase与ZooKeeper"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Hbase与ZooKeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找RegionServer过程详解"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">寻找RegionServer过程详解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase容错性"><span class="nav-number">1.1.3.</span> <span class="nav-text">Hbase容错性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase数据存储"><span class="nav-number">1.2.</span> <span class="nav-text">Hbase数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HRegionServer"><span class="nav-number">1.2.1.</span> <span class="nav-text">HRegionServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HStore-MemStore-和-StoreFile"><span class="nav-number">1.2.2.</span> <span class="nav-text">HStore (MemStore 和 StoreFile)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#StoreFile文件结构"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">StoreFile文件结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">压缩</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KeyValue-存储结构"><span class="nav-number">1.2.3.</span> <span class="nav-text">KeyValue 存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HLog文件结构"><span class="nav-number">1.2.4.</span> <span class="nav-text">HLog文件结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase内部表"><span class="nav-number">1.3.</span> <span class="nav-text">Hbase内部表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase内部表-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Hbase内部表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hbck修复错误表"><span class="nav-number">1.3.2.</span> <span class="nav-text">hbck修复错误表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase管理命令"><span class="nav-number">1.4.</span> <span class="nav-text">Hbase管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flush"><span class="nav-number">1.4.1.</span> <span class="nav-text">Flush</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compact"><span class="nav-number">1.4.2.</span> <span class="nav-text">Compact</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Region"><span class="nav-number">1.4.3.</span> <span class="nav-text">Region</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase架构详解"><span class="nav-number">1.</span> <span class="nav-text"><a href="#HBase&#x67B6;&#x6784;&#x8BE6;&#x89E3;" class="headerlink" title="HBase&#x67B6;&#x6784;&#x8BE6;&#x89E3;"></a>HBase&#x67B6;&#x6784;&#x8BE6;&#x89E3;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase架构"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Hbase&#x67B6;&#x6784;" class="headerlink" title="Hbase&#x67B6;&#x6784;"></a>Hbase&#x67B6;&#x6784;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase组件"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#Hbase&#x7EC4;&#x4EF6;" class="headerlink" title="Hbase&#x7EC4;&#x4EF6;"></a>Hbase&#x7EC4;&#x4EF6;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#client"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"><a href="#client" class="headerlink" title="client"></a>client</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序协调服务ZooKeeper"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"><a href="#&#x7A0B;&#x5E8F;&#x534F;&#x8C03;&#x670D;&#x52A1;ZooKeeper" class="headerlink" title="&#x7A0B;&#x5E8F;&#x534F;&#x8C03;&#x670D;&#x52A1;ZooKeeper"></a>&#x7A0B;&#x5E8F;&#x534F;&#x8C03;&#x670D;&#x52A1;ZooKeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hbase主节点Master"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"><a href="#Hbase&#x4E3B;&#x8282;&#x70B9;Master" class="headerlink" title="Hbase&#x4E3B;&#x8282;&#x70B9;Master"></a>Hbase&#x4E3B;&#x8282;&#x70B9;Master</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HRegionServer节点"><span class="nav-number">1.1.1.4.</span> <span class="nav-text"><a href="#HRegionServer&#x8282;&#x70B9;" class="headerlink" title="HRegionServer&#x8282;&#x70B9;"></a>HRegionServer&#x8282;&#x70B9;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase架构-1"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#Hbase&#x67B6;&#x6784;-1" class="headerlink" title="Hbase&#x67B6;&#x6784;"></a>Hbase&#x67B6;&#x6784;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hbase与ZooKeeper"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"><a href="#Hbase&#x4E0E;ZooKeeper" class="headerlink" title="Hbase&#x4E0E;ZooKeeper"></a>Hbase&#x4E0E;ZooKeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找RegionServer过程详解"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"><a href="#&#x5BFB;&#x627E;RegionServer&#x8FC7;&#x7A0B;&#x8BE6;&#x89E3;" class="headerlink" title="&#x5BFB;&#x627E;RegionServer&#x8FC7;&#x7A0B;&#x8BE6;&#x89E3;"></a>&#x5BFB;&#x627E;RegionServer&#x8FC7;&#x7A0B;&#x8BE6;&#x89E3;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase容错性"><span class="nav-number">1.1.3.</span> <span class="nav-text"><a href="#Hbase&#x5BB9;&#x9519;&#x6027;" class="headerlink" title="Hbase&#x5BB9;&#x9519;&#x6027;"></a>Hbase&#x5BB9;&#x9519;&#x6027;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase数据存储"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#Hbase&#x6570;&#x636E;&#x5B58;&#x50A8;" class="headerlink" title="Hbase&#x6570;&#x636E;&#x5B58;&#x50A8;"></a>Hbase&#x6570;&#x636E;&#x5B58;&#x50A8;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HRegionServer"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#HRegionServer" class="headerlink" title="HRegionServer"></a>HRegionServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HStore-MemStore-和-StoreFile"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#HStore-MemStore-&#x548C;-StoreFile" class="headerlink" title="HStore (MemStore &#x548C; StoreFile)"></a>HStore (MemStore &#x548C; StoreFile)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#StoreFile文件结构"><span class="nav-number">1.2.2.1.</span> <span class="nav-text"><a href="#StoreFile&#x6587;&#x4EF6;&#x7ED3;&#x6784;" class="headerlink" title="StoreFile&#x6587;&#x4EF6;&#x7ED3;&#x6784;"></a>StoreFile&#x6587;&#x4EF6;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩"><span class="nav-number">1.2.2.2.</span> <span class="nav-text"><a href="#&#x538B;&#x7F29;" class="headerlink" title="&#x538B;&#x7F29;"></a>&#x538B;&#x7F29;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KeyValue-存储结构"><span class="nav-number">1.2.3.</span> <span class="nav-text"><a href="#KeyValue-&#x5B58;&#x50A8;&#x7ED3;&#x6784;" class="headerlink" title="KeyValue &#x5B58;&#x50A8;&#x7ED3;&#x6784;"></a>KeyValue &#x5B58;&#x50A8;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HLog文件结构"><span class="nav-number">1.2.4.</span> <span class="nav-text"><a href="#HLog&#x6587;&#x4EF6;&#x7ED3;&#x6784;" class="headerlink" title="HLog&#x6587;&#x4EF6;&#x7ED3;&#x6784;"></a>HLog&#x6587;&#x4EF6;&#x7ED3;&#x6784;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase内部表"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#Hbase&#x5185;&#x90E8;&#x8868;" class="headerlink" title="Hbase&#x5185;&#x90E8;&#x8868;"></a>Hbase&#x5185;&#x90E8;&#x8868;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase内部表-1"><span class="nav-number">1.3.1.</span> <span class="nav-text"><a href="#Hbase&#x5185;&#x90E8;&#x8868;-1" class="headerlink" title="Hbase&#x5185;&#x90E8;&#x8868;"></a>Hbase&#x5185;&#x90E8;&#x8868;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hbck修复错误表"><span class="nav-number">1.3.2.</span> <span class="nav-text"><a href="#hbck&#x4FEE;&#x590D;&#x9519;&#x8BEF;&#x8868;" class="headerlink" title="hbck&#x4FEE;&#x590D;&#x9519;&#x8BEF;&#x8868;"></a>hbck&#x4FEE;&#x590D;&#x9519;&#x8BEF;&#x8868;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase管理命令"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#Hbase&#x7BA1;&#x7406;&#x547D;&#x4EE4;" class="headerlink" title="Hbase&#x7BA1;&#x7406;&#x547D;&#x4EE4;"></a>Hbase&#x7BA1;&#x7406;&#x547D;&#x4EE4;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flush"><span class="nav-number">1.4.1.</span> <span class="nav-text"><a href="#Flush" class="headerlink" title="Flush"></a>Flush</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compact"><span class="nav-number">1.4.2.</span> <span class="nav-text"><a href="#Compact" class="headerlink" title="Compact"></a>Compact</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Region"><span class="nav-number">1.4.3.</span> <span class="nav-text"><a href="#Region" class="headerlink" title="Region"></a>Region</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -706,7 +707,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/HBase/HBase入门.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="HBase入门HBase概述–Hbase表特点 大:一个表可以有数十亿行,上百万列 面向列:面向列(族)的存储和权限访问,列(族)独立索引 稀疏:对于为空(null)的列,并不占用存储空间,因此,表可以设计的非常稀疏 数据类型单一:HBase的数据类型都是字符串 无模式:每行都有一个可以排序的主键和任意多的列,列可以诶根据需要动态增加,同一张表中的不同的行可以有截然不同的列   HBase VS">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HBase入门">
@@ -509,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/HBase/MapReduce on HBase.html" rel="next" title="MapReduce on HBase">
-                <i class="fa fa-chevron-left"></i> MapReduce on HBase
+              <a href="/CDH/HBase/HBase架构详解.html" rel="next" title="HBase架构详解">
+                <i class="fa fa-chevron-left"></i> HBase架构详解
               </a>
             
           </div>
@@ -519,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/HBase/HBase架构详解.html" rel="prev" title="HBase架构详解">
-                HBase架构详解 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/CM/选择和配置数据压缩.html" rel="prev" title="选择和配置数据压缩">
+                选择和配置数据压缩 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +586,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -593,7 +594,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -604,7 +605,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -640,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase入门"><span class="nav-number">1.</span> <span class="nav-text">HBase入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase概述–Hbase表特点"><span class="nav-number">1.1.</span> <span class="nav-text">HBase概述–Hbase表特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase-VS-RDBMS"><span class="nav-number">1.1.1.</span> <span class="nav-text">HBase VS RDBMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#术语说明"><span class="nav-number">1.1.2.</span> <span class="nav-text">术语说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主键"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列族-Column-Family"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">列族 (Column Family )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间戳和存储单元"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">时间戳和存储单元</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-HDFS目录分析"><span class="nav-number">1.2.</span> <span class="nav-text">HBase HDFS目录分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Region"><span class="nav-number">1.2.1.</span> <span class="nav-text">Region</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS目录"><span class="nav-number">1.2.2.</span> <span class="nav-text">HDFS目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-Shell-操作"><span class="nav-number">1.3.</span> <span class="nav-text">HBase Shell 操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase入门"><span class="nav-number">1.</span> <span class="nav-text"><a href="#HBase&#x5165;&#x95E8;" class="headerlink" title="HBase&#x5165;&#x95E8;"></a>HBase&#x5165;&#x95E8;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase概述–Hbase表特点"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#HBase&#x6982;&#x8FF0;&#x2013;Hbase&#x8868;&#x7279;&#x70B9;" class="headerlink" title="HBase&#x6982;&#x8FF0;&#x2013;Hbase&#x8868;&#x7279;&#x70B9;"></a>HBase&#x6982;&#x8FF0;&#x2013;Hbase&#x8868;&#x7279;&#x70B9;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase-VS-RDBMS"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#HBase-VS-RDBMS" class="headerlink" title="HBase VS RDBMS"></a>HBase VS RDBMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#术语说明"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#&#x672F;&#x8BED;&#x8BF4;&#x660E;" class="headerlink" title="&#x672F;&#x8BED;&#x8BF4;&#x660E;"></a>&#x672F;&#x8BED;&#x8BF4;&#x660E;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主键"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"><a href="#&#x4E3B;&#x952E;" class="headerlink" title="&#x4E3B;&#x952E;"></a>&#x4E3B;&#x952E;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列族-Column-Family"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"><a href="#&#x5217;&#x65CF;-Column-Family" class="headerlink" title="&#x5217;&#x65CF; (Column Family )"></a>&#x5217;&#x65CF; (Column Family )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间戳和存储单元"><span class="nav-number">1.1.2.3.</span> <span class="nav-text"><a href="#&#x65F6;&#x95F4;&#x6233;&#x548C;&#x5B58;&#x50A8;&#x5355;&#x5143;" class="headerlink" title="&#x65F6;&#x95F4;&#x6233;&#x548C;&#x5B58;&#x50A8;&#x5355;&#x5143;"></a>&#x65F6;&#x95F4;&#x6233;&#x548C;&#x5B58;&#x50A8;&#x5355;&#x5143;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-HDFS目录分析"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#HBase-HDFS&#x76EE;&#x5F55;&#x5206;&#x6790;" class="headerlink" title="HBase HDFS&#x76EE;&#x5F55;&#x5206;&#x6790;"></a>HBase HDFS&#x76EE;&#x5F55;&#x5206;&#x6790;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Region"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#Region" class="headerlink" title="Region"></a>Region</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS目录"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#HDFS&#x76EE;&#x5F55;" class="headerlink" title="HDFS&#x76EE;&#x5F55;"></a>HDFS&#x76EE;&#x5F55;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-Shell-操作"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#HBase-Shell-&#x64CD;&#x4F5C;" class="headerlink" title="HBase Shell &#x64CD;&#x4F5C;"></a>HBase Shell &#x64CD;&#x4F5C;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -663,7 +664,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

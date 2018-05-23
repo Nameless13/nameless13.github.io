@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="CentOS7 关闭防火墙,禁用ipv6CentOS7 关闭防火墙firewall-cmd –state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running） [root@localhost network-scripts]# firewall-cmd --staterunning[root@localhost network-scripts]# systemctl s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7 关闭防火墙,禁用ipv6">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Installation/CentOS7 关闭防火墙,禁用ipv6.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="CentOS7 关闭防火墙,禁用ipv6CentOS7 关闭防火墙firewall-cmd –state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running） [root@localhost network-scripts]# firewall-cmd --staterunning[root@localhost network-scripts]# systemctl s">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T15:12:06.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7 关闭防火墙,禁用ipv6">
+<meta name="twitter:description" content="CentOS7 关闭防火墙,禁用ipv6CentOS7 关闭防火墙firewall-cmd –state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running） [root@localhost network-scripts]# firewall-cmd --staterunning[root@localhost network-scripts]# systemctl s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://nameless13.github.io/CDH/Installation/CentOS7 关闭防火墙,禁用ipv6.html"/>
+
+
+
+
+
+  <title>CentOS7 关闭防火墙,禁用ipv6 | Nameless13</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nameless13</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/CentOS7 关闭防火墙,禁用ipv6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CentOS7 关闭防火墙,禁用ipv6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Installation/" itemprop="url" rel="index">
+                    <span itemprop="name">Installation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CentOS7-关闭防火墙-禁用ipv6"><a href="#CentOS7-关闭防火墙-禁用ipv6" class="headerlink" title="CentOS7 关闭防火墙,禁用ipv6"></a>CentOS7 关闭防火墙,禁用ipv6</h1><h2 id="CentOS7-关闭防火墙"><a href="#CentOS7-关闭防火墙" class="headerlink" title="CentOS7 关闭防火墙"></a>CentOS7 关闭防火墙</h2><p>firewall-cmd –state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running）</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost network-scripts]# firewall-cmd --state</div><div class="line">running</div><div class="line">[root@localhost network-scripts]# systemctl stop firewalld.service </div><div class="line">[75721.569225] Ebtables v2.0 unregistered</div><div class="line">[root@localhost network-scripts]# systemctl disable firewalld.service</div><div class="line">Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.</div><div class="line">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.</div><div class="line">[root@localhost network-scripts]# firewall-cmd --state</div><div class="line">not running</div></pre></td></tr></table></figure>
+</p>
+<p>systemctl stop firewalld.service #停止firewall<br>systemctl disable firewalld.service #禁止firewall开机启动</p>
+<h2 id="CentOS7禁用ipv6"><a href="#CentOS7禁用ipv6" class="headerlink" title="CentOS7禁用ipv6"></a>CentOS7禁用ipv6</h2><p>vi /etc/default/grub<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GRUB_TIMEOUT=1</div><div class="line">GRUB_DISTRIBUTOR=&quot;$(sed &apos;s, release .*$,,g&apos; /etc/system-release)&quot;</div><div class="line">GRUB_DEFAULT=saved</div><div class="line">GRUB_DISABLE_SUBMENU=true</div><div class="line">GRUB_TERMINAL=&quot;serial console&quot;</div><div class="line">GRUB_SERIAL_COMMAND=&quot;serial --speed=115200&quot;</div><div class="line">GRUB_CMDLINE_LINUX=&quot;ipv6.disable=1 console=tty0 crashkernel=auto console=ttyS0,115200&quot;</div><div class="line">GRUB_DISABLE_RECOVERY=&quot;true&quot;</div><div class="line">GRUB_DEVICE=LABEL=cloudimg-rootfs</div><div class="line">GRUB_DISABLE_LINUX_UUID=true</div><div class="line">GRUB_TIMEOUT=5</div><div class="line">GRUB_TERMINAL=&quot;serial console&quot;</div><div class="line">GRUB_GFXPAYLOAD_LINUX=text</div><div class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;console=tty0 console=ttyS0,115200 no_timer_check&quot;</div><div class="line">GRUB_SERIAL_COMMAND=&quot;serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1&quot;</div><div class="line">GRUB_CMDLINE_LINUX=&quot;nofb nomodeset vga=normal&quot;</div></pre></td></tr></table></figure></p>
+<p>grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+<p>[root@localhost network-scripts]# cat /proc/sys/net/ipv6/conf/all/disable_ipv6<br>0</p>
+<p>If the output is 0, IPv6 is enabled.<br>If the output is 1, IPv6 is already disabled.</p>
+<p>lsmod | grep ipv6</p>
+<p>169.254.169.254</p>
+<p>cloud-init[1716]: 2018-01-08 10:05:08,907 - url_helper.py[WARNING]: Calling ‘<a href="http://10.151.164.1/latest/meta-data/instance-id" target="_blank" rel="noopener">http://10.151.164.1/latest/meta-data/instance-id</a>‘ failed [30/120s]: request error [(‘Connection aborted.’, error(111, ‘Connection refused’))]</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CDH/Hive/hive元数据库升级脚本.html" rel="next" title="hive元数据库升级脚本">
+                <i class="fa fa-chevron-left"></i> hive元数据库升级脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CDH/Installation/Linux 修改时区.html" rel="prev" title="Linux 修改时区">
+                Linux 修改时区 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">153</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS7-关闭防火墙-禁用ipv6"><span class="nav-number">1.</span> <span class="nav-text"><a href="#CentOS7-&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;-&#x7981;&#x7528;ipv6" class="headerlink" title="CentOS7 &#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;,&#x7981;&#x7528;ipv6"></a>CentOS7 &#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;,&#x7981;&#x7528;ipv6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7-关闭防火墙"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#CentOS7-&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;" class="headerlink" title="CentOS7 &#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;"></a>CentOS7 &#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7禁用ipv6"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#CentOS7&#x7981;&#x7528;ipv6" class="headerlink" title="CentOS7&#x7981;&#x7528;ipv6"></a>CentOS7&#x7981;&#x7528;ipv6</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nameless13</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

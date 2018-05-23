@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/python/Python 学习笔记.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="LEGB : L&amp;gt;E&amp;gt;G&amp;gt;B L:local 函数内部作用域 E:enclosing 函数内部与内嵌函数之间 G:global 全局作用域 B:buil-in 内置作用域   函数体内部的语句在执行时，一旦执行到return时，函数就执行完毕，并将结果返回。因此，函数内部通过条件判断和循环可以实现非常复杂的逻辑。 如果没有return语句，函数执行完毕后也会返回结果，只是结果为N">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 学习笔记">
@@ -431,7 +432,7 @@
 <h2 id="错误错误处理"><a href="#错误错误处理" class="headerlink" title="错误错误处理"></a>错误错误处理</h2><p>从输出可以看到，当错误发生时，后续语句print ‘result:’, r不会被执行，except由于捕获到ZeroDivisionError，因此被执行。最后，finally语句被执行。然后，程序继续按照流程往下走。</p>
 <p>由于没有错误发生，所以except语句块不会被执行，但是finally如果有，则一定会被执行（可以没有finally语句）。<br>错误应该有很多种类，如果发生了不同类型的错误，应该由不同的except语句块处理。没错，可以有多个except来捕获不同类型的错误：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">try:</div><div class="line">    print &apos;try...&apos;</div><div class="line">    r = 10 / int(&apos;a&apos;)</div><div class="line">    print &apos;result:&apos;, r</div><div class="line">except ValueError, e:</div><div class="line">    print &apos;ValueError:&apos;, e</div><div class="line">except ZeroDivisionError, e:</div><div class="line">    print &apos;ZeroDivisionError:&apos;, e</div><div class="line">finally:</div><div class="line">    print &apos;finally...&apos;</div><div class="line">print &apos;END&apos;</div></pre></td></tr></table></figure></p>
 <p>Python所有的错误都是从BaseException类派生的，常见的错误类型和继承关系看这里：</p>
-<p><a href="https://docs.python.org/2/library/exceptions.html#exception-hierarchy" target="_blank" rel="external">https://docs.python.org/2/library/exceptions.html#exception-hierarchy</a></p>
+<p><a href="https://docs.python.org/2/library/exceptions.html#exception-hierarchy" target="_blank" rel="noopener">https://docs.python.org/2/library/exceptions.html#exception-hierarchy</a></p>
 <p>使用try…except捕获错误还有一个巨大的好处，就是可以跨越多层调用，比如函数main()调用foo()，foo()调用bar()，结果bar()出错了，这时，只要main()捕获到了，就可以处理</p>
 <p>如果不捕获错误，自然可以让Python解释器来打印出错误堆栈，但程序也被结束了。既然我们能捕获错误，就可以把错误堆栈打印出来，然后分析错误原因，同时，让程序继续执行下去</p>
 <p>如果要抛出错误，首先根据需要，可以定义一个错误的class，选择好继承关系，然后，用raise语句抛出一个错误的实例</p>
@@ -485,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux/shell/shell编程.html" rel="next" title="shell编程">
-                <i class="fa fa-chevron-left"></i> shell编程
+              <a href="/CDH/CM/Cloudera Manager和CDH快速入门指南.html" rel="next" title="Cloudera Manager和CDH快速入门指南">
+                <i class="fa fa-chevron-left"></i> Cloudera Manager和CDH快速入门指南
               </a>
             
           </div>
@@ -495,8 +496,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Error/Hue隧道访问失效.html" rel="prev" title="Hue隧道访问失效">
-                Hue隧道访问失效 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html" rel="prev" title="大数据平台-Zabbix agent恢复">
+                大数据平台-Zabbix agent恢复 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +562,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -569,7 +570,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -580,7 +581,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -616,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LEGB-L-gt-E-gt-G-gt-B"><span class="nav-number">1.</span> <span class="nav-text">LEGB : L>E>G>B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误错误处理"><span class="nav-number">2.</span> <span class="nav-text">错误错误处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LEGB-L-gt-E-gt-G-gt-B"><span class="nav-number">1.</span> <span class="nav-text"><a href="#LEGB-L-gt-E-gt-G-gt-B" class="headerlink" title="LEGB : L&gt;E&gt;G&gt;B"></a>LEGB : L&gt;E&gt;G&gt;B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误错误处理"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x9519;&#x8BEF;&#x9519;&#x8BEF;&#x5904;&#x7406;" class="headerlink" title="&#x9519;&#x8BEF;&#x9519;&#x8BEF;&#x5904;&#x7406;"></a>&#x9519;&#x8BEF;&#x9519;&#x8BEF;&#x5904;&#x7406;</span></a></li></ol></div>
             
 
           </div>
@@ -639,7 +640,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

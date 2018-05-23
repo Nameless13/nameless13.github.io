@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/CDH/Spark/动态资源分配.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="动态资源分配Spark提供了一种机制，可以根据工作负载动态调整应用程序占用的资源。这意味着如果您的应用程序不再使用，您的应用程序可能会将资源返回给群集，并在需要时再次请求它们。如果多个应用程序在Spark群集中共享资源，则此功能特别有用。 默认情况下禁用此功能，并且可在所有粗粒度集群管理器上使用此功能，例如 独立模式，YARN模式和 Mesos粗粒度模式。 配置和设置使用此功能有两个要求。首先，您">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-25T16:13:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态资源分配">
@@ -447,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/Error/Spark-sql 添加.html" rel="next" title="spark-sql添加">
-                <i class="fa fa-chevron-left"></i> spark-sql添加
+              <a href="/Document/Linux中history历史命令使用方法详解.html" rel="next" title="Linux中history历史命令使用方法详解">
+                <i class="fa fa-chevron-left"></i> Linux中history历史命令使用方法详解
               </a>
             
           </div>
@@ -457,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Error/SSH 登录错误.html" rel="prev" title="SSH 登录错误">
-                SSH 登录错误 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/Error/[Spark]spark提交任务失败.html" rel="prev" title="spark提交任务失败">
+                spark提交任务失败 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -523,7 +524,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -531,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -542,7 +543,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -578,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态资源分配"><span class="nav-number">1.</span> <span class="nav-text">动态资源分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置和设置"><span class="nav-number">2.</span> <span class="nav-text">配置和设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源分配政策"><span class="nav-number">3.</span> <span class="nav-text">资源分配政策</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求政策"><span class="nav-number">3.1.</span> <span class="nav-text">请求政策</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态资源分配"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x52A8;&#x6001;&#x8D44;&#x6E90;&#x5206;&#x914D;" class="headerlink" title="&#x52A8;&#x6001;&#x8D44;&#x6E90;&#x5206;&#x914D;"></a>&#x52A8;&#x6001;&#x8D44;&#x6E90;&#x5206;&#x914D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置和设置"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x914D;&#x7F6E;&#x548C;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x914D;&#x7F6E;&#x548C;&#x8BBE;&#x7F6E;"></a>&#x914D;&#x7F6E;&#x548C;&#x8BBE;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源分配政策"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8D44;&#x6E90;&#x5206;&#x914D;&#x653F;&#x7B56;" class="headerlink" title="&#x8D44;&#x6E90;&#x5206;&#x914D;&#x653F;&#x7B56;"></a>&#x8D44;&#x6E90;&#x5206;&#x914D;&#x653F;&#x7B56;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求政策"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x8BF7;&#x6C42;&#x653F;&#x7B56;" class="headerlink" title="&#x8BF7;&#x6C42;&#x653F;&#x7B56;"></a>&#x8BF7;&#x6C42;&#x653F;&#x7B56;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -601,7 +602,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

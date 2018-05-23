@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://nameless13.github.io/Redis/redis服务搭建/Redis Sentinel.html">
 <meta property="og:site_name" content="Nameless13">
 <meta property="og:description" content="Redis SentinelSentinel介绍Sentinel是Redis官方为集群提供的高可用解决方案。 在实际项目中可以使用sentinel去做redis自动故障转移，减少人工介入的工作量。另外sentinel也给客户端提供了监控消息的通知，这样客户端就可根据消息类型去判断服务器的状态，去做对应的适配操作。 Sentinel主要功能列表:  Monitoring：Sentinel持续检查集群">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T05:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis Sentinel">
@@ -615,7 +616,7 @@
                alt="Nameless13" />
           <p class="site-author-name" itemprop="name">Nameless13</p>
            
-              <p class="site-description motion-element" itemprop="description">90后技术宅,主攻大数据,折腾黑苹果,以及一点前端,求个拖我去健身房的妹子ಥ_ಥ</p>
+              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -623,7 +624,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">153</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -634,7 +635,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -670,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Sentinel"><span class="nav-number">1.</span> <span class="nav-text">Redis Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Sentinel介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel配置"><span class="nav-number">1.2.</span> <span class="nav-text">Sentinel配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障转移消息接收的3种方式"><span class="nav-number">1.3.</span> <span class="nav-text">故障转移消息接收的3种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本接收"><span class="nav-number">1.3.1.</span> <span class="nav-text">脚本接收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端直接接收"><span class="nav-number">1.3.2.</span> <span class="nav-text">客户端直接接收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务间接接收"><span class="nav-number">1.3.3.</span> <span class="nav-text">服务间接接收</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体设计"><span class="nav-number">1.4.</span> <span class="nav-text">整体设计</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Sentinel"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Redis-Sentinel" class="headerlink" title="Redis Sentinel"></a>Redis Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel介绍"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Sentinel&#x4ECB;&#x7ECD;" class="headerlink" title="Sentinel&#x4ECB;&#x7ECD;"></a>Sentinel&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel配置"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#Sentinel&#x914D;&#x7F6E;" class="headerlink" title="Sentinel&#x914D;&#x7F6E;"></a>Sentinel&#x914D;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障转移消息接收的3种方式"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x6D88;&#x606F;&#x63A5;&#x6536;&#x7684;3&#x79CD;&#x65B9;&#x5F0F;" class="headerlink" title="&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x6D88;&#x606F;&#x63A5;&#x6536;&#x7684;3&#x79CD;&#x65B9;&#x5F0F;"></a>&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x6D88;&#x606F;&#x63A5;&#x6536;&#x7684;3&#x79CD;&#x65B9;&#x5F0F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本接收"><span class="nav-number">1.3.1.</span> <span class="nav-text"><a href="#&#x811A;&#x672C;&#x63A5;&#x6536;" class="headerlink" title="&#x811A;&#x672C;&#x63A5;&#x6536;"></a>&#x811A;&#x672C;&#x63A5;&#x6536;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端直接接收"><span class="nav-number">1.3.2.</span> <span class="nav-text"><a href="#&#x5BA2;&#x6237;&#x7AEF;&#x76F4;&#x63A5;&#x63A5;&#x6536;" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF;&#x76F4;&#x63A5;&#x63A5;&#x6536;"></a>&#x5BA2;&#x6237;&#x7AEF;&#x76F4;&#x63A5;&#x63A5;&#x6536;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务间接接收"><span class="nav-number">1.3.3.</span> <span class="nav-text"><a href="#&#x670D;&#x52A1;&#x95F4;&#x63A5;&#x63A5;&#x6536;" class="headerlink" title="&#x670D;&#x52A1;&#x95F4;&#x63A5;&#x63A5;&#x6536;"></a>&#x670D;&#x52A1;&#x95F4;&#x63A5;&#x63A5;&#x6536;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体设计"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x6574;&#x4F53;&#x8BBE;&#x8BA1;" class="headerlink" title="&#x6574;&#x4F53;&#x8BBE;&#x8BA1;"></a>&#x6574;&#x4F53;&#x8BBE;&#x8BA1;</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -693,7 +694,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
