@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
+<!doctype html>
 
 
 
@@ -18,11 +9,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -49,7 +36,36 @@
 
 
 
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -58,19 +74,10 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,36 +86,14 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: 'J3OX6892F7',
-      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
-      indexName: 'Blog',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
-  <meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nameless13">
 <meta property="og:url" content="https://nameless13.github.io/page/2/index.html">
@@ -121,6 +106,27 @@
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
 
@@ -128,11 +134,7 @@
 
 
 
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>Nameless13</title>
   
@@ -145,32 +147,10 @@
 
 
 
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
+
+
 
 </head>
 
@@ -182,7 +162,8 @@
   
 
   <div class="container sidebar-position-left 
-  page-home">
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -191,17 +172,19 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -209,61 +192,45 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-    <a href="/404/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
-  </li>
-
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -271,20 +238,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -297,18 +256,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/kt_renewer.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -323,40 +276,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Kerberos MIT/kt_renewer.html" itemprop="url">
-                  kt_renewer
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Kerberos MIT/kt_renewer.html" itemprop="url">kt_renewer</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 10:31:24 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T10:31:24+08:00">2018-05-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T10:31:24+08:00">
+                2018-05-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -369,17 +307,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index"><span itemprop="name">Kerberos MIT</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index">
+                    <span itemprop="name">Kerberos MIT</span>
+                  </a>
+                </span>
 
                 
                 
@@ -404,9 +350,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -422,17 +365,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -446,10 +389,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -462,18 +401,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/Spark集成S3 Service.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -488,40 +421,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Spark/Spark集成S3 Service.html" itemprop="url">
-                  Spark集成S3 Service
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Spark/Spark集成S3 Service.html" itemprop="url">Spark集成S3 Service</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -534,17 +452,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
 
                 
                 
@@ -569,9 +495,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -602,736 +525,18 @@
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/操作系统镜像初始化(裸金属主机).html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/操作系统镜像初始化(裸金属主机).html" itemprop="url">
-                  操作系统镜像初始化(裸金属主机)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="资源池环境搭建"><a href="#资源池环境搭建" class="headerlink" title="资源池环境搭建"></a>资源池环境搭建</h1><p>最终给到手的机器 DELL730(单独做无存储计算节点)，系统盘800G，加8块960Gssd，外加1.6TFlash,在这台上面做初始化配置好了再做个最终使用的镜像。</p>
-<h2 id="操作系统配置准备"><a href="#操作系统配置准备" class="headerlink" title="操作系统配置准备"></a>操作系统配置准备</h2><ol>
-<li><p>建议对操作系统盘做RAID1</p>
-</li>
-<li><p>需要配置OS的repository，以便yum可以访问OS镜像[需要 createrepo httpd python-psycopg2 krb5*]</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">find /etc/yum.repos.d/ -name &quot;*.repo&quot; -exec mv &#123;&#125; &#123;&#125;.bak \; </div><div class="line">rpm -ivh --force --nodeps http://10.200.40.49/pub/centos-release-el6.noarch.rpm</div><div class="line">yum clean all</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>配置静态IP地址</p>
-</li>
-<li><p>需要所有主机/etc/hosts内容一致确保静态DNS解析</p>
-</li>
-<li><p>需要使用root用户 或者创建一个无密码使用sudo权限的其他用户[uid必须保持一致]<br>devops 4[&amp;3bFaK4g[U</p>
-</li>
-<li><p>关闭并禁用iptables</p>
-</li>
-<li><p>关闭SELinux<br><code>echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux;</code></p>
-</li>
-<li><p>重启网络服务，并初始化网络<br><code>/etc/init.d/network restart</code></p>
-</li>
-<li><p>修改transparent_hugepage参数<br><code>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</code><br><code>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</code><br>同时确保开机自动关闭transparent_hugepage<br><code>vi /etc/rc.d/rc.local</code></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES</div><div class="line">#</div><div class="line"># It is highly advisable to create own systemd services or udev rules</div><div class="line"># to run scripts during boot instead of using this file.</div><div class="line">#</div><div class="line"># In contrast to previous versions due to parallel execution during boot</div><div class="line"># this script will NOT be run after all other services.</div><div class="line">#</div><div class="line"># Please note that you must run &apos;chmod +x /etc/rc.d/rc.local&apos; to ensure</div><div class="line"># that this script will be executed during boot.</div><div class="line"></div><div class="line">touch /var/lock/subsys/local</div><div class="line"></div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/enabled; then</div><div class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</div><div class="line">fi</div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/defrag; then</div><div class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</div><div class="line">fi</div></pre></td></tr></table></figure>
-</p>
-<p>最后给rc.local赋予执行权限 <code>chmod +x /etc/rc.d/rc.local</code></p>
-</li>
-<li><p>禁用交换内存</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo 0 &gt;/proc/sys/vm/swappiness</div><div class="line">echo &apos;vm.swappiness=0&apos;&gt;&gt; /etc/sysctl.conf</div><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>修改/etc/security/limits.conf或者在/etc/security/limits.d下增加相应的配置文件 </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">* soft noproc 11000</div><div class="line">* hard noproc 11000</div><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>需要统一开启ntp服务,并且开机启动<br>在集群中选择一台机器作为ntp服务器，剩余的作为ntp客户端。所有客户端时间与ntp服务器保持同步。<br><code>vi /etc/ntp.conf</code><br>ntp同步ip地址和鹏博士的保持一致:</p>
-<p>&lt;!--     server 64.113.32.5
-server 216.229.0.179 --&gt;
-</p>
-<p>server 10.200.92.18<br>server 10.200.92.20 </p>
-<p>systemctl start ntpd.service<br>systemctl enable ntpd.service</p>
-<p>[root@nm-2 ~]# ntpq -p</p>
-<pre><code>remote           refid      st t when poll reach   delay   offset  jitter
-
-</code></pre><p>==============================================================================<br> nist.netservice .ACTS.           1 u    7   64    1  238.736   -7.477   0.000<br> nist1-lnk.binar .ACTS.           1 u    6   64    1  234.281   -6.177   0.000</p>
-<p>systemctl disable chronyd 会影响ntp服务的开机启动所以禁用掉了</p>
-</li>
-</ol>
-<ol>
-<li>同时配置spark2.2需要java8环境<br>创建JDBC存放目录<code>mkdir -p /usr/java/</code><br>解压所给的tar包</li>
-</ol>
-<ol>
-<li><p>禁用IPV6</p>
-</li>
-<li><p>准备jdbc连接mysql的jar包<br>[root@nm-7 ~]# mkdir /usr/share/java<br>[root@nm-7 ~]# ln -s /usr/share/java/mysql-connector-java-5.1.38-bin.jar /usr/share/java/mysql-connector-java.jar</p>
-</li>
-</ol>
-<p><a href="http://detail.zol.com.cn/400/399822/param.shtml" target="_blank" rel="noopener">http://detail.zol.com.cn/400/399822/param.shtml</a> Intel Xeon E5-2640 v3参数<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">基本参数    </div><div class="line">CPU系列Xeon E5-2600 v3系列</div><div class="line">制作工艺22纳米</div><div class="line">核心代号Haswell</div><div class="line">性能参数    </div><div class="line">核心数量八核心</div><div class="line">线程数量十六线程</div><div class="line">CPU主频2.6GHz</div><div class="line">L3缓存20MB</div><div class="line">总线规格QPI 8GT/s</div><div class="line">热设计功耗(TDP)90W</div><div class="line">内存规格    </div><div class="line">支持最大内存容量768GB</div><div class="line">内存类型DDR4 1600/1866MHz</div><div class="line">内存描述DDR4 1600/1866MHz 技术</div><div class="line">封装规格    </div><div class="line">插槽类型LGA 2011-3</div><div class="line">封装大小45×52.5mm</div><div class="line">最高容许温度(Tcase)74.3°C</div><div class="line">最大CPU配置2颗</div><div class="line">技术参数    </div><div class="line">睿频加速技术支持，2.0</div><div class="line">超线程技术支持</div><div class="line">虚拟化技术Intel VT-x</div><div class="line">指令集AVX 2.0，64bit</div><div class="line">64位处理器支持</div><div class="line">其它技术支持博锐技术 ，定向I/O虚拟化技术，增强型SpeedStep技术，按需配电技术，温度监视技术，数据保护技术，平台保护技术</div><div class="line">集成显卡不支持 纠错</div></pre></td></tr></table></figure></p>
-<p><a href="http://detail.zol.com.cn/1142/1141738/param.shtml" target="_blank" rel="noopener">http://detail.zol.com.cn/1142/1141738/param.shtml</a> Intel Xeon E5-2620 v4</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">基本参数    </div><div class="line">CPU系列Xeon E5 v4系列</div><div class="line">制作工艺14纳米</div><div class="line">核心代号Broadwell</div><div class="line">性能参数    </div><div class="line">核心数量八核心</div><div class="line">线程数量十六线程</div><div class="line">CPU主频2.1GHz</div><div class="line">动态加速频率3GHz</div><div class="line">L3缓存20MB</div><div class="line">总线规格QPI 8GT/s</div><div class="line">热设计功耗(TDP)85W</div><div class="line">内存规格    </div><div class="line">支持最大内存容量1536GB</div><div class="line">内存类型DDR4 1600/1866/2133MHz</div><div class="line">封装规格    </div><div class="line">插槽类型LGA 2011-3</div><div class="line">封装大小52.5×51mm</div><div class="line">最高容许温度(Tcase)74°C</div><div class="line">最大CPU配置2颗</div><div class="line">技术参数    </div><div class="line">睿频加速技术支持，2.0</div><div class="line">超线程技术支持</div><div class="line">虚拟化技术Intel VT</div><div class="line">指令集AVX 2.0，64-bit</div><div class="line">64位处理器支持</div><div class="line">其它技术支持博锐技术 ，定向I/O虚拟化技术，增强型SpeedStep技术，按需配电技术，温度监视技术，数据保护技术，平台保护技术</div><div class="line">集成显卡不支持</div></pre></td></tr></table></figure>
-</p>
-<p><a href="http://detail.zol.com.cn/ProductComp_param_399822-1141732-1141738.html" target="_blank" rel="noopener">http://detail.zol.com.cn/ProductComp_param_399822-1141732-1141738.html</a> </p>
-
-          
-        
+    <div>
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/操作系统镜像初始化(openstack).html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/操作系统镜像初始化(openstack).html" itemprop="url">
-                  操作系统镜像初始化(openstack)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="资源池环境搭建"><a href="#资源池环境搭建" class="headerlink" title="资源池环境搭建"></a>资源池环境搭建</h1><blockquote>
-<p>Nameless13</p>
-</blockquote>
-<h2 id="操作系统配置准备"><a href="#操作系统配置准备" class="headerlink" title="操作系统配置准备"></a>操作系统配置准备</h2><ol>
-<li><p>建议对操作系统盘做RAID1[无法满足]</p>
-</li>
-<li><p>需要配置OS的repository，以便yum可以访问OS镜像[需要 createrepo httpd postgresql91 python-psycopg2 ]</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Usage: Local YUM  [Adept for RHEL/CentOS]</div><div class="line"></div><div class="line">1. Backup repository. </div><div class="line">find /etc/yum.repos.d/ -name &quot;*.repo&quot; -exec mv &#123;&#125; &#123;&#125;.bak \; </div><div class="line"></div><div class="line">2. Install </div><div class="line">For CentOS6/RHEL6: rpm -ivh --force --nodeps http://10.200.40.49/pub/centos-release-el6.noarch.rpm</div><div class="line">For CentOS7/RHEL7: rpm -ivh --force --nodeps http://10.200.40.49/pub/centos-release-el7.noarch.rpm</div><div class="line"></div><div class="line">3. Update cache </div><div class="line">yum clean all</div><div class="line">yum makecache</div><div class="line"></div><div class="line"></div><div class="line"># Description</div><div class="line"></div><div class="line">系统安全加固:     curl -s http://10.200.40.49/pub/install | bash </div><div class="line">SA安装:   curl -s http://10.200.40.49/pub/sa | bash </div><div class="line">YUM源配置:     curl -s http://10.200.40.49/pub/yum | bash </div><div class="line">OpenSSH升级:  curl -s http://10.200.40.49/pub/ssh7.5 | bash</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>配置静态IP地址[无法满足,DHCP]</p>
-</li>
-<li><p>需要所有主机/etc/hosts内容一致确保静态DNS解析[相互包含]<br>由于hostname会<br>hostname规范 </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">nm-1   10.150.4.88     10.151.0.185    mysql,hive metastore</div><div class="line">nm-2   10.150.4.96     10.151.0.193    mysql,hive metastore</div><div class="line">nm-3   10.150.4.97     10.151.0.194    [namenode,failover controller,HttpFS,JobHistory Server],ResourceManager</div><div class="line">nm-4   10.150.4.98     10.151.0.195    [namenode,failover controller,HttpFS],ResourceManager</div><div class="line">nm-5   10.150.4.90     10.151.0.187    spark1 history server,(NodeManager)</div><div class="line">nm-6   10.150.4.92     10.151.0.189    impala catalog server,impala statestore,(NodeManager)</div><div class="line">nm-7   10.150.4.89     10.151.0.186    [hue,kerberos ticket renewer],sqoop,ooize,hiveserver2</div><div class="line">nm-8   10.150.4.95     10.151.0.192    spark2 history server,(NodeManager)</div><div class="line">nm-9   10.150.4.94     10.151.0.191    [DataNode],(NodeManager,impala deamon)</div><div class="line">nm-10  10.150.4.93     10.151.0.190    [DataNode],(NodeManager,impala deamon)</div><div class="line">nm-11  10.150.4.86     10.151.0.183    [DataNode],(NodeManager,impala deamon)</div><div class="line">zk-1   10.150.4.85     10.151.0.182    Zookeeper,kerberos server,(NodeManager)</div><div class="line">zk-2   10.150.4.84     10.151.0.181    Zookeeper,kerberos server,(NodeManager) </div><div class="line">zk-3   10.150.4.83     10.151.0.180    Zookeeper,(NodeManager)</div><div class="line">sj-cm  10.150.4.81     10.151.0.147    cm,sentry,haproxy,(NodeManager)</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>需要使用root用户 或者无密码使用sudo权限的其他用户[uid必须保持一致]</p>
-</li>
-<li><p>关闭并禁用iptables[无需操作]<br>提供的KVM Centos7 的镜像源默认没有开启防火墙</p>
-</li>
-<li><p>关闭SELinux<br><code>echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux;</code></p>
-</li>
-<li><p>重启网络服务，并初始化网络[无需操作]<br>由于网络由openstack那边配好所以不需要    <code>/etc/init.d/network restart</code></p>
-</li>
-<li><p>修改transparent_hugepage参数，这一参数默认值可能会导致CDH性能下降<br><code>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</code><br><code>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</code><br>同时确保开机自动关闭transparent_hugepage<br><code>vi /etc/rc.d/rc.local</code></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES</div><div class="line">#</div><div class="line"># It is highly advisable to create own systemd services or udev rules</div><div class="line"># to run scripts during boot instead of using this file.</div><div class="line">#</div><div class="line"># In contrast to previous versions due to parallel execution during boot</div><div class="line"># this script will NOT be run after all other services.</div><div class="line">#</div><div class="line"># Please note that you must run &apos;chmod +x /etc/rc.d/rc.local&apos; to ensure</div><div class="line"># that this script will be executed during boot.</div><div class="line"></div><div class="line">touch /var/lock/subsys/local</div><div class="line"></div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/enabled; then</div><div class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</div><div class="line">fi</div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/defrag; then</div><div class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</div><div class="line">fi</div></pre></td></tr></table></figure>
-</p>
-<p>最后给rc.local赋予执行权限 <code>chmod +x /etc/rc.d/rc.local</code></p>
-</li>
-<li><p>禁用交换内存<br><code>vi /etc/sysctl.conf</code><br>增加一行：vm.swappiness=0<br><code>sudo sysctl vm.swappiness=0</code></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo 0 &gt;/proc/sys/vm/swappiness</div><div class="line">echo &apos;vm.swappiness=0&apos;&gt;&gt; /etc/sysctl.conf</div><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>修改/etc/security/limits.conf或者在/etc/security/limits.d下增加相应的配置文件 </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">* soft noproc 11000</div><div class="line">* hard noproc 11000</div><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>需要统一开启ntp服务,并且开机启动<br>在集群中选择一台机器作为ntp服务器，剩余的作为ntp客户端。所有客户端时间与ntp服务器保持同步。<br><code>vi /etc/ntp.conf</code><br>ntp同步ip地址和鹏博士的保持一致:<br>server 64.113.32.5<br>server 216.229.0.179</p>
-<p>systemctl start ntpd.service<br>systemctl enable ntpd.service</p>
-<p>[root@nm-2 ~]# ntpq -p</p>
-<pre><code>remote           refid      st t when poll reach   delay   offset  jitter
-
-</code></pre><p>==============================================================================<br> nist.netservice .ACTS.           1 u    7   64    1  238.736   -7.477   0.000<br> nist1-lnk.binar .ACTS.           1 u    6   64    1  234.281   -6.177   0.000</p>
-<p>systemctl disable chronyd 会影响ntp服务的开机启动所以禁用掉了</p>
-</li>
-</ol>
-<ol>
-<li><p>同时配置spark2.2需要java8环境+特定的jce包<br>JAVA_HOME=/usr/java/jdk1.8.0_144/<br>创建JDBC存放目录<code>mkdir -p /usr/share/java/</code><br>同时替换为cdh的jce</p>
-</li>
-<li><p>配置路由连通鹏博士IDC以及Ceph的RGW<br>route add -net 10.200.0.0/16 gw 10.151.0.1<br>route add -net 10.125.137.0/24 gw 10.151.0.1<br>(删除路由 route del -net 10.125.137.0/24 gw 10.150.4.1<br>显示路由 netstat -rn)    </p>
-</li>
-<li><p>disable ipv6,同时需要配置4个网卡<br>ifcfg-eth1、ifcfg-ens5、ifcfg-ens6，这几个文件的内容与ifcfg-eth0一样，只是里面的device名字不同，取-后面的</p>
-</li>
-<li><p>RHEL 7 &amp; CentOS 7禁用IPV6<br><a href="http://blog.csdn.net/bluishglc/article/details/41390785" target="_blank" rel="noopener">http://blog.csdn.net/bluishglc/article/details/41390785</a></p>
-</li>
-<li><p>准备jdbc连接mysql的jar包<br>[root@sj-cm ~]# scp /usr/share/java/mysql-connector-java-5.1.38-bin.jar 10.150.4.89:/usr/share/java/<br>[root@nm-7 ~]# mkdir /usr/share/java<br>[root@nm-7 ~]# ln -s /usr/share/java/mysql-connector-java-5.1.38-bin.jar /usr/share/java/mysql-connector-java.jar</p>
-</li>
-<li><p>检查文件完整性</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@cm cdh5.13]# ll</div><div class="line">total 1889332</div><div class="line">-rw-r--r-- 1 root root 1934590563 Oct 18 16:13 CDH-5.13.0-1.cdh5.13.0.p0.29-el7.parcel</div><div class="line">-rw-r--r-- 1 root root         41 Oct 18 16:13 CDH-5.13.0-1.cdh5.13.0.p0.29-el7.parcel.sha1</div><div class="line">-rw-r--r-- 1 root root      74072 Oct 18 16:13 manifest.json</div><div class="line">[root@cm cdh5.13]# sha1sum CDH-5.13.0-1.cdh5.13.0.p0.29-el7.parcel</div><div class="line">bef6f3f074e0a88cd79d6d37abc6698471e3d279  CDH-5.13.0-1.cdh5.13.0.p0.29-el7.parcel</div><div class="line">[root@cm cdh5.13]# cat CDH-5.13.0-1.cdh5.13.0.p0.29-el7.parcel.sha1 </div><div class="line">bef6f3f074e0a88cd79d6d37abc6698471e3d279</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>route配置</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@tddp-zk-2 ~]# route</div><div class="line">Kernel IP routing table</div><div class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</div><div class="line">default         host-10-150-4-1 0.0.0.0         UG    0      0        0 eth1</div><div class="line">10.125.137.0    .               255.255.255.0   UG    0      0        0 ens6</div><div class="line">10.150.4.0      0.0.0.0         255.255.255.0   U     0      0        0 eth1</div><div class="line">10.151.0.0      0.0.0.0         255.255.252.0   U     0      0        0 ens6</div><div class="line">10.200.0.0      .               255.255.0.0     UG    0      0        0 ens6</div><div class="line">169.254.169.254 host-10-150-4-4 255.255.255.255 UGH   0      0        0 eth1</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ol>
-<h3 id="节点配置"><a href="#节点配置" class="headerlink" title="节点配置"></a>节点配置</h3><p>CPU    8<br>Memory    64GB<br>Disk    100G<br>Network    2*10Gbits，主备模式绑定</p>
-<hr>
-<h2 id="mysql-主从配置"><a href="#mysql-主从配置" class="headerlink" title="mysql 主从配置"></a>mysql 主从配置</h2><p>yum install -y wget<br>wget <a href="http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm" target="_blank" rel="noopener">http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</a><br>sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm<br>yum -y update<br>sudo yum install -y mysql-server<br>sudo systemctl start mysqld<br>sudo /usr/bin/mysql_secure_installation</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CREATE USER &apos;hive&apos;@&apos;%&apos; IDENTIFIED BY &apos;Cloudera@123&apos;;</div><div class="line">create database metastore_test default character set utf8;</div><div class="line">GRANT ALL PRIVILEGES ON metastore_test. * TO &apos;hive&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">create user &apos;amon&apos;@&apos;%&apos; identified by &apos;Cloudera@123&apos;</div><div class="line">create database amon_test default character set utf8;</div><div class="line">grant all privileges on amon_test.* to &apos;amon&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">create user &apos;rman&apos;@&apos;%&apos; identified by &apos;Cloudera@123&apos;;</div><div class="line">create database rman_test default character set utf8;</div><div class="line">grant all privileges on rman_test.* to &apos;rman&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">create user &apos;sentry&apos;@&apos;%&apos; identified by &apos;Cloudera@123&apos;;</div><div class="line">create database sentry_test default character set utf8;</div><div class="line">grant all privileges on sentry_test.* to &apos;sentry&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">create user &apos;nav&apos;@&apos;%&apos; identified by &apos;Cloudera@123&apos;;</div><div class="line">create database nav_test default character set utf8;</div><div class="line">grant all privileges on nav_test.* to &apos;nav&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">create user &apos;navms&apos;@&apos;%&apos; identified by &apos;Cloudera@123&apos;;</div><div class="line">create database navms_test default character set utf8;</div><div class="line">grant all privileges on navms_test.* to &apos;navms&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">create user &apos;cm&apos;@&apos;%&apos; identified by &apos;Cloudera@123&apos;;</div><div class="line">create database cm_test default character set utf8;</div><div class="line">grant all privileges on cm_test.* to &apos;cm&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">CREATE USER &apos;hue&apos;@&apos;%&apos; IDENTIFIED BY &apos;Cloudera@123&apos;; </div><div class="line">create database hue_test default character set utf8;</div><div class="line">GRANT ALL PRIVILEGES ON hue_test.* TO &apos;hue&apos;@&apos;%&apos;; </div><div class="line"></div><div class="line">CREATE USER &apos;oozie&apos;@&apos;%&apos; IDENTIFIED BY &apos;Cloudera@123&apos;; </div><div class="line">create database oozie_test default character set utf8;</div><div class="line">GRANT ALL PRIVILEGES ON oozie_test.* TO &apos;oozie&apos;@&apos;%&apos;; </div><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure>
-</p>
-<p>[root@nm-1 ~]# vi /etc/my.cnf<br>log-bin=mysql-bin<br>server-id=88<br>binlog_format=MIXED<br>[root@nm-2 ~]# vi /etc/my.cnf</p>
-<p>[root@nm-1 ~]# systemctl restart mysqld</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">在Master(172.31.10.118) 主MySQL上创建一个mysnc用户</div><div class="line">用户名：mysync   密码：mysync</div><div class="line">GRANT REPLICATION SLAVE ON *.* TO &apos;mysync&apos;@&apos;%&apos;;</div><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure>
-</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CREATE USER &apos;mysync&apos;@&apos;%&apos; IDENTIFIED BY &apos;Cloudera@123&apos;;</div><div class="line">change master to</div><div class="line">master_host=&apos;10.150.4.88&apos;,</div><div class="line">master_user=&apos;mysync&apos;,</div><div class="line">master_password=&apos;mysync&apos;,</div><div class="line">master_log_file=&apos;mysql-bin.000001&apos;,</div><div class="line">master_log_pos=987;</div></pre></td></tr></table></figure>
-</p>
-<h2 id="CDH软件下载与配置（Cloudera管理器节点）"><a href="#CDH软件下载与配置（Cloudera管理器节点）" class="headerlink" title="CDH软件下载与配置（Cloudera管理器节点）"></a>CDH软件下载与配置（Cloudera管理器节点）</h2><ol>
-<li>下载Cloudera管理器需要的rpm包</li>
-<li>下载Parcel包（包含了CDH中的Hadoop组件）</li>
-<li><p>创建repo文件以支持本地yum的操作</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@cm 5.13.0]# pwd</div><div class="line">/var/www/html/cloudera/cm5/redhat/7/5.13.0</div><div class="line">[root@cm 5.13.0]# ll</div><div class="line">total 1101380</div><div class="line">-rw-r--r-- 1 root root   9787192 Oct 18 16:10 cloudera-manager-agent-5.13.0-1.cm5130.p0.55.el7.x86_64.rpm</div><div class="line">-rw-r--r-- 1 root root 699978252 Oct 18 16:10 cloudera-manager-daemons-5.13.0-1.cm5130.p0.55.el7.x86_64.rpm</div><div class="line">-rw-r--r-- 1 root root      8716 Oct 18 16:10 cloudera-manager-server-5.13.0-1.cm5130.p0.55.el7.x86_64.rpm</div><div class="line">-rw-r--r-- 1 root root     10604 Oct 18 16:10 cloudera-manager-server-db-2-5.13.0-1.cm5130.p0.55.el7.x86_64.rpm</div><div class="line">-rw-r--r-- 1 root root  30604232 Oct 18 16:10 enterprise-debuginfo-5.13.0-1.cm5130.p0.55.el7.x86_64.rpm</div><div class="line">-rw-r--r-- 1 root root  71204325 Oct 18 16:10 jdk-6u31-linux-amd64.rpm</div><div class="line">-rw-r--r-- 1 root root 174163338 Oct 19 15:04 jdk-8u151-linux-x64.rpm</div><div class="line">-rw-r--r-- 1 root root 142039186 Oct 18 16:10 oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm</div><div class="line">[root@cm 5.13.0]# createrepo .</div><div class="line">Spawning worker 0 with 1 pkgs</div><div class="line">Spawning worker 1 with 1 pkgs</div><div class="line">Spawning worker 2 with 1 pkgs</div><div class="line">Spawning worker 3 with 1 pkgs</div><div class="line">Spawning worker 4 with 1 pkgs</div><div class="line">Spawning worker 5 with 1 pkgs</div><div class="line">Spawning worker 6 with 1 pkgs</div><div class="line">Spawning worker 7 with 1 pkgs</div><div class="line">Workers Finished</div><div class="line">Saving Primary metadata</div><div class="line">Saving file lists metadata</div><div class="line">Saving other metadata</div><div class="line">Generating sqlite DBs</div><div class="line">Sqlite DBs complete</div></pre></td></tr></table></figure>
-</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@cm 5.13.0]# cat /etc/yum.repos.d/cm513.repo </div><div class="line">[cm513]</div><div class="line">name=cm513</div><div class="line">baseurl=http://10.150.4.47/cloudera/cm5/redhat/7/5.13.0/</div><div class="line">enabled=true</div><div class="line">gpgcheck=false</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@sj-cm ~]# mkdir /usr/share/java</div><div class="line">[root@sj-cm ~]# ln -s /usr/share/java/mysql-connector-java-5.1.38-bin.jar /usr/share/java/mysql-connector-java.jar</div></pre></td></tr></table></figure>
-</p>
-<p>Storage: Use S3 for storage of input data and final output, and use HDFS for storage of intermediate data.<br>Compress all data to improve performance.<br>Avoid small files when defining your partitioning strategy.<br>Use Parquet columnar data format on S3.<br>Impala block size: 256 MB<br>Change S3A to “fs.s3a.block.size” to match block size.<br>For information about configuring Hive ETL jobs to use Amazon S3, see Configuring Transient Hive ETL Jobs to Use the Amazon S3 Filesystem in the Cloudera Enterprise documentation.</p>
-<p>rgw地址:</p>
-<p>10.125.137.30:8080<br>10.125.137.31:8080<br>10.125.137.32:8080</p>
-<p>之后做了haproxy</p>
-<p>测试用户信息<br>“user”: “umtest2”,<br>“access_key”: “BBBA74VJ69J8I4N0GW3O”,<br>“secret_key”: “eNKTsutRmHR8HHM03Mx3xT6ctaW3Fd+PX75KGatk”</p>
-<p>将所有的数据同步到s3上后 替换Defaultfs</p>
-<p>检查 hive spark yarn 以及 mapreduce的使用</p>
-<p>启用yarn的ha</p>
-<h2 id="CDH-core-xml-配置"><a href="#CDH-core-xml-配置" class="headerlink" title="CDH core.xml 配置"></a>CDH core.xml 配置</h2><p>&lt;property&gt;<br>  &lt;name&gt;fs.s3a.access.key&lt;/name&gt;<br>  &lt;value&gt;BBBA74VJ69J8I4N0GW3O&lt;/value&gt;<br>  &lt;description&gt;AWS access key ID. Omit for Role-based authentication.&lt;/description&gt;<br>&lt;/property&gt;
-
-</p>
-<p>&lt;property&gt;<br>  &lt;name&gt;fs.s3a.secret.key&lt;/name&gt;<br>  &lt;value&gt;eNKTsutRmHR8HHM03Mx3xT6ctaW3Fd+PX75KGatk&lt;/value&gt;<br>  &lt;description&gt;AWS secret key&lt;/description&gt;<br>&lt;/property&gt;
-
-</p>
-<p>&lt;property&gt;<br>  &lt;name&gt;fs.s3a.endpoint&lt;/name&gt;<br>  &lt;value&gt;10.125.137.200:8000&lt;/value&gt;<br>  &lt;description&gt;AWS S3 endpoint to connect to. An up-to-date list is<br>    provided in the AWS Documentation: regions and endpoints. Without this<br>    property, the standard region (s3.amazonaws.com) is assumed.<br>  &lt;/description&gt;<br>&lt;/property&gt;
-
-</p>
-<p>&lt;property&gt;<br>  &lt;name&gt;fs.s3a.connection.ssl.enabled&lt;/name&gt;<br>  &lt;value&gt;false&lt;/value&gt;<br>  &lt;description&gt;Enables or disables SSL connections to S3.&lt;/description&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>  &lt;name&gt;fs.defaultFS&lt;/name&gt;<br>  &lt;value&gt;s3a://mybucket/&lt;/value&gt;<br>&lt;/property&gt;
-
-
-</p>
-<p>hadoop fs -ls s3a://migu001/</p>
-<hr>
-<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><h4 id="用root账户启动spark报错"><a href="#用root账户启动spark报错" class="headerlink" title="用root账户启动spark报错"></a>用root账户启动spark报错</h4><p>&lt;console&gt;:16: error: not found: value sqlContext<br>         import sqlContext.implicits._<br>                ^</p>
-<p>&lt;console&gt;:16: error: not found: value sqlContext<br>         import sqlContext.sql<br>                ^</p>
-<p>找不到文件系统上对应jar包导致</p>
-<p>需要配上JAVA_HOME gateway</p>
-<h4 id="用admin账户登入hue测试创建表报错"><a href="#用admin账户登入hue测试创建表报错" class="headerlink" title="用admin账户登入hue测试创建表报错"></a>用admin账户登入hue测试创建表报错</h4><p>[HiveServer2-Handler-Pool: Thread-35]: unable to return groups for user admin<br>PartialGroupNameException The user name ‘admin’ is not found. id: admin: no such user<br>id: admin: no such user</p>
-<p>HUE 通过hive 建表 ddl语句成功却没能见到新建的表,因为使用的是admin用户登入 集群中没有admin用户</p>
-<h4 id="Oozie缺少js库"><a href="#Oozie缺少js库" class="headerlink" title="Oozie缺少js库"></a>Oozie缺少js库</h4><p>To enable Oozie web console install the Ext JS library.</p>
-<p>需要单独去安装这个js library</p>
-<h4 id="hue与s3对接"><a href="#hue与s3对接" class="headerlink" title="hue与s3对接"></a>hue与s3对接</h4><p>由于cloudera的hue,我查了源码后发现他们boto的调用根本没有获取port参数 所以私有s3的访问得首先改ini配置文件使得其在web上能显示,至于调用我是直接修改源码写死在代码里</p>
-<p>hue_safety_valve_server.ini 的 Hue Server 高级配置代码段（安全阀）</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[aws]</div><div class="line">[[aws_accounts]]</div><div class="line">[[[default]]]</div><div class="line">#access_key_id_script=&lt;/path/to/access_key_script&gt;</div><div class="line">#secret_access_key_script=&lt;/path/to/secret_key_script&gt;</div><div class="line">#security_token=&lt;your AWS security token&gt;</div><div class="line">allow_environment_credentials=false</div><div class="line">region=&lt;your region, such as us-east-1&gt; </div><div class="line">access_key_id=&lt;your_access_key_id&gt;</div><div class="line">secret_access_key=&lt;your_secret_access_key&gt;</div></pre></td></tr></table></figure>
-</p>
-<p>CDH5.13版本才有host参数但是依旧没有port<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[aws]</div><div class="line">[[aws_accounts]]</div><div class="line">[[[default]]]</div><div class="line">host=10.125.137.200:8000</div><div class="line">access_key_id=&apos;BBBA74VJ69J8I4N0GW3O&apos;</div><div class="line">secret_access_key=&apos;eNKTsutRmHR8HHM03Mx3xT6ctaW3Fd+PX75KGatk&apos;</div></pre></td></tr></table></figure></p>
-<p><a href="https://www.cloudera.com/documentation/enterprise/release-notes/topics/cm_vd_cdh_package_tarball_513.html#cm_vd_cdh_package_tarball_513" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/release-notes/topics/cm_vd_cdh_package_tarball_513.html#cm_vd_cdh_package_tarball_513</a><br>[HUE-6539] - [aws] Update AWS config check to connect to endpoint and avoid region check<br>[HUE-6515] - [aws] Do not use a default region if not configured, fallback to standard S3 endpoint</p>
-<p>Support the new S3 regions<br><a href="https://issues.cloudera.org/browse/HUE-5851" target="_blank" rel="noopener">https://issues.cloudera.org/browse/HUE-5851</a></p>
-<p>仅仅只配置了host会报region_name错误,因为他最后还是会去调用region的连接方式,报错如下:</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">S3 filesystem exception.</div><div class="line">Failed to initialize bucket cache: local variable &apos;region_name&apos; referenced before assignment</div><div class="line"></div><div class="line">INFO Configuration.deprecation: fs.s3a.server-side-encryption-key is deprecated. Instead, use fs.s3a.server-side-encryption.key</div></pre></td></tr></table></figure>
-</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">S3 filesystem exception.</div><div class="line"></div><div class="line">The AWS Access Key Id you provided does not exist in our records.</div><div class="line"></div><div class="line"> More Info   View Logs </div><div class="line"></div><div class="line">File Name   Line Number Function Name</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/filebrowser/src/filebrowser/views.py    188 view</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/filebrowser/src/filebrowser/views.py    415 listdir_paged</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/lib/fs/proxyfs.py   101 do_as_user</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/lib/fs/proxyfs.py   120 listdir_stats</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/libs/aws/src/aws/s3/__init__.py  52  wrapped</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/libs/aws/src/aws/s3/s3fs.py  256 listdir_stats</div><div class="line">/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/libs/aws/src/aws/s3/s3fs.py  80  _init_bucket_cache</div></pre></td></tr></table></figure>
-</p>
-<h4 id="OOZIE-错误"><a href="#OOZIE-错误" class="headerlink" title="OOZIE 错误"></a>OOZIE 错误</h4><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[11/Oct/2017 18:49:38 -0700] middleware   INFO     Processing exception: HTTPConnectionPool(host=&apos;tddp-nm-2&apos;, port=14000): Max retries exceeded with url: /webhdfs/v1/user/hue/oozie/deployments/_%24USER_-oozie-%24JOBID-%24TIME?op=GETFILESTATUS&amp;user.name=hue&amp;doas=hue (Caused by NewConnectionError(&apos;&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f42fc0bcd50&gt;: Failed to establish a new connection: [Errno 111] Connection refused&apos;,)): Traceback (most recent call last):</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/build/env/lib64/python2.7/site-packages/Django-1.6.10-py2.7.egg/django/core/handlers/base.py&quot;, line 112, in get_response</div><div class="line">    response = wrapped_callback(request, *callback_args, **callback_kwargs)</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/build/env/lib64/python2.7/site-packages/Django-1.6.10-py2.7.egg/django/db/transaction.py&quot;, line 371, in inner</div><div class="line">    return func(*args, **kwargs)</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/oozie/src/oozie/decorators.py&quot;, line 110, in decorate</div><div class="line">    return view_func(request, *args, **kwargs)</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/oozie/src/oozie/views/editor2.py&quot;, line 136, in new_workflow</div><div class="line">    workflow.check_workspace(request.fs, request.user)</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/oozie/src/oozie/models2.py&quot;, line 93, in check_workspace</div><div class="line">    create_directories(fs, [REMOTE_SAMPLE_DIR.get()])</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/libs/liboozie/src/liboozie/submission2.py&quot;, line 436, in create_directories</div><div class="line">    if not fs.do_as_user(fs.DEFAULT_USER, fs.exists, directory):</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/lib/fs/proxyfs.py&quot;, line 101, in do_as_user</div><div class="line">    return fn(*args, **kwargs)</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/lib/fs/proxyfs.py&quot;, line 132, in exists</div><div class="line">    return self._get_fs(path).exists(path)</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/libs/hadoop/src/hadoop/fs/webhdfs.py&quot;, line 253, in exists</div><div class="line">    return self._stats(path) is not None</div><div class="line">  File &quot;/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/libs/hadoop/src/hadoop/fs/webhdfs.py&quot;, line 241, in _stats</div><div class="line">    raise ex</div><div class="line">WebHdfsException: HTTPConnectionPool(host=&apos;tddp-nm-2&apos;, port=14000): Max retries exceeded with url: /webhdfs/v1/user/hue/oozie/deployments/_%24USER_-oozie-%24JOBID-%24TIME?op=GETFILESTATUS&amp;user.name=hue&amp;doas=hue (Caused by NewConnectionError(&apos;&lt;requests.packages.urllib3.connection.HTTPConnection object at 0x7f42fc0bcd50&gt;: Failed to establish a new connection: [Errno 111] Connection refused&apos;,))</div></pre></td></tr></table></figure>
-</p>
-<p>因为之前HDFS是旧版本的,我是干掉重新拷到s3上面去</p>
-
-          
-        
+    <div>
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Rebuild CDH.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/Rebuild CDH.html" itemprop="url">
-                  Rebuild CDH
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Rebuild-CDH"><a href="#Rebuild-CDH" class="headerlink" title="Rebuild CDH"></a>Rebuild CDH</h1><h2 id="删除CDH所有组件"><a href="#删除CDH所有组件" class="headerlink" title="删除CDH所有组件"></a>删除CDH所有组件</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service cloudera-scm-server stop</div><div class="line">service cloudera-scm-agent stop</div><div class="line">umount /var/run/cloudera-scm-agent/process</div><div class="line">rm -rf /usr/share/cmf /var/lib/cloudera* /var/cache/zypp/packages/cloudera-* /var/cache/zypp/raw/cloudera-* /var/cache/zypp/solv/cloudera-* /var/log/cloudera-scm-* /var/run/cloudera-scm-* /etc/cloudera-scm-server*</div><div class="line">rpm -qa |grep cloudera</div><div class="line">rpm -e cloudera-manager-agent-5.10.0-1.cm5100.p0.85.el7.x86_64</div><div class="line">rpm -e cloudera-manager-server-5.10.0-1.cm5100.p0.85.el7.x86_64</div><div class="line">rpm -e cloudera-manager-daemons-5.10.0-1.cm5100.p0.85.el7.x86_64</div><div class="line">rm -rf /var/lib/hadoop-* /var/lib/impala /var/lib/solr /var/lib/zookeeper /var/lib/hue /var/lib/oozie  /var/lib/pgsql  /var/lib/sqoop2  /data/dfs/  /data/impala/ /data/yarn/  /dfs/ /impala/ /yarn/  /var/run/hadoop-*/ /var/run/hdfs-*/ /usr/bin/hadoop* /usr/bin/zookeeper* /usr/bin/hbase* /usr/bin/hive* /usr/bin/hdfs /usr/bin/mapred /usr/bin/yarn /usr/bin/sqoop* /usr/bin/oozie /etc/hadoop* /etc/zookeeper* /etc/hive* /etc/hue /etc/impala /etc/sqoop* /etc/oozie /etc/hbase* /etc/hcatalog </div><div class="line">rm -rf /opt/cloudera/parcel-cache /opt/cloudera/parcels</div><div class="line">ps aux|grep  supervisord |grep -v grep | awk &apos;&#123;print &quot;kill -9 &quot; $2&#125;&apos;|sh</div></pre></td></tr></table></figure>
-</p>
-<h2 id="删除所有datanode以及nodemanager产生的数据-建议直接格盘"><a href="#删除所有datanode以及nodemanager产生的数据-建议直接格盘" class="headerlink" title="删除所有datanode以及nodemanager产生的数据(建议直接格盘)"></a>删除所有datanode以及nodemanager产生的数据(建议直接格盘)</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rm -rf /mnt/sdb1/dfs /mnt/sdc1/dfs /mnt/sdd1/dfs /mnt/sde1/dfs /mnt/sdf1/dfs /mnt/sdg1/dfs /mnt/sdh1/dfs /mnt/sdi1/dfs /mnt/sdj1/dfs /mnt/sdk1/dfs /mnt/sdl1/dfs /mnt/sdm1/dfs /mnt/sdn1/dfs /mnt/sdo1/dfs /mnt/sdp1/dfs /mnt/sdq1/dfs /mnt/sdr1/dfs /mnt/sds1/dfs /mnt/sdt1/dfs /mnt/sdu1/dfs /mnt/sdv1/dfs /mnt/sdw1/dfs /mnt/sdx1/dfs /mnt/sdy1/dfs </div><div class="line">rm -rf /mnt/sdb1/yarn /mnt/sdc1/yarn /mnt/sdd1/yarn /mnt/sde1/yarn /mnt/sdf1/yarn /mnt/sdg1/yarn /mnt/sdh1/yarn /mnt/sdi1/yarn /mnt/sdj1/yarn /mnt/sdk1/yarn /mnt/sdl1/yarn /mnt/sdm1/yarn /mnt/sdn1/yarn /mnt/sdo1/yarn /mnt/sdp1/yarn /mnt/sdq1/yarn /mnt/sdr1/yarn /mnt/sds1/yarn /mnt/sdt1/yarn /mnt/sdu1/yarn /mnt/sdv1/yarn /mnt/sdw1/yarn /mnt/sdx1/yarn /mnt/sdy1/yarn</div></pre></td></tr></table></figure>
-</p>
-<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">drop database metastore_sj_test;</div><div class="line">drop database amon_sj_test;</div><div class="line">drop database rman_sj_test;</div><div class="line">drop database sentry_sj_test;</div><div class="line">drop database nav_sj_test;</div><div class="line">drop database navms_sj_test;</div><div class="line">drop database cm_sj_test;</div><div class="line">drop database hue_sj_test;</div><div class="line">drop database oozie_sj_test;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">drop database metastore_test;</div><div class="line">drop database amon_test;</div><div class="line">drop database rman_test;</div><div class="line">drop database sentry_test;</div><div class="line">drop database nav_test;</div><div class="line">drop database navms_test;</div><div class="line">drop database cm_test;</div><div class="line">drop database hue_test;</div><div class="line">drop database oozie_test;</div></pre></td></tr></table></figure>
-</p>
-<h2 id="重新init数据库"><a href="#重新init数据库" class="headerlink" title="重新init数据库"></a>重新init数据库</h2><p><code>/usr/share/cmf/schema/scm_prepare_database.sh -h 10.151.164.28 mysql cm_sj_test cm Cloudera@123</code></p>
-
-          
-        
+    <div>
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
     <footer class="post-footer">
       
 
@@ -1344,10 +549,6 @@ server 216.229.0.179 --&gt;
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1360,703 +561,12 @@ server 216.229.0.179 --&gt;
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Cannot unlock the password for user.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Cannot unlock the password for user.html" itemprop="url">
-                  Cannot unlock the password for user
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="‘Cannot-unlock-the-password-for-lt-user-gt-’"><a href="#‘Cannot-unlock-the-password-for-lt-user-gt-’" class="headerlink" title="‘Cannot unlock the password for &lt;user&gt;!’"></a>‘Cannot unlock the password for &lt;user&gt;!’</h1><p>pam_tally –user= –reset</p>
-<p>Example</p>
-<p>pam_tally –user=cyberninja –reset<br>I hope this helps someone.</p>
-<p>I found this post looking for an answer to this exact question. I had the same error but on a SLES 11 SP2 server. My co-worker reset my password and tried to unlock my account with the command passwd -u. One of my other co-workers said I needed clear account in PAM and gave me the command. Which I have posted above.</p>
-<p>Update,</p>
-<p>I now have a fix that keeps this from happening again. It seems that there are two PAM files that where in conflict. These files are; /etc/pam.d/login and /etc/pam.d/sshd. Both files have this line.</p>
-<p>auth required pam_tally.so onerr=fail deny=3<br>You must commit out, this line from one of the files listed above. We commented the line out in the /etc/pam.d/sshd file.</p>
-<p>After you do this you should never have this issue again.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Linux 修改时区.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/Linux 修改时区.html" itemprop="url">
-                  Linux 修改时区
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="linux-修改时区"><a href="#linux-修改时区" class="headerlink" title="linux 修改时区"></a>linux 修改时区</h1><p>在linux中与时间相关的文件有</p>
-<ol>
-<li><code>/etc/localtime</code></li>
-<li><code>/etc/timezone</code></li>
-</ol>
-<p>其中，/etc/localtime是用来描述本机时间，而 /etc/timezone是用来描述本机所属的时区。</p>
-<h2 id="修改本机时间"><a href="#修改本机时间" class="headerlink" title="修改本机时间"></a>修改本机时间</h2><p><code>cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code></p>
-<p>在/usr/share/zoneinfo下存放着不同时区格式的时间文件，执行以下命令，可以将本机时间调整至目标时区的时间格式。<br>但是！调整了时间格式，本机所属的时区是保持不变的！</p>
-<h2 id="修改本机时区"><a href="#修改本机时区" class="headerlink" title="修改本机时区"></a>修改本机时区</h2><p>在linux中，有一些程序会自己计算时间，不会直接采用带有时区的本机时间格式，会根据UTC时间和本机所属的时区等计算出当前的时间。<br>比如jdk应用，时区为“Etc/UTC”，本机时间改为北京时间，通过java代码中new 出来的时间还是utc时间，所以必须得修正本机的时区。</p>
-<p><code>echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone</code></p>
-<p>(参考资料)[<a href="http://blog.csdn.net/linuxnews/article/details/51325180" target="_blank" rel="noopener">http://blog.csdn.net/linuxnews/article/details/51325180</a>]</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux 操作系统检查.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Linux 操作系统检查.html" itemprop="url">
-                  Linux 操作系统检查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Linux-操作系统检查"><a href="#Linux-操作系统检查" class="headerlink" title="Linux 操作系统检查"></a>Linux 操作系统检查</h1><p>输入”uname -a “,可显示电脑以及操作系统的相关信息<br>输入”cat /proc/version”,说明正在运行的内核版本。<br>输入”cat /etc/issue”, 显示的是发行版本信息<br>lsb_release -a (适用于所有的linux，包括Redhat、SuSE、Debian等发行版，但是需要安装lsb)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/CentOS7 关闭防火墙,禁用ipv6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/CentOS7 关闭防火墙,禁用ipv6.html" itemprop="url">
-                  CentOS7 关闭防火墙,禁用ipv6
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CentOS7-关闭防火墙-禁用ipv6"><a href="#CentOS7-关闭防火墙-禁用ipv6" class="headerlink" title="CentOS7 关闭防火墙,禁用ipv6"></a>CentOS7 关闭防火墙,禁用ipv6</h1><h2 id="CentOS7-关闭防火墙"><a href="#CentOS7-关闭防火墙" class="headerlink" title="CentOS7 关闭防火墙"></a>CentOS7 关闭防火墙</h2><p>firewall-cmd –state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running）</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost network-scripts]# firewall-cmd --state</div><div class="line">running</div><div class="line">[root@localhost network-scripts]# systemctl stop firewalld.service </div><div class="line">[75721.569225] Ebtables v2.0 unregistered</div><div class="line">[root@localhost network-scripts]# systemctl disable firewalld.service</div><div class="line">Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.</div><div class="line">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.</div><div class="line">[root@localhost network-scripts]# firewall-cmd --state</div><div class="line">not running</div></pre></td></tr></table></figure>
-</p>
-<p>systemctl stop firewalld.service #停止firewall<br>systemctl disable firewalld.service #禁止firewall开机启动</p>
-<h2 id="CentOS7禁用ipv6"><a href="#CentOS7禁用ipv6" class="headerlink" title="CentOS7禁用ipv6"></a>CentOS7禁用ipv6</h2><p>vi /etc/default/grub<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GRUB_TIMEOUT=1</div><div class="line">GRUB_DISTRIBUTOR=&quot;$(sed &apos;s, release .*$,,g&apos; /etc/system-release)&quot;</div><div class="line">GRUB_DEFAULT=saved</div><div class="line">GRUB_DISABLE_SUBMENU=true</div><div class="line">GRUB_TERMINAL=&quot;serial console&quot;</div><div class="line">GRUB_SERIAL_COMMAND=&quot;serial --speed=115200&quot;</div><div class="line">GRUB_CMDLINE_LINUX=&quot;ipv6.disable=1 console=tty0 crashkernel=auto console=ttyS0,115200&quot;</div><div class="line">GRUB_DISABLE_RECOVERY=&quot;true&quot;</div><div class="line">GRUB_DEVICE=LABEL=cloudimg-rootfs</div><div class="line">GRUB_DISABLE_LINUX_UUID=true</div><div class="line">GRUB_TIMEOUT=5</div><div class="line">GRUB_TERMINAL=&quot;serial console&quot;</div><div class="line">GRUB_GFXPAYLOAD_LINUX=text</div><div class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;console=tty0 console=ttyS0,115200 no_timer_check&quot;</div><div class="line">GRUB_SERIAL_COMMAND=&quot;serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1&quot;</div><div class="line">GRUB_CMDLINE_LINUX=&quot;nofb nomodeset vga=normal&quot;</div></pre></td></tr></table></figure></p>
-<p>grub2-mkconfig -o /boot/grub2/grub.cfg</p>
-<p>If the output is 0, IPv6 is enabled.<br>If the output is 1, IPv6 is already disabled.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost network-scripts]# cat /proc/sys/net/ipv6/conf/all/disable_ipv6</div><div class="line">0</div></pre></td></tr></table></figure></p>
-<p>lsmod | grep ipv6</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cloud-init[1716]: 2018-01-08 10:05:08,907 - url_helper.py[WARNING]: Calling &apos;http://10.151.164.1/latest/meta-data/instance-id&apos; failed [30/120s]: request error [(&apos;Connection aborted.&apos;, error(111, &apos;Connection refused&apos;))]</div></pre></td></tr></table></figure>
-</p>
-<p>删除cloud-init</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux下解压,压缩JAR包的方法.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -2071,40 +581,25 @@ server 216.229.0.179 --&gt;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Linux/Linux下解压,压缩JAR包的方法.html" itemprop="url">
-                  Linux下解压,压缩JAR包的方法
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/Linux/Linux下解压,压缩JAR包的方法.html" itemprop="url">Linux下解压,压缩JAR包的方法</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2018-05-23 09:57:35 / Updated at: 23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -2117,10 +612,14 @@ server 216.229.0.179 --&gt;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2145,9 +644,6 @@ server 216.229.0.179 --&gt;
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2165,17 +661,17 @@ server 216.229.0.179 --&gt;
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -2189,10 +685,1025 @@ server 216.229.0.179 --&gt;
         <div class="post-eof"></div>
       
     </footer>
-  </div>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/松江资源池云主机cdh环境准备.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Notes/松江资源池云主机cdh环境准备.html" itemprop="url">松江资源池云主机cdh环境准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="松江资源池云主机cdh环境准备"><a href="#松江资源池云主机cdh环境准备" class="headerlink" title="松江资源池云主机cdh环境准备"></a>松江资源池云主机cdh环境准备</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">  1  reboot</div><div class="line">  2  ping 114.114.114.114</div><div class="line">  3  reboot</div><div class="line">  4  ls</div><div class="line">  5  cat /etc/issue</div><div class="line">  6  top</div><div class="line">  7  yum --help</div><div class="line">  8  ifconfig </div><div class="line">  9  chkconfig --list</div><div class="line"> 10  cat /etc/sysconfig/selinux </div><div class="line"> 11  echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux </div><div class="line"> 12  cat /etc/sysconfig/selinux </div><div class="line"> 13  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 14  echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 15  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 16  cat /etc/sysctl.conf </div><div class="line"> 17  echo 0 &gt;/proc/sys/vm/swappiness </div><div class="line"> 18  echo &apos;vm.swqppiness=0&apos;&gt;&gt; /etc/sysctl.conf </div><div class="line"> 19  cat /proc/sys/vm/swappiness </div><div class="line"> 20  cat /etc/sysctl.conf </div><div class="line"> 21  cat /etc/security/limits.conf </div><div class="line"> 22  vo /etc/security/limits.conf </div><div class="line"> 23  vi /etc/security/limits.conf </div><div class="line"> 24  yum install ntp</div><div class="line"> 25  ifconfig </div><div class="line"> 26  ip a</div><div class="line"> 27  yum install tree</div><div class="line"> 28  yum install lrzsz</div><div class="line"> 29  free -g</div><div class="line"> 30  systemctl stop firewalld.service</div><div class="line"> 31  chkconfig --list</div><div class="line"> 32  yum install createrop</div><div class="line"> 33  yum install createrepo</div><div class="line"> 34  yum install -y postgresql91</div><div class="line"> 35  yum install -y python-psycopg2</div><div class="line"> 36  vi /etc/rc.local </div><div class="line"> 37  cat /etc/rc.local </div><div class="line"> 38  cat /sys/kernel/mm/transparent_hugepage/</div><div class="line"> 39  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 40  ll /etc/rc.local </div><div class="line"> 41  hostname</div><div class="line"> 42  hostname -f</div><div class="line"> 43  view /etc/ssh/ssh_config </div><div class="line"> 44  chkconfig ntp on</div><div class="line"> 45  chkconfig ntpd on</div><div class="line"> 46  chkconfig --lis</div><div class="line"> 47  chkconfig --list</div><div class="line"> 48  systemctl enable ntpd.service</div><div class="line"> 49  chkconfig --list</div><div class="line"> 50  systemctl list-unit-files</div><div class="line"> 51  systemctl list-unit-files |grep ntp</div><div class="line"> 52  systemctl list-unit-files |grep fire</div><div class="line"> 53  systemctl list-unit-files |grep ip</div><div class="line"> 54  systemctl list-unit-files |grep wall</div><div class="line"> 55  yum install gcc</div><div class="line"> 56  systemctl list-unit-files |grep firewall</div><div class="line"> 57  systemctl list-unit-files |grep ipta</div><div class="line"> 58  iptables -C</div><div class="line"> 59  iptables -V</div><div class="line"> 60  systemctl list-unit-files |grep iptables</div><div class="line"> 61  whereis iptables</div><div class="line"> 62  ll /usr/bin/iptables-xml </div><div class="line"> 63  systat</div><div class="line"> 64  sysstat</div><div class="line"> 65  yum install -y sysstat</div><div class="line"> 66  firewalls -v</div><div class="line"> 67  firewalld -v</div><div class="line"> 68  systemctl stop firewalld.service</div><div class="line"> 69  whereis firewalld</div><div class="line"> 70  ll /usr/lib/firewalld/ipsets/</div><div class="line"> 71  ll /etc/firewalld/zones/public.xml</div><div class="line"> 72  systemctl disable firewalld.service</div><div class="line"> 73  cat /etc/sysctl.conf </div><div class="line"> 74  systemctl list-unit-files |Net</div><div class="line"> 75  systemctl list-unit-files |grep Net</div><div class="line"> 76  systemctl list-unit-files |grep net</div><div class="line"> 77  systemctl --help</div><div class="line"> 78  systemctl list -units --type=service</div><div class="line"> 79  sudo systemctl status firewalld.service</div><div class="line"> 80  systemctl enable ntpd.service</div><div class="line"> 81  chkconfig --list</div><div class="line"> 82  systemctl list-unit-files |grep ntpd</div><div class="line"> 83  reboot</div><div class="line"> 84  df -h</div><div class="line"> 85  firewalld</div><div class="line"> 86  whereis firewalld</div><div class="line"> 87  systemctl status firewalld</div><div class="line"> 88  cat /etc/issue</div><div class="line"> 89  uname -a</div><div class="line"> 90  cat /etc/*release</div><div class="line"> 91  ping 8.8.8.8</div><div class="line"> 92  vi /etc/ntp.conf </div><div class="line"> 93  /etc/init.d/ntpd restart</div><div class="line"> 94  service ntpd restart</div><div class="line"> 95  ntpq -p</div><div class="line"> 96  date</div><div class="line"> 97  reboot </div><div class="line"> 98  vi /etc/ssh/sshd_config </div><div class="line"> 99  systemctl restart sshd.service</div><div class="line">100  history &gt; 1.log</div><div class="line"></div><div class="line"></div><div class="line">  1  systemctl --hlep</div><div class="line">  2  systemctl --help</div><div class="line">  3  systemctl stop firewalld.service</div><div class="line">  4  ssh 10.150.4.5</div><div class="line">  5  ssh 10.150.4.5 -p 10022</div><div class="line">  6  ssh 10.150.4.5 </div><div class="line">  7  head 1.log </div><div class="line">  8  head 15 1.log </div><div class="line">  9  head -15 1.log </div><div class="line"> 10  cat /etc/sysconfig/selinux </div><div class="line"> 11  echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux </div><div class="line"> 12  cat /etc/sysconfig/selinux </div><div class="line"> 13  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 14  echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 15  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line"> 16  head -20 1.log |tail -5</div><div class="line"> 17  cat /etc/sysctl.conf </div><div class="line"> 18  free</div><div class="line"> 19  echo 0 &gt; /proc/sys/vm/swappiness </div><div class="line"> 20  echo &apos;vm.swappiness=0&apos; &gt;&gt; /etc/sysctl.conf </div><div class="line"> 21  cat /etc/sysctl.conf </div><div class="line"> 22  cat /proc/sys/vm/swappiness </div><div class="line"> 23  head -25 1.log |tail -5</div><div class="line"> 24  cat /etc/security/limits.conf </div><div class="line"> 25  ll</div><div class="line"> 26  cat /etc/security/limits.conf </div><div class="line"> 27  ll /etc/security/limits.conf </div><div class="line"> 28  scp root@10.150.4.5:/etc/security/limits.conf /etc/security/limits.conf </div><div class="line"> 29  vi /etc/security/limits.conf </div><div class="line"> 30  head -25 1.log |tail -5</div><div class="line"> 31  yum install ntp</div><div class="line"> 32  head -25 1.log |tail -5</div><div class="line"> 33  head -30 1.log |tail -5</div><div class="line"> 34  yum install tree</div><div class="line"> 35  yum install -y lrzsz</div><div class="line"> 36  yum install -y bash-completion</div><div class="line"> 37  head -30 1.log |tail -5</div><div class="line"> 38  head -35 1.log |tail -5</div><div class="line"> 39  head -33 1.log |tail -1 | sh</div><div class="line"> 40  yum install -y createrepo python-psycopg2</div><div class="line"> 41  yum instal -y httpd</div><div class="line"> 42  yum install -y httpd</div><div class="line"> 43  vi /etc/ntp.conf </div><div class="line"> 44  ssh 10.150.4.5</div><div class="line"> 45  head -40 1.log |tail -5</div><div class="line"> 46  vi /etc/rc.local </div><div class="line"> 47  scp root@10.150.4.5:/etc/rc.local /etc/rc.local </div><div class="line"> 48  head -40 1.log |tail -5</div><div class="line"> 49  cat /etc/rc.local </div><div class="line"> 50  head -45 1.log |tail -5</div><div class="line"> 51  chkconfig ntpd on</div><div class="line"> 52  ntpq -p</div><div class="line"> 53  systemctl enable ntpd.service</div><div class="line"> 54  systemctl start ntpd.service</div><div class="line"> 55  ntpq -p</div><div class="line"> 56  date</div><div class="line"> 57  ssh 10.150.4.5</div><div class="line"> 58  scp root@10.150.4.5:/etc/ntp.conf /etc/ntp.conf </div><div class="line"> 59  systemctl restart ntpd.service</div><div class="line"> 60  ntpq -p</div><div class="line"> 61  date</div><div class="line"> 62  ntpq -p</div><div class="line"> 63  timedatectl </div><div class="line"> 64  timedatectl set-timezone Asia/Shanghai</div><div class="line"> 65  timedatectl </div><div class="line"> 66  date</div><div class="line"> 67  head -45 1.log |tail -5</div><div class="line"> 68  head -50 1.log |tail -5</div><div class="line"> 69  head -50 1.log |tail -10</div><div class="line"> 70  head -60 1.log |tail -10</div><div class="line"> 71  head -70 1.log |tail -10</div><div class="line"> 72  yum install -y gcc sysstat</div><div class="line"> 73  head -70 1.log |tail -10</div><div class="line"> 74  head -80 1.log |tail -10</div><div class="line"> 75  systemctl list-unit-file |grep ntp</div><div class="line"> 76  systemctl list-unit-files |grep ntp</div><div class="line"> 77  ntpq -p</div><div class="line"> 78  yum install httpd</div><div class="line"> 79  ulimit -a</div><div class="line"> 80  reboot</div><div class="line"> 81  cat /etc/issue</div><div class="line"> 82  root</div><div class="line"> 83  reboot </div><div class="line"> 84  ifconfig </div><div class="line"> 85  python --version</div><div class="line"> 86  yum update python</div><div class="line"> 87  yum upgrade python</div><div class="line"> 88  ifconfig</div><div class="line"> 89  vi /etc/default/grub </div><div class="line"> 90  grub2-mkconfig -0 /boot/grub2/grub.cfg </div><div class="line"> 91  grub2-mkconfig -o /boot/grub2/grub.cfg </div><div class="line"> 92  lsmod |grep ipv6</div><div class="line"> 93  reboot </div><div class="line"> 94  pinh 8.8.8.8</div><div class="line"> 95  ping 8.8.8.8</div><div class="line"> 96  route -n</div><div class="line"> 97  ifconfig </div><div class="line"> 98  lsblk</div><div class="line"> 99  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line">100  cat /etc/rc.local </div><div class="line">101  echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line">102  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line">103  df -h</div><div class="line">104  cd /opt/</div><div class="line">105  ll</div><div class="line">106  cat /sys/kernel/mm/transparent_hugepage/defrag </div><div class="line">107  vi /etc/rc.d/rc.local </div><div class="line">108  ll /etc/rc.d/rc.local </div><div class="line">109  chmod  +x /etc/rc.d/rc.local </div><div class="line">110  reboot </div><div class="line">111  echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</div><div class="line">112  echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</div><div class="line">113  vi /etc/rc.d/rc.local</div><div class="line">114  chmod +x /etc/rc.d/rc.local</div><div class="line">115  route add -net 10.200.0.0/16 gw 10.151.0.1</div><div class="line">116  history </div><div class="line">117  ll</div><div class="line">118  sz 1.log </div><div class="line">119  history &gt; 2.log</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/OpenLDAP,AD,Samba,FreeIPA介绍.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/OpenLDAP,AD,Samba,FreeIPA介绍.html" itemprop="url">OpenLDAP,AD,Samba,FreeIPA介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>OpenLDAP is a decent product, but it’s really just a bare-bones LDAP server, and something you might integrate into a more complete product or service. For example, even the schemas that it ships with have not changed in a long time and would need to be augmented with at least rfc2307bis. It also doesn’t ship with any management tools. Apache Directory Studio is decent, but quite low-level.</p>
+<p>Active Directory is a suite of services that include LDAP and some schemas, but also a Kerberos service, a certificate authority, and a DNS service. The (Windows based) AD user and group management tools are OK, and slightly more convenient than Apache Directory Studio, although they only run on Windows. The integration between everything is very good. Binding Linux machines to AD is pretty simple these days with sssd.</p>
+<p>Samba 4 is the open source implementation of Active Directory, and is what Amazon use to power their Active Directory compatible Simple AD service.</p>
+<p>FreeIPA is an open source alternative to AD that combines LDAP, Kerberos, CA services and management tools, and ships with its own schemas.</p>
+<p>To echo other commenters, if most of your users are running Windows, I would recommend deploying Active Directory or Samba 4, and look into binding your Linux machines to it with SSSD.</p>
+<p>(Migration from openldap to freeipa.)[<a href="https://www.reddit.com/r/linuxadmin/comments/7979e3/migration_from_openldap_to_freeipa/" target="_blank" rel="noopener">https://www.reddit.com/r/linuxadmin/comments/7979e3/migration_from_openldap_to_freeipa/</a>]</p>
+<p><code>ldapsearch -Z -h oldldap.company.com -D &quot;uid=admin,ou=people,DC=company,DC=com&quot; -W -b &quot;dc=company,dc=com&quot; &gt; /tmp/ldapdump</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/OpenLDAP使用手册.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/OpenLDAP使用手册.html" itemprop="url">OpenLDAP使用手册</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="OpenLDAP使用手册"><a href="#OpenLDAP使用手册" class="headerlink" title="OpenLDAP使用手册"></a>OpenLDAP使用手册</h1><hr>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>当前的LDAP服务器部署在dsj-ddp-ad-kdc-01上,管理员先以root登录 到dsj-ddp-ad-kdc-01节点上,为一个新的用户创建一个LDIF文件(其中uid,uidNumber,gidNumber,homeDirectory可以自行定义)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#cat adduser.ldif</div><div class="line">dn: uid=ldaptest,ou=People,dc=sjad,dc=com</div><div class="line">objectClass: account</div><div class="line">objectClass: posixAccount</div><div class="line">objectClass: top</div><div class="line">objectClass: shadowAccount</div><div class="line">uid: ldaptest</div><div class="line">cn: ldaptest</div><div class="line">loginShell: /bin/bash</div><div class="line">userPassword: &#123;crypt&#125;x</div><div class="line">uidNumber: 2004</div><div class="line">gidNumber: 100</div><div class="line">homeDirectory: /home/ldaptest</div></pre></td></tr></table></figure></p>
+<p>使用ladpadd添加用户,终端会提示输入ladpadm密码:<br>ldapadd -x -W -D “cn=ldapadm,dc=sjad,dc=com” -f adduser.ldif</p>
+<p>为ladptest用户设置密码:<br>ldappasswd -s password123 -W -D “cn=ldapadm,dc=sjad,dc=com” -x<br>“uid=ldaptest,ou=People,dc=sjad,dc=com”</p>
+<p>也可以在开始ldif文件中指定用户密码,根据需要灵活配置</p>
+<h2 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h2><p>创建一个ldif文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#cat addgroup.ldif</div><div class="line">dn: cn=group2,ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: posixGroup</div><div class="line">objectClass: top</div><div class="line">cn: group2</div><div class="line">gidNumber: 2345</div></pre></td></tr></table></figure></p>
+<h2 id="使用ldapadd添加组"><a href="#使用ldapadd添加组" class="headerlink" title="使用ldapadd添加组"></a>使用ldapadd添加组</h2><p>ldapadd -x -W -D “cn=ldapadm,dc=sjad,dc=com” -f addgroup.ldif</p>
+<h2 id="把用户添加到组中"><a href="#把用户添加到组中" class="headerlink" title="把用户添加到组中"></a>把用户添加到组中</h2><p>把ladptest添加到用户组<strong>group4</strong>中,创建一个LDIF文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#cat u2g.ldif</div><div class="line">dn: cn=group4,ou=Group,dc=sjad,dc=com</div><div class="line">changetype: modify</div><div class="line">add: memberuid</div><div class="line">memberuid: ldaptest</div></pre></td></tr></table></figure></p>
+<p>使用<strong>ladpmodify</strong>将user添加到group<br><code>ldapmodify -x -W -D &quot;cn=ldapadm,dc=sjad,dc=com&quot; -f u2g.ldif</code></p>
+<h2 id="列出当前用户和组"><a href="#列出当前用户和组" class="headerlink" title="列出当前用户和组"></a>列出当前用户和组</h2><p>ldapsearch -x</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@dsj-ddp-ad-kdc-01 cn=config]# ldapsearch -x</div><div class="line"># extended LDIF</div><div class="line">#</div><div class="line"># LDAPv3</div><div class="line"># base &lt;dc=sjad,dc=com&gt; (default) with scope subtree</div><div class="line"># filter: (objectclass=*)</div><div class="line"># requesting: ALL</div><div class="line">#</div><div class="line"></div><div class="line"># sjad.com</div><div class="line">dn: dc=sjad,dc=com</div><div class="line">dc: sjad</div><div class="line">objectClass: top</div><div class="line">objectClass: domain</div><div class="line"></div><div class="line"># ldapadm, sjad.com</div><div class="line">dn: cn=ldapadm,dc=sjad,dc=com</div><div class="line">objectClass: organizationalRole</div><div class="line">cn: ldapadm</div><div class="line">description: LDAP Manager</div><div class="line"></div><div class="line"># People, sjad.com</div><div class="line">dn: ou=People,dc=sjad,dc=com</div><div class="line">objectClass: organizationalUnit</div><div class="line">ou: People</div><div class="line"></div><div class="line"># Group, sjad.com</div><div class="line">dn: ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: organizationalUnit</div><div class="line">ou: Group</div><div class="line"></div><div class="line"># ldaptest, People, sjad.com</div><div class="line">dn: uid=ldaptest,ou=People,dc=sjad,dc=com</div><div class="line">objectClass: top</div><div class="line">objectClass: account</div><div class="line">objectClass: posixAccount</div><div class="line">objectClass: shadowAccount</div><div class="line">cn: ldaptest</div><div class="line">uid: ldaptest</div><div class="line">uidNumber: 9988</div><div class="line">gidNumber: 100</div><div class="line">homeDirectory: /home/ldaptest</div><div class="line">loginShell: /bin/bash</div><div class="line">gecos: LDAP Replication Test User</div><div class="line">shadowLastChange: 17058</div><div class="line">shadowMin: 0</div><div class="line">shadowMax: 99999</div><div class="line">shadowWarning: 7</div><div class="line"></div><div class="line"># ldaptestgroup, Group, sjad.com</div><div class="line">dn: cn=ldaptestgroup,ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: posixGroup</div><div class="line">objectClass: top</div><div class="line">cn: ldaptestgroup</div><div class="line">gidNumber: 100</div><div class="line">memberUid: ldaptest</div><div class="line"></div><div class="line"># ldaptest1, People, sjad.com</div><div class="line">dn: uid=ldaptest1,ou=People,dc=sjad,dc=com</div><div class="line">objectClass: top</div><div class="line">objectClass: account</div><div class="line">objectClass: posixAccount</div><div class="line">objectClass: shadowAccount</div><div class="line">cn: ldaptest1</div><div class="line">uid: ldaptest1</div><div class="line">uidNumber: 9989</div><div class="line">gidNumber: 101</div><div class="line">homeDirectory: /home/ldaptest1</div><div class="line">loginShell: /bin/bash</div><div class="line">gecos: LDAP Replication Test User</div><div class="line">shadowLastChange: 17058</div><div class="line">shadowMin: 0</div><div class="line">shadowMax: 99999</div><div class="line">shadowWarning: 7</div><div class="line"></div><div class="line"># ldaptest2, People, sjad.com</div><div class="line">dn: uid=ldaptest2,ou=People,dc=sjad,dc=com</div><div class="line">objectClass: top</div><div class="line">objectClass: account</div><div class="line">objectClass: posixAccount</div><div class="line">objectClass: shadowAccount</div><div class="line">cn: ldaptest2</div><div class="line">uid: ldaptest2</div><div class="line">uidNumber: 9990</div><div class="line">gidNumber: 1500</div><div class="line">homeDirectory: /home/ldaptest2</div><div class="line">loginShell: /bin/bash</div><div class="line">gecos: LDAP Replication Test User</div><div class="line">shadowLastChange: 17058</div><div class="line">shadowMin: 0</div><div class="line">shadowMax: 99999</div><div class="line">shadowWarning: 7</div><div class="line"></div><div class="line"># ldaptestgroup2, Group, sjad.com</div><div class="line">dn: cn=ldaptestgroup2,ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: posixGroup</div><div class="line">objectClass: top</div><div class="line">cn: ldaptestgroup</div><div class="line">cn: ldaptestgroup2</div><div class="line">gidNumber: 1500</div><div class="line">memberUid: ldaptest2</div><div class="line"></div><div class="line"># ldaptestgroup3, Group, sjad.com</div><div class="line">dn: cn=ldaptestgroup3,ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: posixGroup</div><div class="line">objectClass: top</div><div class="line">cn: ldaptestgroup</div><div class="line">cn: ldaptestgroup3</div><div class="line">gidNumber: 1501</div><div class="line">memberUid: ldaptest2</div><div class="line">memberUid: ldaptest</div><div class="line"></div><div class="line"># hadoop, People, sjad.com</div><div class="line">dn: uid=hadoop,ou=People,dc=sjad,dc=com</div><div class="line">objectClass: top</div><div class="line">objectClass: account</div><div class="line">objectClass: posixAccount</div><div class="line">objectClass: shadowAccount</div><div class="line">cn: hadoop</div><div class="line">uid: hadoop</div><div class="line">uidNumber: 6606</div><div class="line">gidNumber: 991</div><div class="line">homeDirectory: /home/hadoop</div><div class="line">loginShell: /bin/bash</div><div class="line">gecos: LDAP Replication Test User</div><div class="line">shadowLastChange: 17058</div><div class="line">shadowMin: 0</div><div class="line">shadowMax: 99999</div><div class="line">shadowWarning: 7</div><div class="line"></div><div class="line"># hadoop, Group, sjad.com</div><div class="line">dn: cn=hadoop,ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: posixGroup</div><div class="line">objectClass: top</div><div class="line">cn: hadoop</div><div class="line">gidNumber: 991</div><div class="line">memberUid: hadoop</div><div class="line"></div><div class="line"># addata, People, sjad.com</div><div class="line">dn: uid=addata,ou=People,dc=sjad,dc=com</div><div class="line">objectClass: top</div><div class="line">objectClass: account</div><div class="line">objectClass: posixAccount</div><div class="line">objectClass: shadowAccount</div><div class="line">cn: addata</div><div class="line">uid: addata</div><div class="line">uidNumber: 1504</div><div class="line">gidNumber: 1504</div><div class="line">homeDirectory: /home/addata</div><div class="line">loginShell: /bin/bash</div><div class="line">gecos: LDAP Replication Test User</div><div class="line">shadowLastChange: 17058</div><div class="line">shadowMin: 0</div><div class="line">shadowMax: 99999</div><div class="line">shadowWarning: 7</div><div class="line"></div><div class="line"># addata, Group, sjad.com</div><div class="line">dn: cn=addata,ou=Group,dc=sjad,dc=com</div><div class="line">objectClass: posixGroup</div><div class="line">objectClass: top</div><div class="line">cn: addata</div><div class="line">gidNumber: 1504</div><div class="line">memberUid: addata</div><div class="line"></div><div class="line"># search result</div><div class="line">search: 2</div><div class="line">result: 0 Success</div><div class="line"></div><div class="line"># numResponses: 15</div><div class="line"># numEntries: 14</div></pre></td></tr></table></figure>
+</p>
+<p>FreeIPA 迁移工具<strong>ipa migrate-ds</strong>,有-shema参数,您可以使用它来指定您正在从中迁移的是什么属性 (values are RFC2307 and RFC2307bis)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/SSSD介绍.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/SSSD介绍.html" itemprop="url">SSSD介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SSSD介绍"><a href="#SSSD介绍" class="headerlink" title="SSSD介绍"></a>SSSD介绍</h1><p>SSSD是自红帽企业版Linux6起新加入的一个守护进程，该进程可以用来访问多种验证服务器，如LDAP，Kerberos等，并提供授权。SSSD是<br>介于本地用户和数据存储之间的进程，本地客户端首先连接SSSD，再由SSSD联系外部资源提供者(一台远程服务器)。 </p>
+<p>这样做有一些几点优势：</p>
+<p>1.避免了本地每个客户端程序对认证服务器大量连接，所有本地程序仅联系SSSD，由SSSD连接认证服务器或SSSD缓存，有效的降低了负载。</p>
+<p>2.允许离线授权。SSSD可以缓存远程服务器的用户认证身份，这允许在远程认证服务器宕机是，继续成功授权用户访问必要的资源。</p>
+<p>SSSD无需特殊设置即可运行，当你配置完system-configure-authentication后该服务会自己运行。</p>
+<p>SSSD默认配置文件位于/etc/sssd/sssd.conf，你可以通过命令使得SSSD以指定的配置文件运行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># sssd  --c  /etc/sssd/customfile.conf</div><div class="line">配置文件格式如下：</div><div class="line"></div><div class="line">关键字=键值</div><div class="line">  #####################################################</div><div class="line">  ##  [section]                    ##</div><div class="line">  ##  key1 = value1                  ##</div><div class="line">  ##  key2 = value2,value3              ##</div><div class="line">  #####################################################</div></pre></td></tr></table></figure></p>
+<p>管理SSSD进程</p>
+<p>service  sssd  start 开启<br>service  sssd  stop 关闭<br>使用authconfig命令开启SSSD： #authconfig  –enablesssd  –update</p>
+<p>使用systemctl命令开启SSSD： # systemctl  enable  sssd</p>
+<p>总结：简单来说现在在RHEL6中连接LDAP或Kerberos等认证服务器，都是先有SSSD连接认证服务器取得认证与授权信息，再交于本地客户端程序。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Testing network bandwidth using iperf3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/Testing network bandwidth using iperf3.html" itemprop="url">Testing network bandwidth using iperf3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Testing-network-bandwidth-using-iperf3"><a href="#Testing-network-bandwidth-using-iperf3" class="headerlink" title="Testing network bandwidth using iperf3"></a>Testing network bandwidth using iperf3</h1><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Sometimes you want to test the network connection between two computers. Which tool will you use? Using web server and wget is an option, but it’s not very direct.</p>
+<p>Using iperf3, you can easily measure the bandwidth from the client to the server as well as the bandwidth from the server to the client easily.</p>
+<h2 id="How-to-install-iperf3"><a href="#How-to-install-iperf3" class="headerlink" title="How to install iperf3"></a>How to install iperf3</h2><p>Installing iperf3 on Debian/Ubuntu only needs one simple command.</p>
+<p><code>apt install iperf3</code></p>
+<p>On macOS, using homebrew is also very easy.</p>
+<p><code>brew install iperf3</code></p>
+<h2 id="How-to-use-iperf3"><a href="#How-to-use-iperf3" class="headerlink" title="How to use iperf3"></a>How to use iperf3</h2><p>On one of the computer (regarding as server), run iperf3 -s.</p>
+<p>On the other computer (regarding as client), a common test is iperf3 -i 1 -t 30 -c SERVER_IP, which shows the result per second and lasts 30 seconds.<br>Note: This command shows the transfer speed from the client to the server. If you want the reverse, just add -R to the command.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Shell/rmall.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Shell/rmall.html" itemprop="url">rmall</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">for i in `cat ~/servers.txt`</div><div class="line">do</div><div class="line">    echo &quot;--------------begin to change ntpd to $i--------------&quot;</div><div class="line"></div><div class="line">    ssh $i &apos;service cloudera-scm-agent stop&apos;</div><div class="line">    ssh $i &apos;umount /var/run/cloudera-scm-agent/process&apos;</div><div class="line">    ssh $i &apos;rm -rf /usr/share/cmf /var/lib/cloudera* /var/cache/zypp/packages/cloudera-* /var/cache/zypp/raw/cloudera-* /var/cache/zypp/solv/cloudera-* /var/log/cloudera-scm-* /var/run/&apos;cloudera-scm-* /etc/cloudera-scm-server*&apos;</div><div class="line">    ssh $i &apos;rpm -qa |grep cloudera&apos;</div><div class="line">    ssh $i &apos;rpm -e cloudera-manager-agent-5.13.0-1.cm5130.p0.55.el7.x86_64&apos;</div><div class="line">    ssh $i &apos;rpm -e cloudera-manager-daemons-5.13.0-1.cm5130.p0.55.el7.x86_64&apos;</div><div class="line">    ssh $i rm -rf /var/lib/hadoop-* /var/lib/impala /var/lib/solr /var/lib/zookeeper /var/lib/hue /var/lib/oozie  /var/lib/pgsql  /var/lib/sqoop2  /data/dfs/  /data/impala/ /data/yarn/  /dfs/ /impala/ /yarn/  /var/run/hadoop-*/ /var/run/hdfs-*/ /usr/bin/hadoop* /usr/bin/zookeeper* /usr/bin/hbase* /usr/bin/hive* /usr/bin/hdfs /usr/bin/mapred /usr/bin/yarn /usr/&apos;bin/sqoop* /usr/bin/oozie /etc/hadoop* /etc/zookeeper* /etc/hive* /etc/hue /etc/impala /etc/sqoop* /etc/oozie /etc/hbase* /etc/hcatalog &apos;</div><div class="line">    ssh $i &apos;rm -rf /opt/cloudera/parcel-cache /opt/cloudera/parcels&apos;</div><div class="line">    ssh $i &apos;ps aux|grep  supervisord |grep -v grep | awk &apos;&#123;print &quot;kill -9 &quot;$2&#125;&apos;|sh&apos;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">done</div></pre></td></tr></table></figure>
+</p>
+<hr>
+<h2 id="更换Default-gw"><a href="#更换Default-gw" class="headerlink" title="更换Default gw"></a>更换Default gw</h2><p>[root@tddp-nm-5 ~]# route del default gw 10.151.0.1<br>[root@tddp-nm-5 ~]# route add default gw 10.150.4.1</p>
+<hr>
+<h2 id="Zypper-源配置"><a href="#Zypper-源配置" class="headerlink" title="Zypper 源配置"></a>Zypper 源配置</h2><p>zypper ar <a href="http://10.200.58.39/suse/" target="_blank" rel="noopener">http://10.200.58.39/suse/</a> local.main<br>zypper update</p>
+<h2 id="备份源地址："><a href="#备份源地址：" class="headerlink" title="备份源地址："></a>备份源地址：</h2><p>zypper ar <a href="http://10.200.58.43" target="_blank" rel="noopener">http://10.200.58.43</a> local.main<br>zypper ar <a href="http://10.200.58.70/SLES-11-SP3/x86_64/" target="_blank" rel="noopener">http://10.200.58.70/SLES-11-SP3/x86_64/</a> main</p>
+<p>zypper 常用命令：<br>      repos, lr     List all defined repositories.<br>addrepo, ar     Add a new repository.<br>removerepo, rr      Remove specified repository.<br>renamerepo, nr      Rename specified repository.<br>modifyrepo, mr      Modify specified repository.<br>refresh, ref        Refresh all repositories.<br>clean           Clean local caches.</p>
+<hr>
+<h2 id="角色启动失败-报错supervisor"><a href="#角色启动失败-报错supervisor" class="headerlink" title="角色启动失败 报错supervisor"></a>角色启动失败 报错supervisor</h2><p>检查一下,客户端配置是否部署<br>检查 krb5.conf</p>
+<hr>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">for i in `cat ~/servers.txt`</div><div class="line">do</div><div class="line">    echo &quot;--------------begin to rm cloudera to $i--------------&quot;</div><div class="line"></div><div class="line">    scp /root/rmall.sh $i:/root/</div><div class="line">    ssh $i &apos;sh /root/rmall.sh&apos;</div><div class="line"></div><div class="line">done</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service cloudera-scm-server stop</div><div class="line">service cloudera-scm-agent stop</div><div class="line">umount /var/run/cloudera-scm-agent/process</div><div class="line">rm -rf /usr/share/cmf /var/lib/cloudera* /var/cache/zypp/packages/cloudera-* /var/cache/zypp/raw/cloudera-* /var/cache/zypp/solv/cloudera-* /var/log/cloudera-scm-* /var/run/cloudera-scm-* /etc/cloudera-scm-server*</div><div class="line">rpm -qa |grep cloudera</div><div class="line">rpm -e cloudera-manager-agent-5.13.0-1.cm5130.p0.55.el7.x86_64</div><div class="line">rpm -e cloudera-manager-server-5.13.0-1.cm5130.p0.55.el7.x86_64</div><div class="line">rpm -e cloudera-manager-daemons-5.13.0-1.cm5130.p0.55.el7.x86_64</div><div class="line">rm -rf /var/lib/hadoop-* /var/lib/impala /var/lib/solr /var/lib/zookeeper /var/lib/hue /var/lib/oozie  /var/lib/pgsql  /var/lib/sqoop2  /data/dfs/  /data/impala/ /data/yarn/  /dfs/ /impala/ /yarn/  /var/run/hadoop-*/ /var/run/hdfs-*/ /usr/bin/hadoop* /usr/bin/zookeeper* /usr/bin/hbase* /usr/bin/hive* /usr/bin/hdfs /usr/bin/mapred /usr/bin/yarn /usr/bin/sqoop* /usr/bin/oozie /etc/hadoop* /etc/zookeeper* /etc/hive* /etc/hue /etc/impala /etc/sqoop* /etc/oozie /etc/hbase* /etc/hcatalog </div><div class="line">rm -rf /opt/cloudera/parcel-cache /opt/cloudera/parcels</div><div class="line">ps aux|grep  supervisord |grep -v grep | awk &apos;&#123;print &quot;kill -9 &quot; $2&#125;&apos;|sh</div></pre></td></tr></table></figure>
+</p>
+<h2 id="删除对应数据库"><a href="#删除对应数据库" class="headerlink" title="删除对应数据库"></a>删除对应数据库</h2><p><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> amon_test;      </div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> hue_test;      </div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> cm_test;      </div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> metastore_test;                </div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> nav_test;      </div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> navms_test;</div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> oozie_test;</div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> rman_test;</div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> sentry_test;</div><div class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> metastore_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> metastore_test. * <span class="keyword">TO</span> <span class="string">'hive'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> amon_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> amon_test.* <span class="keyword">to</span> <span class="string">'amon'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> rman_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> rman_test.* <span class="keyword">to</span> <span class="string">'rman'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> sentry_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> sentry_test.* <span class="keyword">to</span> <span class="string">'sentry'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> nav_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> nav_test.* <span class="keyword">to</span> <span class="string">'nav'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> navms_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> navms_test.* <span class="keyword">to</span> <span class="string">'navms'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> cm_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> cm_test.* <span class="keyword">to</span> <span class="string">'cm'</span>@<span class="string">'%'</span>;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> hue_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> hue_test.* <span class="keyword">TO</span> <span class="string">'hue'</span>@<span class="string">'%'</span>; </div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> oozie_test <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8;</div><div class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> oozie_test.* <span class="keyword">TO</span> <span class="string">'oozie'</span>@<span class="string">'%'</span>; </div><div class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</div></pre></td></tr></table></figure>
+</p>
+<p>删除路由 route del -net 10.125.137.0/24 gw 10.150.4.1<br>显示路由 netstat -rn<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@tddp-nm-5 ~]# route del default gw 10.151.0.1</div><div class="line">[root@tddp-nm-5 ~]# route add default gw 10.150.4.1</div><div class="line"></div><div class="line">route del default gw 10.151.0.1</div><div class="line">route add default gw 10.150.4.1</div><div class="line"></div><div class="line"></div><div class="line">route add -net 10.200.0.0/16 gw 10.151.0.1</div><div class="line">route add -net 10.125.137.0/24 gw 10.151.0.1</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">route add -net 10.150.4.0/16 gw 10.150.4.1</div></pre></td></tr></table></figure></p>
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">yum install cloudera-manager-daemons cloudera-manager-server</div><div class="line">/usr/share/cmf/schema/scm_prepare_database.sh -h 10.150.4.88 mysql cm_test cm Cloudera@123</div><div class="line">vi /etc/hosts</div><div class="line">sh sync_hosts.sh </div><div class="line">service cloudera-scm-server start</div><div class="line"></div><div class="line">tail -f /var/<span class="built_in">log</span>/cloudera-scm-server/cloudera-scm-server.log</div></pre></td></tr></table></figure>
+</p>
+<p>[root@tddp-zk-2 ~]# tail -f /var/log/cloudera-scm-agent/cloudera-scm-agent.log </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/setfacl提示 Operation not supported.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/setfacl提示 Operation not supported.html" itemprop="url">setfacl提示 Operation not supported</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="setfacl提示-Operation-not-supported"><a href="#setfacl提示-Operation-not-supported" class="headerlink" title="setfacl提示 Operation not supported"></a>setfacl提示 Operation not supported</h1><p>问题：/mnt/bak为硬盘的一个分区，在fstab做了defaults挂载，当我需要配置acl权限时</p>
+<p>命令为：setfacl -m u:luo:rwx /mnt/bak的时候提示</p>
+<p>setfacl: /mnt/bak: Operation not supported 错误</p>
+<p>解决方法：重新修改/etc/fstab文件，加入acl选项</p>
+<p>/dev/vg/bak             /mnt/bak                ext3    defaults,acl    0 0</p>
+<p>然后：mount -o remount /mnt/bak 重新挂载，再执行上面的命令，成功！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
@@ -2201,12 +1712,15 @@ server 216.229.0.179 --&gt;
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2222,133 +1736,62 @@ server 216.229.0.179 --&gt;
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Nameless13</p>
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
               <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          </div>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">164</span>
-                    <span class="site-state-item-name">Artikel</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">33</span>
-                    <span class="site-state-item-name">Kategorien</span>
-                  
-                </div>
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">164</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
             
-          
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
       </section>
 
       
@@ -2365,41 +1808,30 @@ server 216.229.0.179 --&gt;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
-
-  
-
-  
 </div>
 
 
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.3</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
-
-
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
 
         
-
-
-
-
-
-
-
 
         
       </div>
@@ -2410,8 +1842,6 @@ server 216.229.0.179 --&gt;
         <i class="fa fa-arrow-up"></i>
         
       </div>
-    
-
     
 
   </div>
@@ -2432,11 +1862,7 @@ server 216.229.0.179 --&gt;
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2450,43 +1876,54 @@ server 216.229.0.179 --&gt;
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
 
 
 
@@ -2509,25 +1946,12 @@ server 216.229.0.179 --&gt;
 
 
 
-
-
-
-
   
 
 
 
 
 
-  
-
-  
-
-  
-
-  
-
-  
   
 
   

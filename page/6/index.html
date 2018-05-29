@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
+<!doctype html>
 
 
 
@@ -18,11 +9,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -49,7 +36,36 @@
 
 
 
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -58,19 +74,10 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,36 +86,14 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: 'J3OX6892F7',
-      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
-      indexName: 'Blog',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
-  <meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nameless13">
 <meta property="og:url" content="https://nameless13.github.io/page/6/index.html">
@@ -121,6 +106,27 @@
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
 
@@ -128,11 +134,7 @@
 
 
 
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>Nameless13</title>
   
@@ -145,32 +147,10 @@
 
 
 
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
+
+
 
 </head>
 
@@ -182,7 +162,8 @@
   
 
   <div class="container sidebar-position-left 
-  page-home">
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -191,17 +172,19 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -209,61 +192,45 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-    <a href="/404/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
-  </li>
-
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -271,20 +238,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -297,201 +256,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Linux中history历史命令使用方法详解.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Document/Linux中history历史命令使用方法详解.html" itemprop="url">
-                  Linux中history历史命令使用方法详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 13:58:04" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Linux中history历史命令使用方法详解"><a href="#Linux中history历史命令使用方法详解" class="headerlink" title="Linux中history历史命令使用方法详解"></a>Linux中history历史命令使用方法详解</h1><h2 id="使用HISTTIMEFORMAT在历史中显示TIMESTAMP"><a href="#使用HISTTIMEFORMAT在历史中显示TIMESTAMP" class="headerlink" title="使用HISTTIMEFORMAT在历史中显示TIMESTAMP"></a>使用HISTTIMEFORMAT在历史中显示TIMESTAMP</h2><p>export HISTTIMEFORMAT=’%F %T ‘<br>也可以设置alias语句来查看最近的历史命令<br>alias h1=’history 10’<br>alias h2=’history 20’<br>alias h3=’history 30’</p>
-<h2 id="用Ctrl-＋-R搜索历史命令"><a href="#用Ctrl-＋-R搜索历史命令" class="headerlink" title="用Ctrl ＋ R搜索历史命令"></a>用Ctrl ＋ R搜索历史命令</h2><p>按下Ctrl +R然后输入关键字。 在以下示例中，我搜索“red”，则显示以前的命令中含有”red”的命令“cat/etc/redhat-release”。<br>注：在命令行提示符下按下Ctrl＋R，终端将显示如下提示―reverse-i-search‖<br> (reverse-i-search)<code>red</code>: cat/etc/redhat-release<br>注：当看到你要的命令后按回车键，就可以重新执行这条命令了<br>cat /etc/redhat-release<br>Fedora release 9 (Sulphur)<br>而有的时候你需要在执行一条历史命令之前编辑它.比如，你可以像下面那样搜索“httpd”，终端显示历史命令“service httpd stop”，选择它把“stop”改为“start”然后执行它<br>注: 在命令提示符下按 Ctrl+R , 将会显示提示符‖reverse-i-search‖<br> (reverse-i-search)<code>httpd</code>: service httpdstop<br>注: 看到你想要的命令后按下左键或者右键,就可以在执行这条命令之前编辑它了 </p>
-<h2 id="四种不同的方法快速执行之前的命令"><a href="#四种不同的方法快速执行之前的命令" class="headerlink" title="四种不同的方法快速执行之前的命令"></a>四种不同的方法快速执行之前的命令</h2><p>有时出于某些原因你需要执行之前的命令，下面的四种方法可以用来重复最后执行的命令：</p>
-<ol>
-<li>用向上键（up arrow ）查看上条命令，按回车执行。 </li>
-<li>在命令行中输入!!并按回车。 </li>
-<li>在命令行中输入!-1并按回车。 </li>
-<li>按Ctrl+P显示上条命令，按回车执行。</li>
-<li>如果你想再次执行第四条命令，执行！4即可</li>
-<li>执行以特定字开头的历史命令,输入！和你要重新执行的命令的前几个字母。如！ps</li>
-</ol>
-<h2 id="使用HISTFILE改变历史文件名"><a href="#使用HISTFILE改变历史文件名" class="headerlink" title="使用HISTFILE改变历史文件名"></a>使用HISTFILE改变历史文件名</h2><p>默认位置在.bash_history文件中，把下面的一行添加到.bash_profile文件中，重新登录shell，则.commandline_warrior文件将取代.bash_history文件用来储存历史命令。你可以使用这个命令来追踪不同终端中执行的命令，届时只需要将不同终端中所执行的命令保存在不同的历史文件中即可。</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#vi ~/.bash_profile </div><div class="line">HISTFILE=/root/.commandline_warrior</div></pre></td></tr></table></figure>
-</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Flume]flume agent任务失败.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -506,52 +276,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Flume]flume agent任务失败.html" itemprop="url">
-                  flume agent任务失败
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[Flume]flume agent任务失败.html" itemprop="url">flume agent任务失败</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 13:58:04" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -564,17 +307,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -599,9 +350,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -623,17 +371,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -647,10 +395,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -663,18 +407,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/Path of CDH config.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -689,52 +427,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/CM/Path of CDH config.html" itemprop="url">
-                  Path of CDH config
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/CM/Path of CDH config.html" itemprop="url">Path of CDH config</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 13:58:04" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -747,17 +458,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/CM/" itemprop="url" rel="index"><span itemprop="name">CM</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
+                    <span itemprop="name">CM</span>
+                  </a>
+                </span>
 
                 
                 
@@ -782,9 +501,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -807,17 +523,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -831,10 +547,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -847,18 +559,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Spark]spark提交任务失败.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]SSH 登录错误.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -873,52 +579,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Spark]spark提交任务失败.html" itemprop="url">
-                  spark提交任务失败
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[Linux]SSH 登录错误.html" itemprop="url">SSH 登录错误</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 13:58:04" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
             
           </span>
 
@@ -931,17 +610,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -966,9 +653,160 @@
       </header>
     
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SSH-登录错误"><a href="#SSH-登录错误" class="headerlink" title="SSH 登录错误"></a>SSH 登录错误</h1><p>SSH 登录时出现如下错误：ssh_exchange_identification: read: Connection reset by peer</p>
+<p>可能的原因:Linux 系统通过 /etc/hosts.allow 或 /etc/hosts.deny，启用了 TCP Wrapper  访问控制所致。<br>可以通过ssh -v查看连接时详情<code>ssh -v root@ip地址或域名</code></p>
+<ol>
+<li>通过带外进入系统</li>
+<li>通过 cat 等指令查看 /etc/hosts.allow 或 /etc/hosts.deny中是否包含类似如下配置：<code>all:all:deny</code></li>
+<li>如果需要修改相关策略配置，在继续之前建议进行文件备份。</li>
+<li>使用 vi 等编辑器，按需修改 /etc/hosts.allow 和 /etc/hosts.deny中的相关配置，或者整个删除或注释（在最开头添加 # 号）整行配置。或者改为<code>sshd: ALL</code></li>
+<li>重启ssh <code>service sshd restart</code></li>
+<li>结果发现丢失 /var/lib/empty 把其他节点的目录复制过来后重启解决</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Spark]spark提交任务失败.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[Spark]spark提交任务失败.html" itemprop="url">spark提交任务失败</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T13:58:04+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -985,204 +823,17 @@
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/动态资源分配.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Spark/动态资源分配.html" itemprop="url">
-                  动态资源分配
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">2017-09-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="动态资源分配"><a href="#动态资源分配" class="headerlink" title="动态资源分配"></a>动态资源分配</h2><p>Spark提供了一种机制，可以根据工作负载动态调整应用程序占用的资源。这意味着如果您的应用程序不再使用，您的应用程序可能会将资源返回给群集，并在需要时再次请求它们。如果多个应用程序在Spark群集中共享资源，则此功能特别有用。</p>
-<p>默认情况下禁用此功能，并且可在所有粗粒度集群管理器上使用此功能，例如 独立模式，YARN模式和 Mesos粗粒度模式。</p>
-<h2 id="配置和设置"><a href="#配置和设置" class="headerlink" title="配置和设置"></a>配置和设置</h2><p>使用此功能有两个要求。首先，您的应用程序必须设置 spark.dynamicAllocation.enabled为true。其次，您必须 在同一集群中的每个工作节点上设置一个外部随机播放服务，并spark.shuffle.service.enabled在应用程序中设置为true。外部shuffle服务的目的是允许删除执行程序，而不删除它们写入的shuffle文件（下面将详细介绍 ）。集群管理器的设置方式各不相同：</p>
-<p>在独立模式下，只需启动您的工作人员spark.shuffle.service.enabled即可true。</p>
-<p>在Mesos粗粒度模式下，$SPARK_HOME/sbin/start-mesos-shuffle-service.sh在spark.shuffle.service.enabled设置为所有从节点上运行true。例如，你可以通过马拉松来这样做。</p>
-<p>在YARN模式下，请按照此处的说明进行操作。</p>
-<p>所有其他相关的配置是可选的，下spark.dynamicAllocation.<em>和 spark.shuffle.service.</em>命名空间</p>
-<h2 id="资源分配政策"><a href="#资源分配政策" class="headerlink" title="资源分配政策"></a>资源分配政策</h2><p>在高层次上，Spark应该在不再使用执行者时放弃执行者，并在需要时获取执行者。既然没有明确的方法来预测即将被删除的执行者是否会在不久的将来执行一个任务，还是将要添加的新的执行者实际上是空闲的，那么我们需要一套启发式来确定何时删除并请求执行者。</p>
-<h3 id="请求政策"><a href="#请求政策" class="headerlink" title="请求政策"></a>请求政策</h3><p>启用动态分配的Spark应用程序在等待等待调度的任务中请求附加执行程序。这种情况必然意味着现有的执行者集合不足以同时使所有已经提交但尚未完成的任务饱和。</p>
-<p>Spark要求执行者轮回。当有待处理的任务持续spark.dynamicAllocation.schedulerBacklogTimeout几秒钟时，触发实际请求，spark.dynamicAllocation.sustainedSchedulerBacklogTimeout然后如果挂起的任务队列仍然存在，则每秒钟再次触发。此外，每轮要求的执行人数从上一轮呈指数级增长。例如，一个应用程序将在第一轮中添加1个执行者，然后在后续的回合中添加2,4,8个等等执行者。</p>
-<p>指数增长政策的动机是双重的。首先，一个应用程序应该在开始时谨慎地请求执行者，以防只有少数额外的执行者是足够的。这回应了TCP慢启动的理由。第二，应用程序应该能够及时提高其资源使用情况，以证明实际需要许多执行者。</p>
-
-          
-        
+    <div>
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
-
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1196,10 +847,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1212,18 +859,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/nas盘用户名一致,uid不一致.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1238,52 +879,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/nas盘用户名一致,uid不一致.html" itemprop="url">
-                  nas盘用户名一致,uid不一致
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/Document/nas盘用户名一致,uid不一致.html" itemprop="url">nas盘用户名一致,uid不一致</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -1296,10 +910,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Document/" itemprop="url" rel="index">
+                    <span itemprop="name">Document</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1324,9 +942,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1342,17 +957,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1366,10 +981,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1382,18 +993,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/密码管理.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1408,52 +1013,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Kerberos MIT/密码管理.html" itemprop="url">
-                  密码管理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Kerberos MIT/密码管理.html" itemprop="url">密码管理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -1466,17 +1044,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index"><span itemprop="name">Kerberos MIT</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index">
+                    <span itemprop="name">Kerberos MIT</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1501,9 +1087,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1579,17 +1162,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1603,10 +1186,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1619,18 +1198,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/kerberos配置文件.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/动态资源分配.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1645,52 +1218,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Kerberos MIT/kerberos配置文件.html" itemprop="url">
-                  kerberos配置文件
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Spark/动态资源分配.html" itemprop="url">动态资源分配</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -1703,17 +1249,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index"><span itemprop="name">Kerberos MIT</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1738,9 +1292,161 @@
       </header>
     
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="动态资源分配"><a href="#动态资源分配" class="headerlink" title="动态资源分配"></a>动态资源分配</h2><p>Spark提供了一种机制，可以根据工作负载动态调整应用程序占用的资源。这意味着如果您的应用程序不再使用，您的应用程序可能会将资源返回给群集，并在需要时再次请求它们。如果多个应用程序在Spark群集中共享资源，则此功能特别有用。</p>
+<p>默认情况下禁用此功能，并且可在所有粗粒度集群管理器上使用此功能，例如 独立模式，YARN模式和 Mesos粗粒度模式。</p>
+<h2 id="配置和设置"><a href="#配置和设置" class="headerlink" title="配置和设置"></a>配置和设置</h2><p>使用此功能有两个要求。首先，您的应用程序必须设置 spark.dynamicAllocation.enabled为true。其次，您必须 在同一集群中的每个工作节点上设置一个外部随机播放服务，并spark.shuffle.service.enabled在应用程序中设置为true。外部shuffle服务的目的是允许删除执行程序，而不删除它们写入的shuffle文件（下面将详细介绍 ）。集群管理器的设置方式各不相同：</p>
+<p>在独立模式下，只需启动您的工作人员spark.shuffle.service.enabled即可true。</p>
+<p>在Mesos粗粒度模式下，$SPARK_HOME/sbin/start-mesos-shuffle-service.sh在spark.shuffle.service.enabled设置为所有从节点上运行true。例如，你可以通过马拉松来这样做。</p>
+<p>在YARN模式下，请按照此处的说明进行操作。</p>
+<p>所有其他相关的配置是可选的，下spark.dynamicAllocation.<em>和 spark.shuffle.service.</em>命名空间</p>
+<h2 id="资源分配政策"><a href="#资源分配政策" class="headerlink" title="资源分配政策"></a>资源分配政策</h2><p>在高层次上，Spark应该在不再使用执行者时放弃执行者，并在需要时获取执行者。既然没有明确的方法来预测即将被删除的执行者是否会在不久的将来执行一个任务，还是将要添加的新的执行者实际上是空闲的，那么我们需要一套启发式来确定何时删除并请求执行者。</p>
+<h3 id="请求政策"><a href="#请求政策" class="headerlink" title="请求政策"></a>请求政策</h3><p>启用动态分配的Spark应用程序在等待等待调度的任务中请求附加执行程序。这种情况必然意味着现有的执行者集合不足以同时使所有已经提交但尚未完成的任务饱和。</p>
+<p>Spark要求执行者轮回。当有待处理的任务持续spark.dynamicAllocation.schedulerBacklogTimeout几秒钟时，触发实际请求，spark.dynamicAllocation.sustainedSchedulerBacklogTimeout然后如果挂起的任务队列仍然存在，则每秒钟再次触发。此外，每轮要求的执行人数从上一轮呈指数级增长。例如，一个应用程序将在第一轮中添加1个执行者，然后在后续的回合中添加2,4,8个等等执行者。</p>
+<p>指数增长政策的动机是双重的。首先，一个应用程序应该在开始时谨慎地请求执行者，以防只有少数额外的执行者是足够的。这回应了TCP慢启动的理由。第二，应用程序应该能够及时提高其资源使用情况，以证明实际需要许多执行者。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Kerberos MIT/kerberos配置文件.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Kerberos MIT/kerberos配置文件.html" itemprop="url">kerberos配置文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Kerberos-MIT/" itemprop="url" rel="index">
+                    <span itemprop="name">Kerberos MIT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1761,17 +1467,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1785,10 +1491,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1801,18 +1503,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Tips/hirecut.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1827,52 +1523,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Tips/hirecut.html" itemprop="url">
-                  hirecut
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/Tips/hirecut.html" itemprop="url">hirecut</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -1885,10 +1554,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tips/" itemprop="url" rel="index">
+                    <span itemprop="name">Tips</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1913,9 +1586,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1942,17 +1612,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1966,10 +1636,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1982,18 +1648,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]JournalNode同步问题.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -2008,52 +1668,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[HDFS]JournalNode同步问题.html" itemprop="url">
-                  JournalNode同步问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[HDFS]JournalNode同步问题.html" itemprop="url">JournalNode同步问题</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">2017-09-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:00:00+08:00">
+                2017-09-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -2066,17 +1699,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2101,9 +1742,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2120,17 +1758,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -2144,10 +1782,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -2156,12 +1790,15 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2177,133 +1814,62 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Nameless13</p>
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
               <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          </div>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">164</span>
-                    <span class="site-state-item-name">Artikel</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">33</span>
-                    <span class="site-state-item-name">Kategorien</span>
-                  
-                </div>
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">164</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
             
-          
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
       </section>
 
       
@@ -2320,41 +1886,30 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
-
-  
-
-  
 </div>
 
 
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.3</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
-
-
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
 
         
-
-
-
-
-
-
-
 
         
       </div>
@@ -2365,8 +1920,6 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
-    
-
     
 
   </div>
@@ -2387,11 +1940,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2405,43 +1954,54 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
 
 
 
@@ -2464,25 +2024,12 @@
 
 
 
-
-
-
-
   
 
 
 
 
 
-  
-
-  
-
-  
-
-  
-
-  
   
 
   

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
+<!doctype html>
 
 
 
@@ -18,11 +9,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -49,7 +36,36 @@
 
 
 
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -58,19 +74,10 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,36 +86,14 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: 'J3OX6892F7',
-      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
-      indexName: 'Blog',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
-  <meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nameless13">
 <meta property="og:url" content="https://nameless13.github.io/page/8/index.html">
@@ -121,6 +106,27 @@
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
 
@@ -128,11 +134,7 @@
 
 
 
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>Nameless13</title>
   
@@ -145,32 +147,10 @@
 
 
 
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
+
+
 
 </head>
 
@@ -182,7 +162,8 @@
   
 
   <div class="container sidebar-position-left 
-  page-home">
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -191,17 +172,19 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -209,61 +192,45 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-    <a href="/404/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
-  </li>
-
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -271,20 +238,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -297,18 +256,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Cloudera部署CentOS.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hive]hive zk 锁分区.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -323,52 +276,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Installation/Cloudera部署CentOS.html" itemprop="url">
-                  Cloudera部署CentOS
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[Hive]hive zk 锁分区.html" itemprop="url">hive zk 锁分区</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">2017-06-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
+                2017-06-30
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
             
           </span>
 
@@ -381,17 +307,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -416,9 +350,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -427,52 +358,40 @@
       
         
           
-            <blockquote>
-<p>操作系统:CentOS 6.5<br>CM版本:CM5.10.041<br>CDH版本:CDH5.10.041<br>使用version用户对集群进行部署</p>
-</blockquote>
-<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><ul>
-<li>关闭防火墙</li>
-<li>配置时钟同步服务</li>
-<li>检查数据盘是否挂载</li>
-</ul>
-<p>安装的机器ip:<br>192.168.86.119,192.168.86.120,</p>
-<ol>
-<li>安装操作系统，建议对操作系统盘做RAID1</li>
-<li>如果不能连接互联网，先创建OS的repository，以便yum或zypper可以访问OS镜像</li>
-<li>为了使集群中各个节点之间能互相通信，需要静态或动态配置节点的IP地址。如果使用动态配置，请安装DHCP和DNS服务器，具体请参见对应软件的安装文档，此不赘述；如果使用静态IP地址，请正确配置各节点的IP，并在/etc/hosts配置所有节点的静态DNS解析。<br>以cm节点为例：<code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">DEVICE=&quot;bond0&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">IPV6INIT=&quot;no&quot;</div><div class="line">MTU=&quot;1500&quot;</div><div class="line">NM_CONTROLLED=&quot;no&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">TYPE=&quot;Ethernet&quot;</div><div class="line">IPADDR=192.168.60.25</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.60.1</div></pre></td></tr></table></figure>
+            <h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志:"></a>错误日志:</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Got user-level KeeperException when processing sessionid:0x15bfba733be2c2b type:create cxid:0x8621e1c zxid:0x170a4b8e0d txntype:-1 reqpath:n/a Error Path:/hive_zookeeper_namespace_hive/rptdata/fact_kesheng_sdk_new_device_hourly/src_file_day=20170414/src_file_hour=07 Error:KeeperErrorCode = NodeExists for /hive_zookeeper_namespace_hive/rptdata/fact_kesheng_sdk_new_device_hourly/src_file_day=20170414/src_file_hour=07</div></pre></td></tr></table></figure>
 </p>
-<p>/etc/hosts样例<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">10.200.65.50    ddp-cm.cmdmp.com    ddp-cm</div><div class="line">10.200.65.51    ddp-nn-01.cmdmp.com ddp-nn-01</div><div class="line">10.200.65.52    ddp-nn-02.cmdmp.com ddp-nn-02</div><div class="line">10.200.65.53    ddp-dn-01.cmdmp.com ddp-dn-01</div><div class="line">10.200.65.54    ddp-dn-02.cmdmp.com ddp-dn-02</div><div class="line">10.200.65.55    ddp-dn-03.cmdmp.com ddp-dn-03</div><div class="line">10.200.65.56    ddp-dn-04.cmdmp.com ddp-dn-04</div><div class="line">10.200.65.57    ddp-dn-05.cmdmp.com ddp-dn-05</div><div class="line">10.200.65.58    ddp-dn-06.cmdmp.com ddp-dn-06</div><div class="line">10.200.65.59    ddp-dn-07.cmdmp.com ddp-dn-07</div><div class="line">10.200.65.60    ddp-dn-08.cmdmp.com ddp-dn-08</div><div class="line">10.200.65.61    ddp-dn-09.cmdmp.com ddp-dn-09</div><div class="line">10.200.65.62    ddp-dn-10.cmdmp.com ddp-dn-10</div><div class="line">10.200.65.63    ddp-dn-11.cmdmp.com ddp-dn-11</div><div class="line">10.200.65.64    ddp-dn-12.cmdmp.com ddp-dn-12</div><div class="line">10.200.65.71    ddp-kettle-02.cmdmp.com ddp-kettle-02</div><div class="line">10.200.63.132   ddp-yonghong-test1.cmdmp.com    ddp-yonghong-test1.cmdmp.com</div><div class="line">10.200.86.119   ddp-sunflower-test1.cmdmp.com   ddp-sunflower-test1.cmdmp.com</div><div class="line">10.200.86.120   ddp-sunflower-test2.cmdmp.com   ddp-sunflower-test2.cmdmp.com</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service network restart</div><div class="line">ping 10.200.86.1</div><div class="line">cd vmware-tools-distrib/</div><div class="line">./vmware-install.pl </div><div class="line">reboot</div><div class="line">groupadd version</div><div class="line">useradd -m -g version version</div><div class="line">echo 2wsx@WSX|passwd --stdin version</div><div class="line">yes|cp -p /etc/sudoers /etc/sudoers_bak</div><div class="line">chmod +x /etc/sudoers</div><div class="line">sed -i &quot;/NOPASSWD: ALL/c %version ALL=(ALL) NOPASSWD: ALL&quot; /etc/sudoers</div><div class="line">chmod -x /etc/sudoers</div><div class="line">yum install daemontools</div><div class="line">route</div><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line">service network restart</div><div class="line">vim /etc/ntp.conf </div><div class="line">/etc/init.d/ntpd start</div></pre></td></tr></table></figure>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2013-11-04 23:52:40,485 ERROR ZooKeeperHiveLockManager (ZooKeeperHiveLockManager.java:unlockPrimitive(447)) - Failed to release ZooKeeper lock:</div><div class="line">org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /hive_zookeeper_namespace/&lt;hiveDBName&gt;/&lt;Table&gt;/&lt;PARTITION&gt;/LOCK-SHARED-0000000000</div></pre></td></tr></table></figure>
 </p>
-<ol>
-<li>关闭并禁用防火墙<br><code>/etc/init.d/iptables stop</code><br><code>/etc/init.d/iptables status</code><br><code>/sbin/chkconfig --level 2345 iptables off</code></li>
-<li>关闭SELinux<br><code>echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux ;</code></li>
-<li>重启网络服务，并初始化网络<br><code>/etc/init.d/network restart</code></li>
-<li>修改transparent_hugepage参数，这一参数默认值可能会导致CDH性能下降<br>在/etc/init.d/after.local中增加一行：<br><code>if test -f /sys/kernel/mm/transparent_hugepage/enabled; then echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled fi</code></li>
-<li>禁用交换内存<br>vi /etc/sysconfig/selinux<br>vi /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo never &gt; /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>vi /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>sudo sysctl vm.swappiness=0<br>vim /etc/sysctl.conf<br>reboot </li>
-<li>如果机器配置有双网卡，可以做双网卡绑定；</li>
-</ol>
-<hr>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hostname ddp-sunflower-test1.cmdmp.com</div><div class="line">hostname </div><div class="line"></div><div class="line">vi /etc/hosts</div><div class="line">vi /etc/krb5.conf </div><div class="line">scp root@10.200.65.71:/home/sunflower/sunflower.keytab .</div><div class="line">ll</div><div class="line">mkdir rpm</div><div class="line">cd rpm/</div><div class="line">scp root@10.200.65.50:/srv/www/htdocs/cloudera/centos_cm/* .</div><div class="line">ll</div><div class="line">yum install ntp</div><div class="line">vi /etc/yum.repos.d/myrepo.repo</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">yum updata</div><div class="line">yum --help</div><div class="line">yum clean</div><div class="line">yum upgrade</div><div class="line">yum repolist</div><div class="line">vi /etc/yum.repos.d/CentOS-Base.repo </div><div class="line">yum upgrade</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">vi /etc/yum.repos.d/CentOS-Base.repo </div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">yum clean</div><div class="line">yum clean all</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">rpm -ivh oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm </div><div class="line">rpm -ivh cloudera-manager-daemons-5.10.0-1.cm5100.p0.85.el6.x86_64.rpm </div><div class="line">find /etc/yum.repos.d/ -name &quot;*.repo&quot; -exec mv &#123;&#125; &#123;&#125;.bak \; </div><div class="line">rpm -ivh --force --nodeps http://10.200.58.39/pub/centos6-1.0-1.el6.x86_64.rpm </div><div class="line">yum clean all </div><div class="line">yum makecache </div><div class="line">mv /etc/yum.repos.d/myrepo.repo.bak /etc/yum.repos.d/myrepo.repo</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">history</div></pre></td></tr></table></figure></p>
+<h3 id="在ZK中可以看到对应的分区锁住了"><a href="#在ZK中可以看到对应的分区锁住了" class="headerlink" title="在ZK中可以看到对应的分区锁住了"></a>在ZK中可以看到对应的分区锁住了</h3><p><code>/hive_zookeeper_namespace_hive/&lt;hiveDBName&gt;/&lt;Table&gt;/LOCK-SHARED-</code></p>
+<h3 id="在beeline中查看被锁的表和分区"><a href="#在beeline中查看被锁的表和分区" class="headerlink" title="在beeline中查看被锁的表和分区"></a>在beeline中查看被锁的表和分区</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show locks &lt;hiveDBName&gt;.&lt;Table&gt;</div><div class="line"></div><div class="line">show locks &lt;hiveDBName&gt;.&lt;Table&gt; partition (src_file_day=&apos;20170218&apos; , src_file_our=&apos;17&apos;); </div><div class="line">show locks app.mgba_client_event_detail partition(src_file_day=&apos;20171114&apos;);</div><div class="line">unlock table</div></pre></td></tr></table></figure>
+</p>
+<p>可以看到<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">| &lt;hiveDBName&gt;@ugc_90103_bossmonthorderlog_test@&lt;PARTITION&gt;/&lt;PARTITION&gt; | SHARED     |</div></pre></td></tr></table></figure></p>
+<h2 id="解锁table"><a href="#解锁table" class="headerlink" title="解锁table:"></a>解锁table:</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">unlock table &lt;hiveDBName&gt;.&lt;Table&gt;;</div></pre></td></tr></table></figure>
+</p>
+<h2 id="或者在beeline中-强行把配置删除对应table-不建议"><a href="#或者在beeline中-强行把配置删除对应table-不建议" class="headerlink" title="或者在beeline中,强行把配置删除对应table(不建议)"></a>或者在beeline中,强行把配置删除对应table(不建议)</h2><p><code>set hive.support.concurrency=false;</code></p>
+<p>之后又被锁了一次,详细过程如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show locks quancheng.ugc_secondline_order_v;</div><div class="line"></div><div class="line">+-----------------------------------+---------+--+</div><div class="line">|             tab_name              |  mode   |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">set hive.support.concurrency=false;</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; show locks quancheng.ugc_secondline_order_v;</div><div class="line">INFO  : Compiling command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9): show locks quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer), FieldSchema(name:mode, type:string, comment:from deserializer)], properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9); Time taken: 0.07 seconds</div><div class="line">INFO  : Concurrency mode is disabled, not creating a lock manager</div><div class="line">INFO  : Executing command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9): show locks quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20170629105454_e0e96d5e-9602-40e5-b100-250ebf6e5bf9); Time taken: 0.034 seconds</div><div class="line">INFO  : OK</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">|             tab_name              |  mode   |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">| quancheng@ugc_secondline_order_v  | SHARED  |</div><div class="line">+-----------------------------------+---------+--+</div><div class="line">3 rows selected (0.144 seconds)</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; drop quancheng.ugc_secondline_order_v;</div><div class="line">Error: Error while compiling statement: FAILED: ParseException line 1:5 cannot recognize input near &apos;drop&apos; &apos;quancheng&apos; &apos;.&apos; in ddl statement (state=42000,code=40000)</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; drop view quancheng.ugc_secondline_order_v;</div><div class="line">INFO  : Compiling command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e): drop view quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e); Time taken: 0.168 seconds</div><div class="line">INFO  : Concurrency mode is disabled, not creating a lock manager</div><div class="line">INFO  : Executing command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e): drop view quancheng.ugc_secondline_order_v</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20170629105656_e957e27e-ee27-45ba-853e-ac39660ddf7e); Time taken: 0.061 seconds</div><div class="line">INFO  : OK</div><div class="line">No rows affected (0.238 seconds)</div><div class="line">0: jdbc:hive2://10.200.60.106:10000/default&gt; show tables;</div><div class="line">INFO  : Compiling command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058): show tables</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058); Time taken: 0.068 seconds</div><div class="line">INFO  : Concurrency mode is disabled, not creating a lock manager</div><div class="line">INFO  : Executing command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058): show tables</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20170629105656_63fcacb8-ffae-4e00-b810-25317cec8058); Time taken: 0.1 seconds</div><div class="line">INFO  : OK</div><div class="line">+-----------+--+</div><div class="line">| tab_name  |</div><div class="line">+-----------+--+</div><div class="line">+-----------+--+</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;show locks ods.migulive_10108_func_use_log_ex;</div><div class="line"></div><div class="line">+-------------------------------------+---------+--+</div><div class="line">|              tab_name               |  mode   |</div><div class="line">+-------------------------------------+---------+--+</div><div class="line">| ods@migulive_10108_func_use_log_ex  | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex  | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex  | SHARED  |</div><div class="line">+-------------------------------------+---------+--+</div><div class="line">3 rows selected (0.27 seconds)</div><div class="line">&gt;show locks ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;);</div><div class="line">+----------------------------------------------------+---------+--+</div><div class="line">|                      tab_name                      |  mode   |</div><div class="line">+----------------------------------------------------+---------+--+</div><div class="line">| ods@migulive_10108_func_use_log_ex@src_file_day=20171114/src_file_hour=00 | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex@src_file_day=20171114/src_file_hour=00 | SHARED  |</div><div class="line">| ods@migulive_10108_func_use_log_ex@src_file_day=20171114/src_file_hour=00 | SHARED  |</div><div class="line">+----------------------------------------------------+---------+--+</div></pre></td></tr></table></figure>
+</p>
+<h2 id="解锁分区"><a href="#解锁分区" class="headerlink" title="解锁分区"></a>解锁分区</h2><p><code>unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&#39;20171114&#39;, src_file_hour=&#39;00&#39;);</code></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;);</div><div class="line">INFO  : Compiling command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;)</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1); Time taken: 0.083 seconds</div><div class="line">INFO  : Executing command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;00&apos;)</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20171115221717_540d811a-473a-443a-91c3-e5aa545a2bc1); Time taken: 0.025 seconds</div><div class="line">INFO  : OK</div><div class="line">No rows affected (0.117 seconds)</div><div class="line">&gt; unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;01&apos;);</div><div class="line">INFO  : Compiling command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;01&apos;)</div><div class="line">INFO  : Semantic Analysis Completed</div><div class="line">INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)</div><div class="line">INFO  : Completed compiling command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2); Time taken: 0.084 seconds</div><div class="line">INFO  : Executing command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2): unlock table ods.migulive_10108_func_use_log_ex partition(src_file_day=&apos;20171114&apos;, src_file_hour=&apos;01&apos;)</div><div class="line">INFO  : Starting task [Stage-0:DDL] in serial mode</div><div class="line">INFO  : Completed executing command(queryId=hive_20171115221717_a3869646-831b-4d37-9344-3c8a598307c2); Time taken: 0.025 seconds</div><div class="line">INFO  : OK</div><div class="line">No rows affected (0.117 seconds)</div></pre></td></tr></table></figure>
+</p>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -486,10 +405,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -502,18 +417,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/CentOS7(单台)cdh环境初始化.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/MySQL/mysql命令.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -528,52 +437,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Installation/CentOS7(单台)cdh环境初始化.html" itemprop="url">
-                  CentOS7(单台)cdh环境初始化
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/MySQL/mysql命令.html" itemprop="url">mysql命令</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">2017-06-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
+                2017-06-30
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -586,17 +468,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
 
                 
                 
@@ -621,9 +500,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -632,24 +508,31 @@
       
         
           
-            <p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 替换yum源</span></div><div class="line">find /etc/yum.repos.d/ -name <span class="string">"*.repo"</span> -<span class="built_in">exec</span> mv &#123;&#125; &#123;&#125;.bak \;</div><div class="line">rpm -ivh --force --nodeps http://10.200.40.49/pub/centos-release-el7.noarch.rpm</div><div class="line">yum clean all</div><div class="line">yum makecache</div><div class="line"><span class="comment"># 删除cloud-init(会修改网卡)</span></div><div class="line">yum remove -y cloud-init</div><div class="line"><span class="comment"># 禁用chronyd(会与ntp服务冲突)</span></div><div class="line">sudo systemctl <span class="built_in">disable</span> chronyd</div><div class="line"><span class="comment"># 安装ntp服务</span></div><div class="line">sudo yum install -y ntp</div><div class="line">sudo scp 10.151.164.84:/etc/ntp.conf /etc/ntp.conf</div><div class="line">sudo systemctl <span class="built_in">enable</span> ntpd.service</div><div class="line">sudo systemctl start ntpd.service</div><div class="line"><span class="comment"># 关闭防火墙</span></div><div class="line">sudo systemctl stop firewalld.service</div><div class="line">sudo systemctl <span class="built_in">disable</span> firewalld.service</div><div class="line">sudo firewall-cmd --state</div><div class="line"><span class="comment"># 关闭SELINUX</span></div><div class="line">sudo setenforce 0</div><div class="line">sudo <span class="built_in">echo</span> <span class="string">"SELINUX=disabled"</span> &gt; /etc/sysconfig/selinux;</div><div class="line"><span class="comment"># 关闭hugepage</span></div><div class="line">sudo <span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/enabled</div><div class="line">sudo <span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/defrag</div><div class="line">sudo scp 10.151.164.84:/etc/rc.d/rc.local /etc/rc.d/rc.local </div><div class="line">sudo chmod +x /etc/rc.d/rc.local</div><div class="line"><span class="comment"># 修改时区为东八区</span></div><div class="line">sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</div><div class="line">sudo <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</div><div class="line"><span class="comment"># 限制动态内存使用</span></div><div class="line">sudo <span class="built_in">echo</span> 1 &gt; /proc/sys/vm/swappiness</div><div class="line"><span class="comment"># 设置最大文件数限制</span></div><div class="line">sudo scp 10.151.164.84:/etc/security/limits.conf /etc/security/limits.conf</div><div class="line"><span class="comment"># 禁用ipv6 </span></div><div class="line">sudo scp 10.151.164.84:/etc/default/grub  /etc/default/grub </div><div class="line">sudo scp 10.151.164.84:/etc/sysctl.conf /etc/sysctl.conf</div><div class="line">sudo scp 10.151.164.84:/etc/sysconfig/network /etc/sysconfig/network</div><div class="line"><span class="comment"># 安装kerberos-client</span></div><div class="line">yum -y install krb5-libs krb5-workstation</div><div class="line">sudo scp 10.151.164.84:/etc/krb5.conf /etc/krb5.conf</div><div class="line"><span class="comment"># 安装jdk</span></div><div class="line">mkdir -p /usr/java/</div><div class="line">sudo scp -r 10.151.164.84:/usr/java/jdk1.8.0_131/ /usr/java/</div><div class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk1.8.0_131</div><div class="line"><span class="comment">#  同步hosts</span></div><div class="line">sudo scp 10.151.164.84:/etc/hosts /etc/hosts</div></pre></td></tr></table></figure></p>
+            <p>在mysql的命令提示符下，执行下面一句话,查看mysql服务器的所有全局配置信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show global variables;</div><div class="line">show slave status\G</div><div class="line">show global variables like &quot;%datadir%&quot;;</div></pre></td></tr></table></figure></p>
+<p>前言：之前因为了修改服务器hostname，导致从库同步失败，一直解决不掉，没办法，只能重新设置同步。<br>先停止从库同步，并清空同步信息<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">stop slave；</div><div class="line">reset slave all;</div></pre></td></tr></table></figure></p>
+<p>全量备份主库数据</p>
+<p><code>mysqldump -u root -p --all-databases --routines &gt; senqiang.sql</code><br>全量还原数据库到从库</p>
+<p><code>mysql -uroot -p &lt; senqiang.sql</code><br>查看主库最新的binlog日志偏移量，从库重新授权同步</p>
+<p><code>change master to master_host=&#39;192.168.0.2&#39;,master_user=&#39;syncdb&#39;,master_password=&#39;passwd&#39;,master_log_file=&#39;mysql-bin.000005&#39;,master_log_pos=8188;</code><br>开启从库同步<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">start slave;</div><div class="line">show slave status\G;</div></pre></td></tr></table></figure></p>
+<p>注：备份主库前最好停止主库的写入，记录最新日志偏移量，否则在你还原数据，重新授权同步时会有数据偏差</p>
+<p>Error: Error while compiling statement: FAILED: InvalidConfigurationException hive.server2.authentication can’t be none in non-testing mode (state=42000,code=40000</p>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -663,10 +546,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -679,18 +558,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Cloudera部署SUSE.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -705,52 +578,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Installation/Cloudera部署SUSE.html" itemprop="url">
-                  Cloudera部署SUSE
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Installation/Cloudera部署SUSE.html" itemprop="url">Cloudera部署SUSE</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-27 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">2017-06-27</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -763,17 +609,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Installation/" itemprop="url" rel="index">
+                    <span itemprop="name">Installation</span>
+                  </a>
+                </span>
 
                 
                 
@@ -798,9 +652,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -915,17 +766,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -939,10 +790,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -955,18 +802,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/Cloudera平台安装Apache Spark 2.0 Beta版本.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -981,52 +822,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Spark/Cloudera平台安装Apache Spark 2.0 Beta版本.html" itemprop="url">
-                  选择和配置数据压缩
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Spark/Cloudera平台安装Apache Spark 2.0 Beta版本.html" itemprop="url">选择和配置数据压缩</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -1039,17 +853,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1074,9 +896,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1092,17 +911,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1116,10 +935,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1132,18 +947,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]Recv-Q.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/Hive Metastore Server僵死.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1158,52 +967,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Linux]Recv-Q.html" itemprop="url">
-                  Recv-Q
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Hive/Hive Metastore Server僵死.html" itemprop="url">Hive Metastore Server 僵死</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
             
           </span>
 
@@ -1216,17 +998,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1251,9 +1041,156 @@
       </header>
     
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Hive-Metastore-Server-僵死"><a href="#Hive-Metastore-Server-僵死" class="headerlink" title="Hive Metastore Server 僵死"></a>Hive Metastore Server 僵死</h1><p>现状: 在Hive Metastore Server上的角色只要停止服务,就无法再启动</p>
+<p>开头怀疑是cloudera-scm-agent 出问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">877  2017-05-24 15:50:05 /etc/init.d/cloudera-scm-agent stop</div><div class="line">878  2017-05-24 15:50:15 ss -anp|grep 9000</div><div class="line">879  2017-05-24 15:50:39 ps axu|grep agent</div><div class="line">880  2017-05-24 15:51:08 ss -anp|grep 9000</div><div class="line">881  2017-05-24 15:51:18 /etc/init.d/cloudera-scm-agent start</div><div class="line">882  2017-05-24 15:51:27 /etc/init.d/cloudera-scm-agent status</div><div class="line">883  2017-05-24 15:51:51 ss -anp|grep 9000</div><div class="line">884  2017-05-24 15:55:14 cd /var/log/</div></pre></td></tr></table></figure></p>
+<p>重启服务后发现依旧</p>
+<p>于是怀疑IO问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">891  2017-05-24 16:04:03 ulimit -a</div><div class="line">892  2017-05-24 16:04:55 cat /etc/passwd</div><div class="line"></div><div class="line">896  2017-05-24 16:07:10 vi /etc/security/limits.conf </div><div class="line">897  2017-05-24 16:08:14 ulimit -a</div><div class="line">898  2017-05-24 16:09:38 lsof -n |awk &apos;&#123;print $2&#125;&apos;|sort|uniq -c |sort -nr|more</div></pre></td></tr></table></figure></p>
+<p>设置最大文件打开数<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ftp             hard    nproc           0</div><div class="line">#@student        -       maxlogins       4</div><div class="line"></div><div class="line">*                soft    nofile          65535</div><div class="line">*                hard    nofile          65535</div></pre></td></tr></table></figure></p>
+<p>之后reboot解决</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]Recv-Q.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[Linux]Recv-Q.html" itemprop="url">Recv-Q</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1277,17 +1214,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1301,10 +1238,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1317,18 +1250,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/Hive Metastore Server僵死.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/添加HiveServer2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1343,52 +1270,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Hive/Hive Metastore Server僵死.html" itemprop="url">
-                  Hive Metastore Server 僵死
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Hive/添加HiveServer2.html" itemprop="url">添加HiveServer2角色</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -1401,17 +1301,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1436,9 +1344,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1447,29 +1352,26 @@
       
         
           
-            <h1 id="Hive-Metastore-Server-僵死"><a href="#Hive-Metastore-Server-僵死" class="headerlink" title="Hive Metastore Server 僵死"></a>Hive Metastore Server 僵死</h1><p>现状: 在Hive Metastore Server上的角色只要停止服务,就无法再启动</p>
-<p>开头怀疑是cloudera-scm-agent 出问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">877  2017-05-24 15:50:05 /etc/init.d/cloudera-scm-agent stop</div><div class="line">878  2017-05-24 15:50:15 ss -anp|grep 9000</div><div class="line">879  2017-05-24 15:50:39 ps axu|grep agent</div><div class="line">880  2017-05-24 15:51:08 ss -anp|grep 9000</div><div class="line">881  2017-05-24 15:51:18 /etc/init.d/cloudera-scm-agent start</div><div class="line">882  2017-05-24 15:51:27 /etc/init.d/cloudera-scm-agent status</div><div class="line">883  2017-05-24 15:51:51 ss -anp|grep 9000</div><div class="line">884  2017-05-24 15:55:14 cd /var/log/</div></pre></td></tr></table></figure></p>
-<p>重启服务后发现依旧</p>
-<p>于是怀疑IO问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">891  2017-05-24 16:04:03 ulimit -a</div><div class="line">892  2017-05-24 16:04:55 cat /etc/passwd</div><div class="line"></div><div class="line">896  2017-05-24 16:07:10 vi /etc/security/limits.conf </div><div class="line">897  2017-05-24 16:08:14 ulimit -a</div><div class="line">898  2017-05-24 16:09:38 lsof -n |awk &apos;&#123;print $2&#125;&apos;|sort|uniq -c |sort -nr|more</div></pre></td></tr></table></figure></p>
-<p>设置最大文件打开数<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ftp             hard    nproc           0</div><div class="line">#@student        -       maxlogins       4</div><div class="line"></div><div class="line">*                soft    nofile          65535</div><div class="line">*                hard    nofile          65535</div></pre></td></tr></table></figure></p>
-<p>之后reboot解决</p>
+            <h1 id="添加HiveServer2角色"><a href="#添加HiveServer2角色" class="headerlink" title="添加HiveServer2角色"></a>添加HiveServer2角色</h1><p>HIVE–&gt;实例–&gt;添加角色实例–&gt;选择HiveServer2<br>添加一台主机 ddp-dn-12.cmdmp.com   192.168.65.64<br>添加成功后,会显示没有该角色的keytab<br>到在节点上选择操作–&gt; <em>停止主机上的角色</em><br>成功后选择操作–&gt; <em>重新生成Keytab</em></p>
+<p>如果集群使用UDF的话需要创建相应目录<br>登入该主机<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir -p /opt/local/hive/lib/</div><div class="line">mkdir -p /opt/local/hive/reloadable</div><div class="line">scp root@192.168.65.50:/opt/local/hive/lib/* /opt/local/hive/lib/</div><div class="line">scp root@192.168.65.50:/opt/local/hive/reloadable/* /opt/local/hive/reloadable/</div></pre></td></tr></table></figure></p>
+<p>之后回到cloudera manager 的该节点页面下选择操作–&gt; <em>启动主机上的角色</em><br><code>beeline -u &#39;jdbc:hive2://192.168.65.64:10000/default;principal=hive/ddp-dn-12.cmdmp.com@CMDMP.COM&#39;</code></p>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1483,10 +1385,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1499,228 +1397,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hbase]hbase 连接超时.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Error/[Hbase]hbase 连接超时.html" itemprop="url">
-                  hbase 连接超时
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="hbase-连接超时"><a href="#hbase-连接超时" class="headerlink" title="hbase 连接超时"></a>hbase 连接超时</h1><p>最开始是inood块权限有问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 早上8点24:55.119分    WARN    org.apache.hadoop.security.UserGroupInformation </div><div class="line">PriviledgedActionException as:hbase (auth:SIMPLE) cause:org.apache.hadoop.security.AccessControlException: Permission denied: user=hbase, access=WRITE, inode=&quot;/hbase/data/default/user_info/cc019437cc8b9ea29ab57461d9538945/info/4c3bafa7a4164b21bf71c6b3a80c0439_SeqId_222_&quot;:hadoop:supergroup:-rw-r--r--</div><div class="line">6月 7, 早上8点24:55.119分    INFO    org.apache.hadoop.ipc.Server    </div><div class="line">IPC Server handler 40 on 8020, call org.apache.hadoop.hdfs.protocol.ClientProtocol.setTimes from 10.200.60.145:34847 Call#9611380 Retry#0: org.apache.hadoop.security.AccessControlException: Permission denied: user=hbase, access=WRITE, inode=&quot;/hbase/data/default/user_info/cc019437cc8b9ea29ab57461d9538945/info/4c3bafa7a4164b21bf71c6b3a80c0439_SeqId_222_&quot;:hadoop:supergroup:-rw-r--r--</div></pre></td></tr></table></figure></p>
-<p>手动修改后发现接连不断报出来 ,后来发现类似的bluk太多,直接修改chown上级目录 </p>
-<p>之后发现 有很多的连接超时<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 下午1点38:29.634分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:30.006分	INFO	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Accepted socket connection from /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.010分	INFO	org.apache.zookeeper.server.ZooKeeperServer	</div><div class="line">Client attempting to establish new session at /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.019分	INFO	org.apache.zookeeper.server.ZooKeeperServer	</div><div class="line">Established session 0x25c62548f45168a with negotiated timeout 60000 for client /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.205分	INFO	org.apache.zookeeper.server.NIOServerCnxn	</div><div class="line">Closed socket connection for client /172.16.70.43:41978 which had sessionid 0x25c62548f45168a</div><div class="line">6月 7, 下午1点38:30.211分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:30.399分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:31.321分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:32.097分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:32.314分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div></pre></td></tr></table></figure></p>
-<p>这个问题 前几天一直有报错误但是没有表明哪一台连接数特别多 今天达到max后才报出来</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 上午9点37:02.713分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Client attempting to establish new session at /10.200.65.40:52131</div><div class="line">6月 7, 上午9点37:02.717分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Established session 0x25c62548f450748 with negotiated timeout 60000 for client /10.200.65.40:52131</div><div class="line">6月 7, 上午9点37:02.731分    WARN    org.apache.zookeeper.server.NIOServerCnxnFactory    </div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 上午9点37:02.862分    INFO    org.apache.zookeeper.server.NIOServerCnxnFactory    </div><div class="line">Accepted socket connection from /10.200.65.40:52369</div><div class="line">6月 7, 上午9点37:02.862分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Client attempting to establish new session at /10.200.65.40:52369</div><div class="line">6月 7, 上午9点37:02.874分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Established session 0x25c62548f450749 with negotiated timeout 60000 for client /10.200.65.40:52369</div></pre></td></tr></table></figure>
-</p>
-<p>123 </p>
-<p>在123这台机器上看到与145的连接全部的端口都是2181</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Component</th>
-<th style="text-align:left">Service</th>
-<th style="text-align:left">Qualifier</th>
-<th style="text-align:left">Port</th>
-<th style="text-align:left">Access Requirement</th>
-<th>Configuration</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Hadoop HDFS</td>
-<td style="text-align:left">HQuorumPeer</td>
-<td style="text-align:left">2181</td>
-<td style="text-align:left">Internal</td>
-<td style="text-align:left">hbase. zookeeper. property. clientPort</td>
-<td>HBase-managed ZooKeeper mode</td>
-</tr>
-</tbody>
-</table>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-041:~ # netstat -lantp|grep 2181  </div><div class="line">tcp        0      0 10.200.60.123:34306     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56126     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47177     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57633     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32828     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57625     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48795     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47189     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57635     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:52033     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:53245     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57591     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48781     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48779     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56177     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47183     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56165     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:39211     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34249     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47164     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48857     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56148     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57610     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57615     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48612     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34291     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57686     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34300     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57623     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56172     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56168     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47170     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32904     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32817     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57590     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48615     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48792     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56371     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57589     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56163     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56123     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48646     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56178     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34280     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48633     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56180     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56152     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56162     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57594     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51789     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57628     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56375     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32819     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48651     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47172     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57616     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56127     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56149     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48640     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56396     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56380     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56160     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34293     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48620     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57618     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47185     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48638     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57620     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57592     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57595     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56173     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51992     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56158     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56171     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56167     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48785     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57602     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32851     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57609     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:53145     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34549     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56154     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56391     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56170     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48790     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57772     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57606     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34297     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32830     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56142     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47168     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51980     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56146     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57599     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47158     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57603     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57587     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57612     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47312     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32844     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32836     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56138     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48783     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34308     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56179     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56145     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47166     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47338     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57583     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34359     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32908     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34282     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56175     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56137     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56366     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57614     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48787     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56399     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34284     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57593     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">ddp-dn-041:~ # ps aux|grep 32710</div><div class="line">root       475  0.0  0.0   4532   564 pts/7    S+   13:47   0:00 grep 32710</div><div class="line">root     32710  0.0  3.2 33279488 4239192 ?    Sl   May12  19:45 /usr/java/jdk1.7.0_67-cloudera/bin/java -Djava.util.logging.config.file=/home/hadoop/bin/apache-tomcat-7.0.73/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.endorsed.dirs=/home/hadoop/bin/apache-tomcat-7.0.73/endorsed -classpath /home/hadoop/bin/apache-tomcat-7.0.73/bin/bootstrap.jar:/home/hadoop/bin/apache-tomcat-7.0.73/bin/tomcat-juli.jar -Dcatalina.base=/home/hadoop/bin/apache-tomcat-7.0.73 -Dcatalina.home=/home/hadoop/bin/apache-tomcat-7.0.73 -Djava.io.tmpdir=/home/hadoop/bin/apache-tomcat-7.0.73/temp org.apache.catalina.startup.Bootstrap start</div></pre></td></tr></table></figure>
-</p>
-<p>145<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-hb-178:~ #  netstat -lantp|grep 2181</div><div class="line">tcp        0      0 0.0.0.0:2181            0.0.0.0:*               LISTEN      18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42563      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57625     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34359     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.155:35202     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34291     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48781     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.147:47393     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10906      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57606     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48615     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39053      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39081      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34297     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34280     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45361     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.151:36084     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45352     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:53245     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39062      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48790     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57612     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.148:58812     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.155:35191     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.147:47384     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48795     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48646     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34308     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45351     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57614     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48779     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.47:51835      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57592     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.145:59735     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10903      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34306     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57620     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39085      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10905      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51915     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57602     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48640     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34282     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42535      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57583     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48620     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57603     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42534      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48783     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48612     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34293     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34300     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.156:44113     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57599     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57594     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57615     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:49370      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10904      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48638     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48651     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.33:18797      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57609     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57590     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57623     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48633     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57633     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42558      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57589     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57616     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34549     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34284     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57618     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57591     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51909     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48857     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48785     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48792     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45358     10.200.60.144:2181      ESTABLISHED 15007/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.148:58809     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.24.54:36651      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57628     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57587     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57610     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57686     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57593     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:38108     10.200.60.147:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57595     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:53145     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34249     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.114:54498     TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48787     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42543      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39071      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57772     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:39211     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.146:50729     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51912     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:49368      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57635     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.33:18798      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:59735     10.200.60.145:2181      ESTABLISHED 17996/java          </div><div class="line">ddp-hb-178:~ # ps aux|grep 18867</div><div class="line">root      1402  0.0  0.0   4532   560 pts/1    S+   13:51   0:00 grep 18867</div><div class="line">112      18867  0.5  0.4 1546620 596552 ?      Sl   Jun01  45:48 /usr/java/jdk1.7.0_67-cloudera/bin/java -cp /var/run/cloudera-scm-agent/process/47146-zookeeper-server:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/lib/log4j.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/build/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/build/lib/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/lib/*:/usr/share/cmf/lib/plugins/tt-instrumentation-5.10.0.jar:/usr/share/cmf/lib/plugins/event-publish-5.10.0-shaded.jar -Djava.net.preferIPv4Stack=true -Dzookeeper.log.file=zookeeper-cmf-zookeeper2-SERVER-ddp-hb-178.cmdmp.com.log -Dzookeeper.log.dir=/var/log/zookeeper -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.rmi.port=9010 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djute.maxbuffer=4194304 -Dzookeeper.datadir.autocreate=false -Xms1073741824 -Xmx1073741824 -XX:OnOutOfMemoryError=/usr/lib64/cmf/service/common/killparent.sh org.apache.zookeeper.server.quorum.QuorumPeerMain /var/run/cloudera-scm-agent/process/47146-zookeeper-server/zoo.cfg</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hbase]Hbase ZK锁表.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1735,52 +1417,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Hbase]Hbase ZK锁表.html" itemprop="url">
-                  Hbase ZK锁表
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[Hbase]Hbase ZK锁表.html" itemprop="url">Hbase ZK锁表</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
             
           </span>
 
@@ -1793,17 +1448,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1828,9 +1491,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1859,17 +1519,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1883,10 +1543,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1899,18 +1555,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Shell/Cloudera Manager API.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1925,52 +1575,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Shell/Cloudera Manager API.html" itemprop="url">
-                  Cloudera Manager API
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Shell/Cloudera Manager API.html" itemprop="url">Cloudera Manager API</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -1983,17 +1606,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2018,9 +1649,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2040,17 +1668,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -2064,10 +1692,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -2080,18 +1704,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/添加HiveServer2.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]HDFS-diskbalance.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -2106,52 +1724,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Hive/添加HiveServer2.html" itemprop="url">
-                  添加HiveServer2角色
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[HDFS]HDFS-diskbalance.html" itemprop="url">HDFS-diskbalance</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -2164,17 +1755,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2199,9 +1798,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2210,26 +1806,48 @@
       
         
           
-            <h1 id="添加HiveServer2角色"><a href="#添加HiveServer2角色" class="headerlink" title="添加HiveServer2角色"></a>添加HiveServer2角色</h1><p>HIVE–&gt;实例–&gt;添加角色实例–&gt;选择HiveServer2<br>添加一台主机 ddp-dn-12.cmdmp.com   192.168.65.64<br>添加成功后,会显示没有该角色的keytab<br>到在节点上选择操作–&gt; <em>停止主机上的角色</em><br>成功后选择操作–&gt; <em>重新生成Keytab</em></p>
-<p>如果集群使用UDF的话需要创建相应目录<br>登入该主机<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir -p /opt/local/hive/lib/</div><div class="line">mkdir -p /opt/local/hive/reloadable</div><div class="line">scp root@192.168.65.50:/opt/local/hive/lib/* /opt/local/hive/lib/</div><div class="line">scp root@192.168.65.50:/opt/local/hive/reloadable/* /opt/local/hive/reloadable/</div></pre></td></tr></table></figure></p>
-<p>之后回到cloudera manager 的该节点页面下选择操作–&gt; <em>启动主机上的角色</em><br><code>beeline -u &#39;jdbc:hive2://192.168.65.64:10000/default;principal=hive/ddp-dn-12.cmdmp.com@CMDMP.COM&#39;</code></p>
+            <h1 id="HDFS-diskbalance问题"><a href="#HDFS-diskbalance问题" class="headerlink" title="HDFS-diskbalance问题"></a>HDFS-diskbalance问题</h1><p>开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create role hdfs_role;</div><div class="line">grant role hdfs_role to group hdfs;</div><div class="line">grant all on URI &apos;hdfs:///system/diskbalancer&apos; to role hdfs_role;</div></pre></td></tr></table></figure></p>
+<p>发现问题依旧<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs dfs -ls /system/diskbalancer</div><div class="line">hdfs diskbalancer -plan ddp-dn-04.cmdmp.com</div><div class="line">hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line"></div><div class="line">hdfs@ddp-dn-129:~&gt; hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/12 13:42:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/12 13:42:32 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:33 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:34 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:35 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:36 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:37 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:38 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 6 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:39 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 7 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:40 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 8 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 ERROR tools.DiskBalancerCLI: java.net.ConnectException: Call From ddp-dn-129.cmdmp.com/10.200.60.40 to ddp-dn-129.cmdmp.com:50020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-04:~ # hdfs diskbalancer -help plan</div><div class="line">usage: hdfs diskbalancer -plan &lt;hostname&gt; [options]</div><div class="line">Creates a plan that describes how much data should be moved between disks.</div><div class="line"></div><div class="line">    --bandwidth &lt;arg&gt;             Maximum disk bandwidth (MB/s) in integer</div><div class="line">                                  to be consumed by diskBalancer. e.g. 10</div><div class="line">                                  MB/s.</div><div class="line">    --maxerror &lt;arg&gt;              Describes how many errors can be</div><div class="line">                                  tolerated while copying between a pair</div><div class="line">                                  of disks.</div><div class="line">    --out &lt;arg&gt;                   Local path of file to write output to,</div><div class="line">                                  if not specified defaults will be used.</div><div class="line">    --plan &lt;arg&gt;                  Hostname, IP address or UUID of datanode</div><div class="line">                                  for which a plan is created.</div><div class="line">    --thresholdPercentage &lt;arg&gt;   Percentage of data skew that is</div><div class="line">                                  tolerated before disk balancer starts</div><div class="line">                                  working. For example, if total data on a</div><div class="line">                                  2 disk node is 100 GB then disk balancer</div><div class="line">                                  calculates the expected value on each</div><div class="line">                                  disk, which is 50 GB. If the tolerance</div><div class="line">                                  is 10% then data on a single disk needs</div><div class="line">                                  to be more than 60 GB (50 GB + 10%</div><div class="line">                                  tolerance value) for Disk balancer to</div><div class="line">                                  balance the disks.</div><div class="line">    --v                           Print out the summary of the plan on</div><div class="line">                                  console</div><div class="line"></div><div class="line">Plan command creates a set of steps that represent a planned data move. A</div><div class="line">plan file can be executed on a data node, which will balance the data.</div><div class="line"></div><div class="line"></div><div class="line">ddp-nn-02:/etc/hadoop/conf # hdfs getconf -confkey dfs.disk.balancer.enabled</div><div class="line">false</div><div class="line"></div><div class="line">ddp-dn-01:~ # hdfs diskbalancer --plan ddp-dn-12.cmdmp.com</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/13 16:54:09 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/13 16:54:09 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">  at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">  at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">  at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">  at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">  at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">  at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">  at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+</p>
+<hr>
+<h1 id="hdfs-diskbalancer"><a href="#hdfs-diskbalancer" class="headerlink" title="hdfs diskbalancer"></a>hdfs diskbalancer</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-033:~ # hdfs diskbalancer -plan ddp-dn-033.cmdmp.com</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/10/27 11:01:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/10/27 11:01:31 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">    at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">    at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">    at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">    at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">    at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">    at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">    at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+</p>
+<p>一般来说，对于需要HDFS超级用户权限的命令，使用任何HDFS主体去kinit都是有效的。然而，为了增加datanodes安全性在CDH 5.10.0中增加了一个变化。–HDFS11069<br>这一更改确保了对任何datanode运行一个超级用户命令，您必须首先执行kinit并使用和datanode相同服务主体</p>
+<p>To run the intra node balancer, you must do the following:</p>
+<ol>
+<li>Ensure that the HDFS Gateway is deployed on the Datanode you wish to run it against.(个人认为只需要保证本机使用HDFS-cli能连上nn就好,自己配置也行当然通过cm配置会比较块)</li>
+<li><p>Login to the datanode you wish to balance, and kinit as follows:</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |</div><div class="line">sort -n | tail -1`</div><div class="line">    kinit -kt hdfs.keytab hdfs/$(hostname -f)</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>Run the intra node balancer as usual:<br>hdfs diskbalancer -plan datanode.hostname.com<br>hdfs diskbalancer -plan $(hostname -f)</p>
+</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |sort -n | tail -1`</div><div class="line">kinit -kt hdfs.keytab hdfs/$(hostname -f)</div><div class="line">hdfs diskbalancer -plan $(hostname -f)</div><div class="line"></div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">    17/11/15 10:41:25 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Disk Volume set 9006e969-abee-4719-b2fa-be1b5a1bb0a0 Type : DISK plan completed.</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 11 ms </div><div class="line">    17/11/15 10:41:26 INFO command.Command: Writing plan to : /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs dfs -ls /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/2017-Nov-15-10-41-25/$(hostname -f).plan.json</div><div class="line"></div><div class="line">hdfs diskbalancer -query $(hostname) --v</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /root/hdfs-diskplan --thresholdPercentage 5</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/26 10:14:44 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Disk Volume set 25e83c15-13e4-4429-96c1-cec44fe8c94c Type : DISK plan completed.</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 8 ms </div><div class="line">18/02/26 10:14:45 INFO command.Command: Writing plan to : /root/hdfs-diskplan</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -plan $(hostname -f)  --thresholdPercentage 5</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/28 09:44:08 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Disk Volume set 6a0d20f1-3936-40f7-a4dd-207c228a676a Type : DISK plan completed.</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 7 ms </div><div class="line">18/02/28 09:44:09 INFO command.Command: Writing plan to : /system/diskbalancer/2018-Feb-28-09-44-08</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs dfs -ls /system/diskbalancer/2018-Feb-28-09-44-08/</div><div class="line">Found 2 items</div><div class="line">-rw-r--r--   3 hdfs supergroup     606859 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.before.json</div><div class="line">-rw-r--r--   3 hdfs supergroup        928 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -execute /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">18/02/28 09:44:46 INFO command.Command: Executing &quot;execute plan&quot; command</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -query  $(hostname) --v</div><div class="line">18/02/28 09:44:54 INFO command.Command: Executing &quot;query plan&quot; command.</div><div class="line">Plan File: /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">Plan ID: bf4e1d912cf52fb2df81d1af4406ba3f8fcb4cb05023711a64d1f4101a2379ff8a0e36cedbc901ddbda4c17bc0a851fddfb55361e347c580a0792f6e08d935ac</div><div class="line">Result: PLAN_UNDER_PROGRESS</div><div class="line">[&#123;&quot;sourcePath&quot;:&quot;/mnt/sdf1/dfs/dn&quot;,&quot;destPath&quot;:&quot;/mnt/sdl1/dfs/dn&quot;,&quot;workItem&quot;:&#123;&quot;bytesToCopy&quot;:195547775977,&quot;bytesCopied&quot;:134219396,&quot;errorCount&quot;:0,&quot;errMsg&quot;:null,&quot;blocksCopied&quot;:2,&quot;maxDiskErrors&quot;:0,&quot;tolerancePercent&quot;:0,&quot;bandwidth&quot;:0&#125;&#125;]</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /system/diskbalancer/$(hostname -f)  --thresholdPercentage 5</div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/$(hostname -f)/$(hostname -f).plan.json</div></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -2243,10 +1861,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -2255,12 +1869,15 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2276,133 +1893,62 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Nameless13</p>
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
               <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          </div>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">164</span>
-                    <span class="site-state-item-name">Artikel</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">33</span>
-                    <span class="site-state-item-name">Kategorien</span>
-                  
-                </div>
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">164</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
             
-          
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
       </section>
 
       
@@ -2419,41 +1965,30 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
-
-  
-
-  
 </div>
 
 
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.3</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
-
-
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
 
         
-
-
-
-
-
-
-
 
         
       </div>
@@ -2464,8 +1999,6 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
-    
-
     
 
   </div>
@@ -2486,11 +2019,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2504,43 +2033,54 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
 
 
 
@@ -2563,25 +2103,12 @@
 
 
 
-
-
-
-
   
 
 
 
 
 
-  
-
-  
-
-  
-
-  
-
-  
   
 
   

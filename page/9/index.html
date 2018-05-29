@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
+<!doctype html>
 
 
 
@@ -18,11 +9,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -49,7 +36,36 @@
 
 
 
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -58,19 +74,10 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,36 +86,14 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: 'J3OX6892F7',
-      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
-      indexName: 'Blog',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
-  <meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nameless13">
 <meta property="og:url" content="https://nameless13.github.io/page/9/index.html">
@@ -121,6 +106,27 @@
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
 
@@ -128,11 +134,7 @@
 
 
 
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>Nameless13</title>
   
@@ -145,32 +147,10 @@
 
 
 
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
+
+
 
 </head>
 
@@ -182,7 +162,8 @@
   
 
   <div class="container sidebar-position-left 
-  page-home">
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -191,17 +172,19 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -209,61 +192,45 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-    <a href="/404/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
-  </li>
-
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -271,20 +238,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -297,18 +256,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/hive create table.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hbase]hbase 连接超时.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -323,52 +276,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Hive/hive create table.html" itemprop="url">
-                  hive create table
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[Hbase]hbase 连接超时.html" itemprop="url">hbase 连接超时</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -381,17 +307,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -416,9 +350,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -427,36 +358,57 @@
       
         
           
-            <h2 id="创建表的语句："><a href="#创建表的语句：" class="headerlink" title="创建表的语句："></a>创建表的语句：</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Create [EXTERNAL] TABLE [IF NOT EXISTS] table_name </div><div class="line">[(col_name data_type [COMMENT col_comment], ...)] </div><div class="line">[COMMENT table_comment] </div><div class="line">[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] </div><div class="line">[CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC],...)]INTO num_buckets BUCKETS]</div><div class="line">[ROW FORMAT row_format] </div><div class="line">[STORED AS file_format] </div><div class="line">[LOCATION hdfs_path]</div></pre></td></tr></table></figure>
+            <h1 id="hbase-连接超时"><a href="#hbase-连接超时" class="headerlink" title="hbase 连接超时"></a>hbase 连接超时</h1><p>最开始是inood块权限有问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 早上8点24:55.119分    WARN    org.apache.hadoop.security.UserGroupInformation </div><div class="line">PriviledgedActionException as:hbase (auth:SIMPLE) cause:org.apache.hadoop.security.AccessControlException: Permission denied: user=hbase, access=WRITE, inode=&quot;/hbase/data/default/user_info/cc019437cc8b9ea29ab57461d9538945/info/4c3bafa7a4164b21bf71c6b3a80c0439_SeqId_222_&quot;:hadoop:supergroup:-rw-r--r--</div><div class="line">6月 7, 早上8点24:55.119分    INFO    org.apache.hadoop.ipc.Server    </div><div class="line">IPC Server handler 40 on 8020, call org.apache.hadoop.hdfs.protocol.ClientProtocol.setTimes from 10.200.60.145:34847 Call#9611380 Retry#0: org.apache.hadoop.security.AccessControlException: Permission denied: user=hbase, access=WRITE, inode=&quot;/hbase/data/default/user_info/cc019437cc8b9ea29ab57461d9538945/info/4c3bafa7a4164b21bf71c6b3a80c0439_SeqId_222_&quot;:hadoop:supergroup:-rw-r--r--</div></pre></td></tr></table></figure></p>
+<p>手动修改后发现接连不断报出来 ,后来发现类似的bluk太多,直接修改chown上级目录 </p>
+<p>之后发现 有很多的连接超时<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 下午1点38:29.634分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:30.006分	INFO	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Accepted socket connection from /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.010分	INFO	org.apache.zookeeper.server.ZooKeeperServer	</div><div class="line">Client attempting to establish new session at /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.019分	INFO	org.apache.zookeeper.server.ZooKeeperServer	</div><div class="line">Established session 0x25c62548f45168a with negotiated timeout 60000 for client /172.16.70.43:41978</div><div class="line">6月 7, 下午1点38:30.205分	INFO	org.apache.zookeeper.server.NIOServerCnxn	</div><div class="line">Closed socket connection for client /172.16.70.43:41978 which had sessionid 0x25c62548f45168a</div><div class="line">6月 7, 下午1点38:30.211分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:30.399分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:31.321分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:32.097分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 下午1点38:32.314分	WARN	org.apache.zookeeper.server.NIOServerCnxnFactory	</div><div class="line">Too many connections from /10.200.60.123 - max is 60</div></pre></td></tr></table></figure></p>
+<p>这个问题 前几天一直有报错误但是没有表明哪一台连接数特别多 今天达到max后才报出来</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">6月 7, 上午9点37:02.713分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Client attempting to establish new session at /10.200.65.40:52131</div><div class="line">6月 7, 上午9点37:02.717分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Established session 0x25c62548f450748 with negotiated timeout 60000 for client /10.200.65.40:52131</div><div class="line">6月 7, 上午9点37:02.731分    WARN    org.apache.zookeeper.server.NIOServerCnxnFactory    </div><div class="line">Too many connections from /10.200.60.123 - max is 60</div><div class="line">6月 7, 上午9点37:02.862分    INFO    org.apache.zookeeper.server.NIOServerCnxnFactory    </div><div class="line">Accepted socket connection from /10.200.65.40:52369</div><div class="line">6月 7, 上午9点37:02.862分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Client attempting to establish new session at /10.200.65.40:52369</div><div class="line">6月 7, 上午9点37:02.874分    INFO    org.apache.zookeeper.server.ZooKeeperServer </div><div class="line">Established session 0x25c62548f450749 with negotiated timeout 60000 for client /10.200.65.40:52369</div></pre></td></tr></table></figure>
 </p>
-<p>CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出异常；用户可以用 IF NOT EXIST 选项来忽略这个异常。<br>EXTERNAL 关键字可以让用户创建一个外部表，在建表的同时指定一个指向实际数据的路径（LOCATION），Hive创建内部表时，会将数据移动到数据仓库指向的路径；若创建外部表，仅记录数据所在的路径，不对数据的位置做任何改变。在删除表的时候，内部表的元数据和数据会被一起删除，而外部表只删除元数据，不删除数据。<br>如果文件数据是纯文本，可以使用 STORED AS TEXTFILE。如果数据需要压缩，使用 STORED AS SEQUENCE 。<br>有分区的表可以在创建的时候使用 PARTITIONED BY 语句。一个表可以拥有一个或者多个分区，每一个分区单独存在一个目录下。而且，表和分区都可以对某个列进行 CLUSTERED BY 操作，将若干个列放入一个桶（bucket）中。也可以利用SORT BY 对数据进行排序。这样可以为特定应用提高性能。</p>
-<h3 id="创建普通的表："><a href="#创建普通的表：" class="headerlink" title="创建普通的表："></a>创建普通的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_table (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int) </div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;//指定了字段的分隔符，hive只支持单个字符的分隔符。hive默认的分隔符是\001</div></pre></td></tr></table></figure>
+<p>123 </p>
+<p>在123这台机器上看到与145的连接全部的端口都是2181</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Component</th>
+<th style="text-align:left">Service</th>
+<th style="text-align:left">Qualifier</th>
+<th style="text-align:left">Port</th>
+<th style="text-align:left">Access Requirement</th>
+<th>Configuration</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Hadoop HDFS</td>
+<td style="text-align:left">HQuorumPeer</td>
+<td style="text-align:left">2181</td>
+<td style="text-align:left">Internal</td>
+<td style="text-align:left">hbase. zookeeper. property. clientPort</td>
+<td>HBase-managed ZooKeeper mode</td>
+</tr>
+</tbody>
+</table>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-041:~ # netstat -lantp|grep 2181  </div><div class="line">tcp        0      0 10.200.60.123:34306     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56126     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47177     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57633     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32828     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57625     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48795     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47189     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57635     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:52033     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:53245     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57591     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48781     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48779     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56177     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47183     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56165     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:39211     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34249     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47164     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48857     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56148     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57610     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57615     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48612     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34291     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57686     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34300     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57623     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56172     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56168     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47170     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32904     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32817     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57590     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48615     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48792     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56371     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57589     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56163     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56123     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48646     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56178     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34280     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48633     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56180     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56152     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56162     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57594     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51789     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57628     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56375     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32819     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48651     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47172     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57616     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56127     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56149     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48640     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56396     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56380     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56160     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34293     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48620     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57618     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47185     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48638     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57620     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57592     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57595     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56173     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51992     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56158     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56171     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56167     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48785     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57602     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32851     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57609     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:53145     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34549     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56154     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56391     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56170     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48790     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57772     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57606     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34297     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32830     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56142     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47168     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:51980     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56146     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57599     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47158     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57603     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57587     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57612     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47312     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32844     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32836     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56138     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48783     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34308     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56179     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56145     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47166     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:47338     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57583     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34359     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:32908     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34282     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56175     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56137     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56366     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57614     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:48787     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:56399     10.200.60.144:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:34284     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">tcp        0      0 10.200.60.123:57593     10.200.60.145:2181      ESTABLISHED 32710/java          </div><div class="line">ddp-dn-041:~ # ps aux|grep 32710</div><div class="line">root       475  0.0  0.0   4532   564 pts/7    S+   13:47   0:00 grep 32710</div><div class="line">root     32710  0.0  3.2 33279488 4239192 ?    Sl   May12  19:45 /usr/java/jdk1.7.0_67-cloudera/bin/java -Djava.util.logging.config.file=/home/hadoop/bin/apache-tomcat-7.0.73/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.endorsed.dirs=/home/hadoop/bin/apache-tomcat-7.0.73/endorsed -classpath /home/hadoop/bin/apache-tomcat-7.0.73/bin/bootstrap.jar:/home/hadoop/bin/apache-tomcat-7.0.73/bin/tomcat-juli.jar -Dcatalina.base=/home/hadoop/bin/apache-tomcat-7.0.73 -Dcatalina.home=/home/hadoop/bin/apache-tomcat-7.0.73 -Djava.io.tmpdir=/home/hadoop/bin/apache-tomcat-7.0.73/temp org.apache.catalina.startup.Bootstrap start</div></pre></td></tr></table></figure>
 </p>
-<h3 id="创建带有partition的表："><a href="#创建带有partition的表：" class="headerlink" title="创建带有partition的表："></a>创建带有partition的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_partition (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">partitioned by(dt string) </div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;</div><div class="line">load data local inpath &apos;/home/zhangxin/hive/test_hive.txt&apos; overwrite intotabletest_partition partition (dt=&apos;2012-03-05&apos;);</div></pre></td></tr></table></figure>
-</p>
-<h3 id="创建带有Bucket的表："><a href="#创建带有Bucket的表：" class="headerlink" title="创建带有Bucket的表："></a>创建带有Bucket的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_bucket (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">partitioned by(dt string) </div><div class="line">clustered by(id) into 10 buckets --将id这一列分到10个桶中。</div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;</div></pre></td></tr></table></figure>
-</p>
-<p>关于分桶：对列进行分桶，本质上，在进行reduce的时候，会对列的值进行hash，然后将hash的值放到特定的桶中（有点像distribute by）。<br>注意在写入分桶数据的时候，需要指定：<br><code>sethive.enforce.bucketing=true;</code></p>
-<h3 id="创建external表："><a href="#创建external表：" class="headerlink" title="创建external表："></a>创建external表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create external table test_external (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">location&apos;/home/zhangxin/hive/test_hive.txt&apos;;</div></pre></td></tr></table></figure>
-</p>
-<h3 id="创建与已知表相同结构的表Like："><a href="#创建与已知表相同结构的表Like：" class="headerlink" title="创建与已知表相同结构的表Like："></a>创建与已知表相同结构的表Like：</h3><p>只复制表的结构，而不复制表的内容。<br><code>create table test_like_table like test_bucket;</code></p>
+<p>145<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-hb-178:~ #  netstat -lantp|grep 2181</div><div class="line">tcp        0      0 0.0.0.0:2181            0.0.0.0:*               LISTEN      18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42563      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57625     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34359     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.155:35202     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34291     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48781     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.147:47393     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10906      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57606     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48615     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39053      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39081      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34297     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34280     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45361     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.151:36084     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45352     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:53245     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39062      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48790     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57612     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.148:58812     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.155:35191     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.147:47384     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48795     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48646     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34308     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45351     10.200.60.144:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57614     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48779     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.47:51835      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57592     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.145:59735     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10903      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34306     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57620     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39085      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10905      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51915     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57602     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48640     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34282     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42535      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57583     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48620     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57603     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42534      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48783     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48612     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34293     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34300     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.156:44113     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57599     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57594     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57615     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:49370      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.34:10904      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48638     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48651     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.33:18797      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57609     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57590     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57623     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48633     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57633     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42558      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57589     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57616     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34549     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34284     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57618     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57591     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51909     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48857     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48785     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48792     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:45358     10.200.60.144:2181      ESTABLISHED 15007/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.148:58809     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.24.54:36651      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57628     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57587     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57610     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57686     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57593     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:38108     10.200.60.147:2181      ESTABLISHED 15492/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57595     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:53145     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:34249     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.114:54498     TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:48787     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:42543      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.24:39071      TIME_WAIT   -                   </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57772     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:39211     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.146:50729     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.144:51912     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.16:49368      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.60.123:57635     ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:2181      10.200.65.33:18798      ESTABLISHED 18867/java          </div><div class="line">tcp        0      0 10.200.60.145:59735     10.200.60.145:2181      ESTABLISHED 17996/java          </div><div class="line">ddp-hb-178:~ # ps aux|grep 18867</div><div class="line">root      1402  0.0  0.0   4532   560 pts/1    S+   13:51   0:00 grep 18867</div><div class="line">112      18867  0.5  0.4 1546620 596552 ?      Sl   Jun01  45:48 /usr/java/jdk1.7.0_67-cloudera/bin/java -cp /var/run/cloudera-scm-agent/process/47146-zookeeper-server:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/lib/log4j.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/build/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/build/lib/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/*:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/zookeeper/lib/*:/usr/share/cmf/lib/plugins/tt-instrumentation-5.10.0.jar:/usr/share/cmf/lib/plugins/event-publish-5.10.0-shaded.jar -Djava.net.preferIPv4Stack=true -Dzookeeper.log.file=zookeeper-cmf-zookeeper2-SERVER-ddp-hb-178.cmdmp.com.log -Dzookeeper.log.dir=/var/log/zookeeper -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.rmi.port=9010 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djute.maxbuffer=4194304 -Dzookeeper.datadir.autocreate=false -Xms1073741824 -Xmx1073741824 -XX:OnOutOfMemoryError=/usr/lib64/cmf/service/common/killparent.sh org.apache.zookeeper.server.quorum.QuorumPeerMain /var/run/cloudera-scm-agent/process/47146-zookeeper-server/zoo.cfg</div></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -470,10 +422,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -486,18 +434,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/hive impala  培训.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -512,52 +454,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Notes/hive impala  培训.html" itemprop="url">
-                  hive impala  培训
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Notes/hive impala  培训.html" itemprop="url">hive impala  培训</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
             
           </span>
 
@@ -570,17 +485,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
 
                 
                 
@@ -605,9 +528,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -637,17 +557,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -661,10 +581,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -677,18 +593,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]HDFS-diskbalance.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/hive create table.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -703,52 +613,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[HDFS]HDFS-diskbalance.html" itemprop="url">
-                  HDFS-diskbalance
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Hive/hive create table.html" itemprop="url">hive create table</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+                2017-06-23
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -761,17 +644,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
+                  </a>
+                </span>
 
                 
                 
@@ -796,9 +687,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -807,48 +695,36 @@
       
         
           
-            <h1 id="HDFS-diskbalance问题"><a href="#HDFS-diskbalance问题" class="headerlink" title="HDFS-diskbalance问题"></a>HDFS-diskbalance问题</h1><p>开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create role hdfs_role;</div><div class="line">grant role hdfs_role to group hdfs;</div><div class="line">grant all on URI &apos;hdfs:///system/diskbalancer&apos; to role hdfs_role;</div></pre></td></tr></table></figure></p>
-<p>发现问题依旧<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs dfs -ls /system/diskbalancer</div><div class="line">hdfs diskbalancer -plan ddp-dn-04.cmdmp.com</div><div class="line">hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line"></div><div class="line">hdfs@ddp-dn-129:~&gt; hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/12 13:42:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/12 13:42:32 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:33 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:34 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:35 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:36 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:37 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:38 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 6 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:39 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 7 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:40 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 8 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 ERROR tools.DiskBalancerCLI: java.net.ConnectException: Call From ddp-dn-129.cmdmp.com/10.200.60.40 to ddp-dn-129.cmdmp.com:50020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-04:~ # hdfs diskbalancer -help plan</div><div class="line">usage: hdfs diskbalancer -plan &lt;hostname&gt; [options]</div><div class="line">Creates a plan that describes how much data should be moved between disks.</div><div class="line"></div><div class="line">    --bandwidth &lt;arg&gt;             Maximum disk bandwidth (MB/s) in integer</div><div class="line">                                  to be consumed by diskBalancer. e.g. 10</div><div class="line">                                  MB/s.</div><div class="line">    --maxerror &lt;arg&gt;              Describes how many errors can be</div><div class="line">                                  tolerated while copying between a pair</div><div class="line">                                  of disks.</div><div class="line">    --out &lt;arg&gt;                   Local path of file to write output to,</div><div class="line">                                  if not specified defaults will be used.</div><div class="line">    --plan &lt;arg&gt;                  Hostname, IP address or UUID of datanode</div><div class="line">                                  for which a plan is created.</div><div class="line">    --thresholdPercentage &lt;arg&gt;   Percentage of data skew that is</div><div class="line">                                  tolerated before disk balancer starts</div><div class="line">                                  working. For example, if total data on a</div><div class="line">                                  2 disk node is 100 GB then disk balancer</div><div class="line">                                  calculates the expected value on each</div><div class="line">                                  disk, which is 50 GB. If the tolerance</div><div class="line">                                  is 10% then data on a single disk needs</div><div class="line">                                  to be more than 60 GB (50 GB + 10%</div><div class="line">                                  tolerance value) for Disk balancer to</div><div class="line">                                  balance the disks.</div><div class="line">    --v                           Print out the summary of the plan on</div><div class="line">                                  console</div><div class="line"></div><div class="line">Plan command creates a set of steps that represent a planned data move. A</div><div class="line">plan file can be executed on a data node, which will balance the data.</div><div class="line"></div><div class="line"></div><div class="line">ddp-nn-02:/etc/hadoop/conf # hdfs getconf -confkey dfs.disk.balancer.enabled</div><div class="line">false</div><div class="line"></div><div class="line">ddp-dn-01:~ # hdfs diskbalancer --plan ddp-dn-12.cmdmp.com</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/13 16:54:09 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/13 16:54:09 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">  at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">  at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">  at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">  at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">  at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">  at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">  at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+            <h2 id="创建表的语句："><a href="#创建表的语句：" class="headerlink" title="创建表的语句："></a>创建表的语句：</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Create [EXTERNAL] TABLE [IF NOT EXISTS] table_name </div><div class="line">[(col_name data_type [COMMENT col_comment], ...)] </div><div class="line">[COMMENT table_comment] </div><div class="line">[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] </div><div class="line">[CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC],...)]INTO num_buckets BUCKETS]</div><div class="line">[ROW FORMAT row_format] </div><div class="line">[STORED AS file_format] </div><div class="line">[LOCATION hdfs_path]</div></pre></td></tr></table></figure>
 </p>
-<hr>
-<h1 id="hdfs-diskbalancer"><a href="#hdfs-diskbalancer" class="headerlink" title="hdfs diskbalancer"></a>hdfs diskbalancer</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-033:~ # hdfs diskbalancer -plan ddp-dn-033.cmdmp.com</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/10/27 11:01:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/10/27 11:01:31 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">    at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">    at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">    at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">    at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">    at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">    at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">    at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+<p>CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出异常；用户可以用 IF NOT EXIST 选项来忽略这个异常。<br>EXTERNAL 关键字可以让用户创建一个外部表，在建表的同时指定一个指向实际数据的路径（LOCATION），Hive创建内部表时，会将数据移动到数据仓库指向的路径；若创建外部表，仅记录数据所在的路径，不对数据的位置做任何改变。在删除表的时候，内部表的元数据和数据会被一起删除，而外部表只删除元数据，不删除数据。<br>如果文件数据是纯文本，可以使用 STORED AS TEXTFILE。如果数据需要压缩，使用 STORED AS SEQUENCE 。<br>有分区的表可以在创建的时候使用 PARTITIONED BY 语句。一个表可以拥有一个或者多个分区，每一个分区单独存在一个目录下。而且，表和分区都可以对某个列进行 CLUSTERED BY 操作，将若干个列放入一个桶（bucket）中。也可以利用SORT BY 对数据进行排序。这样可以为特定应用提高性能。</p>
+<h3 id="创建普通的表："><a href="#创建普通的表：" class="headerlink" title="创建普通的表："></a>创建普通的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_table (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int) </div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;//指定了字段的分隔符，hive只支持单个字符的分隔符。hive默认的分隔符是\001</div></pre></td></tr></table></figure>
 </p>
-<p>一般来说，对于需要HDFS超级用户权限的命令，使用任何HDFS主体去kinit都是有效的。然而，为了增加datanodes安全性在CDH 5.10.0中增加了一个变化。–HDFS11069<br>这一更改确保了对任何datanode运行一个超级用户命令，您必须首先执行kinit并使用和datanode相同服务主体</p>
-<p>To run the intra node balancer, you must do the following:</p>
-<ol>
-<li>Ensure that the HDFS Gateway is deployed on the Datanode you wish to run it against.(个人认为只需要保证本机使用HDFS-cli能连上nn就好,自己配置也行当然通过cm配置会比较块)</li>
-<li><p>Login to the datanode you wish to balance, and kinit as follows:</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |</div><div class="line">sort -n | tail -1`</div><div class="line">    kinit -kt hdfs.keytab hdfs/$(hostname -f)</div></pre></td></tr></table></figure>
+<h3 id="创建带有partition的表："><a href="#创建带有partition的表：" class="headerlink" title="创建带有partition的表："></a>创建带有partition的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_partition (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">partitioned by(dt string) </div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;</div><div class="line">load data local inpath &apos;/home/zhangxin/hive/test_hive.txt&apos; overwrite intotabletest_partition partition (dt=&apos;2012-03-05&apos;);</div></pre></td></tr></table></figure>
 </p>
-</li>
-<li><p>Run the intra node balancer as usual:<br>hdfs diskbalancer -plan datanode.hostname.com<br>hdfs diskbalancer -plan $(hostname -f)</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |sort -n | tail -1`</div><div class="line">kinit -kt hdfs.keytab hdfs/$(hostname -f)</div><div class="line">hdfs diskbalancer -plan $(hostname -f)</div><div class="line"></div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">    17/11/15 10:41:25 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Disk Volume set 9006e969-abee-4719-b2fa-be1b5a1bb0a0 Type : DISK plan completed.</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 11 ms </div><div class="line">    17/11/15 10:41:26 INFO command.Command: Writing plan to : /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs dfs -ls /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/2017-Nov-15-10-41-25/$(hostname -f).plan.json</div><div class="line"></div><div class="line">hdfs diskbalancer -query $(hostname) --v</div></pre></td></tr></table></figure>
+<h3 id="创建带有Bucket的表："><a href="#创建带有Bucket的表：" class="headerlink" title="创建带有Bucket的表："></a>创建带有Bucket的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_bucket (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">partitioned by(dt string) </div><div class="line">clustered by(id) into 10 buckets --将id这一列分到10个桶中。</div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;</div></pre></td></tr></table></figure>
 </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /root/hdfs-diskplan --thresholdPercentage 5</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/26 10:14:44 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Disk Volume set 25e83c15-13e4-4429-96c1-cec44fe8c94c Type : DISK plan completed.</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 8 ms </div><div class="line">18/02/26 10:14:45 INFO command.Command: Writing plan to : /root/hdfs-diskplan</div></pre></td></tr></table></figure>
+<p>关于分桶：对列进行分桶，本质上，在进行reduce的时候，会对列的值进行hash，然后将hash的值放到特定的桶中（有点像distribute by）。<br>注意在写入分桶数据的时候，需要指定：<br><code>sethive.enforce.bucketing=true;</code></p>
+<h3 id="创建external表："><a href="#创建external表：" class="headerlink" title="创建external表："></a>创建external表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create external table test_external (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">location&apos;/home/zhangxin/hive/test_hive.txt&apos;;</div></pre></td></tr></table></figure>
 </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -plan $(hostname -f)  --thresholdPercentage 5</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/28 09:44:08 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Disk Volume set 6a0d20f1-3936-40f7-a4dd-207c228a676a Type : DISK plan completed.</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 7 ms </div><div class="line">18/02/28 09:44:09 INFO command.Command: Writing plan to : /system/diskbalancer/2018-Feb-28-09-44-08</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs dfs -ls /system/diskbalancer/2018-Feb-28-09-44-08/</div><div class="line">Found 2 items</div><div class="line">-rw-r--r--   3 hdfs supergroup     606859 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.before.json</div><div class="line">-rw-r--r--   3 hdfs supergroup        928 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -execute /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">18/02/28 09:44:46 INFO command.Command: Executing &quot;execute plan&quot; command</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -query  $(hostname) --v</div><div class="line">18/02/28 09:44:54 INFO command.Command: Executing &quot;query plan&quot; command.</div><div class="line">Plan File: /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">Plan ID: bf4e1d912cf52fb2df81d1af4406ba3f8fcb4cb05023711a64d1f4101a2379ff8a0e36cedbc901ddbda4c17bc0a851fddfb55361e347c580a0792f6e08d935ac</div><div class="line">Result: PLAN_UNDER_PROGRESS</div><div class="line">[&#123;&quot;sourcePath&quot;:&quot;/mnt/sdf1/dfs/dn&quot;,&quot;destPath&quot;:&quot;/mnt/sdl1/dfs/dn&quot;,&quot;workItem&quot;:&#123;&quot;bytesToCopy&quot;:195547775977,&quot;bytesCopied&quot;:134219396,&quot;errorCount&quot;:0,&quot;errMsg&quot;:null,&quot;blocksCopied&quot;:2,&quot;maxDiskErrors&quot;:0,&quot;tolerancePercent&quot;:0,&quot;bandwidth&quot;:0&#125;&#125;]</div></pre></td></tr></table></figure>
-</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /system/diskbalancer/$(hostname -f)  --thresholdPercentage 5</div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/$(hostname -f)/$(hostname -f).plan.json</div></pre></td></tr></table></figure></p>
+<h3 id="创建与已知表相同结构的表Like："><a href="#创建与已知表相同结构的表Like：" class="headerlink" title="创建与已知表相同结构的表Like："></a>创建与已知表相同结构的表Like：</h3><p>只复制表的结构，而不复制表的内容。<br><code>create table test_like_table like test_bucket;</code></p>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -862,10 +738,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -878,18 +750,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/python/Python文件处理.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -904,52 +770,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/python/Python文件处理.html" itemprop="url">
-                  Python文件处理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/python/Python文件处理.html" itemprop="url">Python文件处理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-15T00:00:00+08:00">2017-06-15</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T00:00:00+08:00">
+                2017-06-15
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -962,10 +801,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
 
                 
                 
@@ -990,9 +833,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1021,17 +861,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1045,10 +885,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1061,18 +897,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]lrzsz大文件传输.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1087,52 +917,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Linux]lrzsz大文件传输.html" itemprop="url">
-                  lrzsz大文件传输
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[Linux]lrzsz大文件传输.html" itemprop="url">lrzsz大文件传输</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-05 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-05T00:00:00+08:00">2017-06-05</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T00:00:00+08:00">
+                2017-06-05
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -1145,17 +948,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1180,9 +991,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1201,17 +1009,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1225,10 +1033,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1241,18 +1045,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/介绍.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1267,52 +1065,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Notes/介绍.html" itemprop="url">
-                  介绍
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Notes/介绍.html" itemprop="url">介绍</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">2017-06-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">
+                2017-06-02
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
             
           </span>
 
@@ -1325,17 +1096,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1360,9 +1139,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1490,17 +1266,17 @@
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -1514,10 +1290,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1530,18 +1302,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HUE]Hue隧道访问失效.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1556,52 +1322,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[HUE]Hue隧道访问失效.html" itemprop="url">
-                  Hue隧道访问失效
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/CDH/Error/[HUE]Hue隧道访问失效.html" itemprop="url">Hue隧道访问失效</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">2017-06-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">
+                2017-06-02
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
             
           </span>
 
@@ -1614,17 +1353,25 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
 
                 
                 
-                  . 
+                  ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1649,9 +1396,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1678,490 +1422,17 @@
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]swap 系统值修改.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Error/[Linux]swap 系统值修改.html" itemprop="url">
-                  swap 系统值修改
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Impala-swapp系统值修改"><a href="#Impala-swapp系统值修改" class="headerlink" title="Impala swapp系统值修改"></a>Impala swapp系统值修改</h1><blockquote>
-<p>部分组件HDFS,YARN,HBAS有黄色警告是因为系统默认SWAP默认值为60</p>
-</blockquote>
-<p>导致内存未使用满便使用swap memory导致的，已经修改过配对应系统的配置值为SWAP=0。</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo 0 &gt;/proc/sys/vm/swappiness</div><div class="line">echo &apos;vm.swappiness=0&apos;&gt;&gt; /etc/sysctl.conf</div><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure></p>
-
-          
-        
+    <div>
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/HBase架构详解.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/HBase/HBase架构详解.html" itemprop="url">
-                  HBase架构详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/HBase/" itemprop="url" rel="index"><span itemprop="name">HBase</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HBase架构详解"><a href="#HBase架构详解" class="headerlink" title="HBase架构详解"></a>HBase架构详解</h1><h2 id="Hbase架构"><a href="#Hbase架构" class="headerlink" title="Hbase架构"></a>Hbase架构</h2><h3 id="Hbase组件"><a href="#Hbase组件" class="headerlink" title="Hbase组件"></a>Hbase组件</h3><h4 id="client"><a href="#client" class="headerlink" title="client"></a>client</h4><ul>
-<li>整个Hbase集群的入口</li>
-<li>使用Hbase RPC机制与HMaster和HRegionserver通信</li>
-<li>与HMaster通信进行管理类的操作</li>
-<li>与HRegionserver通信进行读写类操作</li>
-<li>包含访问HBase的接口,并维护cache来加快对HBase的访问,与HRegionserver交互</li>
-</ul>
-<h4 id="程序协调服务ZooKeeper"><a href="#程序协调服务ZooKeeper" class="headerlink" title="程序协调服务ZooKeeper"></a>程序协调服务ZooKeeper</h4><ul>
-<li>保证任何时候,集群中只有一个Master(HA)</li>
-<li>存贮所有Region的寻址入口</li>
-<li>实时监控Region server的上线和下线信息.并实时通知给Master</li>
-<li>存储Hbase的schema和table元数据</li>
-</ul>
-<h4 id="Hbase主节点Master"><a href="#Hbase主节点Master" class="headerlink" title="Hbase主节点Master"></a>Hbase主节点Master</h4><ul>
-<li>管理用户对Table的增删改查操作</li>
-<li>管理HRegionServer的负载均衡,调整Region分布</li>
-<li>在Region Split后,负责新Region的分配</li>
-<li>在HRegionServer停机后,负责失效HRegionServer上的Region迁移</li>
-<li>HHMaster失效仅会导致所有元数据无法被修改,表的数据读写还是可以正常进行</li>
-</ul>
-<h4 id="HRegionServer节点"><a href="#HRegionServer节点" class="headerlink" title="HRegionServer节点"></a>HRegionServer节点</h4><ul>
-<li>维护Hregion并往HDFS中写数据</li>
-<li>当表的大小超过设置值的时候,Split Hregion</li>
-<li>在HRegionServer停机后,负责失效HRegionServer上的Region迁移</li>
-</ul>
-<h3 id="Hbase架构-1"><a href="#Hbase架构-1" class="headerlink" title="Hbase架构"></a>Hbase架构</h3><h4 id="Hbase与ZooKeeper"><a href="#Hbase与ZooKeeper" class="headerlink" title="Hbase与ZooKeeper"></a>Hbase与ZooKeeper</h4><ul>
-<li>Hbase元数据存储在ZooKeeper中</li>
-<li>默认情况下,HBase管理ZooKeeper实例,比如,启动或者停止ZooKeeper</li>
-<li>Zookeeper解决HBase单节点故障问题</li>
-<li>HMaster与HRegionserver启动时会向Zookeeper注册</li>
-</ul>
-<h4 id="寻找RegionServer过程详解"><a href="#寻找RegionServer过程详解" class="headerlink" title="寻找RegionServer过程详解"></a>寻找RegionServer过程详解</h4><ul>
-<li>ZooKeeper (读取Zookeeper找到-ROOT-表的位置)</li>
-<li>-ROOT-(-ROOT-表包含.METAA.表所在的region列表,该表只会有一个Region;Zookeeper中记录了-ROOT-表的location)</li>
-<li>.META.(.META.表包含所有的用户空间region列表,以及RegionServer的服务器地址)</li>
-<li>用户表</li>
-<li>Client第一次操作后,会将-ROOT-和.META.缓存到本地,不需要再访问Zookeeper</li>
-</ul>
-<h3 id="Hbase容错性"><a href="#Hbase容错性" class="headerlink" title="Hbase容错性"></a>Hbase容错性</h3><ul>
-<li>Master容错: Zookeeper 重新选择一个新的Master<ul>
-<li>无Master过程中,数据读取仍照正常进行</li>
-<li>无Master过程中,region切分,负载均衡等无法进行</li>
-</ul>
-</li>
-<li>RegionServer容错: 定时向Zookeeper汇报心跳,如果一段时间内出现心跳<ul>
-<li>Master将该RegionServer上的Region重新分配到其他RegionServer上</li>
-<li>失效服务器上”预写”日志由主服务器进行分割并派送给新的RegionServer</li>
-</ul>
-</li>
-<li>Zookeeper容错<ul>
-<li>Zookeeper高可靠的服务,不存在单点故障</li>
-</ul>
-</li>
-</ul>
-<h2 id="Hbase数据存储"><a href="#Hbase数据存储" class="headerlink" title="Hbase数据存储"></a>Hbase数据存储</h2><ul>
-<li>HBase中的所有数据文件都存储在Hadoop HDFS文件系统上,格式主要有两种:<ul>
-<li>HFile: HBase中KeyValue数据的存储格式,HFile是Hadoop的二进制格式文件,实际上StoreFile就是对HFile做了轻量级包装,即StoreFile底层就是HFile</li>
-<li>HLog File: HBase 中WAL(Write Ahead Log)的存储格式,物理上是Hadoop的Sequence File带项目符号的内容 </li>
-</ul>
-</li>
-</ul>
-<h3 id="HRegionServer"><a href="#HRegionServer" class="headerlink" title="HRegionServer"></a>HRegionServer</h3><ul>
-<li>HRegionServer管理一些列HRegion对象</li>
-<li>每个HRegion对应Table中的一个Region,HRegion由多个HStore组成</li>
-<li>每个HStore对应Table中一个Column Family的存储</li>
-<li>Column Family就是一个集中的额存储单元,故将具有相同IO特性的Column放在一个Column Family会更高效</li>
-</ul>
-<h3 id="HStore-MemStore-和-StoreFile"><a href="#HStore-MemStore-和-StoreFile" class="headerlink" title="HStore (MemStore 和 StoreFile)"></a>HStore (MemStore 和 StoreFile)</h3><ul>
-<li>Client写入 -&gt; 存储MemStore,一直到MemStore满 -&gt; Flush成一个StoreFile,直至增长到一定阈值 -&gt; 触发Compact合并操作 -&gt; 多个StoreFile合并成一个StoreFile,同时进行版本合并和数据删除 -&gt; 当StoreFiles Compact后,逐步形成越来越大的StoreFile -&gt; 单个StoreFile大小超过一定阈值后,触发Split操作,把当前Region Split成2个Region,被分割的Region会下线,新Split出2个子Region会被HMaster分配到相应的HRegionServer上,使得原先1个Region的压力得以分流到2个Region上</li>
-<li>HBase只是增加数据,所有的更新和删除操作,都是在Compact阶段做的,所以,用户写操作只需要进入到内存即可立即返回,从而保证I/O高性能</li>
-</ul>
-<h4 id="StoreFile文件结构"><a href="#StoreFile文件结构" class="headerlink" title="StoreFile文件结构"></a>StoreFile文件结构</h4><ul>
-<li>StoreFile以HFile格式保存在HDFS上</li>
-<li>Data Block段:保存表中的额数据,这部分可以被压缩</li>
-<li>Meta Block段(可选的):保存用户自定义的kv对,可以被压缩</li>
-<li>File Info 段:Hfile的元信息,不压缩 ,用户也可以在这一部分添加自己的元信息</li>
-<li>Data Block Index 段:Data Block的索引.每条索引的key是被索引的block的第一条记录的key</li>
-<li>Meta Block Index段(可选的):Meta Block的索引</li>
-<li>Trailer:这一段是定长的,保存的是每一段的偏移量</li>
-</ul>
-<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><ul>
-<li>HFile的Data Block,Meta Block通常采用压缩方式存储<ul>
-<li>好处: 压缩之后可以大大减小网络IO和磁盘IO</li>
-<li>坏处: 需要花费CPU进行压缩和解压缩</li>
-</ul>
-</li>
-<li>Hfile支持的压缩格式: Gzip,Lzo,Snappy…</li>
-</ul>
-<h3 id="KeyValue-存储结构"><a href="#KeyValue-存储结构" class="headerlink" title="KeyValue 存储结构"></a>KeyValue 存储结构</h3><ul>
-<li>HFile里面的每个KeyValue对就是一个简单的byte数组</li>
-<li>KeyLength和ValueLength: 两个固定的长度,分别代表key和value的长度</li>
-<li>Key部分: RowLength是固定长度的数值,表示RowKey的长度,Row就是RowKey</li>
-<li>Column Family Length是固定长度的数值,表示Family的长度,接着就是Column Family,再接着就是Qualifier,然后是两个固定长度的数值,表示Time Stamp和Key Type(Put/Delete)</li>
-<li>Value部分没有这么复杂的结构,就是纯粹的二进制数据</li>
-</ul>
-<h3 id="HLog文件结构"><a href="#HLog文件结构" class="headerlink" title="HLog文件结构"></a>HLog文件结构</h3><ul>
-<li>HLog文件就是一个普通的Hadoop sequence File,Sequence File 的Key就是HLogKey对象,HLogkey中记录了写入数据的归属信息,除了table和region名字外,同时还包括sequence number和timestamp,timestamp是”写入时间”,sequence number的起始值为0,或者是最近一次存入文件系统中sequence number.</li>
-<li>HLog Sequece File的Value是HBase的KeyValue对象,即对应HFile中的KeyValue</li>
-</ul>
-<h2 id="Hbase内部表"><a href="#Hbase内部表" class="headerlink" title="Hbase内部表"></a>Hbase内部表</h2><h3 id="Hbase内部表-1"><a href="#Hbase内部表-1" class="headerlink" title="Hbase内部表"></a>Hbase内部表</h3><ul>
-<li>-ROOT-表<ul>
-<li>存储.meta.表信息,-ROOT-表中仅有一行数据</li>
-<li>Zookeeper中存储了-ROOT-表的位置信息</li>
-</ul>
-</li>
-<li>.META.表<ul>
-<li>主要存储HRegin的列表和HRegionServer的服务器地址</li>
-</ul>
-</li>
-<li>Namespace表<ul>
-<li>存储命名空间</li>
-</ul>
-</li>
-</ul>
-<h3 id="hbck修复错误表"><a href="#hbck修复错误表" class="headerlink" title="hbck修复错误表"></a>hbck修复错误表</h3><p>hbase hbck -fix</p>
-<h2 id="Hbase管理命令"><a href="#Hbase管理命令" class="headerlink" title="Hbase管理命令"></a>Hbase管理命令</h2><h3 id="Flush"><a href="#Flush" class="headerlink" title="Flush"></a>Flush</h3><p>把内存中的数据写入硬盘</p>
-<h3 id="Compact"><a href="#Compact" class="headerlink" title="Compact"></a>Compact</h3><h3 id="Region"><a href="#Region" class="headerlink" title="Region"></a>Region</h3>
-          
-        
+    <div>
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -2175,10 +1446,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -2191,18 +1458,12 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/java/java笔记.html">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Kafka/kafka的相关概念.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -2217,52 +1478,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/java/java笔记.html" itemprop="url">
-                  java笔记
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/Kafka/kafka的相关概念.html" itemprop="url">kafka的相关概念</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
             
           </span>
 
@@ -2275,10 +1509,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kafka/" itemprop="url" rel="index">
+                    <span itemprop="name">Kafka</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2303,9 +1541,6 @@
       </header>
     
 
-    
-    
-    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2314,45 +1549,46 @@
       
         
           
-            <p>java 是区分单双引号的<br>new 数组是要定义数组个数的 个数值 等于数组最后一个值-1</p>
-<p> 如果方法的返回类型为 void ，则方法中不能使用 return 返回值！<br> 方法的返回值最多只能有一个，不能返回多个值; return 需要带参数!<br>  方法返回值的类型必须兼容，例如，如果返回值类型为 int ，则不能返回 String 型值</p>
-<p>1、 静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员。</p>
-<p>如果希望在静态方法中调用非静态变量，可以通过创建类的对象，然后通过对象来访问非静态变量。</p>
-<p>2、 在普通成员方法中，则可以直接访问同类的非静态变量和静态变量</p>
-<p>3、 静态方法中不能直接调用非静态方法，需要通过对象来访问非静态方法。</p>
-<p>Java 中可以通过初始化块进行数据赋值<br>在类的声明中，可以包含多个初始化块，当创建类的实例时，就会依次执行这些代码块。如果使用 static 修饰初始化块，就称为静态初始化块。</p>
-<p>需要特别注意：静态初始化块只在类加载时执行，且只会执行一次，同时静态初始化块只能给静态变量赋值，不能初始化普通的成员变量。</p>
-<p>程序运行时静态初始化块最先被执行，然后执行普通初始化块，最后才执行构造方法。由于静态初始化块只在类加载时执行一次，所以当再次创建对象 hello2 时并未执行静态初始化块。</p>
-<p>1、 静态内部类不能直接访问外部类的非静态成员，但可以通过 new 外部类().成员 的方式访问 </p>
-<p>2、 如果外部类的静态成员与内部类的成员名称相同，可通过“类名.静态成员”访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</p>
-<p>3、 创建静态内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</p>
-<p>方法内部类就是内部类定义在外部类的方法中，方法内部类只在该方法的内部可见，即只在该方法内可以使用。<br>一定要注意哦：由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类不能使用访问控制符和 static 修饰符。</p>
-<p>String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。</p>
-<p>局部变量不会自动赋初始值</p>
-<p>两类变量同名时局部变量具有更高的优先级</p>
-<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ol>
-<li>使用new+构造方法 创建一个新的对象</li>
-<li>构造方法是定义在java类中的一个用来初始化对象的方法</li>
-<li>构造方法与类同名且没有返回值</li>
-</ol>
+            <h2 id="kafka的相关概念"><a href="#kafka的相关概念" class="headerlink" title="kafka的相关概念"></a>kafka的相关概念</h2><h3 id="AMPQ协议"><a href="#AMPQ协议" class="headerlink" title="AMPQ协议"></a>AMPQ协议</h3><p>一些基本的概念:</p>
+<ul>
+<li>消费者(Consumer):从消息队列中请求消息的客户端应用程序</li>
+<li>生产者(Producer):向broker发布消息的客户端应用程序</li>
+<li>AMQP服务器端(broker):用来接收生产者发送的消息并将这些消息路由给服务器中的队列</li>
+</ul>
+<h3 id="kafka支持的客户端语言"><a href="#kafka支持的客户端语言" class="headerlink" title="kafka支持的客户端语言"></a>kafka支持的客户端语言</h3><p>支持当前大部分主流语言(变形自己的consumer和producer程序)</p>
+<h3 id="kafka架构"><a href="#kafka架构" class="headerlink" title="kafka架构"></a>kafka架构</h3><p>一些基本的概念:</p>
+<ul>
+<li>主题(Topic):一个主题类似新闻中的体育,娱乐,教育等分类概念,在实际工程中通常一个业务一个主题</li>
+<li>分区(Partition):一个topic钟的消息数据按照多个分区组织,分区是kafka消息队列组织的最小单位,一个分区可以看做是一个FIFO的队列</li>
+</ul>
 <hr>
+<h2 id="Zookeeper集群搭建"><a href="#Zookeeper集群搭建" class="headerlink" title="Zookeeper集群搭建"></a>Zookeeper集群搭建</h2><ul>
+<li>集群搭建</li>
+<li>集群配置参数介绍<ul>
+<li>myid文件 和server.myid</li>
+<li>zoo.cfg文件</li>
+<li>log4j.properties文件</li>
+<li>zkEnv.sh和zkServer.sh</li>
+</ul>
+</li>
+</ul>
 
           
         
       
     </div>
 
-    
+    <div>
+      
+    </div>
 
-    
-    
-    
+    <div>
+      
+    </div>
 
-    
-
-    
-
-    
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -2366,10 +1602,582 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/MySQL/SQL基础.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/MySQL/SQL基础.html" itemprop="url">SQL基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h1><ul>
+<li>DDL (Data Definition Languages):数据定义语音,这些语句定义了不同的数据段,数据库,表,列,索引等数据库对象.常用的语句关键字主要包括create,drop,alter等;</li>
+<li>DML (Data Manipulation Languages): 数据操纵语句,用于添加,删除,更新和查询数据库记录,并检查数据完整性,常用的语句关键字主要包括 insert,delete,update,select等;</li>
+<li>DCL (Data Control Language): 数据控制语句,用于控制不同数据段直接的许可和访问级别的语句.这些语句定义了数据库,表,字段,用户的访问权限和安全级别.主要的语句关键字包括grant,revoke<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2>对数据库内部的对象进行创建.删除,修改等操作的语音.和DML最大的差别是DML只是对表内部数据操作,而不涉及表的定义,结构的修改,更不涉及其他对象,DDL语句更多地由数据库管理员(DBA)使用<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><code>create database test1;</code><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><code>drop database test1;</code><br>drop操作语句的结果都显示’0 rows affected’<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><code>create table emp(ename varchar(10),hiredate date,sal decimal(10,2),deptno int(2));</code><h4 id="查看表"><a href="#查看表" class="headerlink" title="查看表"></a>查看表</h4><code>desc emp;</code><h4 id="查看创建表的SQL语句"><a href="#查看创建表的SQL语句" class="headerlink" title="查看创建表的SQL语句"></a>查看创建表的SQL语句</h4><code>show create table emp \G;</code><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MariaDB [test1]&gt; show create table emp \G;</div><div class="line">*************************** 1. row ***************************</div><div class="line">       Table: emp</div><div class="line">Create Table: CREATE TABLE `emp` (</div><div class="line">  `ename` varchar(20) DEFAULT NULL,</div><div class="line">  `hiredate` date DEFAULT NULL,</div><div class="line">  `sal` decimal(10,2) DEFAULT NULL,</div><div class="line">  `deptno` int(2) DEFAULT NULL</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">ERROR: No query specified</div></pre></td></tr></table></figure>
+</p>
+</li>
+</ul>
+<hr>
+<p>除了可以看到表定义以外,还可以看到表的engine(存储引擎)和charset(字符集)等信息.”\G”选项的含义是使得记录能够按照字段竖向排列,以便更好地显示内容较长的记录.</p>
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p><code>drop table emp;</code></p>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><h4 id="1-修改表类型"><a href="#1-修改表类型" class="headerlink" title="1. 修改表类型:"></a>1. 修改表类型:</h4><p><code>ALTER TABLE tablename MODIFY [COLUMN] column_definition [FIRST|AFTER col_name]</code></p>
+<p><code>alter table emp modify ename varchar(20);</code></p>
+<h4 id="2-增加表字段"><a href="#2-增加表字段" class="headerlink" title="2. 增加表字段:"></a>2. 增加表字段:</h4><p><code>ALTER TABLE tablename ADD [COLUMN] column_definition [FIRST|AFTER col_name]</code></p>
+<p><code>alter table emp add [column] age int(3);</code></p>
+<h4 id="3-删除表字段"><a href="#3-删除表字段" class="headerlink" title="3. 删除表字段"></a>3. 删除表字段</h4><p><code>ALTER TABLE tablename DROP[COLUMN] column_name</code></p>
+<p><code>alter table emp drop [column] age;</code></p>
+<h4 id="4-字段改名"><a href="#4-字段改名" class="headerlink" title="4. 字段改名"></a>4. 字段改名</h4><p><code>ALTER TABLE tablename CHANGE [COLUMN] old_col_name column_definition  [FIRST|AFTER col_name]</code></p>
+<p><code>alter table emp change age age1 int(4);</code></p>
+<p>change和modify都可以修改表的定义,不同的是change后面需要两次列名,不方便,但是change的优点是可以修改列名称,modify则不能.</p>
+<h4 id="5-修改字段排列顺序"><a href="#5-修改字段排列顺序" class="headerlink" title="5. 修改字段排列顺序"></a>5. 修改字段排列顺序</h4><p>  前面介绍的极端增加和修改语法(ADD/CHANGE/MODIFY)中,都有一个可选项first|after column name,这个选项可以用来修改字段在表中的位置,ADD增加的新字段默认是加载标的最后位置,而CHANGE/MODIFY 默认不会改变字段的位置.</p>
+<p>将新增的字段birth date 加在ename之后:</p>
+<p><code>alter table emp add birth date after ename;</code></p>
+<p>修改字段age,将他放在最前面:</p>
+<p><code>alter table emp modify age int(3) first;</code></p>
+<h4 id="6-更改表名"><a href="#6-更改表名" class="headerlink" title="6. 更改表名"></a>6. 更改表名</h4><p><code>ALTER TABLE tablename RENAME [TO] new_tablename</code><br>将<br><code>alter table emp rename emp1</code></p>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML操作是指对数据库中表记录的操作,主要包括表记录的插入(insert),更新(update),删除(delete)和查询(select),是开发人员日常使用最为频繁的操作.</p>
+<h3 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h3><p><code>INSERT INTO tablename(field1,field2,...fieldn) VALUES(value1,value2,...,valuen);</code></p>
+<p><code>insert into emp(ename,hiredate,sal,deptno) values(&#39;zzzx1&#39;,&#39;2000-01-01&#39;,&#39;2000&#39;,1);</code></p>
+<p><code>insert into dept values(5,&#39;dept5&#39;),(6,&#39;dept6&#39;);</code></p>
+<h3 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h3><p><code>UPDATE tablename SET field1=value1,field2=value2,...,fieldn=valuen [WHERE CONDITION]</code></p>
+<p>将wmp表中ename 为’lisa’的薪水(sal)从3000改为4000:</p>
+<p><code>update emp set sal=4000 where ename=&#39;lisa&#39;;</code></p>
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><p><code>DELETE FROM tablename [WHERE CONDITION]</code></p>
+<p>在MySQL中可以一次删除多个表的数据,</p>
+<p><code>DELETE t1,t2,...,tn FROM t1,t2,...tn [WHERE CONDITION]</code></p>
+<p>同时删除表emp和dept中deptno为3的记录:</p>
+<p><code>delete a,b from emp a,dept b where a.deptno=b.deptno and a.deptno=3;</code></p>
+<h3 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h3><p><code>SELECT * FROM tablename [WHERE CONDITION]</code></p>
+<h4 id="1-查询不重复的记录"><a href="#1-查询不重复的记录" class="headerlink" title="1 查询不重复的记录"></a>1 查询不重复的记录</h4><p><code>select distinct deptno from emp;</code></p>
+<h4 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2 条件查询"></a>2 条件查询</h4><p><code>select * from emp where deptno=1;</code></p>
+<p>上面例子中,where后面的条件是一个字段的=比较,除了=之外,还可以使用&lt;,&gt;,&gt;=,&lt;=,!=等比较运算符;多个条件之间还可以使用<em>or,and</em>等逻辑运算符进行多条件联合查询.</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno=1 and sal&lt;3000;
++-------+------------+---------+--------+
+| ename | hiredate   | sal     | deptno |
++-------+------------+---------+--------+
+| zzx   | 2000-01-01 | 2000.00 |      1 |
++-------+------------+---------+--------+
+1 row in set (0.00 sec)
+
+
+</code></pre><h4 id="排序和限制"><a href="#排序和限制" class="headerlink" title="排序和限制"></a>排序和限制</h4><p>取出按照某个字段进行排序后的记录结果集,用到了数据库的排序操作,用关键字<em>ORDER BY</em>来实现</p>
+<p><code>SELECT * FROM tablename [WHERE CONDITION] [ORDER BY field1 [DESC|ASC],field2 [DESC|ASC],...,fieldn[DESC|ASC]]</code></p>
+<p>其中DESC和ASC是排序顺序关键字,DESV表示按照字段进行降序排列,ASC则表示升序序列，如果不写此关键字默认是升序排列．ORDER BY 后面可以跟多个不同的排序字段，并且每个排序字段可以有不同的排序顺序．</p>
+<p>例如，把emp表中的记录按照工资高低进行显示:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by sal;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| dony   | 2005-02-05 | 2000.00 |      4 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
++--------+------------+---------+--------+
+
+</code></pre><p>如果排序字段的值一样,则值相同的字段按照第二个排序字段进行排序,依次类推.如果只有一个排序字段,则这些字段相同的记录将会无序排列</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by deptno;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| dony   | 2005-02-05 | 2000.00 |      4 |
++--------+------------+---------+--------+
+
+</code></pre><p>对于deptno相同的前两条记录,如果要按照工资由高到低排序,可以使用以下命令:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by deptno,sal desc;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| dony   | 2005-02-05 | 2000.00 |      4 |
++--------+------------+---------+--------+
+
+</code></pre><p>对于排序后的记录,如果希望只显示一部分,而不是全部,这时,就可以使用LIMIT关键字来实现</p>
+<p><code>SELECT ...[LIMIT offset_start,roe_count]</code></p>
+<p>其中<em>offset_start</em>表示记录的起始偏移量,<em>row_count</em>表示显示的行数.在默认情况下,起始偏移量为0,只需要写记录行数就可以,这时实际显示的是前n条记录.例如显示emp表中按照sal排序后的前3条记录:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by sal limit 3;
++-------+------------+---------+--------+
+| ename | hiredate   | sal     | deptno |
++-------+------------+---------+--------+
+| zzx   | 2000-01-01 | 2000.00 |      1 |
+| dony  | 2005-02-05 | 2000.00 |      4 |
+| lisa  | 2003-02-01 | 4000.00 |      2 |
++-------+------------+---------+--------+
+
+</code></pre><p>如果要显示emp表中按照sal排序后从第二条记录开始的3条记录</p>
+<pre><code>MariaDB [test1]&gt; select * from emp order by sal limit 1,3;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| dony   | 2005-02-05 | 2000.00 |      4 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
++--------+------------+---------+--------+
+
+</code></pre><h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p><code>SELECT [field1,field2,...,fieldn] fun_name FROM tablename [WHERE where_contition] [GROUP BY field1,field2,...,fieldn [WITH ROLLUP]][HAVING where_contition]</code></p>
+<ul>
+<li>fun_name 表示要做的聚合操作,也就是聚合函数,常用的有sum(求和),count(*)(记录数),max(最大值),min(最小值).</li>
+<li>GROUP BY 关键字表示要进行分类聚合的字段,比如要按照部门分类统计员工数量,部门就应该写在group by后面.</li>
+<li>WITH ROLLUP [可选语法] 表明是否分类聚合后的结果进行在汇总.</li>
+<li>HAVING 关键字表示对分类后的结果再进行条件的过滤.</li>
+</ul>
+<p>having 和 where 的区别在于,having是对聚合后的结果进行条件的过滤,而where实在聚合前就对记录进行过滤,如果逻辑允许,我们尽可能用where先过滤记录,这样因为结果集减小,将对聚合的效率大大提高,最后在根据逻辑看是否用having进行再过滤.</p>
+<p>在emp表中统计公司总人数:</p>
+<pre><code>MariaDB [test1]&gt; select count(1) from emp;
++----------+
+| count(1) |
++----------+
+|        4 |
++----------+
+
+</code></pre><p>在此基础上要统计各个部门人数:</p>
+<pre><code>MariaDB [test1]&gt; select deptno,count(1) from emp group by deptno;
++--------+----------+
+| deptno | count(1) |
++--------+----------+
+|      1 |        2 |
+|      2 |        1 |
+|      4 |        1 |
++--------+----------+
+
+</code></pre><p>既要统计各部门人数,又要统计总人数:</p>
+<pre><code>MariaDB [test1]&gt; select deptno,count(1) from emp group by deptno with rollup;
++--------+----------+
+| deptno | count(1) |
++--------+----------+
+|      1 |        2 |
+|      2 |        1 |
+|      4 |        1 |
+|   NULL |        4 |
++--------+----------+
+
+
+</code></pre><p>统计人数大于1的部门:</p>
+<pre><code>MariaDB [test1]&gt; select deptno,count(1) from  emp group by deptno having count(1)&gt;1;
++--------+----------+
+| deptno | count(1) |
++--------+----------+
+|      1 |        2 |
++--------+----------+
+
+</code></pre><p>统计公司所有员工的薪水总额,最高和最低薪水:</p>
+<pre><code>MariaDB [test1]&gt; select sum(sal),max(sal),min(sal) from emp;
++----------+----------+----------+
+| sum(sal) | max(sal) | min(sal) |
++----------+----------+----------+
+| 13000.00 |  5000.00 |  2000.00 |
++----------+----------+----------+
+
+</code></pre><h3 id="表连接"><a href="#表连接" class="headerlink" title="表连接"></a>表连接</h3><p>当需要同时显示多个表中的字段时,就可以用表连接来实现这样的功能.从大类上分,表连接分为内连接和外连接,他们之间的最主要区别是,内连接仅选出两张表中互相匹配的记录,而外连接胡选出其他不匹配的记录.我们最常用的是内连接.</p>
+<p>查询出所有雇员的名字和所在部门名称,因为雇员名称和部门分别存放在表emp和dept中,因此,需要使用表连接来查询:</p>
+<pre><code>MariaDB [test1]&gt; select ename,deptname from emp,dept where emp.deptno=dept.deptno;
++--------+----------+
+| ename  | deptname |
++--------+----------+
+| zzx    | tech     |
+| lisa   | sale     |
+| bjguan | tech     |
+| dony   | hr       |
++--------+----------+
+
+
+</code></pre><p>外连接又分为<strong>左连接</strong>和<strong>右连接</strong></p>
+<ul>
+<li>左连接:包含所有的左边表中的记录甚至是右边表中没有和它匹配的记录;</li>
+<li><p>右连接:包含所有的右边表中的记录甚至是左边表中没有和它匹配的记录;<br>查询emp中所有用户名和所在部门名称:</p>
+<pre><code>MariaDB [test1]&gt; select ename,deptname from emp left join dept on emp.deptno=dept.deptno;
++--------+----------+
+| ename  | deptname |
++--------+----------+
+| zzx    | tech     |
+| bjguan | tech     |
+| lisa   | sale     |
+| dzshen | hr       |
+| dony   | NULL     |
++--------+----------+
+
+MariaDB [test1]&gt; select ename,deptname from dept right join emp on dept.deptno=emp.deptno;
++--------+----------+
+| ename  | deptname |
++--------+----------+
+| zzx    | tech     |
+| bjguan | tech     |
+| lisa   | sale     |
+| dzshen | hr       |
+| dony   | NULL     |
++--------+----------+
+
+</code></pre><p>比较这个查询和上例中的查询,都是查询用户名和部门名,两者的区别在于本例中列出来所有的用户名,即使有的用户名(dony)并不存在合法的部门名称;而上例中仅仅列出了存在合法部门的用户名和部门名称.</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>某些情况下,当进行查询的时候,需要的条件是另外一个select语句的结果,这个时候就要用到子查询.用于子查询的关键字主要包括in,not in,=,!=,exitst,not exists等.</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno in(select deptno from dept);
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| dzshen | 2005-04-01 | 4000.00 |      3 |
++--------+------------+---------+--------+
+
+</code></pre><p>如果子查询记录数唯一,还可以用=代替in:</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno = (select deptno from dept limit 1);
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
++--------+------------+---------+--------+
+
+</code></pre><p>某些情况下子查询可以转化(等效)为表连接,</p>
+<pre><code>MariaDB [test1]&gt; select * from emp where deptno in(select deptno from dept);
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| dzshen | 2005-04-01 | 4000.00 |      3 |
++--------+------------+---------+--------+
+
+</code></pre><p>转化为表连接后:</p>
+<pre><code>MariaDB [test1]&gt; select emp.* from emp,dept where emp.deptno=dept.deptno;
++--------+------------+---------+--------+
+| ename  | hiredate   | sal     | deptno |
++--------+------------+---------+--------+
+| zzx    | 2000-01-01 | 2000.00 |      1 |
+| lisa   | 2003-02-01 | 4000.00 |      2 |
+| bjguan | 2004-04-02 | 5000.00 |      1 |
+| dzshen | 2005-04-01 | 4000.00 |      3 |
++--------+------------+---------+--------+
+
+</code></pre><p>子查询和表连接之间的转换主要应用在两个方面</p>
+</li>
+<li>MySQL 4.1 以前的版本不支持子查询,需要用表连接来实现子查询的功能</li>
+<li>表连接在很多情况下用于优化子查询</li>
+</ul>
+<h4 id="记录联合"><a href="#记录联合" class="headerlink" title="记录联合"></a>记录联合</h4><p>将两个表的数据按照一定的查询条件查询出来后,将结果合并到一起显示出来,这个时候就需要union和union all 关键字来实现这样的功能</p>
+<p><code>SELECT * FROM t1  UNION|UNION ALL  SELECT * FROM t2 ...UNION|UNION ALL SELECT * FROM tn;</code></p>
+<pre><code>MariaDB [test1]&gt; select deptno from emp
+    -&gt; union all
+    -&gt; select deptno from dept;
++--------+
+| deptno |
++--------+
+|      1 |
+|      2 |
+|      1 |
+|      4 |
+|      3 |
+|      1 |
+|      2 |
+|      3 |
+|      5 |
++--------+
+
+</code></pre><p>将结果去掉重复记录后显示如下:</p>
+<pre><code>MariaDB [test1]&gt; select deptno from emp union  select deptno from dept;
++--------+
+| deptno |
++--------+
+|      1 |
+|      2 |
+|      4 |
+|      3 |
+|      5 |
++--------+
+
+
+</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><p>DCL主要是DBA用来管理系统中的对象权限时使用</p>
+<p>创建一个数据库用户z1,具有对sakila数据库中所有表的SELECT/INSERT权限:</p>
+<pre><code>MariaDB [test1]&gt; grant select,insert on sakila.* to &apos;z1&apos;@&apos;localhost&apos; identified by &apos;123&apos;;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [test1]&gt; exit
+Bye
+[root@CentOS3 bin]# mysql -uz1 -p
+
+
+</code></pre><p>收回z1,INSERT,只能对数据进行SELECT操作:</p>
+<pre><code>MariaDB [(none)]&gt; revoke insert on sakila.* from &apos;z1&apos;@&apos;localhost&apos;;
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]磁盘inode满导致数据无法写入.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[Linux]磁盘inode满导致数据无法写入.html" itemprop="url">磁盘inode满导致数据无法写入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/" itemprop="url" rel="index">
+                    <span itemprop="name">CDH</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
+                    <span itemprop="name">Error</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="磁盘inode满导致数据无法写入"><a href="#磁盘inode满导致数据无法写入" class="headerlink" title="磁盘inode满导致数据无法写入"></a>磁盘inode满导致数据无法写入</h1><p>BDI的一个工作节点,报错数据没有空间写入,但是通过命令df查看磁盘空间还有剩余,当前目录文件数目也没有超过最大限制,<br>最后发现是分区inode满了导致</p>
+<p>同时bdi的调度,虽然服务停止了之前的调度任务被分配到该节点的话就不会自动选择其他正常工作的节点了<br><a href="https://www.ibm.com/developerworks/cn/aix/library/au-speakingunix14/" target="_blank" rel="noopener">参考文档</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
@@ -2378,12 +2186,15 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2399,133 +2210,62 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Nameless13</p>
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Nameless13" />
+          <p class="site-author-name" itemprop="name">Nameless13</p>
+           
               <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          </div>
+          
+        </div>
+        <nav class="site-state motion-element">
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">164</span>
-                    <span class="site-state-item-name">Artikel</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">33</span>
-                    <span class="site-state-item-name">Kategorien</span>
-                  
-                </div>
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">164</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
             
-          
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
       </section>
 
       
@@ -2542,41 +2282,30 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
-
-  
-
-  
 </div>
 
 
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.3</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
-
-
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
 
         
-
-
-
-
-
-
-
 
         
       </div>
@@ -2587,8 +2316,6 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
-    
-
     
 
   </div>
@@ -2609,11 +2336,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2627,43 +2350,54 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
 
 
 
@@ -2686,25 +2420,12 @@
 
 
 
-
-
-
-
   
 
 
 
 
 
-  
-
-  
-
-  
-
-  
-
-  
   
 
   
