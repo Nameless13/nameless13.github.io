@@ -336,7 +336,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -447,27 +447,15 @@
       
         
           
-            <p>mongod start<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">about to fork child process, waiting until server is ready for connections.</div><div class="line">forked process: 23987</div><div class="line">ERROR: child process failed, exited with error number 100</div></pre></td></tr></table></figure></p>
-<p>没有正常关闭mongod服务,导致mongod被锁.删除掉mongod里的mongod.lock 文件.重新启动服务就行了.</p>
-<hr>
-<p>/sys/kernel/mm/transparent_hugepage/defrag is ‘always’.</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/enabled; then  </div><div class="line">   echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled  </div><div class="line">fi  </div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/defrag; then  </div><div class="line">   echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag  </div><div class="line">fi</div></pre></td></tr></table></figure>
-</p>
-<hr>
-<p><code>** WARNING: soft rlimits too low. rlimits set to 1024 processes, 100032 files. Number of processes should be at least 50016 : 0.5 times number of files</code></p>
-<ol>
-<li><p>查看当前mongodb进程信息</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ps -ef | grep mongod</div><div class="line">testuser 24763  3.5  0.4 394264 35708 ?        Sl   09:56   0:00 mongod --config /etc/mongo/mongodb.conf</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>cat /proc/24763/limits </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Limit                     Soft Limit           Hard Limit           Units     </div><div class="line">Max cpu time              unlimited            unlimited            seconds   </div><div class="line">Max file size             unlimited            unlimited            bytes     </div><div class="line">Max data size             unlimited            unlimited            bytes     </div><div class="line">Max stack size            10485760             unlimited            bytes     </div><div class="line">Max core file size        0                    unlimited            bytes     </div><div class="line">Max resident set          unlimited            unlimited            bytes     </div><div class="line">Max processes             1024                 30921                processes </div><div class="line">Max open files            100032               100032               files     </div><div class="line">Max locked memory         65536                65536                bytes     </div><div class="line">Max address space         unlimited            unlimited            bytes     </div><div class="line">Max file locks            unlimited            unlimited            locks     </div><div class="line">Max pending signals       30921                30921                signals   </div><div class="line">Max msgqueue size         819200               819200               bytes     </div><div class="line">Max nice priority         0                    0                    </div><div class="line">Max realtime priority     0                    0                    </div><div class="line">Max realtime timeout      unlimited            unlimited            us</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> $ mongod --oplogSize 40 --port 20000 --noprealloc --smallfiles --replSet testReplSet --dbpath /data/db/testReplSet-0 --setParameter enalbeTestCommands=1</div><div class="line"></div><div class="line">    BadValue: Illegal --setParameter parameter: &quot;enalbeTestCommands&quot;</div><div class="line"> </div><div class="line">    try &apos;mongod --help&apos; for more information</div><div class="line"></div><div class="line">$ mongod --oplogSize 40 --port 20000 --noprealloc --smallfiles --replSet testReplSet --dbpath /data/db/testReplSet-0 --setParameter enableTestCommands=1</div><div class="line"></div><div class="line">rs.help()</div><div class="line"> rs.conf()</div><div class="line"> rs.initiate()</div><div class="line">rs.conf()</div><div class="line">rs.help()</div><div class="line">rs.add(&quot;CentOS2:27017&quot;)</div><div class="line">rs.add(&quot;CentOS3:27017&quot;)</div><div class="line">rs.conf()</div><div class="line">rs.status()</div><div class="line"></div><div class="line"></div><div class="line">port=27017</div><div class="line">bing_ip=</div><div class="line">logpath=</div><div class="line">dbpath=</div><div class="line">logappend=true</div><div class="line">pidfilepath=/usr/local/mongodb/data/</div><div class="line">fork=true</div><div class="line">oplogSize=1024</div><div class="line">replSet=rs1</div></pre></td></tr></table></figure></p>
-
-          
+          mongod startabout to fork child process, waiting until server is ready for connections.forked process: 23987ERROR: child process failed, exited with e
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Document/mongod error.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -519,12 +507,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Dockerfile.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/ubuntu的网络配置.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -538,8 +526,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/Dockerfile.html" itemprop="url">
-                  Dockerfile
+                <a class="post-title-link" href="/Document/ubuntu的网络配置.html" itemprop="url">
+                  ubuntu的网络配置
                 </a>
               
             
@@ -635,60 +623,16 @@
       
         
           
-            <h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><p>使用Dockerfile可以允许用户创建自定义镜像</p>
-<h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>Dockerfile 由一行行命令语句组成,并支持以#开头的注释行.<br>一般的，Dockerfile 分为四部分：基础镜像信息、维护者信息、镜像操作指令和容<br>器启动时执行指令:</p>
-<p>`   </p>
-<pre><code># This dockerfile uses the ubuntu image
-# VERSION 2 - EDITION 1
-# Author: docker_user
-# Command format: Instruction [arguments / command] ..
-# Base image to use, this must be set as the first line FROM ubuntu
-# Maintainer: docker_user &lt;docker_user at email.com&gt; (@docker_user)
-MAINTAINER docker_user docker_user@email.com
-# Commands to update the image
-RUN echo &quot;deb http://archive.ubuntu.com/ubuntu/ raring main universe&quot; &gt;&gt; /etc/apt/sources.list
-RUN apt-get update &amp;&amp; apt-get install -y nginx
-RUN echo &quot;\ndaemon off;&quot; &gt;&gt; /etc/nginx/nginx.conf
-# Commands when creating a new container
-CMD /usr/sbin/nginx
-
-</code></pre><p>`</p>
-<p>其中，一开始必须指明所基于的镜像名称，接下来推荐说明维护者信息。<br>后面则是镜像操作指令，例如 RUN 指令， RUN 指令将对镜像执行跟随的命令。<br>每运行一条 RUN 指令，镜像添加新的一层，并提交。<br>最后是 CMD 指令，来指定运行容器时的操作命令。<br>下面是一个更复杂的例子</p>
-<p>`</p>
-<pre><code># Nginx
-#
-# VERSION 0.0.1
-FROM ubuntu
-MAINTAINER Victor Vieux &lt;victor@docker.com&gt;
-RUN apt-get update &amp;&amp; apt-get install -y inotify-tools nginx apache2 openssh-server
-# Firefox over VNC
-#
-# VERSION 0.3
-FROM ubuntu
-# Install vnc, xvfb in order to create a &apos;fake&apos; display and firefox
-RUN apt-get update &amp;&amp; apt-get install -y x11vnc xvfb firefox
-RUN mkdir /.vnc
-# Setup a password
-RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
-# Autostart firefox (might not be the best way, but it does the trick)
-RUN bash -c &apos;echo &quot;firefox&quot; &gt;&gt; /.bashrc&apos;
-EXPOSE 5900
-CMD [&quot;x11vnc&quot;, &quot;-forever&quot;, &quot;-usepw&quot;, &quot;-create&quot;]
-# Multiple images example
-#
-# VERSION 0.1
-FROM ubuntu
-RUN echo foo &gt; bar
-# Will output something like ===&gt; 907ad6c2736f
-FROM ubuntu
-RUN echo moo &gt; oink
-# Will output something like ===&gt; 695d7793cbe4
-# You᾿ll now have two images, 907ad6c2736f with /bar, and 695d7793cbe4 with
-# /oink.
-
-</code></pre><p>`</p>
-
-          
+          ubuntu的网络配置有线连接互联网
+Ubuntu使用两条配置线路   /etc/network/interfaces这个配置文件主要用于服务器版本的Ubuntu系统使用;当/etc/NetworkManager/NetworkManager.conf  中managed=false ，以inter
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Document/ubuntu的网络配置.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -745,7 +689,7 @@ RUN echo moo &gt; oink
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -856,604 +800,18 @@ RUN echo moo &gt; oink
       
         
           
-            <h1 id="Dockerfile-实例"><a href="#Dockerfile-实例" class="headerlink" title="Dockerfile 实例"></a>Dockerfile 实例</h1><p>apt-get update<br>&lt;!-- apt-get install openssh-server --&gt;<br>apt-get install -y openssh-server apache2 supervisor vim</p>
-<hr>
-<p>`   </p>
-<pre><code>; supervisor config file
-
-[unix_http_server]
-file=/var/run/supervisor.sock   ; (the path to the socket file)
-chmod=0700                       ; sockef file mode (default 0700)
-
-[supervisord]
-logfile=/var/log/supervisor/supervisord.log ; (main log file;default $CWD/supervisord.log)
-pidfile=/var/run/supervisord.pid ; (supervisord pidfile;default supervisord.pid)
-childlogdir=/var/log/supervisor            ; (&apos;AUTO&apos; child log dir, default $TEMP)
-
-; the below section must remain in the config file for RPC
-; (supervisorctl/web interface) to work, additional interfaces may be
-; added by defining them in separate rpcinterface: sections
-[rpcinterface:supervisor]
-supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
-
-[supervisorctl]
-serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket
-
-; The [include] section can just contain the &quot;files&quot; setting.  This
-; setting can list multiple files (separated by whitespace or
-; newlines).  It can also contain wildcards.  The filenames are
-; interpreted as relative to this file.  Included files *cannot*
-; include files themselves.
-
-[include]
-files = /etc/supervisor/conf.d/*.conf
-
-
-</code></pre><p>`</p>
-<hr>
-<p>`   </p>
-<pre><code>[supervisord]
-nodaemon=true
-[program:sshd]
-command=/usr/sbin/sshd -D
-[program:apache2]
-command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin/apache2 -DFOREGROUND&quot;
-
-</code></pre><p>`</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/Redis.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Redis/Redis.html" itemprop="url">
-                  Redis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="名字引用规则"><a href="#名字引用规则" class="headerlink" title="名字引用规则"></a>名字引用规则</h3><pre><code>在第一次应用Redis源代码文件file中的名字name时,本书使用file/name格式,比如redis.c/main 表示redis.c文件中的main函数,而redis.h/redisDb则表示redis.h文件中的redisDb结构,
-
-另外,在第一次应用标准库头文件file中的名字name时,本书使用&lt;file&gt;/name格式,比如&lt;unistd.h&gt;/write表示unistd.h头文件的write函数,而&lt;sudio.h&gt;/printf则表示stdio.h头文件的write函数,而&lt;stdio.h&gt;/printf则表示stdio.h头文件的printf函数,
-
-在第一次引用某个名字之后,本书就回去掉名字前缀的文件名,直接使用名字本身.举个例子.当第一次引用redis.h文件的redisDb结构的时候,会使用redis.h/redisDb格式,而之后再次引用redisDb结构时,只使用redisDb.
-
-
-</code></pre><hr>
-<h3 id="结构引用规则"><a href="#结构引用规则" class="headerlink" title="结构引用规则"></a>结构引用规则</h3><pre><code>本书使用struct.property格式来引用struct结构的property属性,比如redisDb.id表示redisDb结构的id属性,而redisDb.expires则表示redisDb结构的expires属性
-
-
-</code></pre><hr>
-<h3 id="Cluster群集一般来讲有四个功能"><a href="#Cluster群集一般来讲有四个功能" class="headerlink" title="Cluster群集一般来讲有四个功能"></a>Cluster群集一般来讲有四个功能</h3><ol>
-<li>冗余功能,就是说在这个群集中的任何一台机器出现本机或网络故障时，整个网络仍不中断，对外的服务也不中断，网络有多个路线可以走,服务器也可以相互代替。<br>2.负载均衡，就是当网络流量很大时。少量的服务器可能响应不过来，这时需要多台服务器为其分担处理。打个比方：一台IA服务器的处理能力是每秒几万个，显然无法在一秒钟内处理几十万个请求，但如果我们能够有10台这样的服务器组成一个系统，如果有办法将所有的请求平均分配到所有的服务器，那么这个系统就拥有了每秒处理几十万个请求的能力。</li>
-<li>协商处理，这种方案的原理是客户请求会同时被所有的节点所接收，然后所有节点按照一定的规则协商决定由哪个节点处理这个请求。此种方案中比较显著的特点就是整个集群中没有显著的管理节点，所有决定由全体工作节点共同协商作出。<br>4。流量分发，原理是所有的用户请求首先到达集群的管理节点，管理节点可以根据所有服务节点的处理能力和现状来决定将这个请求分发给某个服务节点。当某个服务节点由于硬件或软件原因故障时，管理节点能够自动检测到并停止向这个服务节点分发流量。这样，既通过将流量分担而增加了整个系统的性能和处理能力，又可以很好的提高系统的可用性。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux系统管理技术手册第二章.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Linux系统管理技术手册第二章.html" itemprop="url">
-                  Linux系统管理技术手册第二章
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Linux系统管理技术手册第二章"><a href="#Linux系统管理技术手册第二章" class="headerlink" title="Linux系统管理技术手册第二章"></a>Linux系统管理技术手册第二章</h1><p>开机时,计算机执行存储在ROM中的引导代码,这些代码及诶奥莱尝试确定如何加载并启动内核,内核检测系统的硬件,如何产生系统的<code>init</code>进程,这个进程总是PID1.</p>
-<h2 id="引导过程的步骤"><a href="#引导过程的步骤" class="headerlink" title="引导过程的步骤"></a>引导过程的步骤</h2><p>Linux系统典型的引导过程由6个不同阶段组成</p>
-<ul>
-<li>加载并初始化内核</li>
-<li>检查和配置设备</li>
-<li>创建内核线程</li>
-<li>操作员干预(仅用于手工引导)</li>
-<li>执行系统启动脚本</li>
-<li>多用户模式运行</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/YAML.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Document/YAML.html" itemprop="url">
-                  YAML
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h1><p><a href="http://nodeca.github.io/js-yaml/" target="_blank" rel="noopener">demo实例</a></p>
-<ul>
-<li>大小写敏感</li>
-<li>使用缩进表示层级关系</li>
-<li>缩进时不允许使用Tab键,只运行使用空格</li>
-<li>缩进的空格数目不重要,只要相同层级的元素左侧对齐即可</li>
-<li><h1 id="表示注释-从这个字符一直到行尾-都会被解析器忽略"><a href="#表示注释-从这个字符一直到行尾-都会被解析器忽略" class="headerlink" title="表示注释,从这个字符一直到行尾,都会被解析器忽略"></a>表示注释,从这个<em>字符</em>一直到行尾,都会被解析器忽略</h1></li>
-</ul>
-<h3 id="YAML支持的数据结构有三种"><a href="#YAML支持的数据结构有三种" class="headerlink" title="YAML支持的数据结构有三种"></a>YAML支持的数据结构有三种</h3><ul>
-<li>对象:键值对的集合又称为映射（mapping）/ 哈希（hashes） / 字典（dictionary）</li>
-<li>数组:一组按次序排列的值，又称为序列（sequence） / 列表（list）</li>
-<li>纯量（scalars）：单个的、不可再分的值</li>
-</ul>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象的一组键值对，使用冒号结构表示<br>animal: pets –&gt; JS { animal: ‘pets’ }</p>
-<p>Yaml 也允许另一种写法，将所有键值对写成一个行内对象。<br>hash: { name: Steve, foo: bar }   –&gt; JS { hash: { name: ‘Steve’, foo: ‘bar’ } }</p>
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>一组连词线开头的行，构成一个数组。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">- Cat</div><div class="line">- Dog</div><div class="line">- Goldfish</div></pre></td></tr></table></figure></p>
-<p>–&gt; JS<br>[ ‘Cat’, ‘Dog’, ‘Goldfish’ ]</p>
-<p>数据结构的子成员是一个数组，则可以在该项下面缩进一个空格。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">-</div><div class="line"> - Cat</div><div class="line"> - Dog</div><div class="line"> - Goldfish</div></pre></td></tr></table></figure></p>
-<p>–&gt;JS<br>[ [ ‘Cat’, ‘Dog’, ‘Goldfish’ ] ]<br>数组也可以采用行内表示法。</p>
-
-          
+          Dockerfile 实例apt-get update&lt;!-- apt-get install openssh-server --&gt;apt-get install -y openssh-server apache2 supervisor vim
+
+`   
+; supervisor co
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Document/Dockerfile 实例.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1510,7 +868,7 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1621,197 +979,17 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
       
         
           
-            <h1 id="建立软件安装目录（我一般把软件安装在opt目录下）"><a href="#建立软件安装目录（我一般把软件安装在opt目录下）" class="headerlink" title="建立软件安装目录（我一般把软件安装在opt目录下）"></a>建立软件安装目录（我一般把软件安装在opt目录下）</h1><p><code>mkdir /opt</code><br><code>cd /opt</code></p>
-<h2 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h2><p><a href="http://www.sublimetext.com/3" target="_blank" rel="noopener">http://www.sublimetext.com/3</a><br>注意一定要下Ubuntu/tarball包。<br>也可以用命令下载</p>
-<p>wget <a href="http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_3083_x64.tar.bz2" target="_blank" rel="noopener">http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_3083_x64.tar.bz2</a></p>
-<p>如果链接地址失效，请到官网获取最新下载地址。</p>
-<h2 id="解压软件包"><a href="#解压软件包" class="headerlink" title="解压软件包"></a>解压软件包</h2><p>tar jxvf sublime_text_3_build_3059_x64.tar.bz2</p>
-<h2 id="命令行下直接运行"><a href="#命令行下直接运行" class="headerlink" title="命令行下直接运行"></a>命令行下直接运行</h2><p><code>cd /opt/sublime_text_3</code><br><code>./sublime_text</code></p>
-<h2 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h2><p>复制文件</p>
-<p><code>cp /opt/sublime_text_3/sublime_text.desktop /usr/share/applications</code></p>
-<p>更改配置文件</p>
-<p><code>vim /usr/share/applications/sublime_text.desktop</code></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">我的配置如下</div><div class="line">[Desktop Entry]</div><div class="line">Version=1.0</div><div class="line">Type=Application</div><div class="line">Name=Sublime Text</div><div class="line">GenericName=Text Editor</div><div class="line">Comment=Sophisticated text editor for code, markup and prose</div><div class="line">Exec=/opt/sublime_text_3/sublime_text %F</div><div class="line">Terminal=false</div><div class="line">MimeType=text/plain;</div><div class="line">Icon=/opt/sublime_text_3/Icon/48x48/sublime-text.png</div><div class="line">Categories=TextEditor;Development;</div><div class="line">StartupNotify=true</div><div class="line">Actions=Window;Document;</div><div class="line"></div><div class="line">[Desktop Action Window]</div><div class="line">Name=New Window</div><div class="line">Exec=/opt/sublime_text_3/sublime_text -n</div><div class="line">OnlyShowIn=Unity;</div><div class="line"></div><div class="line">[Desktop Action Document]</div><div class="line">Name=New File</div><div class="line">Exec=/opt/sublime_text/sublime_text_3 --command new_file</div><div class="line">OnlyShowIn=Unity;</div></pre></td></tr></table></figure>
-</p>
-<h2 id="打开软件"><a href="#打开软件" class="headerlink" title="打开软件"></a>打开软件</h2><p>应用程序 &gt;编程 &gt; Sublime Text”右键”将此启动器添加到桌面”</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux 防火墙.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Linux 防火墙.html" itemprop="url">
-                  Linux 防火墙
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@CentOS3 redis]# service iptables status</div><div class="line">Table: filter</div><div class="line">Chain INPUT (policy ACCEPT)</div><div class="line">num  target     prot opt source               destination         </div><div class="line">1    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED </div><div class="line">2    ACCEPT     icmp --  0.0.0.0/0            0.0.0.0/0           </div><div class="line">3    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           </div><div class="line">4    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22 </div><div class="line">5    REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited </div><div class="line"></div><div class="line">Chain FORWARD (policy ACCEPT)</div><div class="line">num  target     prot opt source               destination         </div><div class="line">1    REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited </div><div class="line"></div><div class="line">Chain OUTPUT (policy ACCEPT)</div><div class="line">num  target     prot opt source               destination         </div><div class="line"></div><div class="line">[root@CentOS3 redis]# service iptables stop</div><div class="line">iptables: Setting chains to policy ACCEPT: filter          [  OK  ]</div><div class="line">iptables: Flushing firewall rules:                         [  OK  ]</div><div class="line">iptables: Unloading modules:                               [  OK  ]</div><div class="line">[root@CentOS3 redis]# service ip6tables stop</div><div class="line">ip6tables: Setting chains to policy ACCEPT: filter         [  OK  ]</div><div class="line">ip6tables: Flushing firewall rules:                        [  OK  ]</div><div class="line">ip6tables: Unloading modules:                              [  OK  ]</div><div class="line">[root@CentOS3 redis]# chkconfig iptables down</div><div class="line">chkconfig version 1.3.49.3 - Copyright (C) 1997-2000 Red Hat, Inc.</div><div class="line">This may be freely redistributed under the terms of the GNU Public License.</div><div class="line"></div><div class="line">usage:   chkconfig [--list] [--type &lt;type&gt;] [name]</div><div class="line">         chkconfig --add &lt;name&gt;</div><div class="line">         chkconfig --del &lt;name&gt;</div><div class="line">         chkconfig --override &lt;name&gt;</div><div class="line">         chkconfig [--level &lt;levels&gt;] [--type &lt;type&gt;] &lt;name&gt; &lt;on|off|reset|resetpriorities&gt;</div><div class="line">[root@CentOS3 redis]# chkconfig iptables off</div><div class="line">[root@CentOS3 redis]# chkconfig ip6tables off</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">`service iptables status`   查看iptables状态</div><div class="line">`service iptables restart`  iptables服务重启</div><div class="line">`service iptables stop`     iptables服务禁用</div></pre></td></tr></table></figure>
-</p>
-<hr>
-<p>ip地址后边加个/8(16,24,32)是什么意思?<br>是掩码的位数，A类IP地址的默认子网掩码为255.0.0.0（由于255相当于二进制的8位1，所以也缩写成“/8”，表示网络号占了8位）;B类的为255.255.0.0（/16）;C类的为255.255.255.0(/24)。/30就是255.255.255.252。32就是255.255.255.255.</p>
-<p>本机的DNS配置信息是在：/etc/resolv.conf</p>
-<hr>
-<p>time cost is(3\d{3}?ms)</p>
-
-          
+          建立软件安装目录（我一般把软件安装在opt目录下）mkdir /optcd /opt
+下载软件http://www.sublimetext.com/3注意一定要下Ubuntu/tarball包。也可以用命令下载
+wget http://c758482.r82.cf2.rackcdn.com/subl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/centos sublime.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1868,7 +1046,7 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1979,161 +1157,746 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
       
         
           
-            <h2 id="agenda"><a href="#agenda" class="headerlink" title="agenda"></a>agenda</h2><p>a brief discussion of 6 facets of Linux performance:</p>
-<ol>
-<li>observalility</li>
-<li>Methodologies</li>
-<li>benchmarking</li>
-<li>profiling</li>
-<li>tracing</li>
-<li>tuning</li>
-</ol>
-<hr>
-<h3 id="observability-tools"><a href="#observability-tools" class="headerlink" title="observability tools"></a>observability tools</h3><ul>
-<li>Tools showcase common metrics<ul>
-<li>lenrning linux tools is useful even if you never use them:<br>the same metrics are in GUIs</li>
-</ul>
-</li>
-<li>we usually use these metrics via:<ul>
-<li>netflix atlas: cloud-wide monitoring</li>
-<li>netflix vector: instance analysis</li>
-</ul>
-</li>
-<li>Linux has many tools<ul>
-<li>plus many extra kernel sourcse of data that lack tools,are harder to use ,and are practically undocumented</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><ul>
-<li>one way to print load averages:</li>
-<li>a measure of resource demand: CPUs + disk<ul>
-<li>other OSes only show CPUs: easier to interpret</li>
-</ul>
-</li>
-<li>exponentially-damped moving averages</li>
-<li>time constants of 1,5,and 15 minutes<ul>
-<li>historic trend without the line graph</li>
-</ul>
-</li>
-<li>Load &gt; # of CPUs,may mean CPU saturation<ul>
-<li>Don’t spent more than 5 seconds studying these </li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="top-or-htop"><a href="#top-or-htop" class="headerlink" title="top (or htop)"></a>top (or htop)</h4><ul>
-<li>system and per-process interval summary:</li>
-<li>%CPU is summed across all CPUs</li>
-<li>Can miss short-lives processes(atop won’t)</li>
-<li>Can consume noticeable CPU to read/proc</li>
-</ul>
-<hr>
-<h4 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h4><ul>
-<li>Virtual memory statistics and more:</li>
-<li>USAGE:vmstat [interval[count]]</li>
-<li>First output line has some summary since boot values <ul>
-<li>Should be all;partial is confusing</li>
-</ul>
-</li>
-<li>High level CPU summary<ul>
-<li>“r” is runnable tasks</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h4><ul>
-<li>Block I/O (disk)stats.1st output is since boot.</li>
-<li>very useful set of stats</li>
-</ul>
-<hr>
-<h4 id="free"><a href="#free" class="headerlink" title="free"></a>free</h4><ul>
-<li>Main memory usage:</li>
-<li>buffers: block device I/O cache</li>
-<li>cached: virtua; page cache</li>
-</ul>
-<hr>
-<h4 id="strace"><a href="#strace" class="headerlink" title="strace"></a>strace</h4><ul>
-<li>System call tracer:</li>
-<li>Eg, -ttt:time (us) since epoch;-T:syscall time(s)</li>
-<li>Translates syscall arges<ul>
-<li>very helpful for solving system usage issues</li>
-</ul>
-</li>
-<li>Currently has massive overhead(ptrace based)<ul>
-<li>can slow the target by &gt; 100x.Use extreme caution.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h4><ul>
-<li>sniff network packets for post analysis:</li>
-<li>study packet sequences with timestamps(us)</li>
-<li>CPU overhead optimized (socket ring buffers),but can still be significant.use caution.</li>
-</ul>
-<hr>
-<p>netstat</p>
-<ul>
-<li>various network protocol statistics using -s:</li>
-<li>a multi-tool:<ul>
-<li>i:interface stats</li>
-<li>r:route table<br>default:list conns</li>
-</ul>
-</li>
-<li>netstat -p:shows process details!</li>
-<li>Per-second interval with -c</li>
-</ul>
-<hr>
-<h4 id="slabtop"><a href="#slabtop" class="headerlink" title="slabtop"></a>slabtop</h4><ul>
-<li>Kernel slab allocator memory usage</li>
-</ul>
-<hr>
-<h4 id="pcstat"><a href="#pcstat" class="headerlink" title="pcstat"></a>pcstat</h4><ul>
-<li>show page cache residency </li>
-<li>Uses the mincore(2)syscall.Useful for database performance analysis.</li>
-</ul>
-<hr>
-<h4 id="perf-events"><a href="#perf-events" class="headerlink" title="perf_events"></a>perf_events</h4><ul>
-<li>Provides the “perf” command</li>
-<li>in Linux source code:tools/perf<ul>
-<li>Usually pkg added by linux-tools-common.etc.</li>
-</ul>
-</li>
-<li><code>Multi-tool</code> with many capabilities<ul>
-<li>CPU profiling</li>
-<li>PMC profiling</li>
-<li>Static &amp; dynamic tracing</li>
-</ul>
-</li>
-<li>Covered later in Profiling &amp; Tracing</li>
-</ul>
-<hr>
-<h3 id="Methodologies"><a href="#Methodologies" class="headerlink" title="Methodologies"></a>Methodologies</h3><h4 id="anti-Methodologies"><a href="#anti-Methodologies" class="headerlink" title="anti-Methodologies"></a>anti-Methodologies</h4><ul>
-<li>The lack of a deliberate methodology…</li>
-<li>Street Light Anti-Method:<ol>
-<li>Pick observability tools that are<ul>
-<li>Familiar</li>
-<li>Found on the Internet</li>
-<li>Found at random</li>
-</ul>
-</li>
-<li>Run tools</li>
-<li>Look for obvious issues</li>
-</ol>
-</li>
-<li>Drunk Man Anti-Method:<ul>
-<li>Tune things at random until the problem goes away</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>在Linux世界，进程不能直接访问硬件设备，当进程需要访问硬件设备(比如读取磁盘文件，接收网络数据等等)时，必须由用户态模式切换至内核态模式，通 过系统调用访问硬件设备。strace可以跟踪到一个进程产生的系统调用,包括参数，返回值，执行消耗的时间。</p>
-<hr>
-<h4 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h4><p>ss -l 显示本地打开的所有端口<br>ss -pl 显示每个进程具体打开的socket<br>ss -t -a 显示所有tcp socket<br>ss -u -a 显示所有的UDP Socekt<br>ss -o state established ‘( dport = :smtp or sport = :smtp )’ 显示所有已建立的SMTP连接<br>ss -o state established ‘( dport = :http or sport = :http )’ 显示所有已建立的HTTP连接<br>ss -x src /tmp/.X11-unix/* 找出所有连接X服务器的进程<br>ss -s 列出当前socket详细信息:</p>
-<hr>
-<h4 id="strace-1"><a href="#strace-1" class="headerlink" title="strace"></a>strace</h4><p>-c 统计每一系统调用的所执行的时间,次数和出错的次数等.<br>-d 输出strace关于标准错误的调试信息.<br>-f 跟踪由fork调用所产生的子进程.<br>-ff 如果提供-o filename,则所有进程的跟踪结果输出到相应的filename.pid中,pid是各进程的进程号.<br>-F 尝试跟踪vfork调用.在-f时,vfork不被跟踪.<br>-h 输出简要的帮助信息.<br>-i 输出系统调用的入口指针.<br>-q 禁止输出关于脱离的消息.<br>-r 打印出相对时间关于,,每一个系统调用.<br>-t 在输出中的每一行前加上时间信息.<br>-tt 在输出中的每一行前加上时间信息,微秒级.<br>-ttt 微秒级输出,以秒了表示时间.<br>-T 显示每一调用所耗的时间.<br>-v 输出所有的系统调用.一些调用关于环境变量,状态,输入输出等调用由于使用频繁,默认不输出.<br>-V 输出strace的版本信息.<br>-x 以十六进制形式输出非标准字符串<br>-xx 所有字符串以十六进制形式输出.<br>-a column<br>设置返回值的输出位置.默认 为40.<br>-e expr<br>指定一个表达式,用来控制如何跟踪.格式如下:<br>[qualifier=][!]value1[,value2]…<br>qualifier只能是 trace,abbrev,verbose,raw,signal,read,write其中之一.value是用来限定的符号或数字.默认的 qualifier是 trace.感叹号是否定符号.例如:<br>-eopen等价于 -e trace=open,表示只跟踪open调用.而-etrace!=open表示跟踪除了open以外的其他调用.有两个特殊的符号 all 和 none.<br>注意有些shell使用!来执行历史记录里的命令,所以要使用\.<br>-e trace=set<br>只跟踪指定的系统 调用.例如:-e trace=open,close,rean,write表示只跟踪这四个系统调用.默认的为set=all.<br>-e trace=file<br>只跟踪有关文件操作的系统调用.<br>-e trace=process<br>只跟踪有关进程控制的系统调用.<br>-e trace=network<br>跟踪与网络有关的所有系统调用.<br>-e strace=signal<br>跟踪所有与系统信号有关的 系统调用<br>-e trace=ipc<br>跟踪所有与进程通讯有关的系统调用<br>-e abbrev=set<br>设定 strace输出的系统调用的结果集.-v 等与 abbrev=none.默认为abbrev=all.<br>-e raw=set<br>将指 定的系统调用的参数以十六进制显示.<br>-e signal=set<br>指定跟踪的系统信号.默认为all.如 signal=!SIGIO(或者signal=!io),表示不跟踪SIGIO信号.<br>-e read=set<br>输出从指定文件中读出 的数据.例如:<br>-e read=3,5<br>-e write=set<br>输出写入到指定文件中的数据.<br>-o filename<br>将strace的输出写入文件filename<br>-p pid<br>跟踪指定的进程pid.<br>-s strsize<br>指定输出的字符串的最大长度.默认为32.文件名一直全部输出.<br>-u username<br>以username 的UID和GID执行被跟踪的命令</p>
+          agendaa brief discussion of 6 facets of Linux performance:
+
+observalility
+Methodologies
+benchmarking
+profiling
+tracing
+tuning
+
+
+observability tools
+To
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/Linux Performance Observability Tools.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/YAML.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Document/YAML.html" itemprop="url">
+                  YAML
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          YAMLdemo实例
+
+大小写敏感
+使用缩进表示层级关系
+缩进时不允许使用Tab键,只运行使用空格
+缩进的空格数目不重要,只要相同层级的元素左侧对齐即可
+表示注释,从这个字符一直到行尾,都会被解析器忽略
+
+YAML支持的数据结构有三种
+对象:键值对的集合又称为映射（mapping）/ 哈希（hash
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Document/YAML.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux 防火墙.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/Linux 防火墙.html" itemprop="url">
+                  Linux 防火墙
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          [root@CentOS3 redis]# service iptables statusTable: filterChain INPUT (policy ACCEPT)num  target     prot opt source               destination        
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/Linux 防火墙.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux系统管理技术手册第二章.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/Linux系统管理技术手册第二章.html" itemprop="url">
+                  Linux系统管理技术手册第二章
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Linux系统管理技术手册第二章开机时,计算机执行存储在ROM中的引导代码,这些代码及诶奥莱尝试确定如何加载并启动内核,内核检测系统的硬件,如何产生系统的init进程,这个进程总是PID1.
+引导过程的步骤Linux系统典型的引导过程由6个不同阶段组成
+
+加载并初始化内核
+检查和配置设备
+创建内核线
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/Linux系统管理技术手册第二章.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/Redis.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Redis/Redis.html" itemprop="url">
+                  Redis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          名字引用规则在第一次应用Redis源代码文件file中的名字name时,本书使用file/name格式,比如redis.c/main 表示redis.c文件中的main函数,而redis.h/redisDb则表示redis.h文件中的redisDb结构,
+
+另外,在第一次应用标准库头文件file中的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Redis/Redis.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2190,7 +1953,7 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2308,18 +2071,16 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
       
         
           
-            <p>127.0.0.1:6379&gt; info</p>
-<h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><p>redis_version:3.2.3<br>redis_git_sha1:00000000<br>redis_git_dirty:0<br>redis_build_id:276113d15453bda8<br>redis_mode:cluster<br>os:Linux 3.0.76-0.11-default x86_64<br>arch_bits:64<br>multiplexing_api:epoll<br>gcc_version:4.3.4<br>process_id:21542<br>run_id:9bb6d2f200729eb837c86510afcc7025dec26586<br>tcp_port:6379<br>uptime_in_seconds:6130854<br>uptime_in_days:70<br>hz:10<br>lru_clock:16723061<br>executable:/usr/local/bin/redis-server<br>config_file:/etc/redis/redis.conf</p>
-<h1 id="Clients"><a href="#Clients" class="headerlink" title="Clients"></a>Clients</h1><p>connected_clients:358<br>client_longest_output_list:0<br>client_biggest_input_buf:0<br>blocked_clients:0</p>
-<h1 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h1><p>used_memory:151730448<br>used_memory_human:144.70M<br>used_memory_rss:159973376<br>used_memory_rss_human:152.56M<br>used_memory_peak:677126784<br>used_memory_peak_human:645.76M<br>total_system_memory:16686497792<br>total_system_memory_human:15.54G<br>used_memory_lua:37888<br>used_memory_lua_human:37.00K<br>maxmemory:8589934592<br>maxmemory_human:8.00G<br>maxmemory_policy:noeviction<br>mem_fragmentation_ratio:1.05<br>mem_allocator:jemalloc-4.0.3</p>
-<h1 id="Persistence"><a href="#Persistence" class="headerlink" title="Persistence"></a>Persistence</h1><p>loading:0<br>rdb_changes_since_last_save:11820<br>rdb_bgsave_in_progress:0<br>rdb_last_save_time:1476340843<br>rdb_last_bgsave_status:ok<br>rdb_last_bgsave_time_sec:1<br>rdb_current_bgsave_time_sec:-1<br>aof_enabled:0<br>aof_rewrite_in_progress:0<br>aof_rewrite_scheduled:0<br>aof_last_rewrite_time_sec:-1<br>aof_current_rewrite_time_sec:-1<br>aof_last_bgrewrite_status:ok<br>aof_last_write_status:ok</p>
-<h1 id="Stats"><a href="#Stats" class="headerlink" title="Stats"></a>Stats</h1><p>total_connections_received:136623<br>total_commands_processed:3090632890<br>instantaneous_ops_per_sec:1288<br>total_net_input_bytes:274676332779<br>total_net_output_bytes:20528196260<br>instantaneous_input_kbps:108.62<br>instantaneous_output_kbps:8.95<br>rejected_connections:0<br>sync_full:0<br>sync_partial_ok:0<br>sync_partial_err:0<br>expired_keys:43<br>evicted_keys:0<br>keyspace_hits:512379822<br>keyspace_misses:419500843<br>pubsub_channels:0<br>pubsub_patterns:0<br>latest_fork_usec:3517<br>migrate_cached_sockets:0</p>
-<h1 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h1><p>role:master<br>connected_slaves:0<br>master_repl_offset:0<br>repl_backlog_active:0<br>repl_backlog_size:1048576<br>repl_backlog_first_byte_offset:0<br>repl_backlog_histlen:0</p>
-<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><p>used_cpu_sys:51186.74<br>used_cpu_user:45645.72<br>used_cpu_sys_children:2273.35<br>used_cpu_user_children:58689.30</p>
-<h1 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h1><p>cluster_enabled:1</p>
-<h1 id="Keyspace"><a href="#Keyspace" class="headerlink" title="Keyspace"></a>Keyspace</h1><p>db0:keys=3,expires=2,avg_ttl=86397596</p>
-
-          
+          127.0.0.1:6379&gt; info
+Serverredis_version:3.2.3redis_git_sha1:00000000redis_git_dirty:0redis_build_id:276113d15453bda8redis_mode:clusteros:Linux 3.0
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2393,7 +2154,7 @@ command=/bin/bash -c &quot;source /etc/apache2/envvars &amp;&amp; exec /usr/sbin
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/images/avatar.gif"
                 alt="Nameless13" />
             
               <p class="site-author-name" itemprop="name">Nameless13</p>

@@ -331,1253 +331,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Tips/微信公众号采集.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Tips/微信公众号采集.html" itemprop="url">
-                  微信公众号采集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>通过搜狗搜索微信公众号然后拿到链接<br>通过fiddler检测手机微信拿到链接。</p>
-<p>首先，打开fiddler，然后在电脑端微信上找到要爬取的微信公众号，然后左键点一下就会有一个查看所有历史信息。点击查看历史信息之后我们就会在fiddler上看到一条这样的GET请求：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzI4OTY3MTUyNg==&amp;uin=MTQ5NDc2MzE4MQ%3D%3D&amp;key=9ed1e92b9529bc9a24e90253ee09147d9dbc8de3d4dcc62bf923bb2ec092b91c916834736670d2c9323064b3169960259315b632a5640b5953c26e430ebc0a318ea2fb69e310d6a0d825b88d289c9d22&amp;devicetype=Windows+10&amp;version=6206014b&amp;lang=zh_CN&amp;ascene=7&amp;pass_ticket=RfVlWdojZictLscNXkIW1HTYHt1%2F72zegQ5hLGgHZLYSKAjmYJfTMx56Ql57coFp</div></pre></td></tr></table></figure></p>
-<p>在这个前面加上<a href="https://mp.weixin.qq.com后在浏览器中打开整个链接就会发现打开了这个公众号的历史文章了。" target="_blank" rel="noopener">https://mp.weixin.qq.com后在浏览器中打开整个链接就会发现打开了这个公众号的历史文章了。</a><br>多用fiddler抓几次这个链接以及换几个公众号后就会发现，<br>整个链接里面biz应该是微信公众号的标识符，uin应该是微信号的标识，key是腾讯的一个算法。<br>在整个链接里面，如果是抓同一个微信公众号的话，那么只有key是有时效性的，其它的都是不变的。<br>超过一定时间的话，再用这个key打开链接就会发现不能用了，提示请用微信打开了！</p>
-<p>通过审查这个链接里面的元素，我们不难发现，已经可以看到文章的链接了，但是问题来了，这个初始链接里依然只有10条最近的文章。这个时候，我们必须往下滑动滚动条才能把剩下的文章全部的显示出来。所以在写程序的时候就需要通过selenium+phahtomJS来链接这个界面并且滑动滚动条，知道滚动条滑到最下面为止了。这样我们再审查元素就可以看到获得了全部的文章链接。 <strong> 注意，文章的链接分别藏在几种标签里面，所以要把他们全部找出来，不然会遗漏的！ </strong>然后把这些链接存起来就好了。</p>
-<p>程序<br>大概说一下我的程序思路： 整个流程就是通过selenium+phantomJS链接上面那个链接，通过BeautifulSoup提取页面，利用JS操作滚动条滚到底直到出现没有更多消息为止，最后找到所有链接后输出就行了（记得链接存在几种类型的tag里面，一定要找全）。由于朋友只需要这一个公众号的链接，而且因为同一个公众号的链接只有key在变，所以key就从bash获取就行了，其它的可以写在程序里。我是不是太懒了……..大概思路就是这样，还有很多可以优化的地方…</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GET /mp/getmasssendmsg?__biz=MzI4OTY3MTUyNg==&amp;uin=MTQ5NDc2MzE4MQ%3D%3D&amp;key=9ed1e92b9529bc9a24e90253ee09147d9dbc8de3d4dcc62bf923bb2ec092b91c916834736670d2c9323064b3169960259315b632a5640b5953c26e430ebc0a318ea2fb69e310d6a0d825b88d289c9d22&amp;devicetype=Windows+10&amp;version=6206014b&amp;lang=zh_CN&amp;ascene=7&amp;pass_ticket=RfVlWdojZictLscNXkIW1HTYHt1%2F72zegQ5hLGgHZLYSKAjmYJfTMx56Ql57coFp HTTP/1.1</div><div class="line">Host: mp.weixin.qq.com</div><div class="line">Connection: keep-alive</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div><div class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 MicroMessenger/6.5.2.501 NetType/WIFI WindowsWechat QBCore/3.43.691.400 QQBrowser/9.0.2524.400</div><div class="line">Accept-Encoding: gzip, deflate</div><div class="line">Accept-Language: zh-CN,zh;q=0.8,en-us;q=0.6,en;q=0.5;q=0.4</div><div class="line">Cookie: wxuin=1494763181; devicetype=Windows10; version=6206014b; lang=zh_CN; pass_ticket=RfVlWdojZictLscNXkIW1HTYHt1/72zegQ5hLGgHZLYSKAjmYJfTMx56Ql57coFp; wap_sid2=CK2N4cgFElxMWjNLejdIaldNa1NUMWdmUzFuTDFRaWZja1NkYkZXQVhZNGpHMVA5T2JOTnd5RjJUZ0tRTmxnVjJzem9QblJ3c2Y1czlzRi1uMUdoV0ExZVdRb0tzTFFEQUFBfjDSiK7VBTgNQAE=; rewardsn=d01dde220f29ddc218b3; wxtokenkey=777</div></pre></td></tr></table></figure>
-</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">__biz   MzI4OTY3MTUyNg==</div><div class="line">uin MTQ5NDc2MzE4MQ==</div><div class="line">key 9ed1e92b9529bc9a24e90253ee09147d9dbc8de3d4dcc62bf923bb2ec092b91c916834736670d2c9323064b3169960259315b632a5640b5953c26e430ebc0a318ea2fb69e310d6a0d825b88d289c9d22</div><div class="line">devicetype  Windows 10</div><div class="line">version 6206014b</div><div class="line">lang    zh_CN</div><div class="line">ascene  7</div><div class="line">pass_ticket RfVlWdojZictLscNXkIW1HTYHt1/72zegQ5hLGgHZLYSKAjmYJfTMx56Ql57coFp</div></pre></td></tr></table></figure>
-</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">作者：tahr</div><div class="line">链接：https://www.zhihu.com/question/21065229/answer/132993179</div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div><div class="line"></div><div class="line">1. 插入本地图片只需要在基础语法的括号中填入图片的位置路径即可，支持绝对路径和相对路径。例如：![avatar](/user/desktop/doge.png)缺点是不灵活不好分享，本地图片的路径更改或丢失都会造成markdown文件调不出图。2.插入网络图片只需要在基础语法的括号中填入图片的网络链接即可，现在已经有很多免费/收费图床和方便传图的小工具可选。例如：![avatar](http://baidu.com/pic/doge.png)缺点是图片存在网络服务器上，非常依赖网络。3.把图片存入markdown文件用base64转码工具把图片转成一段字符串，然后把字符串填到基础格式中链接的那个位置。基础用法：![avatar](data:image/png;base64,iVBORw0......)这个时候会发现插入的这一长串字符串会把整个文章分割开，非常影响编写文章时的体验。如果能够把大段的base64字符串放在文章末尾，然后在文章中通过一个id来调用，文章就不会被分割的这么乱了。就像写论文时的文末的注释和参考文档一样。这个想法可以通过markdown的参考式链接语法来实现。进阶用法如下：文中引用语法：![avatar][doge]文末存储字符串语法：[doge]:data:image/png;base64,iVBORw0......</div></pre></td></tr></table></figure>
-</p>
-<h3 id="原图"><a href="#原图" class="headerlink" title="原图"></a>原图</h3><p><a href="https://mmbiz.qpic.cn/mmbiz_png/THumz4762QALMjJxts1uZHuPX3WDTGtcnL3lAfyVAicmGmoxRK4MGZbkJkC3Oibxtgg21gaf66NDv1kxUIEhygJA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" target="_blank" rel="noopener">https://mmbiz.qpic.cn/mmbiz_png/THumz4762QALMjJxts1uZHuPX3WDTGtcnL3lAfyVAicmGmoxRK4MGZbkJkC3Oibxtgg21gaf66NDv1kxUIEhygJA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1</a></p>
-<p><a href="https://mmbiz.qpic.cn/mmbiz_jpg/Kad3LZzM7n550AK0PmEQ5tx0SfsOcDhTu0xe3h4wHLllzc4oArkQ3IsPWEZibX7ZfNaCzpAkcFIqJFsqTzklYiaw/0" target="_blank" rel="noopener">https://mmbiz.qpic.cn/mmbiz_jpg/Kad3LZzM7n550AK0PmEQ5tx0SfsOcDhTu0xe3h4wHLllzc4oArkQ3IsPWEZibX7ZfNaCzpAkcFIqJFsqTzklYiaw/0</a></p>
-<p>得去掉640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1 后面的参数 为0</p>
-<p><a href="https://mmbiz.qpic.cn/mmbiz_png/THumz4762QALMjJxts1uZHuPX3WDTGtcXIo6Wu5bYzy8sYCr3JxVkwcxCgfBmIMEMgvRWiaZ4WZianIiaXbSvzsRg/0" target="_blank" rel="noopener">https://mmbiz.qpic.cn/mmbiz_png/THumz4762QALMjJxts1uZHuPX3WDTGtcXIo6Wu5bYzy8sYCr3JxVkwcxCgfBmIMEMgvRWiaZ4WZianIiaXbSvzsRg/0</a></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2018-03-20 17:41:30: 开始整合(5/10)</div><div class="line">2018-03-20 17:41:30: 地址为： http://mp.weixin.qq.com/s?timestamp=1521538833&amp;src=3&amp;ver=1&amp;signature=jyjSbdPOFF7GbiG-gfMO8btYXG2WZR63CRQ6uFMdAGU4YVsAM9evjQLhdLFgBMW0eE1tKmns0CFMjdKuRWcMP2Kd1PPQrieTxcJaHRaII2zz1hrswnSrKapJqygL8tfcKH0xWC39U6GXE-KsWzkyd2ewFm1GnLhjCylw1epVr9A=</div><div class="line">2018-03-20 17:41:30: 文章简述： 本问主要描述如何使用Sentry实现数据的脱敏（masking of sensitive data elements）</div><div class="line">2018-03-20 17:41:30: 发表时间为： 2018年3月16日原创</div><div class="line">2018-03-20 17:41:30: </div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;D:\HCT\wechat-history\hct-crawl.py&quot;, line 245, in &lt;module&gt;</div><div class="line">    weixin_spider(&apos;gh_c4c535955d0f&apos;).run()  </div><div class="line">  File &quot;D:\HCT\wechat-history\hct-crawl.py&quot;, line 217, in run</div><div class="line">    articles_list = self.switch_arctiles_to_list(articles)  </div><div class="line">  File &quot;D:\HCT\wechat-history\hct-crawl.py&quot;, line 99, in switch_arctiles_to_list</div><div class="line">    articles_list.append(self.parse_one_article(article,i,excel_content))  </div><div class="line">  File &quot;D:\HCT\wechat-history\hct-crawl.py&quot;, line 124, in parse_one_article</div><div class="line">    self.save_content_file(contentfiletitle,content)  </div><div class="line">  File &quot;D:\HCT\wechat-history\hct-crawl.py&quot;, line 163, in save_content_file</div><div class="line">    with open(title, &apos;w&apos;) as f:  </div><div class="line">IOError: [Errno 2] No such file or directory: u&apos;gh_c4c535955d0f/\u539f\u521b \u5982\u4f55\u4f7f\u7528Sentry\u5b9e\u73b0Hive/Impala\u7684\u6570\u636e\u8131\u654f_2018\u5e743\u670816\u65e5\u539f\u521b.html&apos;</div><div class="line">[Finished in 110.4s]</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/google font.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Document/google font.html" itemprop="url">
-                  google font
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="google字体更改到本地调用"><a href="#google字体更改到本地调用" class="headerlink" title="google字体更改到本地调用"></a>google字体更改到本地调用</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">layout/_partials/head/external-fonts.swig</div><div class="line"></div><div class="line">46      &#123;% set font_families += &apos;&amp;subset=latin,latin-ext&apos; %&#125;</div><div class="line">47      &#123;% set font_host = font_config.host | default(&apos;//fonts.googleapis.com&apos;) %&#125;</div><div class="line">48      &lt;link href=&quot;&#123;&#123; font_host &#125;&#125;/css?family=&#123;&#123; font_families &#125;&#125;&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</div></pre></td></tr></table></figure>
-</p>
-<p>更改wp-includes文件夹下script-loader.php中的代码，大概在602行将：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">1</div><div class="line">$open_sans_font_url = &quot;//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600&amp;subset=$subsets&quot;;</div><div class="line">替换为：</div><div class="line"></div><div class="line">1</div><div class="line">$open_sans_font_url = &quot;//fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600&amp;subset=$subsets&quot;;</div></pre></td></tr></table></figure></p>
-<p><a href="https://link.zhihu.com/?target=https%3A//github.com/AlphaTr/redirectggfonts" target="_blank" rel="noopener">https://link.zhihu.com/?target=https%3A//github.com/AlphaTr/redirectggfonts</a></p>
-<p><a href="http://lug.ustc.edu.cn" target="_blank" rel="noopener">http://lug.ustc.edu.cn</a> </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/SSSD介绍.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/SSSD介绍.html" itemprop="url">
-                  SSSD介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="SSSD介绍"><a href="#SSSD介绍" class="headerlink" title="SSSD介绍"></a>SSSD介绍</h1><p>SSSD是自红帽企业版Linux6起新加入的一个守护进程，该进程可以用来访问多种验证服务器，如LDAP，Kerberos等，并提供授权。SSSD是<br>介于本地用户和数据存储之间的进程，本地客户端首先连接SSSD，再由SSSD联系外部资源提供者(一台远程服务器)。 </p>
-<p>这样做有一些几点优势：</p>
-<p>1.避免了本地每个客户端程序对认证服务器大量连接，所有本地程序仅联系SSSD，由SSSD连接认证服务器或SSSD缓存，有效的降低了负载。</p>
-<p>2.允许离线授权。SSSD可以缓存远程服务器的用户认证身份，这允许在远程认证服务器宕机是，继续成功授权用户访问必要的资源。</p>
-<p>SSSD无需特殊设置即可运行，当你配置完system-configure-authentication后该服务会自己运行。</p>
-<p>SSSD默认配置文件位于/etc/sssd/sssd.conf，你可以通过命令使得SSSD以指定的配置文件运行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># sssd  --c  /etc/sssd/customfile.conf</div><div class="line">配置文件格式如下：</div><div class="line"></div><div class="line">关键字=键值</div><div class="line">  #####################################################</div><div class="line">  ##  [section]                    ##</div><div class="line">  ##  key1 = value1                  ##</div><div class="line">  ##  key2 = value2,value3              ##</div><div class="line">  #####################################################</div></pre></td></tr></table></figure></p>
-<p>管理SSSD进程</p>
-<p>service  sssd  start 开启<br>service  sssd  stop 关闭<br>使用authconfig命令开启SSSD： #authconfig  –enablesssd  –update</p>
-<p>使用systemctl命令开启SSSD： # systemctl  enable  sssd</p>
-<p>总结：简单来说现在在RHEL6中连接LDAP或Kerberos等认证服务器，都是先有SSSD连接认证服务器取得认证与授权信息，再交于本地客户端程序。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/操作系统镜像初始化(裸金属主机).html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/操作系统镜像初始化(裸金属主机).html" itemprop="url">
-                  操作系统镜像初始化(裸金属主机)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="资源池环境搭建"><a href="#资源池环境搭建" class="headerlink" title="资源池环境搭建"></a>资源池环境搭建</h1><p>最终给到手的机器 DELL730(单独做无存储计算节点)，系统盘800G，加8块960Gssd，外加1.6TFlash,在这台上面做初始化配置好了再做个最终使用的镜像。</p>
-<h2 id="操作系统配置准备"><a href="#操作系统配置准备" class="headerlink" title="操作系统配置准备"></a>操作系统配置准备</h2><ol>
-<li><p>建议对操作系统盘做RAID1</p>
-</li>
-<li><p>需要配置OS的repository，以便yum可以访问OS镜像[需要 createrepo httpd python-psycopg2 krb5*]</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">find /etc/yum.repos.d/ -name &quot;*.repo&quot; -exec mv &#123;&#125; &#123;&#125;.bak \; </div><div class="line">rpm -ivh --force --nodeps http://10.200.40.49/pub/centos-release-el6.noarch.rpm</div><div class="line">yum clean all</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>配置静态IP地址</p>
-</li>
-<li><p>需要所有主机/etc/hosts内容一致确保静态DNS解析</p>
-</li>
-<li><p>需要使用root用户 或者创建一个无密码使用sudo权限的其他用户[uid必须保持一致]<br>devops 4[&amp;3bFaK4g[U</p>
-</li>
-<li><p>关闭并禁用iptables</p>
-</li>
-<li><p>关闭SELinux<br><code>echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux;</code></p>
-</li>
-<li><p>重启网络服务，并初始化网络<br><code>/etc/init.d/network restart</code></p>
-</li>
-<li><p>修改transparent_hugepage参数<br><code>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</code><br><code>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</code><br>同时确保开机自动关闭transparent_hugepage<br><code>vi /etc/rc.d/rc.local</code></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES</div><div class="line">#</div><div class="line"># It is highly advisable to create own systemd services or udev rules</div><div class="line"># to run scripts during boot instead of using this file.</div><div class="line">#</div><div class="line"># In contrast to previous versions due to parallel execution during boot</div><div class="line"># this script will NOT be run after all other services.</div><div class="line">#</div><div class="line"># Please note that you must run &apos;chmod +x /etc/rc.d/rc.local&apos; to ensure</div><div class="line"># that this script will be executed during boot.</div><div class="line"></div><div class="line">touch /var/lock/subsys/local</div><div class="line"></div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/enabled; then</div><div class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</div><div class="line">fi</div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/defrag; then</div><div class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</div><div class="line">fi</div></pre></td></tr></table></figure>
-</p>
-<p>最后给rc.local赋予执行权限 <code>chmod +x /etc/rc.d/rc.local</code></p>
-</li>
-<li><p>禁用交换内存</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo 0 &gt;/proc/sys/vm/swappiness</div><div class="line">echo &apos;vm.swappiness=0&apos;&gt;&gt; /etc/sysctl.conf</div><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>修改/etc/security/limits.conf或者在/etc/security/limits.d下增加相应的配置文件 </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">* soft noproc 11000</div><div class="line">* hard noproc 11000</div><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>需要统一开启ntp服务,并且开机启动<br>在集群中选择一台机器作为ntp服务器，剩余的作为ntp客户端。所有客户端时间与ntp服务器保持同步。<br><code>vi /etc/ntp.conf</code><br>ntp同步ip地址和鹏博士的保持一致:</p>
-<p>&lt;!--     server 64.113.32.5
-server 216.229.0.179 --&gt;
-</p>
-<p>server 10.200.92.18<br>server 10.200.92.20 </p>
-<p>systemctl start ntpd.service<br>systemctl enable ntpd.service</p>
-<p>[root@nm-2 ~]# ntpq -p</p>
-<pre><code>remote           refid      st t when poll reach   delay   offset  jitter
-
-</code></pre><p>==============================================================================<br> nist.netservice .ACTS.           1 u    7   64    1  238.736   -7.477   0.000<br> nist1-lnk.binar .ACTS.           1 u    6   64    1  234.281   -6.177   0.000</p>
-<p>systemctl disable chronyd 会影响ntp服务的开机启动所以禁用掉了</p>
-</li>
-</ol>
-<ol>
-<li>同时配置spark2.2需要java8环境<br>创建JDBC存放目录<code>mkdir -p /usr/java/</code><br>解压所给的tar包</li>
-</ol>
-<ol>
-<li><p>禁用IPV6</p>
-</li>
-<li><p>准备jdbc连接mysql的jar包<br>[root@nm-7 ~]# mkdir /usr/share/java<br>[root@nm-7 ~]# ln -s /usr/share/java/mysql-connector-java-5.1.38-bin.jar /usr/share/java/mysql-connector-java.jar</p>
-</li>
-</ol>
-<p><a href="http://detail.zol.com.cn/400/399822/param.shtml" target="_blank" rel="noopener">http://detail.zol.com.cn/400/399822/param.shtml</a> Intel Xeon E5-2640 v3参数<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">基本参数    </div><div class="line">CPU系列Xeon E5-2600 v3系列</div><div class="line">制作工艺22纳米</div><div class="line">核心代号Haswell</div><div class="line">性能参数    </div><div class="line">核心数量八核心</div><div class="line">线程数量十六线程</div><div class="line">CPU主频2.6GHz</div><div class="line">L3缓存20MB</div><div class="line">总线规格QPI 8GT/s</div><div class="line">热设计功耗(TDP)90W</div><div class="line">内存规格    </div><div class="line">支持最大内存容量768GB</div><div class="line">内存类型DDR4 1600/1866MHz</div><div class="line">内存描述DDR4 1600/1866MHz 技术</div><div class="line">封装规格    </div><div class="line">插槽类型LGA 2011-3</div><div class="line">封装大小45×52.5mm</div><div class="line">最高容许温度(Tcase)74.3°C</div><div class="line">最大CPU配置2颗</div><div class="line">技术参数    </div><div class="line">睿频加速技术支持，2.0</div><div class="line">超线程技术支持</div><div class="line">虚拟化技术Intel VT-x</div><div class="line">指令集AVX 2.0，64bit</div><div class="line">64位处理器支持</div><div class="line">其它技术支持博锐技术 ，定向I/O虚拟化技术，增强型SpeedStep技术，按需配电技术，温度监视技术，数据保护技术，平台保护技术</div><div class="line">集成显卡不支持 纠错</div></pre></td></tr></table></figure></p>
-<p><a href="http://detail.zol.com.cn/1142/1141738/param.shtml" target="_blank" rel="noopener">http://detail.zol.com.cn/1142/1141738/param.shtml</a> Intel Xeon E5-2620 v4</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">基本参数    </div><div class="line">CPU系列Xeon E5 v4系列</div><div class="line">制作工艺14纳米</div><div class="line">核心代号Broadwell</div><div class="line">性能参数    </div><div class="line">核心数量八核心</div><div class="line">线程数量十六线程</div><div class="line">CPU主频2.1GHz</div><div class="line">动态加速频率3GHz</div><div class="line">L3缓存20MB</div><div class="line">总线规格QPI 8GT/s</div><div class="line">热设计功耗(TDP)85W</div><div class="line">内存规格    </div><div class="line">支持最大内存容量1536GB</div><div class="line">内存类型DDR4 1600/1866/2133MHz</div><div class="line">封装规格    </div><div class="line">插槽类型LGA 2011-3</div><div class="line">封装大小52.5×51mm</div><div class="line">最高容许温度(Tcase)74°C</div><div class="line">最大CPU配置2颗</div><div class="line">技术参数    </div><div class="line">睿频加速技术支持，2.0</div><div class="line">超线程技术支持</div><div class="line">虚拟化技术Intel VT</div><div class="line">指令集AVX 2.0，64-bit</div><div class="line">64位处理器支持</div><div class="line">其它技术支持博锐技术 ，定向I/O虚拟化技术，增强型SpeedStep技术，按需配电技术，温度监视技术，数据保护技术，平台保护技术</div><div class="line">集成显卡不支持</div></pre></td></tr></table></figure>
-</p>
-<p><a href="http://detail.zol.com.cn/ProductComp_param_399822-1141732-1141738.html" target="_blank" rel="noopener">http://detail.zol.com.cn/ProductComp_param_399822-1141732-1141738.html</a> </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Cannot unlock the password for user.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Cannot unlock the password for user.html" itemprop="url">
-                  Cannot unlock the password for user
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="‘Cannot-unlock-the-password-for-lt-user-gt-’"><a href="#‘Cannot-unlock-the-password-for-lt-user-gt-’" class="headerlink" title="‘Cannot unlock the password for &lt;user&gt;!’"></a>‘Cannot unlock the password for &lt;user&gt;!’</h1><p>pam_tally –user= –reset</p>
-<p>Example</p>
-<p>pam_tally –user=cyberninja –reset<br>I hope this helps someone.</p>
-<p>I found this post looking for an answer to this exact question. I had the same error but on a SLES 11 SP2 server. My co-worker reset my password and tried to unlock my account with the command passwd -u. One of my other co-workers said I needed clear account in PAM and gave me the command. Which I have posted above.</p>
-<p>Update,</p>
-<p>I now have a fix that keeps this from happening again. It seems that there are two PAM files that where in conflict. These files are; /etc/pam.d/login and /etc/pam.d/sshd. Both files have this line.</p>
-<p>auth required pam_tally.so onerr=fail deny=3<br>You must commit out, this line from one of the files listed above. We commented the line out in the /etc/pam.d/sshd file.</p>
-<p>After you do this you should never have this issue again.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux 操作系统检查.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Linux 操作系统检查.html" itemprop="url">
-                  Linux 操作系统检查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Linux-操作系统检查"><a href="#Linux-操作系统检查" class="headerlink" title="Linux 操作系统检查"></a>Linux 操作系统检查</h1><p>输入”uname -a “,可显示电脑以及操作系统的相关信息<br>输入”cat /proc/version”,说明正在运行的内核版本。<br>输入”cat /etc/issue”, 显示的是发行版本信息<br>lsb_release -a (适用于所有的linux，包括Redhat、SuSE、Debian等发行版，但是需要安装lsb)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/Spark集成S3 Service.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Spark/Spark集成S3 Service.html" itemprop="url">
-                  Spark集成S3 Service
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Spark集成S3-Service"><a href="#Spark集成S3-Service" class="headerlink" title="Spark集成S3 Service"></a>Spark集成S3 Service</h1><p>Spark的DataSource支持S3和Swift，考虑到Ceph也提供了S3和Swift的API，而C++的效率也是Python难以望其项背的，所以Spark+Ceph(S3 Service)可能是一个比较合适的方案。</p>
-<p>如果想试试Spark with Swift，可以参考<a href="http://spark.apache.org/docs/latest/storage-openstack-swift.html" target="_blank" rel="noopener">Accessing OpenStack Swift from Spark</a>这篇文章，这里不再涉及。<br>由于我是配置haddop的core-site.xml,所以下面sc的配置并不用,开箱即用</p>
-<h2 id="spark-shell"><a href="#spark-shell" class="headerlink" title="spark-shell"></a>spark-shell</h2><p>Spark shell在启动前，需要保证HDFS/YARN已经启动，并且使用–jars指定aws-java-sdk和hadoop-aws两个jar包的位置。我的参数比较多图省事创建了个shell脚本存着。</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">./spark-shell --master yarn-client --principal dtdream/zelda1@ZELDA.COM --keytab /etc/security/dtdream.zelda1.keytab --driver-java-options &apos;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=13838&apos;  --jars /home/dtdream/hadoop/hadoop-2.7.2/share/hadoop/tools/lib/aws-java-sdk-1.7.4.jar,/home/dtdream/hadoop/hadoop-2.7.2/share/hadoop/tools/lib/hadoop-aws-2.7.2.jar</div></pre></td></tr></table></figure>
-</p>
-<p>进入shell以后：</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">scala&gt; sc.hadoopConfiguration.set(&quot;fs.s3a.access.key&quot;, &quot;xxx&quot;)</div><div class="line">scala&gt; sc.hadoopConfiguration.set(&quot;fs.s3a.secret.key&quot;, &quot;yyyyyyyy&quot;)</div><div class="line">scala&gt; sc.hadoopConfiguration.set(&quot;fs.s3a.endpoint&quot;, &quot;192.168.103.224:80&quot;)</div><div class="line">scala&gt; sc.hadoopConfiguration.set(&quot;fs.s3a.connection.ssl.enabled&quot;, &quot;false&quot;)</div><div class="line">scala&gt; val myRdd = sc.textFile(&quot;s3a://xxx/diamonds.csv&quot;)</div><div class="line">scala&gt; myRdd.count</div><div class="line">..</div><div class="line">16/07/27 11:27:03 INFO DAGScheduler: Submitting ResultStage 0 (s3a://xxx/diamonds.csv MapPartitionsRDD[1] at textFile at &lt;console&gt;:27), which has no missing parents</div><div class="line">16/07/27 11:27:03 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 2.9 KB, free 254.7 KB)</div><div class="line">16/07/27 11:27:03 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 1762.0 B, free 256.4 KB)</div><div class="line">..</div><div class="line">16/07/27 11:27:03 INFO TaskSetManager: Starting task 0.0 in stage 0.0 of job 0 (TID 0, zelda3, partition 0,PROCESS_LOCAL, 2254 bytes)</div><div class="line">16/07/27 11:27:03 INFO TaskSetManager: Starting task 1.0 in stage 0.0 of job 0 (TID 1, zelda1, partition 1,PROCESS_LOCAL, 2254 bytes)</div><div class="line">..</div><div class="line">res4: Long = 53940</div></pre></td></tr></table></figure>
-</p>
-<p>由于我们在sc这里设置了hadoop的配置，所以haddop的core-site.xml那边就不要再设置了，否则会出现参数覆盖的问题。</p>
-<p>使用wholeTextFiles处理文件夹里的所有文件，比较适合存放大量小图片的目录：</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">scala&gt; val myRdd = sc.wholeTextFiles(&quot;s3a://xxx/&quot;)</div><div class="line">res4: Long = 3</div><div class="line">scala&gt; myRdd2.count</div><div class="line">3</div></pre></td></tr></table></figure>
-</p>
-<h2 id="Spark-SQL"><a href="#Spark-SQL" class="headerlink" title="Spark SQL"></a>Spark SQL</h2><p>1、没有找到像HDFS或者本地文件这种load data [local] inpath into table xxx这种比较方便的直接从S3导入到hive表的方法。绕路的方法就是hadoop distcp s3a:// -&gt; hdfs://，然后再在SPARK SQL里load。</p>
-<p>2、没有找到像Spark集成SQL这种CREATE TEMPORARY TABLE USING XX.XX.XX OPTION (XXX)的办法。其实这种在SPARK SQL里用才是比较直接的，并且没有可以绕开的方法。对于本质是结构化的文本文件来说，使用S3来存储实际没有太大意义；对于非结构化的图片、视频等，如果没有SQL入口的话，就只能强迫用户编写Spark APP来处理了，相对来说门槛更高一点。</p>
-<p>参考hortonworks为Redshift写的插件，还是应该提供SQL入口，更友好一些，类似：</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CREATE TABLE my_table</div><div class="line">USING com.databricks.spark.redshift</div><div class="line">OPTIONS (</div><div class="line">  dbtable &apos;my_table&apos;,</div><div class="line">  tempdir &apos;s3n://path/for/temp/data&apos;,</div><div class="line">  url &apos;jdbc:redshift://redshifthost:5439/database?user=username&amp;password=pass&apos;</div><div class="line">);</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Testing network bandwidth using iperf3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1676,16 +435,15 @@ server 216.229.0.179 --&gt;
       
         
           
-            <h1 id="Testing-network-bandwidth-using-iperf3"><a href="#Testing-network-bandwidth-using-iperf3" class="headerlink" title="Testing network bandwidth using iperf3"></a>Testing network bandwidth using iperf3</h1><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Sometimes you want to test the network connection between two computers. Which tool will you use? Using web server and wget is an option, but it’s not very direct.</p>
-<p>Using iperf3, you can easily measure the bandwidth from the client to the server as well as the bandwidth from the server to the client easily.</p>
-<h2 id="How-to-install-iperf3"><a href="#How-to-install-iperf3" class="headerlink" title="How to install iperf3"></a>How to install iperf3</h2><p>Installing iperf3 on Debian/Ubuntu only needs one simple command.</p>
-<p><code>apt install iperf3</code></p>
-<p>On macOS, using homebrew is also very easy.</p>
-<p><code>brew install iperf3</code></p>
-<h2 id="How-to-use-iperf3"><a href="#How-to-use-iperf3" class="headerlink" title="How to use iperf3"></a>How to use iperf3</h2><p>On one of the computer (regarding as server), run iperf3 -s.</p>
-<p>On the other computer (regarding as client), a common test is iperf3 -i 1 -t 30 -c SERVER_IP, which shows the result per second and lasts 30 seconds.<br>Note: This command shows the transfer speed from the client to the server. If you want the reverse, just add -R to the command.</p>
-
-          
+          Testing network bandwidth using iperf3BackgroundSometimes you want to test the network connection between two computers. Which tool will you use? Usin
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/Testing network bandwidth using iperf3.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1737,12 +495,12 @@ server 216.229.0.179 --&gt;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux下解压,压缩JAR包的方法.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/CentOS 7 修改时区.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1756,8 +514,8 @@ server 216.229.0.179 --&gt;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Linux/Linux下解压,压缩JAR包的方法.html" itemprop="url">
-                  Linux下解压,压缩JAR包的方法
+                <a class="post-title-link" href="/Document/CentOS 7 修改时区.html" itemprop="url">
+                  CentOS 7 修改时区
                 </a>
               
             
@@ -1805,7 +563,7 @@ server 216.229.0.179 --&gt;
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
 
                 
                 
@@ -1841,11 +599,364 @@ server 216.229.0.179 --&gt;
       
         
           
-            <h1 id="Linux下解压-压缩JAR包的方法"><a href="#Linux下解压-压缩JAR包的方法" class="headerlink" title="Linux下解压,压缩JAR包的方法"></a>Linux下解压,压缩JAR包的方法</h1><p>把当前目录下的所有文件打包成project.jar<br>jar -cvfM0 project.jar ./<br>-c   创建jar包<br>-v   显示过程信息<br>-f<br>-M<br>-0   这个是阿拉伯数字，只打包不压缩的意思</p>
-<p>解压project.jar</p>
-<p>jar -xvf project.jar<br>解压到当前目录,注意,不会创建一个game文件夹,而是将所有jar包的内容全部解压到当前文件夹.</p>
+          Linux 系统(我特指发行版, 没说内核) 下大部分软件的风格就是不会仔细去考虑向后 的兼容性, 比如你上个版本能用这种程序配置, 没准到了下一个版本, 该程序已经不见了. 比如 sysvinit 这种东西.设置时区同样, 在 CentOS 7 中, 引入了一个叫 timedatectl 的设置设
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Document/CentOS 7 修改时区.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/hive 元数据库添加中文字段.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Hive/hive 元数据库添加中文字段.html" itemprop="url">
+                  hive 元数据库添加中文字段
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          hive 元数据库添加中文字段alter table COLUMNS_V2 modify column COMMENT varchar(256) character set utf8;
+alter table TABLE_PARAMS modify column PARAM_VALUE varcha
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Hive/hive 元数据库添加中文字段.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Linux 修改时区.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Installation/Linux 修改时区.html" itemprop="url">
+                  Linux 修改时区
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          linux 修改时区在linux中与时间相关的文件有
+
+/etc/localtime
+/etc/timezone
+
+其中，/etc/localtime是用来描述本机时间，而 /etc/timezone是用来描述本机所属的时区。
+修改本机时间cp /usr/share/zoneinfo/Asia/Sh
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Installation/Linux 修改时区.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1902,7 +1013,7 @@ server 216.229.0.179 --&gt;
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2008,15 +1119,853 @@ server 216.229.0.179 --&gt;
       
         
           
-            <h1 id="Rebuild-CDH"><a href="#Rebuild-CDH" class="headerlink" title="Rebuild CDH"></a>Rebuild CDH</h1><h2 id="删除CDH所有组件"><a href="#删除CDH所有组件" class="headerlink" title="删除CDH所有组件"></a>删除CDH所有组件</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service cloudera-scm-server stop</div><div class="line">service cloudera-scm-agent stop</div><div class="line">umount /var/run/cloudera-scm-agent/process</div><div class="line">rm -rf /usr/share/cmf /var/lib/cloudera* /var/cache/zypp/packages/cloudera-* /var/cache/zypp/raw/cloudera-* /var/cache/zypp/solv/cloudera-* /var/log/cloudera-scm-* /var/run/cloudera-scm-* /etc/cloudera-scm-server*</div><div class="line">rpm -qa |grep cloudera</div><div class="line">rpm -e cloudera-manager-agent-5.10.0-1.cm5100.p0.85.el7.x86_64</div><div class="line">rpm -e cloudera-manager-server-5.10.0-1.cm5100.p0.85.el7.x86_64</div><div class="line">rpm -e cloudera-manager-daemons-5.10.0-1.cm5100.p0.85.el7.x86_64</div><div class="line">rm -rf /var/lib/hadoop-* /var/lib/impala /var/lib/solr /var/lib/zookeeper /var/lib/hue /var/lib/oozie  /var/lib/pgsql  /var/lib/sqoop2  /data/dfs/  /data/impala/ /data/yarn/  /dfs/ /impala/ /yarn/  /var/run/hadoop-*/ /var/run/hdfs-*/ /usr/bin/hadoop* /usr/bin/zookeeper* /usr/bin/hbase* /usr/bin/hive* /usr/bin/hdfs /usr/bin/mapred /usr/bin/yarn /usr/bin/sqoop* /usr/bin/oozie /etc/hadoop* /etc/zookeeper* /etc/hive* /etc/hue /etc/impala /etc/sqoop* /etc/oozie /etc/hbase* /etc/hcatalog </div><div class="line">rm -rf /opt/cloudera/parcel-cache /opt/cloudera/parcels</div><div class="line">ps aux|grep  supervisord |grep -v grep | awk &apos;&#123;print &quot;kill -9 &quot; $2&#125;&apos;|sh</div></pre></td></tr></table></figure>
-</p>
-<h2 id="删除所有datanode以及nodemanager产生的数据-建议直接格盘"><a href="#删除所有datanode以及nodemanager产生的数据-建议直接格盘" class="headerlink" title="删除所有datanode以及nodemanager产生的数据(建议直接格盘)"></a>删除所有datanode以及nodemanager产生的数据(建议直接格盘)</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rm -rf /mnt/sdb1/dfs /mnt/sdc1/dfs /mnt/sdd1/dfs /mnt/sde1/dfs /mnt/sdf1/dfs /mnt/sdg1/dfs /mnt/sdh1/dfs /mnt/sdi1/dfs /mnt/sdj1/dfs /mnt/sdk1/dfs /mnt/sdl1/dfs /mnt/sdm1/dfs /mnt/sdn1/dfs /mnt/sdo1/dfs /mnt/sdp1/dfs /mnt/sdq1/dfs /mnt/sdr1/dfs /mnt/sds1/dfs /mnt/sdt1/dfs /mnt/sdu1/dfs /mnt/sdv1/dfs /mnt/sdw1/dfs /mnt/sdx1/dfs /mnt/sdy1/dfs </div><div class="line">rm -rf /mnt/sdb1/yarn /mnt/sdc1/yarn /mnt/sdd1/yarn /mnt/sde1/yarn /mnt/sdf1/yarn /mnt/sdg1/yarn /mnt/sdh1/yarn /mnt/sdi1/yarn /mnt/sdj1/yarn /mnt/sdk1/yarn /mnt/sdl1/yarn /mnt/sdm1/yarn /mnt/sdn1/yarn /mnt/sdo1/yarn /mnt/sdp1/yarn /mnt/sdq1/yarn /mnt/sdr1/yarn /mnt/sds1/yarn /mnt/sdt1/yarn /mnt/sdu1/yarn /mnt/sdv1/yarn /mnt/sdw1/yarn /mnt/sdx1/yarn /mnt/sdy1/yarn</div></pre></td></tr></table></figure>
-</p>
-<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">drop database metastore_sj_test;</div><div class="line">drop database amon_sj_test;</div><div class="line">drop database rman_sj_test;</div><div class="line">drop database sentry_sj_test;</div><div class="line">drop database nav_sj_test;</div><div class="line">drop database navms_sj_test;</div><div class="line">drop database cm_sj_test;</div><div class="line">drop database hue_sj_test;</div><div class="line">drop database oozie_sj_test;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">drop database metastore_test;</div><div class="line">drop database amon_test;</div><div class="line">drop database rman_test;</div><div class="line">drop database sentry_test;</div><div class="line">drop database nav_test;</div><div class="line">drop database navms_test;</div><div class="line">drop database cm_test;</div><div class="line">drop database hue_test;</div><div class="line">drop database oozie_test;</div></pre></td></tr></table></figure>
-</p>
-<h2 id="重新init数据库"><a href="#重新init数据库" class="headerlink" title="重新init数据库"></a>重新init数据库</h2><p><code>/usr/share/cmf/schema/scm_prepare_database.sh -h 10.151.164.28 mysql cm_sj_test cm Cloudera@123</code></p>
+          Rebuild CDH删除CDH所有组件service cloudera-scm-server stopservice cloudera-scm-agent stopumount /var/run/cloudera-scm-agent/processrm -rf /usr/share/cmf /va
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Installation/Rebuild CDH.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/setfacl提示 Operation not supported.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/setfacl提示 Operation not supported.html" itemprop="url">
+                  setfacl提示 Operation not supported
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          setfacl提示 Operation not supported问题：/mnt/bak为硬盘的一个分区，在fstab做了defaults挂载，当我需要配置acl权限时
+命令为：setfacl -m u:luo:rwx /mnt/bak的时候提示
+setfacl: /mnt/bak: Operati
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/setfacl提示 Operation not supported.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/Spark集成S3 Service.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Spark/Spark集成S3 Service.html" itemprop="url">
+                  Spark集成S3 Service
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Spark集成S3 ServiceSpark的DataSource支持S3和Swift，考虑到Ceph也提供了S3和Swift的API，而C++的效率也是Python难以望其项背的，所以Spark+Ceph(S3 Service)可能是一个比较合适的方案。
+如果想试试Spark with Swift
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Spark/Spark集成S3 Service.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/松江资源池云主机cdh环境准备.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Notes/松江资源池云主机cdh环境准备.html" itemprop="url">
+                  松江资源池云主机cdh环境准备
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          松江资源池云主机cdh环境准备  1  reboot  2  ping 114.114.114.114  3  reboot  4  ls  5  cat /etc/issue  6  top  7  yum --help  8  ifconfig   9  chkconfig --list 10 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Notes/松江资源池云主机cdh环境准备.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Tips/微信公众号采集.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Tips/微信公众号采集.html" itemprop="url">
+                  微信公众号采集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          通过搜狗搜索微信公众号然后拿到链接通过fiddler检测手机微信拿到链接。
+首先，打开fiddler，然后在电脑端微信上找到要爬取的微信公众号，然后左键点一下就会有一个查看所有历史信息。点击查看历史信息之后我们就会在fiddler上看到一条这样的GET请求：https://mp.weixin.qq.
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Tips/微信公众号采集.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/关于tar解压重命名的问题.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux/关于tar解压重命名的问题.html" itemprop="url">
+                  关于tar解压重命名的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-23 09:57:35 / 修改时间：23:12:06" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:35+08:00">2018-05-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          关于tar解压重命名的问题问题描述：wget http://oss.aliyuncs.com/aliyunecs/onekey/mysql/mysql-5.6.15-linux-glibc2.5-i686.tar.gz显然下载下来的文件就是：mysql-5.6.15-linux-glibc2.5-i
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/关于tar解压重命名的问题.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2090,7 +2039,7 @@ server 216.229.0.179 --&gt;
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/images/avatar.gif"
                 alt="Nameless13" />
             
               <p class="site-author-name" itemprop="name">Nameless13</p>

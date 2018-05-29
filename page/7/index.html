@@ -336,7 +336,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -454,622 +454,17 @@
       
         
           
-            <p>CDH版本的spark阉割了spark-sql,可以重新编译cloudera/spark,或者直接在启动时添加所缺失的jar包</p>
-<blockquote>
-<p>操作系统:SUSE11 SP3<br>Spark版本:SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904<br>CDH版本:CDH5.10.041<br>使用root用户对集群进行部署</p>
-<h2 id="直接添加所缺jar包"><a href="#直接添加所缺jar包" class="headerlink" title="直接添加所缺jar包"></a>直接添加所缺jar包</h2><h3 id="下载Apache版Spark"><a href="#下载Apache版Spark" class="headerlink" title="下载Apache版Spark"></a>下载Apache版Spark</h3><p>解压后找到jars/目录下的<br><code>hive-cli-1.2.1.spark2.jar</code><br><code>spark-hive-thriftserver_2.11-2.1.0.jar</code><br>上传需要使用spark-sql的机器上</p>
-<h3 id="创建spark-sql"><a href="#创建spark-sql" class="headerlink" title="创建spark-sql"></a>创建spark-sql</h3><p>在/opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/bin/下新建<strong>spark-sql</strong>文件<br><code>vi /opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/bin/spark-sql</code></p>
-</blockquote>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">  <span class="comment"># Reference: http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in</span></div><div class="line">  SOURCE=<span class="string">"<span class="variable">$&#123;BASH_SOURCE[0]&#125;</span>"</span></div><div class="line">  BIN_DIR=<span class="string">"<span class="variable">$( dirname "$SOURCE" )</span>"</span></div><div class="line">  <span class="keyword">while</span> [ -h <span class="string">"<span class="variable">$SOURCE</span>"</span> ]</div><div class="line">  <span class="keyword">do</span></div><div class="line">    SOURCE=<span class="string">"<span class="variable">$(readlink "$SOURCE")</span>"</span></div><div class="line">    [[ <span class="variable">$SOURCE</span> != /* ]] &amp;&amp; SOURCE=<span class="string">"<span class="variable">$DIR</span>/<span class="variable">$SOURCE</span>"</span></div><div class="line">    BIN_DIR=<span class="string">"<span class="variable">$( cd -P "$( dirname "$SOURCE"  )</span>"</span> &amp;&amp; <span class="built_in">pwd</span> )<span class="string">"</span></div><div class="line">  done</div><div class="line">  BIN_DIR="$( <span class="built_in">cd</span> -P <span class="string">"<span class="variable">$( dirname "$SOURCE" )</span>"</span> &amp;&amp; <span class="built_in">pwd</span> )<span class="string">"</span></div><div class="line">  CDH_LIB_DIR=<span class="variable">$BIN_DIR</span>/../../CDH/lib</div><div class="line">  LIB_DIR=<span class="variable">$BIN_DIR</span>/../lib</div><div class="line">export HADOOP_HOME=<span class="variable">$CDH_LIB_DIR</span>/hadoop</div><div class="line"></div><div class="line"># Autodetect JAVA_HOME if not defined</div><div class="line">. <span class="variable">$CDH_LIB_DIR</span>/bigtop-utils/bigtop-detect-javahome</div><div class="line"></div><div class="line">exec <span class="variable">$LIB_DIR</span>/spark2/bin/spark-sql "<span class="variable">$@</span><span class="string">"</span></div></pre></td></tr></table></figure>
-</p>
-<p>在/opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/lib/spark2/bin下新建spark-sql,同时添加之前传的两个jar包<br><code>vi /opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/lib/spark2/bin/spark-sql</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Licensed to the Apache Software Foundation (ASF) under one or more</span></div><div class="line"><span class="comment"># contributor license agreements.  See the NOTICE file distributed with</span></div><div class="line"><span class="comment"># this work for additional information regarding copyright ownership.</span></div><div class="line"><span class="comment"># The ASF licenses this file to You under the Apache License, Version 2.0</span></div><div class="line"><span class="comment"># (the "License"); you may not use this file except in compliance with</span></div><div class="line"><span class="comment"># the License.  You may obtain a copy of the License at</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#    http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment"># distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment"># See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment"># limitations under the License.</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$&#123;SPARK_HOME&#125;</span>"</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">source</span> <span class="string">"<span class="variable">$(dirname "$0")</span>"</span>/find-spark-home</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">export</span> _SPARK_CMD_USAGE=<span class="string">"Usage: ./bin/spark-sql [options] [cli option]"</span></div><div class="line"><span class="comment">#exec "$&#123;SPARK_HOME&#125;"/bin/spark-submit --class org.apache.spark.sql.hive.thriftserver.SparkSQLCLIDriver "$@"</span></div><div class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$&#123;SPARK_HOME&#125;</span>"</span>/bin/spark-submit --jars /home/manage/spark-hive-thriftserver_2.11-2.1.0.jar,/home/manage/hive-cli-1.2.1.spark2.jar --class org.apache.spark.sql.hive.thriftserver.SparkSQLCLIDriver <span class="string">"<span class="variable">$@</span>"</span></div></pre></td></tr></table></figure></p>
-<p>同时可以设置一个别名指向spark-sql<br><code>alias spark2-sql=&quot;/opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/bin/spark-sql&quot;</code></p>
-<h3 id="在log4j中添加spark-sql"><a href="#在log4j中添加spark-sql" class="headerlink" title="在log4j中添加spark-sql"></a>在log4j中添加spark-sql</h3><p>路径:/opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/lib/spark2/conf<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">log4j.logger.org.apache.spark.sql.SQLContext=ERROR </div><div class="line">log4j.logger.org.apache.spark.sql.catalyst.analysis.Analyzer=ERROR</div></pre></td></tr></table></figure></p>
-<h3 id="spark1-6-spark-sql支持"><a href="#spark1-6-spark-sql支持" class="headerlink" title="spark1.6 spark-sql支持"></a>spark1.6 spark-sql支持</h3><p><a href="http://www.javali.org/bigdata/one-trick-on-supporting-sparksql-in-cdh5.html" target="_blank" rel="noopener">spark1.6 spark-sql支持</a><br>其实就是对应的jar包不同,1.6所缺的为spark-assembly-1.6.1-hadoop2.6.0.jar</p>
-<h3 id="SparkHiveServer"><a href="#SparkHiveServer" class="headerlink" title="SparkHiveServer"></a>SparkHiveServer</h3><p>直到最近在调研Spark并计划将Spark取代Mapreduce来提升平台的计算效率时，发现Spark-sql能完美的兼容Hive SQL，同时还提供了ThriftServer(就是SparkHiveServer)，不止于此，由于Spark更好的使用了内存，期执行效率是MR/Hive的10倍以上。</p>
-<p>其实就是在Spark集群上执行$SPARK_HOME/sbin/start-thriftserver.sh –master=spark://MASTER:7077 就默认开启了10000端口，该服务可以取代hiveserver2，如果与HiveServer2在同一台服务器上，可以先shutdown hiveserver2,再启动spark thriftserver。运行了1个礼拜，服务非常稳定，GC也正常！<br><code>cat start-thriftserver.sh</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Licensed to the Apache Software Foundation (ASF) under one or more</span></div><div class="line"><span class="comment"># contributor license agreements.  See the NOTICE file distributed with</span></div><div class="line"><span class="comment"># this work for additional information regarding copyright ownership.</span></div><div class="line"><span class="comment"># The ASF licenses this file to You under the Apache License, Version 2.0</span></div><div class="line"><span class="comment"># (the "License"); you may not use this file except in compliance with</span></div><div class="line"><span class="comment"># the License.  You may obtain a copy of the License at</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#    http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment"># distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment"># See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment"># limitations under the License.</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Shell script for starting the Spark SQL Thrift server</span></div><div class="line"></div><div class="line"><span class="comment"># Enter posix mode for bash</span></div><div class="line"><span class="built_in">set</span> -o posix</div><div class="line"></div><div class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$&#123;SPARK_HOME&#125;</span>"</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> SPARK_HOME=<span class="string">"<span class="variable">$(cd "`dirname "$0"`"/..; pwd)</span>"</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment"># <span class="doctag">NOTE:</span> This exact class name is matched downstream by SparkSubmit.</span></div><div class="line"><span class="comment"># Any changes need to be reflected there.</span></div><div class="line">CLASS=<span class="string">"org.apache.spark.sql.hive.thriftserver.HiveThriftServer2"</span></div><div class="line"></div><div class="line"><span class="keyword">function</span> usage &#123;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"Usage: ./sbin/start-thriftserver [options] [thrift server options]"</span></div><div class="line">  pattern=<span class="string">"usage"</span></div><div class="line">  pattern+=<span class="string">"\|Spark assembly has been built with Hive"</span></div><div class="line">  pattern+=<span class="string">"\|NOTE: SPARK_PREPEND_CLASSES is set"</span></div><div class="line">  pattern+=<span class="string">"\|Spark Command: "</span></div><div class="line">  pattern+=<span class="string">"\|======="</span></div><div class="line">  pattern+=<span class="string">"\|--help"</span></div><div class="line"></div><div class="line">  <span class="string">"<span class="variable">$&#123;SPARK_HOME&#125;</span>"</span>/bin/spark-submit --<span class="built_in">help</span> 2&gt;&amp;1 | grep -v Usage 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">"Thrift server options:"</span></div><div class="line">  <span class="string">"<span class="variable">$&#123;SPARK_HOME&#125;</span>"</span>/bin/spark-class <span class="variable">$CLASS</span> --<span class="built_in">help</span> 2&gt;&amp;1 | grep -v <span class="string">"<span class="variable">$pattern</span>"</span> 1&gt;&amp;2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$@</span>"</span> = *--<span class="built_in">help</span> ]] || [[ <span class="string">"<span class="variable">$@</span>"</span> = *-h ]]; <span class="keyword">then</span></div><div class="line">  usage</div><div class="line">  <span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">export</span> SUBMIT_USAGE_FUNCTION=usage</div><div class="line"></div><div class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$&#123;SPARK_HOME&#125;</span>"</span>/sbin/spark-daemon.sh submit <span class="variable">$CLASS</span> 1 --name <span class="string">"Thrift JDBC/ODBC Server"</span> <span class="string">"<span class="variable">$@</span>"</span></div></pre></td></tr></table></figure></p>
-<p>后来发现只要把缺少的两个jar包导入到<br>cp activation-1.1.1.jar aopalliance-1.0.jar apacheds-i18n-2.0.0-M15.jar apacheds-kerberos-codec-2.0.0-M15.jar api-asn1-api-1.0.0-M20.jar api-util-1.0.0-M20.jar base64-2.3.8.jar bcprov-jdk15on-1.51.jar commons-beanutils-1.7.0.jar commons-beanutils-core-1.8.0.jar commons-configuration-1.6.jar commons-digester-1.8.jar curator-client-2.6.0.jar curator-framework-2.6.0.jar curator-recipes-2.6.0.jar guava-14.0.1.jar guice-3.0.jar guice-servlet-3.0.jar hadoop-annotations-2.6.4.jar hadoop-auth-2.6.4.jar hadoop-client-2.6.4.jar hadoop-common-2.6.4.jar hadoop-hdfs-2.6.4.jar hadoop-mapreduce-client-app-2.6.4.jar hadoop-mapreduce-client-common-2.6.4.jar hadoop-mapreduce-client-core-2.6.4.jar hadoop-mapreduce-client-jobclient-2.6.4.jar hadoop-mapreduce-client-shuffle-2.6.4.jar hadoop-yarn-api-2.6.4.jar hadoop-yarn-client-2.6.4.jar hadoop-yarn-common-2.6.4.jar hadoop-yarn-server-common-2.6.4.jar hadoop-yarn-server-web-proxy-2.6.4.jar hive-beeline-1.2.1.spark2.jar hive-exec-1.2.1.spark2.jar hive-jdbc-1.2.1.spark2.jar htrace-core-3.0.4.jar httpclient-4.5.2.jar jackson-core-asl-1.9.13.jar jackson-mapper-asl-1.9.13.jar java-xmlbuilder-1.0.jar javax.inject-1.jar jaxb-api-2.2.2.jar jets3t-0.9.3.jar jetty-6.1.26.jar jsr305-1.3.9.jar leveldbjni-all-1.8.jar mail-1.4.7.jar mesos-1.0.0-shaded-protobuf.jar mx4j-3.0.2.jar protobuf-java-2.5.0.jar slf4j-api-1.7.16.jar slf4j-log4j12-1.7.16.jar snappy-java-1.1.2.6.jar spark-mesos_2.11-2.1.1.jar stax-api-1.0-2.jar super-csv-2.2.0.jar xercesImpl-2.9.1.jar xmlenc-0.52.jar zookeeper-3.4.6.jar /opt/cloudera/parcels/SPARK2-2.0.0.cloudera2-1.cdh5.7.0.p0.118100/lib/spark2/jars/ </p>
-<p>SparkSQL accesses its metadata via the HMS directly, and does not go through a HS2, so it does not truly get covered fully by Sentry. However, in a Sentry setup the HMS is write-protected via the Sentry Authz Plugin added on it, so DDLs are still protected against, but users can still view all metadata (i.e. they can run SHOW TABLES, SHOW DATABASES, etc. and retrieve full listing [1]).</p>
-<p>With Sentry HMS plugin and Sentry HDFS ACL Sync enabled, access to tables’ data by Spark programs would be limited to the same rules as your Beeline/other Hive clients would.</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cp activation-1.1.1.jar aopalliance-1.0.jar apacheds-i18n-2.0.0-M15.jar apacheds-kerberos-codec-2.0.0-M15.jar api-asn1-api-1.0.0-M20.jar api-util-1.0.0-M20.jar base64-2.3.8.jar bcprov-jdk15on-1.51.jar commons-beanutils-1.7.0.jar commons-beanutils-core-1.8.0.jar commons-configuration-1.6.jar commons-digester-1.8.jar curator-client-2.6.0.jar curator-framework-2.6.0.jar curator-recipes-2.6.0.jar guava-14.0.1.jar guice-3.0.jar guice-servlet-3.0.jar hadoop-annotations-2.6.4.jar hadoop-auth-2.6.4.jar hadoop-client-2.6.4.jar hadoop-common-2.6.4.jar hadoop-hdfs-2.6.4.jar hadoop-mapreduce-client-app-2.6.4.jar hadoop-mapreduce-client-common-2.6.4.jar hadoop-mapreduce-client-core-2.6.4.jar hadoop-mapreduce-client-jobclient-2.6.4.jar hadoop-mapreduce-client-shuffle-2.6.4.jar hadoop-yarn-api-2.6.4.jar hadoop-yarn-client-2.6.4.jar hadoop-yarn-common-2.6.4.jar hadoop-yarn-server-common-2.6.4.jar hadoop-yarn-server-web-proxy-2.6.4.jar htrace-core-3.0.4.jar httpclient-4.5.2.jar jackson-core-asl-1.9.13.jar jackson-mapper-asl-1.9.13.jar java-xmlbuilder-1.0.jar javax.inject-1.jar jaxb-api-2.2.2.jar jets3t-0.9.3.jar jetty-6.1.26.jar jsr305-1.3.9.jar leveldbjni-all-1.8.jar mail-1.4.7.jar mesos-1.0.0-shaded-protobuf.jar mx4j-3.0.2.jar protobuf-java-2.5.0.jar slf4j-api-1.7.16.jar slf4j-log4j12-1.7.16.jar snappy-java-1.1.2.6.jar spark-mesos_2.11-2.1.1.jar stax-api-1.0-2.jar super-csv-2.2.0.jar xercesImpl-2.9.1.jar xmlenc-0.52.jar zookeeper-3.4.6.jar /opt/cloudera/parcels/SPARK2-2.0.0.cloudera2-1.cdh5.7.0.p0.118100/lib/spark2/jars/ </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">hive-beeline-1.2.1.spark2.jar hive-exec-1.2.1.spark2.jar hive-jdbc-1.2.1.spark2.jar </div><div class="line"></div><div class="line"></div><div class="line">cp /opt/spark-2.1.1-bin-hadoop2.6/jars/hive-jdbc-1.2.1.spark2.jar /opt/cloudera/parcels/SPARK2-2.0.0.cloudera2-1.cdh5.7.0.p0.118100/lib/spark2/jars/ </div><div class="line">cp /opt/spark-2.1.1-bin-hadoop2.6/jars/hive-beeline-1.2.1.spark2.jar /opt/cloudera/parcels/SPARK2-2.0.0.cloudera2-1.cdh5.7.0.p0.118100/lib/spark2/jars/ </div><div class="line"></div><div class="line">`rm /opt/cloudera/parcels/SPARK2-2.1.0.cloudera2-1.cdh5.7.0.p0.118100/lib/spark2/jars/hive-exec-1.2.1.spark2.jar`</div><div class="line"></div><div class="line"></div><div class="line">#!/bin/bash</div><div class="line">  SOURCE=&quot;$&#123;BASH_SOURCE[0]&#125;&quot;  #/opt/cloudera/parcels/SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904/bin/</div><div class="line">  BIN_DIR=&quot;$( dirname &quot;$SOURCE&quot; )&quot; </div><div class="line">  while [ -h &quot;$SOURCE&quot; ]</div><div class="line">  do</div><div class="line">    SOURCE=&quot;$(readlink &quot;$SOURCE&quot;)&quot;</div><div class="line">    [[ $SOURCE != /* ]] &amp;&amp; SOURCE=&quot;$DIR/$SOURCE&quot;</div><div class="line">    BIN_DIR=&quot;$( cd -P &quot;$( dirname &quot;$SOURCE&quot;  )&quot; &amp;&amp; pwd )&quot;</div><div class="line">  done</div><div class="line">  BIN_DIR=&quot;$( cd -P &quot;$( dirname &quot;$SOURCE&quot; )&quot; &amp;&amp; pwd )&quot;</div><div class="line">  CDH_LIB_DIR=$BIN_DIR/../../CDH/lib</div><div class="line">  LIB_DIR=$BIN_DIR/../lib</div><div class="line">export HADOOP_HOME=$CDH_LIB_DIR/hadoop</div><div class="line"></div><div class="line"># Autodetect JAVA_HOME if not defined</div><div class="line">. $CDH_LIB_DIR/bigtop-utils/bigtop-detect-javahome</div><div class="line"></div><div class="line">exec $LIB_DIR/spark2/bin/spark-sql &quot;$@&quot;</div><div class="line"></div><div class="line"></div><div class="line">#!/bin/bash</div><div class="line">export HADOOP_HOME=/opt/cloudera/parcels/CDH/lib/hadoop</div><div class="line">. /opt/cloudera/parcels/CDH/lib/bigtop-utils/bigtop-detect-javahome</div><div class="line">exec $LIB_DIR/spark2/bin/spark-sql &quot;$@&quot;</div></pre></td></tr></table></figure>
-</p>
-<p>exec $LIB_DIR/spark2/sbin/start-thriftserver.sh –name SparkJDBC –master yarn-client  –num-executors 10 –executor-memory 2g –executor-cores 4 –driver-memory 10g –driver-cores 2  –conf spark.storage.memoryFraction=0.2 –conf spark.shuffle.memoryFraction=0.6 –hiveconf hive.server2.thrift.port=10001 –hiveconf hive.server2.logging.operation.enabled=true –hiveconf hive.server2.authentication.kerberos.principal=hive/ddp-kettle-02.cmdmp.com@CMDMP.COM –hiveconf hive.server2.authentication.kerberos.keytab /root/hiveserver.keytab “$@”</p>
-<p>exec $LIB_DIR/spark2/sbin/start-thriftserver.sh –name SparkJDBC –master yarn-client  –hiveconf hive.server2.thrift.port=10001 –hiveconf hive.server2.logging.operation.enabled=true –hiveconf hive.metastore.schema.verification=false –hiveconf hive.server2.authentication.kerberos.principal=hive/ddp-kettle-02.cmdmp.com@CMDMP.COM –hiveconf hive.server2.authentication.kerberos.keytab /root/hiveserver.keytab “$@”</p>
-<p>exec $LIB_DIR/spark2/sbin/start-thriftserver.sh –name SparkJDBC –master yarn-client  –hiveconf hive.server2.thrift.port=10000 –hiveconf hive.server2.logging.operation.enabled=true –hiveconf hive.metastore.schema.verification=false –hiveconf spark.sql.thriftServer.incrementalCollect=true –hiveconf hive.server2.authentication.kerberos.principal=hive/ddp-kettle-02.cmdmp.com@CMDMP.COM –hiveconf hive.server2.authentication.kerberos.keytab /root/hiveserver.keytab “$@”</p>
-<p>–hiveconf hive.metastore.schema.verification=false<br>–hiveconf spark.sql.thriftServer.incrementalCollect=true<br>–hiveconf hive.support.concurrency=true</p>
-<p>master ：指定spark提交模式为yarn-client</p>
-<p>hive.server2.thrift.port : 指定thrift server的端口</p>
-<p>hive.server2.authentication.kerberos.principal：指定启动thrift server的超级管理员principal，此处超级管理员为hive</p>
-<p>hive.server2.authentication.kerberos.keytab : 超级管理员对应的keytab　</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/python/Django.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/python/Django.html" itemprop="url">
-                  Django
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-07-07T00:00:00+08:00">2017-07-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="setting-py"><a href="#setting-py" class="headerlink" title="setting.py"></a>setting.py</h2><h3 id="init-py"><a href="#init-py" class="headerlink" title="__init__.py"></a><code>__init__.py</code></h3><p>Python中声明模块的文件<br>内容默认为空</p>
-<h3 id="admin-py"><a href="#admin-py" class="headerlink" title="admin.py"></a>admin.py</h3><p>该应用的后台管理系统配置</p>
-<h3 id="apps-py"><a href="#apps-py" class="headerlink" title="apps.py"></a>apps.py</h3><p>该应用的一些配置<br>Django-1.9 以后自动生成</p>
-<h3 id="models-py"><a href="#models-py" class="headerlink" title="models.py"></a>models.py</h3><p>数据模块<br>使用ORM框架<br>类似MVC结构中的Models</p>
-<h3 id="test-py"><a href="#test-py" class="headerlink" title="test.py"></a>test.py</h3><p>自动化测试模块</p>
-<h3 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h3><p>执行响应的代码所在模块<br>代码逻辑处理的主要地点<br>项目中大部分代码均在这里编写</p>
-<h2 id="创建一个页面的顺序"><a href="#创建一个页面的顺序" class="headerlink" title="创建一个页面的顺序"></a>创建一个页面的顺序</h2><h3 id="编辑blog-views"><a href="#编辑blog-views" class="headerlink" title="编辑blog.views"></a>编辑blog.views</h3><ul>
-<li>每个响应对应一个函数,函数必须返回一个响应</li>
-<li>函数必须存在一个参数,一般约定为request</li>
-<li>每一个响应(函数)对应一个URL</li>
-</ul>
-<h3 id="配置URL"><a href="#配置URL" class="headerlink" title="配置URL"></a>配置URL</h3><h3 id="编辑urls-py"><a href="#编辑urls-py" class="headerlink" title="编辑urls.py"></a>编辑urls.py</h3><ul>
-<li>每个URL都以URL的形式写出来</li>
-<li>URL函数放在</li>
-<li>urlpatterns列表中</li>
-<li>URL函数三个参数:URL(正则),对应方法,名称</li>
-</ul>
-<hr>
-<h2 id="第二种URL配置"><a href="#第二种URL配置" class="headerlink" title="第二种URL配置"></a>第二种URL配置</h2><h3 id="包含其他URL"><a href="#包含其他URL" class="headerlink" title="包含其他URL"></a>包含其他URL</h3><ul>
-<li>在根urls.py中引入include</li>
-<li>在APP目录下创建urls.py文件,格式与根urls.py相同</li>
-<li>根urls.py中url函数第二个参数改为<code>include(&#39;blog.urls&#39;)</code></li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>根urls.py针对APP配置的URL名称,是该APP所有URL的总路径</li>
-<li>配置URL时注意正则表达式结尾符号$和/</li>
-</ul>
-<hr>
-<h1 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h1><ul>
-<li>HTML文件</li>
-<li>使用Django模板语言Django Template Language,DTL</li>
-<li>也可以使用第三方模板</li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>在APP的根目录下创建名叫Templates的目录</li>
-<li>在该目录下创建HTML文件</li>
-<li>在views.py中返回<code>render()</code></li>
-</ul>
-<h2 id="DTL初步使用"><a href="#DTL初步使用" class="headerlink" title="DTL初步使用"></a>DTL初步使用</h2><ul>
-<li><code>render()</code>函数中支持一个dict类型参数</li>
-<li>该字典是后台传递到模板的参数,键为参数名</li>
-<li>在模板中使用<code></code>来直接使用</li>
-</ul>
-<ul>
-<li>Django查找Template 是按照INSTALED_APPS中的添加顺序查找Templates</li>
-<li>不同APP下Template目录中的同名.html文件会造成冲突</li>
-<li>解决: 在APP的templates目录下创建以APP名为名称的目录</li>
-<li>将html文件放入新创建的目录下</li>
-</ul>
-<hr>
-<h2 id="models"><a href="#models" class="headerlink" title="models"></a>models</h2><ul>
-<li>一个Model对应数据库的一张数据表</li>
-<li>Django中的Models以类的形式表现</li>
-<li>它包含了一些基本字段以及数据的一些行为</li>
-</ul>
-<h3 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h3><ul>
-<li>对象关系映射(Object Relation Mapping)</li>
-<li>实现了对象和数据库之间的映射</li>
-<li>隐藏了数据访问的细节,不需要编写SQL语句</li>
-</ul>
-<h3 id="编写Models"><a href="#编写Models" class="headerlink" title="编写Models"></a>编写Models</h3><p>步骤:</p>
-<ul>
-<li>在应用根目录下创建models.py,并引入models模块</li>
-<li>创建类,继承models.Model,该类即是一张数据表</li>
-<li>在类中创建字段<ul>
-<li>字段即类里面的属性(变量)</li>
-<li><code>attr = models.CharField(max_length=64)</code></li>
-</ul>
-</li>
-<li>生成数据表<ul>
-<li>命令中进入manage.py同级目录</li>
-<li>执行python manage.py makemigrations app名(可选) #默认给该项目下所有的应用都生成</li>
-<li>在执行 python manage.py migrate</li>
-<li>查看: <ul>
-<li>django会自动在 app/migrations/目录下生成移植文件</li>
-<li>执行<code>python manage.py sqlmigrate 应用名 文件id 查询SQL语句</code></li>
-<li>默认sqlite3的数据库在项目根目录下db.sqlite3</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>页面呈现数据<ul>
-<li>后台步骤<ul>
-<li>views.py中import models</li>
-<li><code>article = models.Article.objects.get(pk=1)</code></li>
-<li><code>render(request,page,{&#39;article&#39; :article})</code></li>
-</ul>
-</li>
-<li>前端步骤<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">* 模块可直接使用对象以及对象的&quot;.&quot;操作</div><div class="line">* `&#123;&#123; article.title &#125;&#125;`</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="Admin"><a href="#Admin" class="headerlink" title="Admin"></a>Admin</h2><ul>
-<li>Admin是Django自带的一个功能强大的自动化数据管理界面</li>
-<li>被授权的用户可直接在Admin中管理数据库</li>
-<li>Django提供了许多针对Admin的定制功能</li>
-<li>创建用户<ul>
-<li><code>python manage.py createsuperuser</code> 创建超级用户</li>
-<li><code>localhost:8000/admin/</code> Admin入口</li>
-<li>修改settings.py中 <code>LANGUAGE_CODE = &#39;zh-hans&#39;</code></li>
-</ul>
-</li>
-<li>配置应用<ul>
-<li>在应用下admin.py中引入自身的models模块(或里面的模型类)</li>
-<li>编辑admin.py: <code>admin.site.register(models.Article)</code></li>
-</ul>
-</li>
-<li>修改数据<ul>
-<li>点击Article超链接进入Article列表页面</li>
-<li>点击任意一天数据,进入编辑页面修改</li>
-<li>编辑页面下方一排按钮可执行相应操作</li>
-<li>修改数据默认显示名称<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">* 在Article类下添加一个方法</div><div class="line">* 根据Python版本选择`__str__(self)`或`__unicode__(self)`</div><div class="line">* `return self.title`</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="博客页面"><a href="#博客页面" class="headerlink" title="博客页面"></a>博客页面</h2><ul>
-<li>页面概要<ul>
-<li>博客主页面<ul>
-<li>文章标题列表,超链接<ul>
-<li>取出数据库中所有文章对象</li>
-<li>将文章对象们打包成列表,传递到前端</li>
-<li>前端页面吧文章以标题超链接的形式逐个列出</li>
-</ul>
-</li>
-<li>发表博客按钮(超链接)</li>
-</ul>
-</li>
-<li>博客页面内容页面<ul>
-<li>标题</li>
-<li>文章内容</li>
-<li>修改文章按钮(超链接)</li>
-<li>URL传递参数<ul>
-<li>参数写在响应函数中request后,可以有默认值</li>
-<li>URL正则表达式:<code>r&#39; ^/article/(?&lt;articel_id&gt;[0-9]+)/$&#39;</code></li>
-<li>URL正则中的组名必须喝参数名一致</li>
-</ul>
-</li>
-<li>超链接目标地址<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- href后面是目标地址</div><div class="line">- template中可以用 `&#123;% url &apos;app_name:url_name&apos; param %&#125;`</div><div class="line">- 其中app_name和url_name都在url中配置</div><div class="line">- url函数的名称参数</div><div class="line">    + 根urls,写在include()的第二个参数位置,`namespace= &apos;blog&apos;`</div><div class="line">    + 应用下则写在url()的第三个参数位置,`name= &apos;article&apos;`</div><div class="line">    + 主要取决于是否使用include引用了另一个url配置文件</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>+ 博客撰写页面
-    + 页面内容
-        * 标题编辑栏
-        * 文章内容编辑区域
-        * 提交按钮
-    * 编辑响应函数
-        - 使用`request.POST[ &apos;参数名&apos; ]`获取表单数据
-        - `models.Article.objects.create(title,content)`创建对象
-
-
-</code></pre><hr>
-<ul>
-<li>模板for循环</li>
-<li><code></code></li>
-</ul>
-<hr>
-<h2 id="两个编辑页面"><a href="#两个编辑页面" class="headerlink" title="两个编辑页面"></a>两个编辑页面</h2><p>思路<br>    新文章为空,修改文章有内容<br>    修改文章页面有文章对象<br>    文章的ID 文章对象的ID </p>
-<h2 id="博客撰写页面"><a href="#博客撰写页面" class="headerlink" title="博客撰写页面"></a>博客撰写页面</h2><p>修改数据</p>
-<ul>
-<li><code>article.title = title</code></li>
-<li><code>article.save()</code></li>
-</ul>
-<hr>
-<h3 id="Templates过滤器"><a href="#Templates过滤器" class="headerlink" title="Templates过滤器"></a>Templates过滤器</h3><ul>
-<li>什么是过滤器?<ul>
-<li>写在模板中,属于Django模板语言</li>
-<li>可以修改模板中的变量,从而显示不同内容</li>
-</ul>
-</li>
-<li>怎么使用过滤器<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">+ &#123;&#123;value | filter &#125;&#125;</div><div class="line">+ 例子: &#123;&#123; list_nums | length &#125;&#125;</div><div class="line">+ 过滤器可叠加: &#123;&#123;value|filter1|filter2|...&#125;&#125;</div><div class="line">+ 如果出现不存在的变量是不会报错的,只会给出一个空值</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ul>
-<h2 id="Django-shell"><a href="#Django-shell" class="headerlink" title="Django shell"></a>Django shell</h2><ul>
-<li>什么是Django Shell?<ul>
-<li>是一个Python的交互式命令行程序</li>
-<li>它自动引入了我们的项目环境</li>
-<li>我们可以使用它与我们的项目进行交互</li>
-</ul>
-</li>
-<li>如何使用Django Shell?<ul>
-<li><code>python manage.py shell</code></li>
-<li><code>from blog.models import Article</code></li>
-<li><code>Article.objects.all()</code></li>
-</ul>
-</li>
-<li>有什么用<ul>
-<li>可以使用Django shell来进行一些调试工作</li>
-<li>测试未知的方法</li>
-</ul>
-</li>
-</ul>
-<h2 id="admin"><a href="#admin" class="headerlink" title="admin"></a>admin</h2><ul>
-<li>创建admin配置类<ul>
-<li><code>class ArticleAdmin(admin.ModelAdmin)</code></li>
-<li>注册:<code>admin.site.register(Article,ArticleAdmin)</code></li>
-<li>显示其他字段<ul>
-<li><code>list_display = (&#39;title&#39;,&#39;content&#39;)</code></li>
-<li>list_display同时支持tuple和list</li>
-</ul>
-</li>
-<li>过滤器<ul>
-<li><code>list_filter = (&#39;pub_time&#39;, )</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Sublime config.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Document/Sublime config.html" itemprop="url">
-                  Sublime config
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-07-07T00:00:00+08:00">2017-07-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Sublime-个人配置信息"><a href="#Sublime-个人配置信息" class="headerlink" title="Sublime 个人配置信息"></a>Sublime 个人配置信息</h1><h2 id="Preference-sublime-setting-–User"><a href="#Preference-sublime-setting-–User" class="headerlink" title="Preference.sublime-setting –User"></a>Preference.sublime-setting –User</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;color_scheme&quot;: &quot;Packages/Material Theme/schemes/Material-Theme.tmTheme&quot;,</div><div class="line">    &quot;font_size&quot;: 15,</div><div class="line">    &quot;ignored_packages&quot;:</div><div class="line">    [</div><div class="line">        &quot;Vintage&quot;</div><div class="line">    ],</div><div class="line">    &quot;material_theme_bullet_tree_indicator&quot;: true,</div><div class="line">    &quot;material_theme_compact_sidebar&quot;: true,</div><div class="line">    &quot;spacegray_tabs_font_large&quot;: true,</div><div class="line">    &quot;theme&quot;: &quot;Material-Theme.sublime-theme&quot;,</div><div class="line">    &quot;update_check&quot;: false,</div><div class="line">    &quot;open_files_in_new_window&quot;: false,</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</p>
-<h2 id="Markdown-sublime-settings"><a href="#Markdown-sublime-settings" class="headerlink" title="Markdown.sublime-settings"></a>Markdown.sublime-settings</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">   &#123;</div><div class="line">    &quot;extensions&quot;:</div><div class="line">    [</div><div class="line">        &quot;md&quot;,&quot;mdown&quot;</div><div class="line">    ],</div><div class="line"></div><div class="line">    // &quot;color_scheme&quot;: &quot;Packages/MarkdownEditing/MarkdownEditor.tmTheme&quot;,</div><div class="line">    // &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-eighties.dark.tmTheme&quot;,</div><div class="line">    &quot;color_scheme&quot;: &quot;Packages/Material Theme/schemes/Material-Theme.tmTheme&quot;,</div><div class="line">    &quot;theme&quot;: &quot;Material-Theme.sublime-theme&quot;,</div><div class="line"></div><div class="line">    &quot;line_padding_top&quot;: 4,</div><div class="line">    &quot;line_padding_bottom&quot;: 4,</div><div class="line"></div><div class="line">    &quot;tab_size&quot;: 4,</div><div class="line">    &quot;translate_tabs_to_spaces&quot;: true,</div><div class="line"></div><div class="line">    &quot;draw_centered&quot;: false,</div><div class="line">    &quot;word_wrap&quot;: true,</div><div class="line">    &quot;wrap_width&quot;: 120,</div><div class="line">    // &quot;rulers&quot;: [80, 120]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</p>
-<h2 id="sublime-keymap"><a href="#sublime-keymap" class="headerlink" title="sublime.keymap"></a>sublime.keymap</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    &#123; &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;: &#123;&quot;target&quot;: &quot;browser&quot;, &quot;parser&quot;:&quot;markdown&quot;&#125; &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
-</p>
-<h2 id="总是以新窗口打开文件的解决办法"><a href="#总是以新窗口打开文件的解决办法" class="headerlink" title="总是以新窗口打开文件的解决办法"></a>总是以新窗口打开文件的解决办法</h2><p>具体设置：Preferences -&gt; Settings – User -&gt; 添加<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&quot;open_files_in_new_window&quot;: false,</div></pre></td></tr></table></figure></p>
-<p>重启一下sublime text 3</p>
-<h2 id="Package-Control"><a href="#Package-Control" class="headerlink" title="Package Control"></a>Package Control</h2><p>import urllib.request,os,hashlib; h = ‘2915d1851351e5ee549c20394736b442’ + ‘8bc59f460fa1548d1514676163dafc88’; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( ‘<a href="http://packagecontrol.io/" target="_blank" rel="noopener">http://packagecontrol.io/</a>‘ + pf.replace(‘ ‘, ‘%20’)).read(); dh = hashlib.sha256(by).hexdigest(); print(‘Error validating download (got %s instead of %s), please try manual install’ % (dh, h)) if dh != h else open(os.path.join( ipp, pf), ‘wb’ ).write(by)</p>
-<hr>
-<h3 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h3><h4 id="MarkDown-Editing："><a href="#MarkDown-Editing：" class="headerlink" title="MarkDown Editing："></a>MarkDown Editing：</h4><p>支持Markdown语法高亮；支持Github Favored Markdown语法；自带3个主题。<br><code>GFW setting:</code><br>{<br>    “extensions”:<br>    [<br>        “md”<br>    ],</p>
-<pre><code>&quot;color_scheme&quot;: &quot;Packages/MarkdownEditing/MarkdownEditor.tmTheme&quot;,
-
-&quot;line_padding_top&quot;: 4,
-&quot;line_padding_bottom&quot;: 4,
-
-&quot;tab_size&quot;: 4,
-&quot;translate_tabs_to_spaces&quot;: true,
-
-&quot;draw_centered&quot;: false,
-&quot;word_wrap&quot;: true,
-&quot;wrap_width&quot;: 80,
-// &quot;rulers&quot;: [80, 120]
-
-</code></pre><p>}</p>
-<hr>
-<h3 id="OmniMarkupPreviwer："><a href="#OmniMarkupPreviwer：" class="headerlink" title="OmniMarkupPreviwer："></a>OmniMarkupPreviwer：</h3><p>实时在浏览器中预，而MarkdownPreview是需要手动生成的和F5的。览如果双屏的话，应该具有不错的体验。快捷键如下：<br>Ctrl+Alt+O: Preview Markup in Browser.<br>Ctrl+Alt+X: Export Markup as HTML.<br>Ctrl+Alt+C: Copy Markup as HTML.</p>
-<hr>
-<h2 id="解决在Ubuntu14-04下Sublime-Text-3无法输入中文的问题"><a href="#解决在Ubuntu14-04下Sublime-Text-3无法输入中文的问题" class="headerlink" title="解决在Ubuntu14.04下Sublime Text 3无法输入中文的问题"></a>解决在Ubuntu14.04下Sublime Text 3无法输入中文的问题</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd </div><div class="line">vim sublime_imfix.c</div><div class="line">sudo apt-get install gtk+-2.0</div><div class="line">gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-2.0` -fPIC</div><div class="line">sudo mv libsublime-imfix.so /opt/sublime_text/</div><div class="line"></div><div class="line">修改文件/usr/bin/subl的内容</div><div class="line">sudo gedit /usr/bin/subl</div><div class="line">将</div><div class="line">#!/bin/sh</div><div class="line">exec /opt/sublime_text/sublime_text &quot;$@&quot;</div><div class="line">修改为</div><div class="line">#!/bin/sh</div><div class="line">LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text &quot;$@&quot;</div><div class="line">此时，在命令中执行 subl 将可以使用搜狗for linux的中文输入</div></pre></td></tr></table></figure>
-</p>
-
-          
+          CDH版本的spark阉割了spark-sql,可以重新编译cloudera/spark,或者直接在启动时添加所缺失的jar包
+
+操作系统:SUSE11 SP3Spark版本:SPARK2-2.1.0.cloudera1-1.cdh5.7.0.p0.120904CDH版本:CDH5.10.041使用
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Spark]Spark-sql 添加.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1126,7 +521,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1244,11 +639,373 @@
       
         
           
-            <h1 id="hbase-Region调优"><a href="#hbase-Region调优" class="headerlink" title="hbase Region调优"></a>hbase Region调优</h1><p>在hbase shell 中输入:<br><code>balance_switch true</code></p>
-<p>在滚动重启的时候 会有如下警告:<br>    The Load Balancer is not enabled which will eventually cause performance degradation in HBase as Regions will not be distributed across all RegionServers. The balancer is only expected to be disabled during rolling upgrade scenarios.<br>说明重启过程中改变这个参数 之前由于重启失败导致 region balance这个默认参数被改为false后,没能自动恢复</p>
-<p>但是设置为true后依然没有平衡,最终重启master(leader)后,新的master开始触发平衡,说明之前的master不正常工作了</p>
+          hbase Region调优在hbase shell 中输入:balance_switch true
+在滚动重启的时候 会有如下警告:    The Load Balancer is not enabled which will eventually cause performance degrad
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/HBase/hbase Region调优.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Sublime config.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Document/Sublime config.html" itemprop="url">
+                  Sublime config
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-07-07T00:00:00+08:00">2017-07-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Sublime 个人配置信息Preference.sublime-setting –User&#123;    &quot;color_scheme&quot;: &quot;Packages/Material Theme/schemes/Material-Theme.tmTheme&quot;, 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Document/Sublime config.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/python/Django.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/python/Django.html" itemprop="url">
+                  Django
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-07-07T00:00:00+08:00">2017-07-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          setting.py__init__.pyPython中声明模块的文件内容默认为空
+admin.py该应用的后台管理系统配置
+apps.py该应用的一些配置Django-1.9 以后自动生成
+models.py数据模块使用ORM框架类似MVC结构中的Models
+test.py自动化测试模块
+vie
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/python/Django.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1305,7 +1062,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1423,11 +1180,16 @@
       
         
           
-            <h2 id="yarn-nodemanage-参数临时修改到100"><a href="#yarn-nodemanage-参数临时修改到100" class="headerlink" title="yarn nodemanage 参数临时修改到100"></a>yarn nodemanage 参数临时修改到100</h2><p>保证mapreduce shuffle阶段不会因为磁盘检测问题导致写入失败影响作业进度,cm默认配置为95%</p>
-<p>报错如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Directory /mnt/sdd1/yarn/nm error, used space above threshold of 95.0%, removing from list of valid directories</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Failed to setup application log directory for application_1494574323287_3723</div><div class="line">org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.token.SecretManager$InvalidToken): token (token for optaim: HDFS_DELEGATION_TOKEN owner=optaim@CMDMP.COM, renewer=yarn, realUser=, issueDate=1494607575657, maxDate=1495212375657, sequenceNumber=2291196, masterKeyId=599) can&apos;t be found in cache</div><div class="line"></div><div class="line"></div><div class="line">Error: org.apache.hadoop.mapreduce.task.reduce.Shuffle$ShuffleError: error in shuffle in fetcher#8 at org.apache.hadoop.mapreduce.task.reduce.Shuffle.run(Shuffle.java:134) at org.apache.hadoop.mapred.ReduceTask.run(ReduceTask.java:376) at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:164) at java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:415) at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796) at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:158) Caused by: java.lang.OutOfMemoryError: Java heap space at org.apache.hadoop.io.BoundedByteArrayOutputStream.&lt;init&gt;(BoundedByteArrayOutputStream.java:56) at org.apache.hadoop.io.BoundedByteArrayOutputStream.&lt;init&gt;(BoundedByteArrayOutputStream.java:46) at org.apache.hadoop.mapreduce.task.reduce.InMemoryMapOutput.&lt;init&gt;(InMemoryMapOutput.java:63) at org.apache.hadoop.mapreduce.task.reduce.MergeManagerImpl.unconditionalReserve(MergeManagerImpl.java:309) at org.apache.hadoop.mapreduce.task.reduce.MergeManagerImpl.reserve(MergeManagerImpl.java:299) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.copyMapOutput(Fetcher.java:539) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.copyFromHost(Fetcher.java:348) at org.apache.hadoop.mapreduce.task.reduce.Fetcher.run(Fetcher.java:198)</div></pre></td></tr></table></figure></p>
-
-          
+          yarn nodemanage 参数临时修改到100保证mapreduce shuffle阶段不会因为磁盘检测问题导致写入失败影响作业进度,cm默认配置为95%
+报错如下:Directory /mnt/sdd1/yarn/nm error, used space above threshold of
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[HDFS]Yarn磁盘检查.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1484,7 +1246,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1602,48 +1364,20 @@
       
         
           
-            <h1 id="配置HiveServer2负载平衡代理"><a href="#配置HiveServer2负载平衡代理" class="headerlink" title="配置HiveServer2负载平衡代理"></a>配置HiveServer2负载平衡代理</h1><blockquote>
-<p>操作系统:SUSE11 SP3<br>CM版本:CM5.10.041<br>CDH版本:CDH5.10.041<br>使用root用户对集群进行部署<br><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/admin_ha_hiveserver2.html" target="_blank" rel="noopener">cloudera对应文档</a></p>
-</blockquote>
-<ol>
-<li>下载负载平衡代理软件到需要的主机上。<a href="http://rpm.pbone.net/index.php3/stat/4/idpl/33562430/dir/opensuse/com/haproxy-1.5.14-91.1.x86_64.rpm.html" target="_blank" rel="noopener">haproxy-1.5.14-91.1.x86_64.rpm</a></li>
-<li><p>安装,配置开机启动,修改配置文件后启动haproxy,并检查对应端口是否开启  </p>
-<ol>
-<li>Set the port for the load balancer to listen on and relay HiveServer2 requests back and forth.</li>
-<li>Set the port and hostname for each HiveServer2 host—that is, the hosts from which the load balancer chooses when relaying each query. </li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rpm -ihv haproxy-1.5.14-91.1.x86_64.rpm </div><div class="line">chkconfig haproxy on</div><div class="line">chkconfig --list haproxy </div><div class="line">cp /etc/haproxy/haproxy.cfg /etc/haproxy/bak.cfg</div><div class="line">vi /etc/haproxy/haproxy.cfg </div><div class="line">/etc/init.d/haproxy start</div><div class="line"></div><div class="line">ss -an |grep 10003</div></pre></td></tr></table></figure>
-</p>
-<p>配置文件:<a href="https://issues.cloudera.org/browse/HUE-4990" target="_blank" rel="noopener">因为balance模式选择导致HUE请求超时</a>  </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">global</div><div class="line">    # To have these messages end up in /var/log/haproxy.log you will</div><div class="line">    # need to:</div><div class="line">    #</div><div class="line">    # 1) configure syslog to accept network log events.  This is done</div><div class="line">    #    by adding the &apos;-r&apos; option to the SYSLOGD_OPTIONS in</div><div class="line">    #    /etc/sysconfig/syslog</div><div class="line">    #</div><div class="line">    # 2) configure local2 events to go to the /var/log/haproxy.log</div><div class="line">    #   file. A line like the following can be added to</div><div class="line">    #   /etc/sysconfig/syslog</div><div class="line">    #</div><div class="line">    #    local2.*                       /var/log/haproxy.log</div><div class="line">    #</div><div class="line">    pidfile     /var/run/haproxy.pid</div><div class="line">    nbproc 1</div><div class="line">    maxconn     4000</div><div class="line">    daemon</div><div class="line"></div><div class="line">    # turn on stats unix socket</div><div class="line">    #stats socket /var/lib/haproxy/stats</div><div class="line"></div><div class="line">#---------------------------------------------------------------------</div><div class="line"># common defaults that all the &apos;listen&apos; and &apos;backend&apos; sections will</div><div class="line"># use if not designated in their block</div><div class="line">#</div><div class="line"># You might need to adjust timing values to prevent timeouts.</div><div class="line">#---------------------------------------------------------------------</div><div class="line">defaults</div><div class="line">    mode                    tcp</div><div class="line">    log                     127.0.0.1 local0 err</div><div class="line">    option                  redispatch</div><div class="line">    retries                 3</div><div class="line">    maxconn                 3000</div><div class="line">    contimeout 1800000</div><div class="line">    timeout client 1800000</div><div class="line">    timeout server 1800000</div><div class="line"></div><div class="line">#</div><div class="line"># This sets up the admin page for HA Proxy at port 25002.</div><div class="line">#</div><div class="line">listen stats</div><div class="line">    bind 10.200.65.71:25002</div><div class="line">    balance</div><div class="line">    mode http</div><div class="line">    stats enable</div><div class="line">    stats auth username:password</div><div class="line"></div><div class="line"># This is the setup for Impala. Impala client connect to load_balancer_host:25003.</div><div class="line"># HAProxy will balance connections among the list of servers listed below.</div><div class="line"># The list of Impalad is listening at port 21000 for beeswax (impala-shell) or original ODBC driver.</div><div class="line"># For JDBC or ODBC version 2.x driver, use port 21050 instead of 21000.</div><div class="line">listen hive</div><div class="line">    bind 10.200.65.71:10003</div><div class="line">    mode tcp</div><div class="line">    balance source</div><div class="line">    maxconn 1024</div><div class="line">    server ddp-cm ddp-cm.cmdmp.com:10000 check inter 1800000 rise 1 fall 2</div><div class="line">    server ddp-dn-12 ddp-dn-12.cmdmp.com:10000 check inter 1800000 rise 1 fall 2</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>如果开启hiveserver UDF 配置,需要将之前hiveserver2对应路径下的jar包,放在与之一致的路径里,之后如果更新jar包需要同时更新所有的hiveserver2节点下对应的目录以及haproxy节点下对应的目录</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir -p /opt/local/hive/lib/</div><div class="line">mkdir -p /opt/local/hive/reloadable/</div><div class="line">scp root@10.200.65.50:/opt/local/hive/lib/* /opt/local/hive/lib/</div><div class="line">scp root@10.200.65.50:/opt/local/hive/reloadable/* /opt/local/hive/reloadable/</div><div class="line"></div><div class="line">chown hadoop:hadoop -R /opt/local/hive/lib/</div><div class="line">chown hadoop:hadoop -R /opt/local/hive/reloadable/</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>Run the load-balancing proxy server and point it at the configuration file.</p>
-</li>
-<li><p>In Cloudera Manager, configure HiveServer2 Load Balancer for the proxy server.</p>
-<ol>
-<li>Go to the Hive service.</li>
-<li>Click the Configuration tab.</li>
-<li>Select Scope &gt; HiveServer2.</li>
-<li>Select Category &gt; Main. </li>
-<li>Locate the HiveServer2 Load Balancer property or search for it by typing its name in the Search box.</li>
-<li>Enter values for <code>hostname:port number</code>.</li>
-<li>Click Save Changes to commit the changes.</li>
-<li>Restart the Hive service.<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Note:When you set the HiveServer2 Load Balancer property, Cloudera Manager regenerates the keytabs for HiveServer2 roles. The principal in these keytabs contains the load balancer hostname. If there is a Hue service that depends on this Hive service, it also uses the load balancer to communicate with Hive.</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ol>
-</li>
-<li><p>Point all scripts, jobs, or application configurations to the new proxy server instead of any specific HiveServer2 instance.一旦CM中hive配置配上balance后,原先所有的hiveserver2都将无法继续使用</p>
-</li>
-</ol>
-<p>附录:<a href="http://blog.cloudera.com/blog/2013/08/how-to-achieve-higher-availability-for-hue/" target="_blank" rel="noopener">Higher Availability</a>    </p>
+          配置HiveServer2负载平衡代理
+操作系统:SUSE11 SP3CM版本:CM5.10.041CDH版本:CDH5.10.041使用root用户对集群进行部署cloudera对应文档
 
-          
+
+下载负载平衡代理软件到需要的主机上。haproxy-1.5.14-91.1.x86_64.rpm
+安装,配
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Hive/hiveserver2 haproxy.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1700,7 +1434,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1818,249 +1552,18 @@
       
         
           
-            <h1 id="Hive集成Sentry-无Kerboros认证"><a href="#Hive集成Sentry-无Kerboros认证" class="headerlink" title="Hive集成Sentry(无Kerboros认证)"></a>Hive集成Sentry(无Kerboros认证)</h1><ol>
-<li>在集群中添加Sentry服务<ul>
-<li>sentry-site.xml 的 Sentry 客户端高级配置代码段（安全阀）<ul>
-<li><code>&lt;property&gt;&lt;name&gt;sentry.hive.testing.mode&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在hive服务中修改配置<ul>
-<li>开启sentry服务</li>
-<li>关闭impersonation选项</li>
-<li>sentry-site.xml 的 Hive 服务高级配置代码段（安全阀）<ul>
-<li><code>&lt;property&gt;&lt;name&gt;sentry.hive.testing.mode&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;description&gt;强制开启sentry模式&lt;/description&gt;&lt;/property&gt;</code></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>hive-site.xml 的 Hive Metastore Server 高级配置代码段（安全阀）<ul>
-<li><code>&lt;property&gt;&lt;name&gt;hive.insert.into.multilevel.dirs&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;description&gt;hive MoveTask报错&lt;/description&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hive.reloadable.aux.jars.path&lt;/name&gt;&lt;value&gt;/opt/local/hive/reloadable&lt;/value&gt;&lt;final&gt;true&lt;/final&gt;&lt;description&gt;reload jar&lt;/description&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hive.metastore.pre.event.listeners&lt;/name&gt;&lt;value&gt;org.apache.sentry.binding.metastore.MetastoreAuthzBinding&lt;/value&gt;&lt;final&gt;true&lt;/final&gt;&lt;description&gt;强制开启sentry&lt;/description&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hive.metastore.event.listeners&lt;/name&gt;&lt;value&gt;org.apache.sentry.binding.metastore.SentryMetastorePostEventListener&lt;/value&gt;&lt;final&gt;true&lt;/final&gt;&lt;description&gt;强制开启sentry&lt;/description&gt;&lt;/property&gt;</code></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>hive-site.xml 的 HiveServer2 高级配置代码段（安全阀）<ul>
-<li><code>&lt;property&gt;&lt;name&gt;hive.server2.enable.impersonation&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hive.security.authorization.task.factory&lt;/name&gt;&lt;value&gt;org.apache.sentry.binding.hive.SentryHiveAuthorizationTaskFactoryImpl&lt;/value&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hive.server2.session.hook&lt;/name&gt;&lt;value&gt;org.apache.sentry.binding.hive.HiveAuthzBindingSessionHook&lt;/value&gt;&lt;/property&gt;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在HDFS中可以选择将Hive的权限同步到HDFS上，但是该选项不支持两个Metastore的配置方式，另外启用HDFS ACL提供HDFS上更多的授权<ul>
-<li>启用访问控制列表</li>
-<li>启动Sentry同步</li>
-</ul>
-</li>
-</ol>
-<p>beeline 连接:<br><code>beeline -u &quot;jdbc:hive2://10.200.65.40:10000/&quot; -n hive -p hive -d org.apache.hive.jdbc.HiveDriver</code><br>创建admin role;<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create role admin;</div><div class="line">grant all on server server1 to role admin;</div><div class="line">grant role admin to group hive;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/Cloudera部署CentOS.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Installation/Cloudera部署CentOS.html" itemprop="url">
-                  Cloudera部署CentOS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">2017-06-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>操作系统:CentOS 6.5<br>CM版本:CM5.10.041<br>CDH版本:CDH5.10.041<br>使用version用户对集群进行部署</p>
-</blockquote>
-<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><ul>
-<li>关闭防火墙</li>
-<li>配置时钟同步服务</li>
-<li>检查数据盘是否挂载</li>
-</ul>
-<p>安装的机器ip:<br>192.168.86.119,192.168.86.120,</p>
-<ol>
-<li>安装操作系统，建议对操作系统盘做RAID1</li>
-<li>如果不能连接互联网，先创建OS的repository，以便yum或zypper可以访问OS镜像</li>
-<li>为了使集群中各个节点之间能互相通信，需要静态或动态配置节点的IP地址。如果使用动态配置，请安装DHCP和DNS服务器，具体请参见对应软件的安装文档，此不赘述；如果使用静态IP地址，请正确配置各节点的IP，并在/etc/hosts配置所有节点的静态DNS解析。<br>以cm节点为例：<code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">DEVICE=&quot;bond0&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">IPV6INIT=&quot;no&quot;</div><div class="line">MTU=&quot;1500&quot;</div><div class="line">NM_CONTROLLED=&quot;no&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">TYPE=&quot;Ethernet&quot;</div><div class="line">IPADDR=192.168.60.25</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.60.1</div></pre></td></tr></table></figure>
-</p>
-<p>/etc/hosts样例<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">10.200.65.50    ddp-cm.cmdmp.com    ddp-cm</div><div class="line">10.200.65.51    ddp-nn-01.cmdmp.com ddp-nn-01</div><div class="line">10.200.65.52    ddp-nn-02.cmdmp.com ddp-nn-02</div><div class="line">10.200.65.53    ddp-dn-01.cmdmp.com ddp-dn-01</div><div class="line">10.200.65.54    ddp-dn-02.cmdmp.com ddp-dn-02</div><div class="line">10.200.65.55    ddp-dn-03.cmdmp.com ddp-dn-03</div><div class="line">10.200.65.56    ddp-dn-04.cmdmp.com ddp-dn-04</div><div class="line">10.200.65.57    ddp-dn-05.cmdmp.com ddp-dn-05</div><div class="line">10.200.65.58    ddp-dn-06.cmdmp.com ddp-dn-06</div><div class="line">10.200.65.59    ddp-dn-07.cmdmp.com ddp-dn-07</div><div class="line">10.200.65.60    ddp-dn-08.cmdmp.com ddp-dn-08</div><div class="line">10.200.65.61    ddp-dn-09.cmdmp.com ddp-dn-09</div><div class="line">10.200.65.62    ddp-dn-10.cmdmp.com ddp-dn-10</div><div class="line">10.200.65.63    ddp-dn-11.cmdmp.com ddp-dn-11</div><div class="line">10.200.65.64    ddp-dn-12.cmdmp.com ddp-dn-12</div><div class="line">10.200.65.71    ddp-kettle-02.cmdmp.com ddp-kettle-02</div><div class="line">10.200.63.132   ddp-yonghong-test1.cmdmp.com    ddp-yonghong-test1.cmdmp.com</div><div class="line">10.200.86.119   ddp-sunflower-test1.cmdmp.com   ddp-sunflower-test1.cmdmp.com</div><div class="line">10.200.86.120   ddp-sunflower-test2.cmdmp.com   ddp-sunflower-test2.cmdmp.com</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service network restart</div><div class="line">ping 10.200.86.1</div><div class="line">cd vmware-tools-distrib/</div><div class="line">./vmware-install.pl </div><div class="line">reboot</div><div class="line">groupadd version</div><div class="line">useradd -m -g version version</div><div class="line">echo 2wsx@WSX|passwd --stdin version</div><div class="line">yes|cp -p /etc/sudoers /etc/sudoers_bak</div><div class="line">chmod +x /etc/sudoers</div><div class="line">sed -i &quot;/NOPASSWD: ALL/c %version ALL=(ALL) NOPASSWD: ALL&quot; /etc/sudoers</div><div class="line">chmod -x /etc/sudoers</div><div class="line">yum install daemontools</div><div class="line">route</div><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line">service network restart</div><div class="line">vim /etc/ntp.conf </div><div class="line">/etc/init.d/ntpd start</div></pre></td></tr></table></figure>
-</p>
-<ol>
-<li>关闭并禁用防火墙<br><code>/etc/init.d/iptables stop</code><br><code>/etc/init.d/iptables status</code><br><code>/sbin/chkconfig --level 2345 iptables off</code></li>
-<li>关闭SELinux<br><code>echo &quot;SELINUX=disabled&quot; &gt; /etc/sysconfig/selinux ;</code></li>
-<li>重启网络服务，并初始化网络<br><code>/etc/init.d/network restart</code></li>
-<li>修改transparent_hugepage参数，这一参数默认值可能会导致CDH性能下降<br>在/etc/init.d/after.local中增加一行：<br><code>if test -f /sys/kernel/mm/transparent_hugepage/enabled; then echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled fi</code></li>
-<li>禁用交换内存<br>vi /etc/sysconfig/selinux<br>vi /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo never &gt; /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>vi /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>sudo sysctl vm.swappiness=0<br>vim /etc/sysctl.conf<br>reboot </li>
-<li>如果机器配置有双网卡，可以做双网卡绑定；</li>
-</ol>
-<hr>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hostname ddp-sunflower-test1.cmdmp.com</div><div class="line">hostname </div><div class="line"></div><div class="line">vi /etc/hosts</div><div class="line">vi /etc/krb5.conf </div><div class="line">scp root@10.200.65.71:/home/sunflower/sunflower.keytab .</div><div class="line">ll</div><div class="line">mkdir rpm</div><div class="line">cd rpm/</div><div class="line">scp root@10.200.65.50:/srv/www/htdocs/cloudera/centos_cm/* .</div><div class="line">ll</div><div class="line">yum install ntp</div><div class="line">vi /etc/yum.repos.d/myrepo.repo</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">yum updata</div><div class="line">yum --help</div><div class="line">yum clean</div><div class="line">yum upgrade</div><div class="line">yum repolist</div><div class="line">vi /etc/yum.repos.d/CentOS-Base.repo </div><div class="line">yum upgrade</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">vi /etc/yum.repos.d/CentOS-Base.repo </div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">yum clean</div><div class="line">yum clean all</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">rpm -ivh oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm </div><div class="line">rpm -ivh cloudera-manager-daemons-5.10.0-1.cm5100.p0.85.el6.x86_64.rpm </div><div class="line">find /etc/yum.repos.d/ -name &quot;*.repo&quot; -exec mv &#123;&#125; &#123;&#125;.bak \; </div><div class="line">rpm -ivh --force --nodeps http://10.200.58.39/pub/centos6-1.0-1.el6.x86_64.rpm </div><div class="line">yum clean all </div><div class="line">yum makecache </div><div class="line">mv /etc/yum.repos.d/myrepo.repo.bak /etc/yum.repos.d/myrepo.repo</div><div class="line">yum install oracle-j2sdk1.7</div><div class="line">history</div></pre></td></tr></table></figure></p>
-
-          
+          Hive集成Sentry(无Kerboros认证)
+在集群中添加Sentry服务
+sentry-site.xml 的 Sentry 客户端高级配置代码段（安全阀）
+&lt;property&gt;&lt;name&gt;sentry.hive.testing.mode&lt;/name&gt;&lt
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Hive/Hive配置Sentry(无Kerboros认证).html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2117,7 +1620,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2228,16 +1731,16 @@
       
         
           
-            <p>在mysql的命令提示符下，执行下面一句话,查看mysql服务器的所有全局配置信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show global variables;</div><div class="line">show slave status\G</div><div class="line">show global variables like &quot;%datadir%&quot;;</div></pre></td></tr></table></figure></p>
-<p>前言：之前因为了修改服务器hostname，导致从库同步失败，一直解决不掉，没办法，只能重新设置同步。<br>先停止从库同步，并清空同步信息<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">stop slave；</div><div class="line">reset slave all;</div></pre></td></tr></table></figure></p>
-<p>全量备份主库数据</p>
-<p><code>mysqldump -u root -p --all-databases --routines &gt; senqiang.sql</code><br>全量还原数据库到从库</p>
-<p><code>mysql -uroot -p &lt; senqiang.sql</code><br>查看主库最新的binlog日志偏移量，从库重新授权同步</p>
-<p><code>change master to master_host=&#39;192.168.0.2&#39;,master_user=&#39;syncdb&#39;,master_password=&#39;passwd&#39;,master_log_file=&#39;mysql-bin.000005&#39;,master_log_pos=8188;</code><br>开启从库同步<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">start slave;</div><div class="line">show slave status\G;</div></pre></td></tr></table></figure></p>
-<p>注：备份主库前最好停止主库的写入，记录最新日志偏移量，否则在你还原数据，重新授权同步时会有数据偏差</p>
-<p>Error: Error while compiling statement: FAILED: InvalidConfigurationException hive.server2.authentication can’t be none in non-testing mode (state=42000,code=40000</p>
-
-          
+          在mysql的命令提示符下，执行下面一句话,查看mysql服务器的所有全局配置信息：show global variables;show slave status\Gshow global variables like &quot;%datadir%&quot;;
+前言：之前因为了修改服务器host
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/MySQL/mysql命令.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2289,12 +1792,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/reload_UDF.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Installation/CentOS7(单台)cdh环境初始化.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2308,8 +1811,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Hive/reload_UDF.html" itemprop="url">
-                  reload_UDF
+                <a class="post-title-link" href="/CDH/Installation/CentOS7(单台)cdh环境初始化.html" itemprop="url">
+                  CentOS7(单台)cdh环境初始化
                 </a>
               
             
@@ -2352,7 +1855,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
               
             
           </span>
@@ -2376,7 +1879,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Installation/" itemprop="url" rel="index"><span itemprop="name">Installation</span></a></span>
 
                 
                 
@@ -2412,9 +1915,198 @@
       
         
           
-            <p>步骤就是<br>先在beeline drop对应函数<br>然后本地(每个hiveserver 和hivemetastore机器上) 替换对应jar包<br>然后 beeline 里面 打reload;<br>最后重新create</p>
+          # 替换yum源find /etc/yum.repos.d/ -name "*.repo" -exec mv &#123;&#125; &#123;&#125;.bak \;rpm -ivh --force --nodeps http://10.200.40.49/pub/centos-releas
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Installation/CentOS7(单台)cdh环境初始化.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hive]hive zk 锁分区.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[Hive]hive zk 锁分区.html" itemprop="url">
+                  hive zk 锁分区
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">2017-06-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          错误日志:Got user-level KeeperException when processing sessionid:0x15bfba733be2c2b type:create cxid:0x8621e1c zxid:0x170a4b8e0d txntype:-1 reqpath:n/a Er
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hive]hive zk 锁分区.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2488,7 +2180,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/images/avatar.gif"
                 alt="Nameless13" />
             
               <p class="site-author-name" itemprop="name">Nameless13</p>

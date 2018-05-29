@@ -336,7 +336,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -435,29 +435,16 @@
       
         
           
-            <p>示例:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo echo a &gt; 1.txt</div><div class="line">-bash: 1.txt: Permission denied</div></pre></td></tr></table></figure></p>
-<p>分析：<br>bash 拒绝这么做，说是权限不够.<br>这是因为重定向符号 “&gt;” 也是 bash 的命令。sudo 只是让 echo 命令具有了 root 权限，<br>但是没有让 “&gt;” 命令也具有root 权限，所以 bash 会认为这个命令没有写入信息的权限。</p>
-<p>解决办法：</p>
-<ol>
-<li>利用 “sh -c” 命令，它可以让 bash 将一个字串作为完整的命令来执行，这样就可以将 sudo 的影响范围扩展到整条命令。<br>具体用法如下：</li>
-</ol>
-<p><code>sudo sh -c &quot;echo a &gt; 1.txt&quot;</code></p>
-<p>利用bash -c 也是一样的。</p>
-<ol>
-<li>利用管道和 tee 命令，该命令可以从标准输入中读入信息并将其写入标准输出或文件中，<br>具体用法如下：<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo a |sudo tee 1.txt</div><div class="line">echo a |sudo tee -a 1.txt   // -a 是追加的意思，等同于 &gt;&gt;</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ol>
-<p>tee 命令很好用，它从管道接受信息，一边向屏幕输出，一边向文件写入。</p>
-<ol>
-<li>提升shell 权限。<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo -s        //提到root 权限。提示符为#</div><div class="line">当你觉得该退回到普通权限时，</div><div class="line">sudo su username //退回到username 权限，提示符为$</div></pre></td></tr></table></figure>
-</p>
-</li>
-</ol>
-<p>centos 提升权限: su  -</p>
-<p>ubuntu 提升权限: sudu -s, sudo su</p>
-
-          
+          示例:sudo echo a &gt; 1.txt-bash: 1.txt: Permission denied
+分析：bash 拒绝这么做，说是权限不够.这是因为重定向符号 “&gt;” 也是 bash 的命令。sudo 只是让 echo 命令具有了 root 权限，但是没有让 “&gt;” 命令
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux/sudo使用echo命令提示权限问题.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -514,7 +501,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -620,9 +607,15 @@
       
         
           
-            <h1 id="Hadoop-SUSE操作系统初始化环境脚本"><a href="#Hadoop-SUSE操作系统初始化环境脚本" class="headerlink" title="Hadoop_SUSE操作系统初始化环境脚本"></a>Hadoop_SUSE操作系统初始化环境脚本</h1><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/shell</span></div><div class="line"><span class="comment"># 批量处理鹏博士机房,由于安全加固导致无法使用root账户分发以及批量更改配置的处理脚本</span></div><div class="line"><span class="comment"># for i in `cat servers.txt`</span></div><div class="line"><span class="comment"># do</span></div><div class="line"><span class="comment">#     echo "--------------begin to init $i--------------"</span></div><div class="line"></div><div class="line"><span class="comment">#     scp /tmp/pbs-init.sh $i:/tmp/pbs-init.sh</span></div><div class="line"><span class="comment">#     ssh $i 'sudo sh /tmp/pbs-init.sh'</span></div><div class="line"><span class="comment">#     ssh $i 'sudo rm /tmp/pbs-init.sh'</span></div><div class="line"><span class="comment"># done</span></div><div class="line"></div><div class="line">IP_PW=<span class="string">'XXXXXXX'</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">sycCONF</span></span> ()</div><div class="line">&#123;</div><div class="line">cat &gt; sycCONF.exp&lt;&lt;EOF</div><div class="line"><span class="comment">#!/usr/bin/expect</span></div><div class="line">spawn sudo scp root@10.200.60.114:<span class="variable">$1</span> <span class="variable">$1</span></div><div class="line">expect &#123;</div><div class="line">    <span class="string">"*yes/no"</span> &#123;send <span class="string">"yes\r"</span>; exp_continue&#125;</div><div class="line">    <span class="string">"*assword"</span> &#123;send <span class="string">"<span class="variable">$IP_PW</span>\r"</span>;&#125;</div><div class="line">&#125;</div><div class="line">expect eof</div><div class="line">EOF</div><div class="line">chmod 755 sycCONF.exp</div><div class="line">./sycCONF.exp &gt; /dev/null</div><div class="line">/bin/rm -rf sycCONF.exp</div><div class="line">&#125;</div><div class="line"></div><div class="line">sycCONF <span class="string">'/etc/hosts'</span></div><div class="line">sycCONF <span class="string">'/etc/security/limits.conf'</span></div><div class="line">sycCONF <span class="string">'/tmp/python-psycopg2-2.6.2-3.3.x86_64.rpm'</span></div><div class="line">sycCONF <span class="string">'/tmp/formatdisk.sh'</span></div><div class="line">sycCONF <span class="string">'/tmp/mountdisk.sh'</span></div><div class="line"></div><div class="line">sudo zypper rr local.main</div><div class="line">sudo zypper ar http://10.200.58.39/suse/ local.main</div><div class="line">sudo zypper update</div><div class="line">sudo zypper install -y postgresql91</div><div class="line">sudo zypper install -y krb5-client</div><div class="line">sycCONF <span class="string">'/etc/krb5.conf'</span></div><div class="line">sudo rpm -ivh /tmp/python-psycopg2-2.6.2-3.3.x86_64.rpm</div><div class="line"><span class="comment">#NTP</span></div><div class="line">sycCONF <span class="string">'/etc/ntp.conf'</span></div><div class="line">sudo /sbin/service ntp restart</div><div class="line">sudo /sbin/chkconfig ntp on</div><div class="line"></div><div class="line"><span class="comment">#FIREWALL</span></div><div class="line">sudo /sbin/rcSuSEfirewall2 stop</div><div class="line">sudo /sbin/chkconfig SuSEfirewall2_setup off</div><div class="line"><span class="comment">#SELINUX</span></div><div class="line">sudo /sbin/service boot.apparmor stop</div><div class="line">sudo /sbin/chkconfig boot.apparmor off</div><div class="line"><span class="comment">#HUGEPAGE</span></div><div class="line">sudo bash -c <span class="string">"echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled"</span></div><div class="line">sudo bash -c <span class="string">"echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag"</span></div><div class="line"><span class="comment">#SWAPING</span></div><div class="line">sycCONF <span class="string">'/etc/sysctl.conf'</span></div><div class="line">sudo bash -c <span class="string">"echo 0 &gt;/proc/sys/vm/swappiness"</span></div><div class="line"><span class="comment">#ADDUSER</span></div><div class="line">sudo /usr/sbin/groupadd hadoop</div><div class="line">sudo /usr/sbin/useradd  hadoop</div><div class="line">sudo /usr/sbin/groupadd acc</div><div class="line">sudo /usr/sbin/useradd  acc</div><div class="line">sudo /usr/sbin/groupadd cdmpview</div><div class="line">sudo /usr/sbin/useradd  cdmpview</div><div class="line">sudo /usr/sbin/groupadd oru</div><div class="line">sudo /usr/sbin/useradd  orusudo </div><div class="line"></div><div class="line"><span class="comment">#HOSTNAME</span></div><div class="line">LOCAL_IP=`/sbin/ifconfig|sed -n <span class="string">'/inet addr/s/^[^:]*:\([0-9.]\&#123;7,15\&#125;\) .*/\1/p'</span> |head -1`</div><div class="line">LOCAL_HOSTNAME=`cat /etc/hosts|grep <span class="variable">$LOCAL_IP</span>|awk <span class="string">'&#123;print $2&#125;'</span>`</div><div class="line">sudo bash -c <span class="string">"hostname <span class="variable">$LOCAL_HOSTNAME</span>"</span></div><div class="line">sudo bash -c <span class="string">"echo <span class="variable">$LOCAL_HOSTNAME</span> &gt; /etc/HOSTNAME"</span></div><div class="line">hostname </div><div class="line">hostname -f</div><div class="line">cat /etc/HOSTNAME</div></pre></td></tr></table></figure></p>
-
-          
+          Hadoop_SUSE操作系统初始化环境脚本#!/usr/bin/shell# 批量处理鹏博士机房,由于安全加固导致无法使用root账户分发以及批量更改配置的处理脚本# for i in `cat servers.txt`# do#     echo "--------------begin to 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Shell/Hadoop_SUSE操作系统初始化环境脚本.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -679,7 +672,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -785,9 +778,15 @@
       
         
           
-            <h1 id="Shell脚本中获取本机ip地址的3个方法"><a href="#Shell脚本中获取本机ip地址的3个方法" class="headerlink" title="Shell脚本中获取本机ip地址的3个方法"></a>Shell脚本中获取本机ip地址的3个方法</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &apos;&#123;print $2&#125;&apos;|tr -d &quot;addr:&quot;</div><div class="line">or</div><div class="line"></div><div class="line">/sbin/ifconfig|sed -n &apos;/inet addr/s/^[^:]*:\([0-9.]\&#123;7,15\&#125;\) .*/\1/p&apos;</div><div class="line"></div><div class="line"></div><div class="line">local_host=&quot;`hostname --fqdn`&quot;</div><div class="line">local_ip=`host $local_host 2&gt;/dev/null | awk &apos;&#123;print $NF&#125;&apos;`</div><div class="line"></div><div class="line"></div><div class="line">local_host=&quot;`hostname --fqdn`&quot;</div><div class="line">nslookup -sil $local_host 2&gt;/dev/null | grep Address: | sed &apos;1d&apos; | sed &apos;s/Address://g&apos;</div></pre></td></tr></table></figure></p>
-
-          
+          Shell脚本中获取本机ip地址的3个方法/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &apos;&#123;print $2&#125;&apos;|tr -d &quot;addr:&quot;or/sbin/i
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Shell/Shell脚本中获取本机ip地址的3个方法.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -844,7 +843,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -950,12 +949,15 @@
       
         
           
-            <h1 id="Hive元数据库查询SQL"><a href="#Hive元数据库查询SQL" class="headerlink" title="Hive元数据库查询SQL"></a>Hive元数据库查询SQL</h1><h2 id="列出hive元数据库中所有表所拥有的分区个数"><a href="#列出hive元数据库中所有表所拥有的分区个数" class="headerlink" title="列出hive元数据库中所有表所拥有的分区个数"></a>列出hive元数据库中所有表所拥有的分区个数</h2><p><code>use metastore;select d.NAME, a.TBL_NAME, b.count, c.LOCATION from TBLS a join (select TBL_ID,count(*) as count from PARTITIONS group by TBL_ID ) b join SDS c join DBS d where a.TBL_ID=b.TBL_ID and a.SD_ID=c.SD_ID and a.DB_ID=d.DB_ID order by b.count;</code></p>
-<h2 id="列出hive元数据库中单个database中所有表所拥有的分区个数"><a href="#列出hive元数据库中单个database中所有表所拥有的分区个数" class="headerlink" title="列出hive元数据库中单个database中所有表所拥有的分区个数"></a>列出hive元数据库中单个database中所有表所拥有的分区个数</h2><p><code>use metastore;select d.NAME, a.TBL_NAME, b.count, c.LOCATION from TBLS a join (select TBL_ID,count(*) as count from PARTITIONS group by TBL_ID ) b join SDS c join DBS d on a.TBL_ID=b.TBL_ID and a.SD_ID=c.SD_ID and a.DB_ID=d.DB_ID and d.NAME=&#39;dly&#39; order by b.count;</code></p>
-<h2 id="列出hive元数据库中-所有Database中所有外部表所对应的HDFS路径"><a href="#列出hive元数据库中-所有Database中所有外部表所对应的HDFS路径" class="headerlink" title="列出hive元数据库中,所有Database中所有外部表所对应的HDFS路径"></a>列出hive元数据库中,所有Database中所有外部表所对应的HDFS路径</h2><p><code>use metastore;select d.NAME,a.TBL_NAME,a.TBL_TYPE,c.LOCATION from TBLS a join SDS c join DBS d where a.SD_ID=c.SD_ID and a.DB_ID=d.DB_ID and a.TBL_TYPE=&#39;EXTERNAL_TABLE&#39; order by d.NAME;</code></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">DBNAME  TBL_NAME    TBL_TYPE    LOCATION</div><div class="line">db1   tb1   EXTERNAL_TABLE  hdfs://ns1/user/xxx/test/join300</div><div class="line">db2   tb2   EXTERNAL_TABLE  hdfs://ns1/user/hive/warehouse/db2.db/tb2</div><div class="line">db2   tb3   EXTERNAL_TABLE  hdfs://ns1/user/hive/warehouse/db2.db/tb3</div><div class="line">db2   tb4   EXTERNAL_TABLE  hdfs://ns1/user/hive/warehouse/db2.db/tb4</div><div class="line">db2   tb5   EXTERNAL_TABLE  hdfs://ns1/user/hive/warehouse/db2.db/tb5</div></pre></td></tr></table></figure></p>
-
-          
+          Hive元数据库查询SQL列出hive元数据库中所有表所拥有的分区个数use metastore;select d.NAME, a.TBL_NAME, b.count, c.LOCATION from TBLS a join (select TBL_ID,count(*) as count from
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hive]Hive元数据库SQL查询.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1012,7 +1014,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1118,10 +1120,15 @@
       
         
           
-            <h1 id="DATANODE-Address-already-in-use"><a href="#DATANODE-Address-already-in-use" class="headerlink" title="DATANODE Address already in use"></a>DATANODE Address already in use</h1><p>由于原先这台机器已经部署过cdh环境,因为太旧没有启用,发现kerberos认证有问题log如下,后重新授权datanode角色,重新生成对应keytab文件后,恢复正常<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Exception in secureMain</div><div class="line">java.net.BindException: Problem binding to [ddp-dn-062.cmdmp.com:50020] java.net.BindException: Address already in use; For more details see:  http://wiki.apache.org/hadoop/BindException</div><div class="line">    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">    at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:791)</div><div class="line">    at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:720)</div><div class="line">    at org.apache.hadoop.ipc.Server.bind(Server.java:481)</div><div class="line">    at org.apache.hadoop.ipc.Server$Listener.&lt;init&gt;(Server.java:687)</div><div class="line">    at org.apache.hadoop.ipc.Server.&lt;init&gt;(Server.java:2375)</div><div class="line">    at org.apache.hadoop.ipc.RPC$Server.&lt;init&gt;(RPC.java:1042)</div><div class="line">    at org.apache.hadoop.ipc.ProtobufRpcEngine$Server.&lt;init&gt;(ProtobufRpcEngine.java:535)</div><div class="line">    at org.apache.hadoop.ipc.ProtobufRpcEngine.getServer(ProtobufRpcEngine.java:510)</div><div class="line">    at org.apache.hadoop.ipc.RPC$Builder.build(RPC.java:887)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.initIpcServer(DataNode.java:891)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.startDataNode(DataNode.java:1277)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.&lt;init&gt;(DataNode.java:464)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.makeInstance(DataNode.java:2545)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.instantiateDataNode(DataNode.java:2432)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.createDataNode(DataNode.java:2479)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.secureMain(DataNode.java:2661)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.SecureDataNodeStarter.start(SecureDataNodeStarter.java:77)</div><div class="line">    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)</div><div class="line">    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">    at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">    at org.apache.commons.daemon.support.DaemonLoader.start(DaemonLoader.java:243)</div><div class="line">Caused by: java.net.BindException: Address already in use</div><div class="line">    at sun.nio.ch.Net.bind0(Native Method)</div><div class="line">    at sun.nio.ch.Net.bind(Net.java:444)</div><div class="line">    at sun.nio.ch.Net.bind(Net.java:436)</div><div class="line">    at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)</div><div class="line">    at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)</div><div class="line">    at org.apache.hadoop.ipc.Server.bind(Server.java:464)</div><div class="line">    ... 19 more</div></pre></td></tr></table></figure></p>
-<p>检查了一下所在集群kafka的端口 发现没有被占用 之后重新生成http以及hdfs 对应的kerberos认证解决</p>
-
-          
+          DATANODE Address already in use由于原先这台机器已经部署过cdh环境,因为太旧没有启用,发现kerberos认证有问题log如下,后重新授权datanode角色,重新生成对应keytab文件后,恢复正常Exception in secureMainjava.net.Bi
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[HDFS]DATANODE Address already in use.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1178,7 +1185,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1296,15 +1303,16 @@
       
         
           
-            <h1 id="Hive建表中partition过多导致的zk终止服务"><a href="#Hive建表中partition过多导致的zk终止服务" class="headerlink" title="Hive建表中partition过多导致的zk终止服务"></a>Hive建表中partition过多导致的zk终止服务</h1><p>一个 ZooKeeper 的节点（ znode ）存储两部分内容：数据和状态，状态中包含 ACL 信息。创建一个 znode 会产生一个 ACL 列表，列表中每个 ACL 包括</p>
-<p>需要统计分区(partition)数超过1000的表名,因为后续数据迁移过程中需要对其拆分</p>
-<p>虽然每次建表</p>
-<h2 id="尤其是某些多级分区的hql"><a href="#尤其是某些多级分区的hql" class="headerlink" title="尤其是某些多级分区的hql"></a>尤其是某些多级分区的hql</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PARTITIONED BY (                                   </div><div class="line">   `src_file_day` string,                           </div><div class="line">   `src_file_hour` string,                          </div><div class="line">   `grain_ind` string)                              </div><div class="line"> ROW FORMAT SERDE</div></pre></td></tr></table></figure>
-</p>
-<h2 id="列出hive元数据库中所有表所拥有的分区个数"><a href="#列出hive元数据库中所有表所拥有的分区个数" class="headerlink" title="列出hive元数据库中所有表所拥有的分区个数"></a>列出hive元数据库中所有表所拥有的分区个数</h2><p><code>use metastore;select d.NAME, a.TBL_NAME, b.count, c.LOCATION from TBLS a join (select TBL_ID,count(*) as count from PARTITIONS group by TBL_ID ) b join SDS c join DBS d where a.TBL_ID=b.TBL_ID and a.SD_ID=c.SD_ID and a.DB_ID=d.DB_ID order by b.count;</code></p>
-<h2 id="列出hive元数据库中单个database中所有表所拥有的分区个数"><a href="#列出hive元数据库中单个database中所有表所拥有的分区个数" class="headerlink" title="列出hive元数据库中单个database中所有表所拥有的分区个数"></a>列出hive元数据库中单个database中所有表所拥有的分区个数</h2><p><code>use metastore;select d.NAME, a.TBL_NAME, b.count, c.LOCATION from TBLS a join (select TBL_ID,count(*) as count from PARTITIONS group by TBL_ID ) b join SDS c join DBS d on a.TBL_ID=b.TBL_ID and a.SD_ID=c.SD_ID and a.DB_ID=d.DB_ID and d.NAME=&#39;dly&#39; order by b.count;</code></p>
-
-          
+          Hive建表中partition过多导致的zk终止服务一个 ZooKeeper 的节点（ znode ）存储两部分内容：数据和状态，状态中包含 ACL 信息。创建一个 znode 会产生一个 ACL 列表，列表中每个 ACL 包括
+需要统计分区(partition)数超过1000的表名,因为后续数据
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hive]Hive建表中partition过多导致的zk终止服务.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1361,7 +1369,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1479,13 +1487,15 @@
       
         
           
-            <h1 id="kerberos高可用命令"><a href="#kerberos高可用命令" class="headerlink" title="kerberos高可用命令"></a>kerberos高可用命令</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo vim kpropd.acl</div><div class="line"></div><div class="line">host/dsj-ddp-test-mstr-02@SJTEST.COM</div><div class="line">host/dsj-ddp-test-mstr-06@SJTEST.COM</div><div class="line"></div><div class="line">sudo systemctl enable kprop</div><div class="line">sudo systemctl start kprop</div><div class="line">sudo systemctl status kprop</div><div class="line"></div><div class="line"></div><div class="line">service kprop start</div><div class="line">chkconfig kprop on</div><div class="line"></div><div class="line"></div><div class="line">sudo kprop -f /var/kerberos/krb5kdc/master.dump -d -P 754 dsj-ddp-test-mstr-06@SJTEST.COM</div></pre></td></tr></table></figure>
-</p>
-<h2 id="同步脚本kprop-sync-sh-master节点配置"><a href="#同步脚本kprop-sync-sh-master节点配置" class="headerlink" title="同步脚本kprop_sync.sh master节点配置"></a>同步脚本kprop_sync.sh master节点配置</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo vim kprop_sync.sh</div><div class="line">#!/bin/bash</div><div class="line">DUMP=/var/kerberos/krb5kdc/master.dump</div><div class="line">PORT=754</div><div class="line">SLAVE=&quot;dsj-ddp-test-mstr-06&quot;</div><div class="line">TIMESTAMP=`date`</div><div class="line">echo &quot;Start at $TIMESTAMP&quot;</div><div class="line">sudo kdb5_utildump $DUMP</div><div class="line">sudo kprop -f $DUMP -d -P $PORT $SLAVE</div></pre></td></tr></table></figure>
-</p>
-<h2 id="定时同步配置"><a href="#定时同步配置" class="headerlink" title="定时同步配置"></a>定时同步配置</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo chmod 700 /var/kerberos/krb5kdc/kprop_sync.sh</div><div class="line">sudo sh /var/kerberos/krb5kdc/kprop_sync.sh </div><div class="line"></div><div class="line">sudo crontab -e</div><div class="line">0 * * * * root/var/kerberos/krb5kdc/kprop_sync.sh &gt;/var/kerberos/krb5kdc/lastupdate</div><div class="line"></div><div class="line">sudo systemctl enable crond</div><div class="line">sudo systemctl start crond</div></pre></td></tr></table></figure></p>
-
-          
+          kerberos高可用命令sudo vim kpropd.aclhost/dsj-ddp-test-mstr-02@SJTEST.COMhost/dsj-ddp-test-mstr-06@SJTEST.COMsudo systemctl enable kpropsudo systemctl star
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Kerberos MIT/kerberos 高可用命令.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1542,7 +1552,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1660,12 +1670,15 @@
       
         
           
-            <h1 id="hiveserver2-GC异常"><a href="#hiveserver2-GC异常" class="headerlink" title="hiveserver2 GC异常"></a>hiveserver2 GC异常</h1><p>发现hiverserver2 GC时间超时,重启实例后故障修复,之后排查日志和监控后发现每两小时其中一个hiveserver2中的<br>Open Connections达到上限100,Open Operations 突增到800,大概持续15min左右,如果这时候负载高的话,很有可能GC就出现问题,之后和开发定位到具体流程,由于开发这个流程的开发已经离职并且目前也不再需要该流程,便做下线处理,观察下线后之后的指标趋势正常</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">3月 1, 晚上11点05:21.293分   INFO    org.apache.hadoop.hive.ql.Driver    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Compiling command(queryId=hive_20180301230505_ea12c229-3d8e-4790-b386-40cdf3f7b76e): DESCRIBE FORMATTED `cdmp_dw`.`t2`</div><div class="line">3月 1, 晚上11点05:21.293分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;PERFLOG method=parse from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.293分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;/PERFLOG method=parse start=1519916721293 end=1519916721293 duration=0 from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.293分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;PERFLOG method=semanticAnalyze from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.313分   INFO    org.apache.sentry.binding.hive.conf.HiveAuthzConf   </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: DefaultFS: hdfs://ns1</div><div class="line">3月 1, 晚上11点05:21.327分   INFO    org.apache.sentry.binding.hive.conf.HiveAuthzConf   </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: DefaultFS: hdfs://ns1</div><div class="line">3月 1, 晚上11点05:21.328分   WARN    org.apache.sentry.binding.hive.conf.HiveAuthzConf   </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Using the deprecated config setting hive.sentry.server instead of sentry.hive.server</div><div class="line">3月 1, 晚上11点05:21.328分   WARN    org.apache.sentry.binding.hive.conf.HiveAuthzConf   </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Using the deprecated config setting hive.sentry.provider instead of sentry.provider</div><div class="line">3月 1, 晚上11点05:21.344分   ERROR   hive.ql.metadata.Hive   </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Table cdmp_dw not found: cdmp_dw.cdmp_dw table not found</div><div class="line">3月 1, 晚上11点05:21.348分   ERROR   hive.ql.metadata.Hive   </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Table cdmp_dw not found: cdmp_dw.cdmp_dw table not found</div><div class="line">3月 1, 晚上11点05:21.352分   ERROR   org.apache.hadoop.hive.ql.Driver    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: FAILED: SemanticException [Error 10001]: Table not found cdmp_dw.t2</div><div class="line">org.apache.hadoop.hive.ql.parse.SemanticException: Table not found cdmp_dw.t2</div><div class="line">    at org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer.getTable(BaseSemanticAnalyzer.java:1345)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer.getTable(BaseSemanticAnalyzer.java:1324)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.DDLSemanticAnalyzer.analyzeDescribeTable(DDLSemanticAnalyzer.java:2027)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.DDLSemanticAnalyzer.analyzeInternal(DDLSemanticAnalyzer.java:317)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer.analyze(BaseSemanticAnalyzer.java:223)</div><div class="line">    at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:490)</div><div class="line">    at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1276)</div><div class="line">    at org.apache.hadoop.hive.ql.Driver.compileAndRespond(Driver.java:1263)</div><div class="line">    at org.apache.hive.service.cli.operation.SQLOperation.prepare(SQLOperation.java:186)</div><div class="line">    at org.apache.hive.service.cli.operation.SQLOperation.runInternal(SQLOperation.java:267)</div><div class="line">    at org.apache.hive.service.cli.operation.Operation.run(Operation.java:337)</div><div class="line">    at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatementInternal(HiveSessionImpl.java:439)</div><div class="line">    at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatement(HiveSessionImpl.java:405)</div><div class="line">    at org.apache.hive.service.cli.CLIService.executeStatement(CLIService.java:257)</div><div class="line">    at org.apache.hive.service.cli.thrift.ThriftCLIService.ExecuteStatement(ThriftCLIService.java:501)</div><div class="line">    at org.apache.hive.service.cli.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1313)</div><div class="line">    at org.apache.hive.service.cli.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1298)</div><div class="line">    at org.apache.thrift.ProcessFunction.process(ProcessFunction.java:39)</div><div class="line">    at org.apache.thrift.TBaseProcessor.process(TBaseProcessor.java:39)</div><div class="line">    at org.apache.hadoop.hive.thrift.HadoopThriftAuthBridge$Server$TUGIAssumingProcessor.process(HadoopThriftAuthBridge.java:746)</div><div class="line">    at org.apache.thrift.server.TThreadPoolServer$WorkerProcess.run(TThreadPoolServer.java:286)</div><div class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)</div><div class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)</div><div class="line">    at java.lang.Thread.run(Thread.java:745)</div><div class="line"></div><div class="line">3月 1, 晚上11点05:21.352分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;/PERFLOG method=compile start=1519916721293 end=1519916721352 duration=59 from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.352分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;/PERFLOG method=compile start=1519916721293 end=1519916721352 duration=59 from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.352分   INFO    org.apache.hadoop.hive.ql.Driver    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Completed compiling command(queryId=hive_20180301230505_ea12c229-3d8e-4790-b386-40cdf3f7b76e); Time taken: 0.059 seconds</div><div class="line">3月 1, 晚上11点05:21.352分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;PERFLOG method=releaseLocks from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.352分   INFO    org.apache.hadoop.hive.ql.log.PerfLogger    </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: &lt;/PERFLOG method=releaseLocks start=1519916721352 end=1519916721352 duration=0 from=org.apache.hadoop.hive.ql.Driver&gt;</div><div class="line">3月 1, 晚上11点05:21.353分   INFO    org.apache.hive.service.cli.operation.OperationManager  </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Closing operation: OperationHandle [opType=EXECUTE_STATEMENT, getHandleIdentifier()=117fb698-54af-473e-8072-97f413c8758c]</div><div class="line">3月 1, 晚上11点05:21.353分   WARN    org.apache.hive.service.cli.thrift.ThriftCLIService </div><div class="line">[HiveServer2-Handler-Pool: Thread-7291541]: Error executing statement: </div><div class="line">org.apache.hive.service.cli.HiveSQLException: Error while compiling statement: FAILED: SemanticException [Error 10001]: Table not found cdmp_dw.t2</div><div class="line">    at org.apache.hive.service.cli.operation.Operation.toSQLException(Operation.java:400)</div><div class="line">    at org.apache.hive.service.cli.operation.SQLOperation.prepare(SQLOperation.java:188)</div><div class="line">    at org.apache.hive.service.cli.operation.SQLOperation.runInternal(SQLOperation.java:267)</div><div class="line">    at org.apache.hive.service.cli.operation.Operation.run(Operation.java:337)</div><div class="line">    at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatementInternal(HiveSessionImpl.java:439)</div><div class="line">    at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatement(HiveSessionImpl.java:405)</div><div class="line">    at org.apache.hive.service.cli.CLIService.executeStatement(CLIService.java:257)</div><div class="line">    at org.apache.hive.service.cli.thrift.ThriftCLIService.ExecuteStatement(ThriftCLIService.java:501)</div><div class="line">    at org.apache.hive.service.cli.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1313)</div><div class="line">    at org.apache.hive.service.cli.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1298)</div><div class="line">    at org.apache.thrift.ProcessFunction.process(ProcessFunction.java:39)</div><div class="line">    at org.apache.thrift.TBaseProcessor.process(TBaseProcessor.java:39)</div><div class="line">    at org.apache.hadoop.hive.thrift.HadoopThriftAuthBridge$Server$TUGIAssumingProcessor.process(HadoopThriftAuthBridge.java:746)</div><div class="line">    at org.apache.thrift.server.TThreadPoolServer$WorkerProcess.run(TThreadPoolServer.java:286)</div><div class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)</div><div class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)</div><div class="line">    at java.lang.Thread.run(Thread.java:745)</div><div class="line">Caused by: org.apache.hadoop.hive.ql.parse.SemanticException: Table not found cdmp_dw.t2</div><div class="line">    at org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer.getTable(BaseSemanticAnalyzer.java:1345)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer.getTable(BaseSemanticAnalyzer.java:1324)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.DDLSemanticAnalyzer.analyzeDescribeTable(DDLSemanticAnalyzer.java:2027)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.DDLSemanticAnalyzer.analyzeInternal(DDLSemanticAnalyzer.java:317)</div><div class="line">    at org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer.analyze(BaseSemanticAnalyzer.java:223)</div><div class="line">    at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:490)</div><div class="line">    at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1276)</div><div class="line">    at org.apache.hadoop.hive.ql.Driver.compileAndRespond(Driver.java:1263)</div><div class="line">    at org.apache.hive.service.cli.operation.SQLOperation.prepare(SQLOperation.java:186)</div><div class="line">    ... 15 more</div></pre></td></tr></table></figure>
-</p>
-<p>后续找到开发负责人停止对应流程,同时调大hiveserver2中的Open Connections上限</p>
-
-          
+          hiveserver2 GC异常发现hiverserver2 GC时间超时,重启实例后故障修复,之后排查日志和监控后发现每两小时其中一个hiveserver2中的Open Connections达到上限100,Open Operations 突增到800,大概持续15min左右,如果这时候负载高的话
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hive]Hiveserver2 Open Connections导致GC异常.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1722,7 +1735,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1840,11 +1853,18 @@
       
         
           
-            <h1 id="hive定位异常hql查询"><a href="#hive定位异常hql查询" class="headerlink" title="hive定位异常hql查询"></a>hive定位异常hql查询</h1><p>由于集群HDFS突然增加1个p的存储量,怀疑有任务提交异常</p>
-<p>可以在查到具体的hive查询id<br>hdfs:/nameservice/tmp/hive/hive/<br>然后通过找到YARN对应的application定位出具体hql</p>
-<p>后续建议开发增加groupby以及优化join</p>
+          hive定位异常hql查询由于集群HDFS突然增加1个p的存储量,怀疑有任务提交异常
+可以在查到具体的hive查询idhdfs:/nameservice/tmp/hive/hive/然后通过找到YARN对应的application定位出具体hql
+后续建议开发增加groupby以及优化join
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hive]hive定位异常hql查询.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1901,7 +1921,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2019,9 +2039,15 @@
       
         
           
-            <h1 id="python-虚拟环境activate脚本"><a href="#python-虚拟环境activate脚本" class="headerlink" title="python 虚拟环境activate脚本"></a>python 虚拟环境activate脚本</h1><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># This file must be used with "source bin/activate" *from bash*</span></div><div class="line"><span class="comment"># you cannot run it directly</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">deactivate</span></span> () &#123;</div><div class="line">    <span class="built_in">unset</span> pydoc</div><div class="line"></div><div class="line">    <span class="comment"># reset old environment variables</span></div><div class="line">    <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$_OLD_VIRTUAL_PATH</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">        PATH=<span class="string">"<span class="variable">$_OLD_VIRTUAL_PATH</span>"</span></div><div class="line">        <span class="built_in">export</span> PATH</div><div class="line">        <span class="built_in">unset</span> _OLD_VIRTUAL_PATH</div><div class="line">    <span class="keyword">fi</span></div><div class="line">    <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$_OLD_VIRTUAL_PYTHONHOME</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">        PYTHONHOME=<span class="string">"<span class="variable">$_OLD_VIRTUAL_PYTHONHOME</span>"</span></div><div class="line">        <span class="built_in">export</span> PYTHONHOME</div><div class="line">        <span class="built_in">unset</span> _OLD_VIRTUAL_PYTHONHOME</div><div class="line">    <span class="keyword">fi</span></div><div class="line"></div><div class="line">    <span class="comment"># This should detect bash and zsh, which have a hash command that must</span></div><div class="line">    <span class="comment"># be called to get it to forget past commands.  Without forgetting</span></div><div class="line">    <span class="comment"># past commands the $PATH changes we made may not be respected</span></div><div class="line">    <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$BASH</span>"</span> -o -n <span class="string">"<span class="variable">$ZSH_VERSION</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">        <span class="built_in">hash</span> -r 2&gt;/dev/null</div><div class="line">    <span class="keyword">fi</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$_OLD_VIRTUAL_PS1</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">        PS1=<span class="string">"<span class="variable">$_OLD_VIRTUAL_PS1</span>"</span></div><div class="line">        <span class="built_in">export</span> PS1</div><div class="line">        <span class="built_in">unset</span> _OLD_VIRTUAL_PS1</div><div class="line">    <span class="keyword">fi</span></div><div class="line"></div><div class="line">    <span class="built_in">unset</span> VIRTUAL_ENV</div><div class="line">    <span class="keyword">if</span> [ ! <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"nondestructive"</span> ] ; <span class="keyword">then</span></div><div class="line">    <span class="comment"># Self destruct!</span></div><div class="line">        <span class="built_in">unset</span> -f deactivate</div><div class="line">    <span class="keyword">fi</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># unset irrelevant variables</span></div><div class="line">deactivate nondestructive</div><div class="line"></div><div class="line">VIRTUAL_ENV=<span class="string">"/usr/lib/hue/build/env"</span></div><div class="line"><span class="built_in">export</span> VIRTUAL_ENV</div><div class="line"></div><div class="line">_OLD_VIRTUAL_PATH=<span class="string">"<span class="variable">$PATH</span>"</span></div><div class="line">PATH=<span class="string">"<span class="variable">$VIRTUAL_ENV</span>/bin:<span class="variable">$PATH</span>"</span></div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"></div><div class="line"><span class="comment"># unset PYTHONHOME if set</span></div><div class="line"><span class="comment"># this will fail if PYTHONHOME is set to the empty string (which is bad anyway)</span></div><div class="line"><span class="comment"># could use `if (set -u; : $PYTHONHOME) ;` in bash</span></div><div class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$PYTHONHOME</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">    _OLD_VIRTUAL_PYTHONHOME=<span class="string">"<span class="variable">$PYTHONHOME</span>"</span></div><div class="line">    <span class="built_in">unset</span> PYTHONHOME</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$VIRTUAL_ENV_DISABLE_PROMPT</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">    _OLD_VIRTUAL_PS1=<span class="string">"<span class="variable">$PS1</span>"</span></div><div class="line">    <span class="keyword">if</span> [ <span class="string">"x"</span> != x ] ; <span class="keyword">then</span></div><div class="line">        PS1=<span class="string">"<span class="variable">$PS1</span>"</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">    <span class="keyword">if</span> [ <span class="string">"`basename \"<span class="variable">$VIRTUAL_ENV</span>\"`"</span> = <span class="string">"__"</span> ] ; <span class="keyword">then</span></div><div class="line">        <span class="comment"># special case for Aspen magic directories</span></div><div class="line">        <span class="comment"># see http://www.zetadev.com/software/aspen/</span></div><div class="line">        PS1=<span class="string">"[`basename \`dirname \"<span class="variable">$VIRTUAL_ENV</span>\"\``] <span class="variable">$PS1</span>"</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        PS1=<span class="string">"(`basename \"<span class="variable">$VIRTUAL_ENV</span>\"`)<span class="variable">$PS1</span>"</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line">    <span class="built_in">export</span> PS1</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">alias</span> pydoc=<span class="string">"python -m pydoc"</span></div><div class="line"></div><div class="line"><span class="comment"># This should detect bash and zsh, which have a hash command that must</span></div><div class="line"><span class="comment"># be called to get it to forget past commands.  Without forgetting</span></div><div class="line"><span class="comment"># past commands the $PATH changes we made may not be respected</span></div><div class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$BASH</span>"</span> -o -n <span class="string">"<span class="variable">$ZSH_VERSION</span>"</span> ] ; <span class="keyword">then</span></div><div class="line">    <span class="built_in">hash</span> -r 2&gt;/dev/null</div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure></p>
-
-          
+          python 虚拟环境activate脚本# This file must be used with "source bin/activate" *from bash*# you cannot run it directlydeactivate () &#123;    unset pydoc   
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Shell/python_虚拟环境activate.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2095,7 +2121,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/images/avatar.gif"
                 alt="Nameless13" />
             
               <p class="site-author-name" itemprop="name">Nameless13</p>

@@ -331,194 +331,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/Hive Metastore Server僵死.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Hive/Hive Metastore Server僵死.html" itemprop="url">
-                  Hive Metastore Server 僵死
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Hive-Metastore-Server-僵死"><a href="#Hive-Metastore-Server-僵死" class="headerlink" title="Hive Metastore Server 僵死"></a>Hive Metastore Server 僵死</h1><p>现状: 在Hive Metastore Server上的角色只要停止服务,就无法再启动</p>
-<p>开头怀疑是cloudera-scm-agent 出问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">877  2017-05-24 15:50:05 /etc/init.d/cloudera-scm-agent stop</div><div class="line">878  2017-05-24 15:50:15 ss -anp|grep 9000</div><div class="line">879  2017-05-24 15:50:39 ps axu|grep agent</div><div class="line">880  2017-05-24 15:51:08 ss -anp|grep 9000</div><div class="line">881  2017-05-24 15:51:18 /etc/init.d/cloudera-scm-agent start</div><div class="line">882  2017-05-24 15:51:27 /etc/init.d/cloudera-scm-agent status</div><div class="line">883  2017-05-24 15:51:51 ss -anp|grep 9000</div><div class="line">884  2017-05-24 15:55:14 cd /var/log/</div></pre></td></tr></table></figure></p>
-<p>重启服务后发现依旧</p>
-<p>于是怀疑IO问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">891  2017-05-24 16:04:03 ulimit -a</div><div class="line">892  2017-05-24 16:04:55 cat /etc/passwd</div><div class="line"></div><div class="line">896  2017-05-24 16:07:10 vi /etc/security/limits.conf </div><div class="line">897  2017-05-24 16:08:14 ulimit -a</div><div class="line">898  2017-05-24 16:09:38 lsof -n |awk &apos;&#123;print $2&#125;&apos;|sort|uniq -c |sort -nr|more</div></pre></td></tr></table></figure></p>
-<p>设置最大文件打开数<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ftp             hard    nproc           0</div><div class="line">#@student        -       maxlogins       4</div><div class="line"></div><div class="line">*                soft    nofile          65535</div><div class="line">*                hard    nofile          65535</div></pre></td></tr></table></figure></p>
-<p>之后reboot解决</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hbase]Hbase ZK锁表.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -636,22 +454,17 @@
       
         
           
-            <h1 id="Hbase-ZK锁表"><a href="#Hbase-ZK锁表" class="headerlink" title="Hbase ZK锁表"></a>Hbase ZK锁表</h1><p>开发反复create drop table 导致zk的数据不同步<br>首先到Zookeeper中<strong>/hbase/table-lock</strong> 和<strong>/hbase/table</strong> 两个目录删除对应的表</p>
-<p><code>rmr /hbase/table-lock/user_order_info</code></p>
-<p>之后重启Hbase集群,发现报错<strong>/hbase/.tmp/</strong> 在HDFS中发现刚刚锁住的表还在被占用中,必须手动删除</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">5月 16, 上午10点55:19.778分	ERROR	org.apache.hadoop.hbase.backup.HFileArchiver	</div><div class="line">Failed to archive class org.apache.hadoop.hbase.backup.HFileArchiver$FileablePath, file:hdfs://nameservice2/hbase/.tmp/data/default/user_order_info/63fa237eba286bf13d01d0e04b13d149/info/88be874a75d345af848dfd07f0ff0340_SeqId_55_</div><div class="line"></div><div class="line"></div><div class="line">5月 16, 上午10点55:19.467分	ERROR	org.apache.hadoop.hbase.backup.HFileArchiver	</div><div class="line">Failed to archive class org.apache.hadoop.hbase.backup.HFileArchiver$FileablePath, file:hdfs://nameservice2/hbase/.tmp/data/default/user_order_info/63fa237eba286bf13d01d0e04b13d149/info/88be874a75d345af848dfd07f0ff0340_SeqId_55_</div></pre></td></tr></table></figure>
-</p>
-<p>手动删除后发现,HMaster节点虽然启动成功但不能被选举为active,读取日志发现,打开文件数过多,最终导致HMaster节点一段时间后自动停止服务,</p>
-<ul>
-<li>开始的想法是通过<code>ulimit -n</code>手动调整hbase用户所能打开的最大文件数,发现修改后不起作用</li>
-<li>把/hbase//MasterProcWALs目录下的文件mv出去</li>
-<li>同时需要删除HDFS下tmp目录下对应的临时文件，然后重启成功</li>
-</ul>
-<p>因为HMaster启动的时候会加载这个目录下的所有文件，才会导致too many open files,这个是HBase自身的问题导致是HDFS的connection太多了,重启太多，然后又失败导致的。重启成功后，所有那个目录下的文件应该会被删除的</p>
-<hr>
-<p>第二天 发现RegionServer 陆续停止服务<br>通过调大 HBase REST Server 最大线程,重启服务解决 </p>
-
-          
+          Hbase ZK锁表开发反复create drop table 导致zk的数据不同步首先到Zookeeper中/hbase/table-lock 和/hbase/table 两个目录删除对应的表
+rmr /hbase/table-lock/user_order_info
+之后重启Hbase集群,发现
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hbase]Hbase ZK锁表.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -703,12 +516,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Spark/Cloudera平台安装Apache Spark 2.0 Beta版本.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/hive impala  培训.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -722,8 +535,192 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Spark/Cloudera平台安装Apache Spark 2.0 Beta版本.html" itemprop="url">
-                  选择和配置数据压缩
+                <a class="post-title-link" href="/CDH/Notes/hive impala  培训.html" itemprop="url">
+                  hive impala  培训
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          $ADIR is a shortcut that points to the /home/training/training_materials/analyst directory
+Click Select files to bring up a file browser. By default, 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Notes/hive impala  培训.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/添加HiveServer2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Hive/添加HiveServer2.html" itemprop="url">
+                  添加HiveServer2角色
                 </a>
               
             
@@ -790,7 +787,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -826,9 +823,15 @@
       
         
           
-            <h1 id="Cloudera平台安装Apache-Spark-2-0-Beta版本"><a href="#Cloudera平台安装Apache-Spark-2-0-Beta版本" class="headerlink" title="Cloudera平台安装Apache Spark 2.0 Beta版本"></a>Cloudera平台安装Apache Spark 2.0 Beta版本</h1><p><a href="http://www.cloudera.com/documentation/betas/spark2/latest/topics/spark2.html" target="_blank" rel="noopener">兼容信息</a><br><a href="https://www.cloudera.com/documentation/spark2/latest/topics/spark2_installing.html" target="_blank" rel="noopener">安装步骤</a></p>
-
-          
+          添加HiveServer2角色HIVE–&gt;实例–&gt;添加角色实例–&gt;选择HiveServer2添加一台主机 ddp-dn-12.cmdmp.com   192.168.65.64添加成功后,会显示没有该角色的keytab到在节点上选择操作–&gt; 停止主机上的角色成功后选择操作–&
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Hive/添加HiveServer2.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -885,7 +888,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -996,22 +999,20 @@
       
         
           
-            <h1 id="Python文件处理"><a href="#Python文件处理" class="headerlink" title="Python文件处理"></a>Python文件处理</h1><p>文件打开方法: open(name[,mode[buf]])<br>name: 文件路径<br>mode: 打开方式<br>buf: 缓冲buffering大小</p>
-<ul>
-<li>文件读取方式:<ul>
-<li>read([size]):读取文件(读取size个字节,默认读取全部)</li>
-<li>readline([size]):读取一行</li>
-<li>readlines([size]):读取完文件,返回每一行所组成的列表</li>
-</ul>
-</li>
-<li>文件写入方式:<ul>
-<li>write(str):将字符串写入文件</li>
-<li>writelines(sequence_of_strings):写多行到文件</li>
-</ul>
-</li>
-</ul>
+          Python文件处理文件打开方法: open(name[,mode[buf]])name: 文件路径mode: 打开方式buf: 缓冲buffering大小
 
-          
+文件读取方式:
+read([size]):读取文件(读取size个字节,默认读取全部)
+readline([size]):读取一行
+read
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/python/Python文件处理.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1068,7 +1069,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1186,301 +1187,18 @@
       
         
           
-            <p>rz、sz命令结合方便的上下传文件，但经过跳板机之后直接rz、sz一个稍大的文件会在上传一部分后退出并显示一堆乱码，这是因为这中间有控制字符的原因。 </p>
-<p><strong>解决办法：</strong> 加参数-e忽略控制字符：rz -e和sz -e</p>
-<p>rz，sz是Linux/Unix同Windows进行ZModem文件传输的命令行工具。</p>
-<p>windows端需要支持ZModem的telnet/ssh客户端（比如SecureCRT），运行命令rz即是接收文件，SecureCRT就会弹出文件选择对话框，选好文件之后关闭对话框，文件就会上传到当前目录。注意：单独用rz会有两个问题：上传中断、上传文件变化（md5不同），解决办法是上传时用rz -be，并且去掉弹出的对话框中“Upload files as ASCII”前的勾选。-a, –ascii -b, –binary ，用binary的方式上传下载，不解释字符为ascii，-e, –escape 强制escape 所有控制字符，比如Ctrl+x，DEL等rar,gif等文件。采用 -b 用binary的方式上传。文件比较大而上传出错的话，采用参数 -e。如果用不带参数的rz命令上传大文件时，常常上传一半就断掉了，很可能是rz以为上传的流中包含某些特殊控制字符，造成rz提前退出</p>
+          rz、sz命令结合方便的上下传文件，但经过跳板机之后直接rz、sz一个稍大的文件会在上传一部分后退出并显示一堆乱码，这是因为这中间有控制字符的原因。 
+解决办法： 加参数-e忽略控制字符：rz -e和sz -e
+rz，sz是Linux/Unix同Windows进行ZModem文件传输的命令行工具。
 
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/介绍.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Notes/介绍.html" itemprop="url">
-                  介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">2017-06-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="host"><a href="#host" class="headerlink" title="host"></a>host</h2><ul>
-<li>hostname </li>
-<li>ntp </li>
-<li>/etc/hosts</li>
-<li>cloudera-angent <ul>
-<li>服务安装</li>
-<li>上报日志</li>
-<li>角色状态检查</li>
-</ul>
-</li>
-</ul>
-<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><ul>
-<li>本质也是一个文件系统 不过是把单个文件的块大小放大.同时一份数据会备份两次在不同的host上</li>
-<li>权限 <ul>
-<li>Sentry HDFS同步 需要解除hive metastroe HA</li>
-<li>同时需要开启ACL权限认证</li>
-</ul>
-</li>
-<li>磁盘损坏<ul>
-<li>先判断该主机的host能否暂停服务</li>
-<li>停止该host的所有角色</li>
-<li>在DATANODE角色的配置文件里面删除对应挂载分区</li>
-<li>启用该host的所有角色</li>
-<li>报障 更换硬盘后</li>
-</ul>
-</li>
-<li><p>Balance</p>
-<ul>
-<li>可以在不同DATANODE节点中做负载均衡</li>
-<li>也可以在单个DATANODE上做不同挂载盘的负载均衡</li>
-</ul>
-</li>
-<li><p>NameNode</p>
-<ul>
-<li>NameNode管理文件系统的命名空间。它维护着文件系统树及整棵树内所有的文件和目录。这些信息以两个文件形式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件。</li>
-<li></li>
-</ul>
-</li>
-<li><p>JournalNode</p>
-<ul>
-<li>两个NameNode为了数据同步，会通过一组称作JournalNodes的独立进程进行相互通信。当active状态的NameNode的命名空间有任何修改时，会告知大部分的JournalNodes进程。standby状态的NameNode有能力读取JNs中的变更信息，并且一直监控edit log的变化，把变化应用于自己的命名空间。standby可以确保在集群出错时，命名空间状态已经完全同步了。</li>
-</ul>
-</li>
-<li><p>Failover Controller</p>
-</li>
-<li>Gateway</li>
-<li><p>HttpFS</p>
-<ul>
-<li>httpfs是cloudera公司提供的一个hadoop hdfs的一个http接口，通过WebHDFS REST API 可以对hdfs进行读写等访问</li>
-</ul>
-</li>
-<li><p>kerberos</p>
-</li>
-</ul>
-<h2 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h2><ul>
-<li>hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。</li>
-<li>元数据库用的是两个MySQL</li>
-<li><p>HiveServer2 </p>
-<ul>
-<li>支持sentry</li>
-<li>过多连接会导致JVM heap 过大,造成GC时间过长,最后导致该角色拒绝服务</li>
-</ul>
-</li>
-<li><p>Hive cli</p>
-<ul>
-<li>不支持sentry 不受权限管控 </li>
-</ul>
-</li>
-<li>UDF 自定义函数 <ul>
-<li>5.7 以后create function 方式有改动 禁止使用add jar语法<ul>
-<li>不写location 默认读取AUX 下也就是 hiverserver2 和 metastore 所在主机上必须创建相同路径且文件保持一致的jar包</li>
-<li>写location是读取HDFS上的jar包</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Gateway</li>
-</ul>
-<h2 id="Hue"><a href="#Hue" class="headerlink" title="Hue"></a>Hue</h2><ul>
-<li>是一个开源的Apache Hadoop UI系统,最早是由Cloudera Desktop演化而来,由Cloudera贡献给开源社区,它是基于Python Web框架Django实现的。</li>
-<li>基于文件浏览器（File Browser）访问HDFS</li>
-<li>基于Hive编辑器来开发和运行Hive查询</li>
-<li>支持基于Solr进行搜索的应用，并提供可视化的数据视图，以及仪表板（Dashboard）</li>
-<li>支持基于Impala的应用进行交互式查询</li>
-<li>支持Spark编辑器和仪表板（Dashboard）</li>
-<li>支持Pig编辑器，并能够提交脚本任务</li>
-<li>支持Oozie编辑器，可以通过仪表板提交和监控Workflow、Coordinator和Bundle</li>
-<li>支持HBase浏览器，能够可视化数据、查询数据、修改HBase表</li>
-<li>支持Metastore浏览器，可以访问Hive的元数据，以及HCatalog</li>
-<li>支持Job浏览器，能够访问MapReduce Job（MR1/MR2-YARN）</li>
-<li>支持Job设计器，能够创建MapReduce/Streaming/Java Job</li>
-<li>支持Sqoop 2编辑器和仪表板（Dashboard）</li>
-<li>支持ZooKeeper浏览器和编辑器</li>
-<li>支持MySql、PostGresql、Sqlite和Oracle数据库查询编辑器</li>
-</ul>
-<h2 id="impala"><a href="#impala" class="headerlink" title="impala"></a>impala</h2><ul>
-<li>Impala是Cloudera公司主导开发的新型查询系统，它提供SQL语义，能查询存储在Hadoop的HDFS和HBase中的PB级大数据。已有的Hive系统虽然也提供了SQL语义，但由于Hive底层执行使用的是MapReduce引擎，仍然是一个批处理过程，难以满足查询的交互性。相比之下，Impala的最大特点也是最大卖点就是它的快速。但是不稳定</li>
-<li>过度频繁的访问会导致impala daemon 的端口无法正常释放 导致不同host上的端口互相阻塞,导致查询失败</li>
-<li>同时没有容错机制,由namenode获取文件路径后,如果该节点文件所在的磁盘损坏但刚刚修复但是,也会导致</li>
-<li>Impala不需要把中间结果写入磁盘，省掉了大量的I/O开销。</li>
-<li>省掉了MapReduce作业启动的开销。MapReduce启动task的速度很慢（默认每个心跳间隔是3秒钟），Impala直接通过相应的服务进程来进行作业调度，速度快了很多。</li>
-<li>Impala完全抛弃了MapReduce这个不太适合做SQL查询的范式，而是像Dremel一样借鉴了MPP并行数据库的思想另起炉灶，因此可做更多的查询优化，从而省掉不必要的shuffle、sort等开销。</li>
-<li>通过使用LLVM来统一编译运行时代码，避免了为支持通用编译而带来的不必要开销。</li>
-<li>用C++实现，做了很多有针对性的硬件优化，例如使用SSE指令。</li>
-<li>使用了支持Data locality的I/O调度机制，尽可能地将数据和计算分配在同一台机器上进行，减少了网络开销</li>
-<li>因为公用同一个元数据库,所以hive上对表做了修改后,需要impala在</li>
-<li>资源池监控控制不了 refresh 语句</li>
-</ul>
-<h2 id="Oozie"><a href="#Oozie" class="headerlink" title="Oozie"></a>Oozie</h2><p>-Oozie是一种Java Web应用程序，它运行在Java servlet容器——即Tomcat——中，并使用数据库来存储以下内容:<br>-工作流定义<br>-当前运行的工作流实例，包括实例的状态和变量<br>-Oozie工作流是放置在控制依赖DAG（有向无环图 Direct Acyclic Graph）中的一组动作（例如，Hadoop的Map/Reduce作业、Pig作业等），其中指定了动作执行的顺序。我们会使用hPDL（一种XML流程定义语言）来描述这个图。</p>
-<h2 id="Sentry"><a href="#Sentry" class="headerlink" title="Sentry"></a>Sentry</h2><ul>
-<li>Sentry Server 用的是元数据库</li>
-<li>如果用JDBC的连接的话 需要在sentry SERVER 里配上 sentry.service.admin.group 和sentry.service.allow.connect</li>
-</ul>
-
-          
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Linux]lrzsz大文件传输.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1537,7 +1255,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1655,20 +1373,19 @@
       
         
           
-            <blockquote>
-<p>判断应该是Django框架中,发送报文的MIME有问题<br><a href="https://github.com/cloudera/hue/commit/34388da14712497b685c6b97497c698e720b1a16" target="_blank" rel="noopener">path地址</a></p>
-</blockquote>
-<h1 id="HUE通过隧道访问"><a href="#HUE通过隧道访问" class="headerlink" title="HUE通过隧道访问"></a>HUE通过隧道访问</h1><p>HUE通过隧道映射到本地后发现所有的JavaScript文件解析有问题:</p>
-<p><code>Refused to execute script from &#39;http://127.0.0.1:18888/static/desktop/js/jquery.tablescroller.038d8a8feae9.js&#39; because its MIME type (&#39;text/x-js&#39;) is not executable, and strict MIME type checking is enabled.</code></p>
-<p>问题在于cloudera中Django的配置文件具体在哪,后来终于终于找到了</p>
-<h2 id="HUE文件路径"><a href="#HUE文件路径" class="headerlink" title="HUE文件路径:"></a>HUE文件路径:</h2><p><code>/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop</code></p>
-<h3 id="desktop-core-src-desktop-middleware-py"><a href="#desktop-core-src-desktop-middleware-py" class="headerlink" title="desktop/core/src/desktop/middleware.py"></a>desktop/core/src/desktop/middleware.py</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> import inspect</div><div class="line"> import json</div><div class="line"> import logging</div><div class="line">+import mimetypes</div><div class="line"> import os.path</div><div class="line"> import re</div><div class="line"> import tempfile</div><div class="line">@@ -683,4 +684,22 @@ def process_response(self, request, response):</div><div class="line">     if self.secure_content_security_policy and not &apos;Content-Security-Policy&apos; in response:</div><div class="line">       response[&quot;Content-Security-Policy&quot;] = self.secure_content_security_policy</div><div class="line"> </div><div class="line">-    return response </div><div class="line">+    return response</div><div class="line">+</div><div class="line">+</div><div class="line">+class MimeTypeJSFileFixStreamingMiddleware(object):</div><div class="line">+  &quot;&quot;&quot;</div><div class="line">+  Middleware to detect and fix &quot;.js&quot; mimetype. SLES 11SP4 as example OS which detect js file</div><div class="line">+  as &quot;text/x-js&quot; and if strict X-Content-Type-Options=nosniff is set then browser fails to</div><div class="line">+  execute javascript file.</div><div class="line">+  &quot;&quot;&quot;</div><div class="line">+  def __init__(self):</div><div class="line">+    jsmimetypes = [&apos;application/javascript&apos;, &apos;application/ecmascript&apos;]</div><div class="line">+    if mimetypes.guess_type(&quot;dummy.js&quot;)[0] in jsmimetypes:</div><div class="line">+      LOG.info(&apos;Unloading MimeTypeJSFileFixStreamingMiddleware&apos;)</div><div class="line">+      raise exceptions.MiddlewareNotUsed</div><div class="line">+</div><div class="line">+  def process_response(self, request, response):</div><div class="line">+    if request.path_info.endswith(&apos;.js&apos;):</div><div class="line">+      response[&apos;Content-Type&apos;] = &quot;application/javascript&quot;</div><div class="line">+    return response</div></pre></td></tr></table></figure>
-</p>
-<h3 id="desktop-core-src-desktop-settings-py"><a href="#desktop-core-src-desktop-settings-py" class="headerlink" title="desktop/core/src/desktop/settings.py"></a>desktop/core/src/desktop/settings.py</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    &apos;django.middleware.http.ConditionalGetMiddleware&apos;,</div><div class="line">     &apos;axes.middleware.FailedLoginMiddleware&apos;,</div><div class="line">+    &apos;desktop.middleware.MimeTypeJSFileFixStreamingMiddleware&apos;,</div><div class="line"> ]</div><div class="line"> </div><div class="line"> # if os.environ.get(ENV_DESKTOP_DEBUG):</div></pre></td></tr></table></figure>
-</p>
-<h3 id="cloudera-HUE配置文件路径"><a href="#cloudera-HUE配置文件路径" class="headerlink" title="cloudera HUE配置文件路径"></a>cloudera HUE配置文件路径</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/</div><div class="line">LICENSE.txt         Makefile.buildvars  Makefile.vars       NOTICE.txt          VERSION             apps/               cloudera/           ext/                </div><div class="line">Makefile            Makefile.sdk        Makefile.vars.priv  README              app.reg             build/              desktop/            tools/              </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/app</div><div class="line">app.reg  apps/    </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/</div><div class="line">Makefile     beeswax/     hbase/       impala/      jobsub/      oozie/       proxy/       search/      spark/       useradmin/   </div><div class="line">about/       filebrowser/ help/        jobbrowser/  metastore/   pig/         rdbms/       security/    sqoop/       zookeeper/   </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/</div><div class="line">Makefile    conf/       core/       desktop.db  libs/       logs/       </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop</div><div class="line">desktop/          desktop.egg-info/ </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/mi</div><div class="line">middleware.py       middleware_test.py  migrations/         </div><div class="line">ddp-cm:~ # cd  /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/</div><div class="line">ddp-cm:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop # cp middleware.py middleware.py.bak</div><div class="line">ddp-cm:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop # vi middleware.py</div><div class="line">ddp-cm:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop # vi settings.py</div></pre></td></tr></table></figure></p>
-
           
+判断应该是Django框架中,发送报文的MIME有问题path地址
+
+HUE通过隧道访问HUE通过隧道映射到本地后发现所有的JavaScript文件解析有问题:
+Refused to execute script from &#39;http://127.0.0.1:18888/static/de
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[HUE]Hue隧道访问失效.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1720,12 +1437,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/选择和配置数据压缩.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/介绍.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1739,8 +1456,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/CM/选择和配置数据压缩.html" itemprop="url">
-                  选择和配置数据压缩
+                <a class="post-title-link" href="/CDH/Notes/介绍.html" itemprop="url">
+                  介绍
                 </a>
               
             
@@ -1766,7 +1483,7 @@
                 
               
 
-              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+              <time title="创建时间：2017-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">2017-06-02</time>
             
 
             
@@ -1783,7 +1500,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
               
             
           </span>
@@ -1807,7 +1524,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/CM/" itemprop="url" rel="index"><span itemprop="name">CM</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
 
                 
                 
@@ -1843,18 +1560,29 @@
       
         
           
-            <h1 id="选择和配置数据压缩"><a href="#选择和配置数据压缩" class="headerlink" title="选择和配置数据压缩"></a>选择和配置数据压缩</h1><h2 id="选择压缩类型的指导"><a href="#选择压缩类型的指导" class="headerlink" title="选择压缩类型的指导"></a>选择压缩类型的指导</h2><ul>
-<li>GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩比。GZip通常是冷数据的不错选择，不经常访问。 Snappy或LZO是热门数据的更好选择，频繁访问。</li>
-<li>对于某些类型的文件，BZip2还可以产生比GZip更多的压缩，压缩和解压缩时需要一定的速度。 HBase不支持BZip2压缩。</li>
-<li>Snappy经常表现比LZO好。</li>
-<li>对于MapReduce，如果您需要压缩数据是可拆分的，则可以拆分BZip2和LZO格式。 Snappy和GZip块不是可拆分的，但是可以拆分诸如SequenceFile或Avro之类的容器文件格式的Snappy块的文件</li>
-<li>Snappy旨在与容器格式（如SequenceFiles或Avro数据文件）一起使用，而不是直接用于纯文本，例如，由于后者不可分割，并且不能使用MapReduce并行处理。可分离性与HBase数据无关。</li>
-<li></li>
-</ul>
-<h2 id="配置数据压缩"><a href="#配置数据压缩" class="headerlink" title="配置数据压缩"></a>配置数据压缩</h2><h3 id="使用Cloudera-Manager配置数据压缩"><a href="#使用Cloudera-Manager配置数据压缩" class="headerlink" title="使用Cloudera Manager配置数据压缩"></a>使用Cloudera Manager配置数据压缩</h3><p>要使用Cloudera Manager配置对LZO的支持，您必须安装GPL Extras Parcle，然后配置服务才能使用。请参阅<br><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_install_gpl_extras.html#xd_583c10bfdbd326ba-3ca24a24-13d80143249--7ec6" target="_blank" rel="noopener">安装GPL附加包</a></p>
-<p><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cm_mc_gpl_extras.html#xd_583c10bfdbd326ba--6eed2fb8-14349d04bee--7c3e" target="_blank" rel="noopener">配置服务以使用GPL附加包裹</a></p>
-<h3 id="Configuring-Data-Compression-Using-the-Command-Line"><a href="#Configuring-Data-Compression-Using-the-Command-Line" class="headerlink" title="Configuring Data Compression Using the Command Line"></a>Configuring Data Compression Using the Command Line</h3>
-          
+          host
+hostname 
+ntp 
+/etc/hosts
+cloudera-angent 
+服务安装
+上报日志
+角色状态检查
+
+
+
+HDFS
+本质也是一个文件系统 不过是把单个文件的块大小放大.同时一份数据会备份两次在不同的host上
+权限 
+Sentry HDFS同步 需要解除hive met
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Notes/介绍.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1906,12 +1634,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/linux系统安全日志分析.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/java/轮询 心跳.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1925,8 +1653,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Linux/linux系统安全日志分析.html" itemprop="url">
-                  linux系统安全日志分析
+                <a class="post-title-link" href="/java/轮询 心跳.html" itemprop="url">
+                  轮询 心跳
                 </a>
               
             
@@ -1986,7 +1714,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
@@ -2022,9 +1750,15 @@
       
         
           
-            <h1 id="linux系统安全日志分析"><a href="#linux系统安全日志分析" class="headerlink" title="linux系统安全日志分析"></a>linux系统安全日志分析</h1><p>我们主要讲一下Linux环境中的系统记帐和系统日志管理以及怎么用一些工具更加方便有效的管理日志信息。</p>
-
-          
+          轮询：概括来说是服务端定时主动的去与要监控状态的客户端（或者叫其他系统）通信，询问当前的某种状态，客户端返回状态信息，客户端没有返回或返回错误、失效信息、则认为客户端已经宕机，然后服务端自己内部把这个客户端的状态保存下来（宕机或者其他），如果客户端正常，那么返回正常状态，如果客户端宕机或者返回的是定
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/java/轮询 心跳.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2076,12 +1810,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]swap 系统值修改.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
       <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2095,8 +1829,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html" itemprop="url">
-                  大数据平台-Zabbix agent恢复
+                <a class="post-title-link" href="/CDH/Error/[Linux]swap 系统值修改.html" itemprop="url">
+                  swap 系统值修改
                 </a>
               
             
@@ -2139,7 +1873,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
               
             
           </span>
@@ -2199,14 +1933,205 @@
       
         
           
-            <h1 id="zabbix-agent-进程恢复"><a href="#zabbix-agent-进程恢复" class="headerlink" title="zabbix agent 进程恢复"></a>zabbix agent 进程恢复</h1><blockquote>
-<p><strong>v1.1</strong> updated:2017-05-30 Nameless13</p>
-</blockquote>
-<h2 id="因系统重启后-zabbix-agent没有设置开机启动所以会导致监控失效"><a href="#因系统重启后-zabbix-agent没有设置开机启动所以会导致监控失效" class="headerlink" title="因系统重启后,zabbix agent没有设置开机启动所以会导致监控失效"></a>因系统重启后,zabbix agent没有设置开机启动所以会导致监控失效</h2><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ps aux |grep zabbix</div><div class="line"><span class="built_in">cd</span> /etc/init.d/</div><div class="line">ls |grep zabbix</div><div class="line"><span class="built_in">cd</span> /etc/init.d &amp;&amp; wget http://10.200.58.25/zabbix/zabbix_agentd &amp;&amp; chkconfig zabbix_agentd 2345 &amp;&amp; service </div><div class="line">chmod +x zabbix_agentd </div><div class="line">service zabbix_agentd start</div><div class="line">chkconfig zabbix_agentd on</div><div class="line">chkconfig --list</div><div class="line">chkconfig zabbix_agentd 2345</div><div class="line">chkconfig --list</div><div class="line">ps aux |grep zabbix</div></pre></td></tr></table></figure>
-</p>
-<h3 id="zabbix-agentd"><a href="#zabbix-agentd" class="headerlink" title="zabbix_agentd"></a>zabbix_agentd</h3><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#! /bin/sh</span></div><div class="line"><span class="comment"># Copyright (c) 07/2004 A.Tophofen, Germany</span></div><div class="line"><span class="comment"># Modified for Zabbix 1.1alpha7 and SuSE Linux 9.2</span></div><div class="line"><span class="comment"># April 2005, A. Kiepe, Switzerland</span></div><div class="line"><span class="comment"># Modified for Zabbix 2.0.0</span></div><div class="line"><span class="comment"># May 2012, Zabbix SIA</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># init.d/zabbix_agentd</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">### BEGIN INIT INFO</span></div><div class="line"><span class="comment"># Provides:       zabbix_agentd</span></div><div class="line"><span class="comment"># Required-Start: $network $remote_fs $syslog</span></div><div class="line"><span class="comment"># Required-Stop:</span></div><div class="line"><span class="comment"># Default-Start:  3 </span></div><div class="line"><span class="comment"># Default-Stop:</span></div><div class="line"><span class="comment"># Description:    Starts Zabbix_Agentd</span></div><div class="line"><span class="comment">### END INIT INFO</span></div><div class="line"></div><div class="line">. /etc/rc.status</div><div class="line">rc_reset</div><div class="line">NAME=<span class="string">"zabbix_agentd"</span></div><div class="line"></div><div class="line">ZABBIX_BIN=<span class="string">"/usr/local/sbin/zabbix_agentd"</span></div><div class="line">ZABBIX_PID=<span class="string">"/tmp/zabbix_agentd.pid"</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ ! -x <span class="variable">$&#123;ZABBIX_BIN&#125;</span> ] ; <span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> -n <span class="string">"<span class="variable">$&#123;ZABBIX_BIN&#125;</span> not installed! "</span></div><div class="line">        <span class="comment"># Tell the user this has skipped</span></div><div class="line">        rc_status -s</div><div class="line">        <span class="built_in">exit</span> 5</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/sbin</div><div class="line"></div><div class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">    start)</div><div class="line">        <span class="built_in">echo</span> -n <span class="string">"Starting <span class="variable">$&#123;NAME&#125;</span> "</span></div><div class="line">        checkproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span> <span class="variable">$&#123;ZABBIX_BIN&#125;</span></div><div class="line">        <span class="keyword">case</span> $? <span class="keyword">in</span></div><div class="line">                0) <span class="built_in">echo</span> -n <span class="string">"- Warning: <span class="variable">$&#123;NAME&#125;</span> already running! "</span> ;;</div><div class="line">                1) <span class="built_in">echo</span> -n <span class="string">"- Warning: <span class="variable">$&#123;ZABBIX_PID&#125;</span> exists! "</span> ;;</div><div class="line">        <span class="keyword">esac</span></div><div class="line"></div><div class="line">        startproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span>  <span class="variable">$&#123;ZABBIX_BIN&#125;</span></div><div class="line">        rc_status -v</div><div class="line">        ;;</div><div class="line">    stop)</div><div class="line">        <span class="built_in">echo</span> -n <span class="string">"Shutting down <span class="variable">$&#123;NAME&#125;</span>"</span></div><div class="line">        checkproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span> <span class="variable">$&#123;ZABBIX_BIN&#125;</span> || <span class="built_in">echo</span> -n <span class="string">"- Warning: <span class="variable">$&#123;NAME&#125;</span> not running! "</span></div><div class="line">        killproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span> -TERM <span class="variable">$&#123;ZABBIX_BIN&#125;</span></div><div class="line">        rc_status -v</div><div class="line">        ;;</div><div class="line">    restart)</div><div class="line">        <span class="variable">$0</span> stop</div><div class="line">        sleep 10</div><div class="line">        <span class="variable">$0</span> start</div><div class="line">        rc_status</div><div class="line">        ;;</div><div class="line">        *)</div><div class="line">        <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> &#123;start|stop|restart&#125;"</span></div><div class="line">        <span class="built_in">exit</span> 1</div><div class="line">        ;;</div><div class="line"><span class="keyword">esac</span></div><div class="line">rc_exit</div></pre></td></tr></table></figure></p>
+          Impala swapp系统值修改
+部分组件HDFS,YARN,HBAS有黄色警告是因为系统默认SWAP默认值为60
+
+导致内存未使用满便使用swap memory导致的，已经修改过配对应系统的配置值为SWAP=0。
+echo 0 &gt;/proc/sys/vm/swappinessecho &a
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Linux]swap 系统值修改.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hive]hive LZO压缩格式支持.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[Hive]hive LZO压缩格式支持.html" itemprop="url">
+                  hive LZO压缩格式支持
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+LZO配置
+
+hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入暂时先删除LZO配置ddp-hb-01:~ # beeline -u &apos;jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.co
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CDH/Error/[Hive]hive LZO压缩格式支持.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2280,7 +2205,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/images/avatar.gif"
                 alt="Nameless13" />
             
               <p class="site-author-name" itemprop="name">Nameless13</p>
