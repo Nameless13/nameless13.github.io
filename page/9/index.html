@@ -1,15 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -36,36 +49,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,26 +58,57 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
-<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'J3OX6892F7',
+      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
+      indexName: 'Blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nameless13">
 <meta property="og:url" content="https://nameless13.github.io/page/9/index.html">
@@ -106,27 +121,6 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: 'J3OX6892F7',
-      apiKey: '38852eb9095216f8f2ada575a06a9cfc',
-      indexName: 'Blog',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
 
 
 
@@ -134,7 +128,11 @@
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Nameless13</title>
   
@@ -147,10 +145,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -161,9 +181,8 @@
     
   
 
-  <div class="container sidebar-position-right 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -172,19 +191,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -192,106 +209,82 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
+  </li>
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
+    
+
   
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
 
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-
-
-
-
-    </div>
   
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -304,13 +297,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hive/hive create table.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -324,25 +323,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html" itemprop="url">大数据平台-Zabbix agent恢复</a></h1>
+                <a class="post-title-link" href="/CDH/Hive/hive create table.html" itemprop="url">
+                  hive create table
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -355,25 +381,17 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -398,6 +416,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -406,33 +427,36 @@
       
         
           
-          zabbix agent 进程恢复
-v1.0 updated:2017-03-30 何常通
+            <h2 id="创建表的语句："><a href="#创建表的语句：" class="headerlink" title="创建表的语句："></a>创建表的语句：</h2><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Create [EXTERNAL] TABLE [IF NOT EXISTS] table_name </div><div class="line">[(col_name data_type [COMMENT col_comment], ...)] </div><div class="line">[COMMENT table_comment] </div><div class="line">[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] </div><div class="line">[CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC],...)]INTO num_buckets BUCKETS]</div><div class="line">[ROW FORMAT row_format] </div><div class="line">[STORED AS file_format] </div><div class="line">[LOCATION hdfs_path]</div></pre></td></tr></table></figure>
+</p>
+<p>CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出异常；用户可以用 IF NOT EXIST 选项来忽略这个异常。<br>EXTERNAL 关键字可以让用户创建一个外部表，在建表的同时指定一个指向实际数据的路径（LOCATION），Hive创建内部表时，会将数据移动到数据仓库指向的路径；若创建外部表，仅记录数据所在的路径，不对数据的位置做任何改变。在删除表的时候，内部表的元数据和数据会被一起删除，而外部表只删除元数据，不删除数据。<br>如果文件数据是纯文本，可以使用 STORED AS TEXTFILE。如果数据需要压缩，使用 STORED AS SEQUENCE 。<br>有分区的表可以在创建的时候使用 PARTITIONED BY 语句。一个表可以拥有一个或者多个分区，每一个分区单独存在一个目录下。而且，表和分区都可以对某个列进行 CLUSTERED BY 操作，将若干个列放入一个桶（bucket）中。也可以利用SORT BY 对数据进行排序。这样可以为特定应用提高性能。</p>
+<h3 id="创建普通的表："><a href="#创建普通的表：" class="headerlink" title="创建普通的表："></a>创建普通的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_table (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int) </div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;//指定了字段的分隔符，hive只支持单个字符的分隔符。hive默认的分隔符是\001</div></pre></td></tr></table></figure>
+</p>
+<h3 id="创建带有partition的表："><a href="#创建带有partition的表：" class="headerlink" title="创建带有partition的表："></a>创建带有partition的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_partition (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">partitioned by(dt string) </div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;</div><div class="line">load data local inpath &apos;/home/zhangxin/hive/test_hive.txt&apos; overwrite intotabletest_partition partition (dt=&apos;2012-03-05&apos;);</div></pre></td></tr></table></figure>
+</p>
+<h3 id="创建带有Bucket的表："><a href="#创建带有Bucket的表：" class="headerlink" title="创建带有Bucket的表："></a>创建带有Bucket的表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create table test_bucket (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">partitioned by(dt string) </div><div class="line">clustered by(id) into 10 buckets --将id这一列分到10个桶中。</div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">stored astextfile;</div></pre></td></tr></table></figure>
+</p>
+<p>关于分桶：对列进行分桶，本质上，在进行reduce的时候，会对列的值进行hash，然后将hash的值放到特定的桶中（有点像distribute by）。<br>注意在写入分桶数据的时候，需要指定：<br><code>sethive.enforce.bucketing=true;</code></p>
+<h3 id="创建external表："><a href="#创建external表：" class="headerlink" title="创建external表："></a>创建external表：</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create external table test_external (</div><div class="line">id int,</div><div class="line">name string,</div><div class="line">no int)</div><div class="line">row formatdelimited </div><div class="line">fieldsterminated by &apos;,&apos; </div><div class="line">location&apos;/home/zhangxin/hive/test_hive.txt&apos;;</div></pre></td></tr></table></figure>
+</p>
+<h3 id="创建与已知表相同结构的表Like："><a href="#创建与已知表相同结构的表Like：" class="headerlink" title="创建与已知表相同结构的表Like："></a>创建与已知表相同结构的表Like：</h3><p>只复制表的结构，而不复制表的内容。<br><code>create table test_like_table like test_bucket;</code></p>
 
-因系统重启后,zabbix agent没有设置开机启动所以会导致监控失效ps aux |grep zabbixcd /etc/init.d/ls |grep zabbixcd /etc/init.d &am
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -446,6 +470,10 @@ v1.0 updated:2017-03-30 何常通
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -458,13 +486,19 @@ v1.0 updated:2017-03-30 何常通
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/python/Python 学习笔记.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/hive impala  培训.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -478,25 +512,52 @@ v1.0 updated:2017-03-30 何常通
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/python/Python 学习笔记.html" itemprop="url">Python 学习笔记</a></h1>
+                <a class="post-title-link" href="/CDH/Notes/hive impala  培训.html" itemprop="url">
+                  hive impala  培训
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
             
           </span>
 
@@ -509,14 +570,17 @@ v1.0 updated:2017-03-30 何常通
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
 
                 
                 
@@ -541,6 +605,9 @@ v1.0 updated:2017-03-30 何常通
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -549,37 +616,38 @@ v1.0 updated:2017-03-30 何常通
       
         
           
-          LEGB : L&gt;E&gt;G&gt;B
-L:local 函数内部作用域
-E:enclosing 函数内部与内嵌函数之间
-G:global 全局作用域
-B:buil-in 内置作用域
+            <p>$ADIR is a shortcut that points to the /home/training/training_materials/<br>analyst directory</p>
+<p>Click Select files to bring up a file browser. By default, the<br>/home/training/Desktop folder displays. Click the home directory button<br>(training) then navigate to the course data directory:<br>training_materials/analyst/data.</p>
+<p>Note the /dualcore directory. Most of your work in this course will be in that<br>directory. Try creating a temporary subdirectory in /dualcore:</p>
+<hr>
+<p>hive 默认路径warehouse</p>
+<p>创建xx表后 会在warehouse下创建xx.db</p>
+<p>让hive管理整个结构</p>
+<p>partition建议每个分区的数据保证一定的量(不要有很多小数据)</p>
+<p>beeline set方法打开partition 参数</p>
+<p>orcfile 文件 优于rcfile </p>
+<p>impala 推荐使用parquet 文件format<br>CDH 对parquet 支持比较好</p>
+<hr>
+<p>partition<br>冷数据 热数据 上线流文件兼容性</p>
+<p>impala join 大表放在第一个 会</p>
+<p>profile impala调优</p>
 
-
-函数体内部的语句在执行时，一旦执行到return时，函数就执行完毕，并将结果返回。因此，函数内部通过条件判
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/python/Python 学习笔记.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -593,6 +661,10 @@ B:buil-in 内置作用域
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -605,13 +677,19 @@ B:buil-in 内置作用域
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/Cloudera Manager和CDH快速入门指南.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]HDFS-diskbalance.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -625,25 +703,52 @@ B:buil-in 内置作用域
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/CM/Cloudera Manager和CDH快速入门指南.html" itemprop="url">Cloudera Manager和CDH快速入门指南</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[HDFS]HDFS-diskbalance.html" itemprop="url">
+                  HDFS-diskbalance
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">2017-06-23</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
             
           </span>
 
@@ -656,25 +761,17 @@ B:buil-in 内置作用域
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
-                    <span itemprop="name">CM</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -699,6 +796,9 @@ B:buil-in 内置作用域
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -707,34 +807,48 @@ B:buil-in 内置作用域
       
         
           
-          Cloudera Manager和CDH快速入门指南本快速入门指南介绍如何在四台主机的集群上快速创建Cloudera Manager 5，CDH 5和托管服务的新安装。生成的部署可用于演示和概念验证应用程序，但不推荐用于生产。
-继续阅读：
+            <h1 id="HDFS-diskbalance问题"><a href="#HDFS-diskbalance问题" class="headerlink" title="HDFS-diskbalance问题"></a>HDFS-diskbalance问题</h1><p>开头怀疑是sentry的权限问题,就也给hdfs用户hive元数据库的admin权限<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">create role hdfs_role;</div><div class="line">grant role hdfs_role to group hdfs;</div><div class="line">grant all on URI &apos;hdfs:///system/diskbalancer&apos; to role hdfs_role;</div></pre></td></tr></table></figure></p>
+<p>发现问题依旧<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs dfs -ls /system/diskbalancer</div><div class="line">hdfs diskbalancer -plan ddp-dn-04.cmdmp.com</div><div class="line">hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line"></div><div class="line">hdfs@ddp-dn-129:~&gt; hdfs diskbalancer -plan ddp-dn-129.cmdmp.com</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/12 13:42:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/12 13:42:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/12 13:42:32 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:33 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:34 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:35 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:36 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:37 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:38 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 6 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:39 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 7 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:40 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 8 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 INFO ipc.Client: Retrying connect to server: ddp-dn-129.cmdmp.com/10.200.60.40:50020. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)</div><div class="line">17/06/12 13:42:41 ERROR tools.DiskBalancerCLI: java.net.ConnectException: Call From ddp-dn-129.cmdmp.com/10.200.60.40 to ddp-dn-129.cmdmp.com:50020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-04:~ # hdfs diskbalancer -help plan</div><div class="line">usage: hdfs diskbalancer -plan &lt;hostname&gt; [options]</div><div class="line">Creates a plan that describes how much data should be moved between disks.</div><div class="line"></div><div class="line">    --bandwidth &lt;arg&gt;             Maximum disk bandwidth (MB/s) in integer</div><div class="line">                                  to be consumed by diskBalancer. e.g. 10</div><div class="line">                                  MB/s.</div><div class="line">    --maxerror &lt;arg&gt;              Describes how many errors can be</div><div class="line">                                  tolerated while copying between a pair</div><div class="line">                                  of disks.</div><div class="line">    --out &lt;arg&gt;                   Local path of file to write output to,</div><div class="line">                                  if not specified defaults will be used.</div><div class="line">    --plan &lt;arg&gt;                  Hostname, IP address or UUID of datanode</div><div class="line">                                  for which a plan is created.</div><div class="line">    --thresholdPercentage &lt;arg&gt;   Percentage of data skew that is</div><div class="line">                                  tolerated before disk balancer starts</div><div class="line">                                  working. For example, if total data on a</div><div class="line">                                  2 disk node is 100 GB then disk balancer</div><div class="line">                                  calculates the expected value on each</div><div class="line">                                  disk, which is 50 GB. If the tolerance</div><div class="line">                                  is 10% then data on a single disk needs</div><div class="line">                                  to be more than 60 GB (50 GB + 10%</div><div class="line">                                  tolerance value) for Disk balancer to</div><div class="line">                                  balance the disks.</div><div class="line">    --v                           Print out the summary of the plan on</div><div class="line">                                  console</div><div class="line"></div><div class="line">Plan command creates a set of steps that represent a planned data move. A</div><div class="line">plan file can be executed on a data node, which will balance the data.</div><div class="line"></div><div class="line"></div><div class="line">ddp-nn-02:/etc/hadoop/conf # hdfs getconf -confkey dfs.disk.balancer.enabled</div><div class="line">false</div><div class="line"></div><div class="line">ddp-dn-01:~ # hdfs diskbalancer --plan ddp-dn-12.cmdmp.com</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/06/13 16:54:09 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/06/13 16:54:09 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/06/13 16:54:09 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">  at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">  at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">  at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">  at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">  at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">  at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">  at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">  at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">  at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+</p>
+<hr>
+<h1 id="hdfs-diskbalancer"><a href="#hdfs-diskbalancer" class="headerlink" title="hdfs diskbalancer"></a>hdfs diskbalancer</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-033:~ # hdfs diskbalancer -plan ddp-dn-033.cmdmp.com</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">17/10/27 11:01:31 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">17/10/27 11:01:31 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">17/10/27 11:01:31 ERROR tools.DiskBalancerCLI: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied.</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.checkSuperuserPrivilege(DataNode.java:948)</div><div class="line">    at org.apache.hadoop.hdfs.server.datanode.DataNode.getDiskBalancerSetting(DataNode.java:3208)</div><div class="line">    at org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolServerSideTranslatorPB.getDiskBalancerSetting(ClientDatanodeProtocolServerSideTranslatorPB.java:361)</div><div class="line">    at org.apache.hadoop.hdfs.protocol.proto.ClientDatanodeProtocolProtos$ClientDatanodeProtocolService$2.callBlockingMethod(ClientDatanodeProtocolProtos.java:17901)</div><div class="line">    at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:617)</div><div class="line">    at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1073)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2216)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2212)</div><div class="line">    at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">    at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">    at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1796)</div><div class="line">    at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2210)</div></pre></td></tr></table></figure>
+</p>
+<p>一般来说，对于需要HDFS超级用户权限的命令，使用任何HDFS主体去kinit都是有效的。然而，为了增加datanodes安全性在CDH 5.10.0中增加了一个变化。–HDFS11069<br>这一更改确保了对任何datanode运行一个超级用户命令，您必须首先执行kinit并使用和datanode相同服务主体</p>
+<p>To run the intra node balancer, you must do the following:</p>
+<ol>
+<li>Ensure that the HDFS Gateway is deployed on the Datanode you wish to run it against.(个人认为只需要保证本机使用HDFS-cli能连上nn就好,自己配置也行当然通过cm配置会比较块)</li>
+<li><p>Login to the datanode you wish to balance, and kinit as follows:</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |</div><div class="line">sort -n | tail -1`</div><div class="line">    kinit -kt hdfs.keytab hdfs/$(hostname -f)</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>Run the intra node balancer as usual:<br>hdfs diskbalancer -plan datanode.hostname.com<br>hdfs diskbalancer -plan $(hostname -f)</p>
+</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /var/run/cloudera-scm-agent/process/`ls -1 /var/run/cloudera-scm-agent/process/ | grep &apos;hdfs-DATANODE$&apos; |sort -n | tail -1`</div><div class="line">kinit -kt hdfs.keytab hdfs/$(hostname -f)</div><div class="line">hdfs diskbalancer -plan $(hostname -f)</div><div class="line"></div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">    17/11/15 10:41:25 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">    17/11/15 10:41:25 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Disk Volume set 9006e969-abee-4719-b2fa-be1b5a1bb0a0 Type : DISK plan completed.</div><div class="line">    17/11/15 10:41:25 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 11 ms </div><div class="line">    17/11/15 10:41:26 INFO command.Command: Writing plan to : /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs dfs -ls /system/diskbalancer/2017-Nov-15-10-41-25</div><div class="line"></div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/2017-Nov-15-10-41-25/$(hostname -f).plan.json</div><div class="line"></div><div class="line">hdfs diskbalancer -query $(hostname) --v</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /root/hdfs-diskplan --thresholdPercentage 5</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/26 10:14:44 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/26 10:14:44 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Disk Volume set 25e83c15-13e4-4429-96c1-cec44fe8c94c Type : DISK plan completed.</div><div class="line">18/02/26 10:14:45 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 8 ms </div><div class="line">18/02/26 10:14:45 INFO command.Command: Writing plan to : /root/hdfs-diskplan</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -plan $(hostname -f)  --thresholdPercentage 5</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Block token params received from NN: update interval=10hrs, 0sec, token lifetime=10hrs, 0sec</div><div class="line">18/02/28 09:44:08 INFO block.BlockTokenSecretManager: Setting block keys</div><div class="line">18/02/28 09:44:08 INFO balancer.KeyManager: Update block keys every 2hrs, 30mins, 0sec</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Starting plan for Node : ddp-dn-165.cmdmp.com:50020</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Disk Volume set 6a0d20f1-3936-40f7-a4dd-207c228a676a Type : DISK plan completed.</div><div class="line">18/02/28 09:44:08 INFO planner.GreedyPlanner: Compute Plan for Node : ddp-dn-165.cmdmp.com:50020 took 7 ms </div><div class="line">18/02/28 09:44:09 INFO command.Command: Writing plan to : /system/diskbalancer/2018-Feb-28-09-44-08</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs dfs -ls /system/diskbalancer/2018-Feb-28-09-44-08/</div><div class="line">Found 2 items</div><div class="line">-rw-r--r--   3 hdfs supergroup     606859 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.before.json</div><div class="line">-rw-r--r--   3 hdfs supergroup        928 2018-02-28 09:44 /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -execute /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">18/02/28 09:44:46 INFO command.Command: Executing &quot;execute plan&quot; command</div><div class="line">ddp-dn-165:/var/run/cloudera-scm-agent/process/68817-hdfs-DATANODE # hdfs diskbalancer -query  $(hostname) --v</div><div class="line">18/02/28 09:44:54 INFO command.Command: Executing &quot;query plan&quot; command.</div><div class="line">Plan File: /system/diskbalancer/2018-Feb-28-09-44-08/ddp-dn-165.cmdmp.com.plan.json</div><div class="line">Plan ID: bf4e1d912cf52fb2df81d1af4406ba3f8fcb4cb05023711a64d1f4101a2379ff8a0e36cedbc901ddbda4c17bc0a851fddfb55361e347c580a0792f6e08d935ac</div><div class="line">Result: PLAN_UNDER_PROGRESS</div><div class="line">[&#123;&quot;sourcePath&quot;:&quot;/mnt/sdf1/dfs/dn&quot;,&quot;destPath&quot;:&quot;/mnt/sdl1/dfs/dn&quot;,&quot;workItem&quot;:&#123;&quot;bytesToCopy&quot;:195547775977,&quot;bytesCopied&quot;:134219396,&quot;errorCount&quot;:0,&quot;errMsg&quot;:null,&quot;blocksCopied&quot;:2,&quot;maxDiskErrors&quot;:0,&quot;tolerancePercent&quot;:0,&quot;bandwidth&quot;:0&#125;&#125;]</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hdfs diskbalancer -plan $(hostname -f) --out /system/diskbalancer/$(hostname -f)  --thresholdPercentage 5</div><div class="line">hdfs diskbalancer -execute /system/diskbalancer/$(hostname -f)/$(hostname -f).plan.json</div></pre></td></tr></table></figure></p>
 
-快速启动群集主机要求
-下载并运行Cloudera Mana
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/CM/Cloudera Manager和CDH快速入门指南.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -748,6 +862,10 @@ B:buil-in 内置作用域
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -760,13 +878,19 @@ B:buil-in 内置作用域
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/fork.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/python/Python文件处理.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -780,25 +904,52 @@ B:buil-in 内置作用域
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Linux/fork.html" itemprop="url">fork</a></h1>
+                <a class="post-title-link" href="/python/Python文件处理.html" itemprop="url">
+                  Python文件处理
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-15T00:00:00+08:00">2017-06-15</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -811,14 +962,10 @@ B:buil-in 内置作用域
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
 
                 
                 
@@ -843,6 +990,9 @@ B:buil-in 内置作用域
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -851,31 +1001,37 @@ B:buil-in 内置作用域
       
         
           
-          fork在Linux下产生新的进程的系统调用就是fork函数，这个函数名是英文中“分叉”的意思。为什么取这个名字呢？因为一个进程在运行中，如果使用了fork，就产生了另一个进程，于是进程就“分叉”了，所以这个名字取得很形象。下面就看看如何具体使用fork，这段程序演示了使用fork的基本框架：
- v
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Linux/fork.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="Python文件处理"><a href="#Python文件处理" class="headerlink" title="Python文件处理"></a>Python文件处理</h1><p>文件打开方法: open(name[,mode[buf]])<br>name: 文件路径<br>mode: 打开方式<br>buf: 缓冲buffering大小</p>
+<ul>
+<li>文件读取方式:<ul>
+<li>read([size]):读取文件(读取size个字节,默认读取全部)</li>
+<li>readline([size]):读取一行</li>
+<li>readlines([size]):读取完文件,返回每一行所组成的列表</li>
+</ul>
+</li>
+<li>文件写入方式:<ul>
+<li>write(str):将字符串写入文件</li>
+<li>writelines(sequence_of_strings):写多行到文件</li>
+</ul>
+</li>
+</ul>
+
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -889,6 +1045,10 @@ B:buil-in 内置作用域
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -901,13 +1061,19 @@ B:buil-in 内置作用域
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/python/readme.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]lrzsz大文件传输.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -921,25 +1087,52 @@ B:buil-in 内置作用域
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/python/readme.html" itemprop="url">readme</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[Linux]lrzsz大文件传输.html" itemprop="url">
+                  lrzsz大文件传输
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-05 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-05T00:00:00+08:00">2017-06-05</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
             
           </span>
 
@@ -952,14 +1145,17 @@ B:buil-in 内置作用域
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -984,6 +1180,9 @@ B:buil-in 内置作用域
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -992,30 +1191,27 @@ B:buil-in 内置作用域
       
         
           
-          Python 标识符在python里，标识符有字母、数字、下划线组成。在python中，所有标识符可以包括英文、数字以及下划线（_），但不能以数字开头。python中的标识符是区分大小写的。以下划线开头的标识符是有特殊意义的。以单下划线开头（_foo）的代表不能直接访问的类属性，需通过类提供的接口进
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/python/readme.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>rz、sz命令结合方便的上下传文件，但经过跳板机之后直接rz、sz一个稍大的文件会在上传一部分后退出并显示一堆乱码，这是因为这中间有控制字符的原因。 </p>
+<p><strong>解决办法：</strong> 加参数-e忽略控制字符：rz -e和sz -e</p>
+<p>rz，sz是Linux/Unix同Windows进行ZModem文件传输的命令行工具。</p>
+<p>windows端需要支持ZModem的telnet/ssh客户端（比如SecureCRT），运行命令rz即是接收文件，SecureCRT就会弹出文件选择对话框，选好文件之后关闭对话框，文件就会上传到当前目录。注意：单独用rz会有两个问题：上传中断、上传文件变化（md5不同），解决办法是上传时用rz -be，并且去掉弹出的对话框中“Upload files as ASCII”前的勾选。-a, –ascii -b, –binary ，用binary的方式上传下载，不解释字符为ascii，-e, –escape 强制escape 所有控制字符，比如Ctrl+x，DEL等rar,gif等文件。采用 -b 用binary的方式上传。文件比较大而上传出错的话，采用参数 -e。如果用不带参数的rz命令上传大文件时，常常上传一半就断掉了，很可能是rz以为上传的流中包含某些特殊控制字符，造成rz提前退出</p>
+
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1029,6 +1225,10 @@ B:buil-in 内置作用域
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1041,13 +1241,19 @@ B:buil-in 内置作用域
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/impala hdfs hbase等用户的nproc的设置.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Notes/介绍.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1061,25 +1267,52 @@ B:buil-in 内置作用域
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/CM/impala hdfs hbase等用户的nproc的设置.html" itemprop="url">impala hdfs hbase等用户的nproc的设置</a></h1>
+                <a class="post-title-link" href="/CDH/Notes/介绍.html" itemprop="url">
+                  介绍
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">2017-06-02</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
             
           </span>
 
@@ -1092,25 +1325,17 @@ B:buil-in 内置作用域
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
-                    <span itemprop="name">CM</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
 
                 
                 
@@ -1135,6 +1360,9 @@ B:buil-in 内置作用域
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1143,31 +1371,136 @@ B:buil-in 内置作用域
       
         
           
-          请参考下面的方法，检查一下impala／hdfs／hbase等用户的nproc的设置是否符合cloudera推荐的值
-ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each line descr
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/CM/impala hdfs hbase等用户的nproc的设置.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="host"><a href="#host" class="headerlink" title="host"></a>host</h2><ul>
+<li>hostname </li>
+<li>ntp </li>
+<li>/etc/hosts</li>
+<li>cloudera-angent <ul>
+<li>服务安装</li>
+<li>上报日志</li>
+<li>角色状态检查</li>
+</ul>
+</li>
+</ul>
+<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><ul>
+<li>本质也是一个文件系统 不过是把单个文件的块大小放大.同时一份数据会备份两次在不同的host上</li>
+<li>权限 <ul>
+<li>Sentry HDFS同步 需要解除hive metastroe HA</li>
+<li>同时需要开启ACL权限认证</li>
+</ul>
+</li>
+<li>磁盘损坏<ul>
+<li>先判断该主机的host能否暂停服务</li>
+<li>停止该host的所有角色</li>
+<li>在DATANODE角色的配置文件里面删除对应挂载分区</li>
+<li>启用该host的所有角色</li>
+<li>报障 更换硬盘后</li>
+</ul>
+</li>
+<li><p>Balance</p>
+<ul>
+<li>可以在不同DATANODE节点中做负载均衡</li>
+<li>也可以在单个DATANODE上做不同挂载盘的负载均衡</li>
+</ul>
+</li>
+<li><p>NameNode</p>
+<ul>
+<li>NameNode管理文件系统的命名空间。它维护着文件系统树及整棵树内所有的文件和目录。这些信息以两个文件形式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件。</li>
+<li></li>
+</ul>
+</li>
+<li><p>JournalNode</p>
+<ul>
+<li>两个NameNode为了数据同步，会通过一组称作JournalNodes的独立进程进行相互通信。当active状态的NameNode的命名空间有任何修改时，会告知大部分的JournalNodes进程。standby状态的NameNode有能力读取JNs中的变更信息，并且一直监控edit log的变化，把变化应用于自己的命名空间。standby可以确保在集群出错时，命名空间状态已经完全同步了。</li>
+</ul>
+</li>
+<li><p>Failover Controller</p>
+</li>
+<li>Gateway</li>
+<li><p>HttpFS</p>
+<ul>
+<li>httpfs是cloudera公司提供的一个hadoop hdfs的一个http接口，通过WebHDFS REST API 可以对hdfs进行读写等访问</li>
+</ul>
+</li>
+<li><p>kerberos</p>
+</li>
+</ul>
+<h2 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h2><ul>
+<li>hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。</li>
+<li>元数据库用的是两个MySQL</li>
+<li><p>HiveServer2 </p>
+<ul>
+<li>支持sentry</li>
+<li>过多连接会导致JVM heap 过大,造成GC时间过长,最后导致该角色拒绝服务</li>
+</ul>
+</li>
+<li><p>Hive cli</p>
+<ul>
+<li>不支持sentry 不受权限管控 </li>
+</ul>
+</li>
+<li>UDF 自定义函数 <ul>
+<li>5.7 以后create function 方式有改动 禁止使用add jar语法<ul>
+<li>不写location 默认读取AUX 下也就是 hiverserver2 和 metastore 所在主机上必须创建相同路径且文件保持一致的jar包</li>
+<li>写location是读取HDFS上的jar包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Gateway</li>
+</ul>
+<h2 id="Hue"><a href="#Hue" class="headerlink" title="Hue"></a>Hue</h2><ul>
+<li>是一个开源的Apache Hadoop UI系统,最早是由Cloudera Desktop演化而来,由Cloudera贡献给开源社区,它是基于Python Web框架Django实现的。</li>
+<li>基于文件浏览器（File Browser）访问HDFS</li>
+<li>基于Hive编辑器来开发和运行Hive查询</li>
+<li>支持基于Solr进行搜索的应用，并提供可视化的数据视图，以及仪表板（Dashboard）</li>
+<li>支持基于Impala的应用进行交互式查询</li>
+<li>支持Spark编辑器和仪表板（Dashboard）</li>
+<li>支持Pig编辑器，并能够提交脚本任务</li>
+<li>支持Oozie编辑器，可以通过仪表板提交和监控Workflow、Coordinator和Bundle</li>
+<li>支持HBase浏览器，能够可视化数据、查询数据、修改HBase表</li>
+<li>支持Metastore浏览器，可以访问Hive的元数据，以及HCatalog</li>
+<li>支持Job浏览器，能够访问MapReduce Job（MR1/MR2-YARN）</li>
+<li>支持Job设计器，能够创建MapReduce/Streaming/Java Job</li>
+<li>支持Sqoop 2编辑器和仪表板（Dashboard）</li>
+<li>支持ZooKeeper浏览器和编辑器</li>
+<li>支持MySql、PostGresql、Sqlite和Oracle数据库查询编辑器</li>
+</ul>
+<h2 id="impala"><a href="#impala" class="headerlink" title="impala"></a>impala</h2><ul>
+<li>Impala是Cloudera公司主导开发的新型查询系统，它提供SQL语义，能查询存储在Hadoop的HDFS和HBase中的PB级大数据。已有的Hive系统虽然也提供了SQL语义，但由于Hive底层执行使用的是MapReduce引擎，仍然是一个批处理过程，难以满足查询的交互性。相比之下，Impala的最大特点也是最大卖点就是它的快速。但是不稳定</li>
+<li>过度频繁的访问会导致impala daemon 的端口无法正常释放 导致不同host上的端口互相阻塞,导致查询失败</li>
+<li>同时没有容错机制,由namenode获取文件路径后,如果该节点文件所在的磁盘损坏但刚刚修复但是,也会导致</li>
+<li>Impala不需要把中间结果写入磁盘，省掉了大量的I/O开销。</li>
+<li>省掉了MapReduce作业启动的开销。MapReduce启动task的速度很慢（默认每个心跳间隔是3秒钟），Impala直接通过相应的服务进程来进行作业调度，速度快了很多。</li>
+<li>Impala完全抛弃了MapReduce这个不太适合做SQL查询的范式，而是像Dremel一样借鉴了MPP并行数据库的思想另起炉灶，因此可做更多的查询优化，从而省掉不必要的shuffle、sort等开销。</li>
+<li>通过使用LLVM来统一编译运行时代码，避免了为支持通用编译而带来的不必要开销。</li>
+<li>用C++实现，做了很多有针对性的硬件优化，例如使用SSE指令。</li>
+<li>使用了支持Data locality的I/O调度机制，尽可能地将数据和计算分配在同一台机器上进行，减少了网络开销</li>
+<li>因为公用同一个元数据库,所以hive上对表做了修改后,需要impala在</li>
+<li>资源池监控控制不了 refresh 语句</li>
+</ul>
+<h2 id="Oozie"><a href="#Oozie" class="headerlink" title="Oozie"></a>Oozie</h2><p>-Oozie是一种Java Web应用程序，它运行在Java servlet容器——即Tomcat——中，并使用数据库来存储以下内容:<br>-工作流定义<br>-当前运行的工作流实例，包括实例的状态和变量<br>-Oozie工作流是放置在控制依赖DAG（有向无环图 Direct Acyclic Graph）中的一组动作（例如，Hadoop的Map/Reduce作业、Pig作业等），其中指定了动作执行的顺序。我们会使用hPDL（一种XML流程定义语言）来描述这个图。</p>
+<h2 id="Sentry"><a href="#Sentry" class="headerlink" title="Sentry"></a>Sentry</h2><ul>
+<li>Sentry Server 用的是元数据库</li>
+<li>如果用JDBC的连接的话 需要在sentry SERVER 里配上 sentry.service.admin.group 和sentry.service.allow.connect</li>
+</ul>
+
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1181,6 +1514,10 @@ ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1193,13 +1530,19 @@ ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/选择和配置数据压缩.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HUE]Hue隧道访问失效.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1213,25 +1556,52 @@ ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/CM/选择和配置数据压缩.html" itemprop="url">选择和配置数据压缩</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[HUE]Hue隧道访问失效.html" itemprop="url">
+                  Hue隧道访问失效
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">2017-06-02</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
             
           </span>
 
@@ -1244,25 +1614,17 @@ ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
-                    <span itemprop="name">CM</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -1287,6 +1649,9 @@ ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1295,32 +1660,35 @@ ddp-cm:/dev/shm # vi /etc/security/limits.conf # /etc/security/limits.conf##Each
       
         
           
-          选择和配置数据压缩选择压缩类型的指导
-GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩比。GZip通常是冷数据的不错选择，不经常访问。 Snappy或LZO是热门数据的更好选择，频繁访问。
-对于某些类型的文件，BZip2还可以产生比GZip更多的压缩，压缩和解压缩时需要一定
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/CM/选择和配置数据压缩.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <blockquote>
+<p>判断应该是Django框架中,发送报文的MIME有问题<br><a href="https://github.com/cloudera/hue/commit/34388da14712497b685c6b97497c698e720b1a16" target="_blank" rel="noopener">path地址</a></p>
+</blockquote>
+<h1 id="HUE通过隧道访问"><a href="#HUE通过隧道访问" class="headerlink" title="HUE通过隧道访问"></a>HUE通过隧道访问</h1><p>HUE通过隧道映射到本地后发现所有的JavaScript文件解析有问题:</p>
+<p><code>Refused to execute script from &#39;http://127.0.0.1:18888/static/desktop/js/jquery.tablescroller.038d8a8feae9.js&#39; because its MIME type (&#39;text/x-js&#39;) is not executable, and strict MIME type checking is enabled.</code></p>
+<p>问题在于cloudera中Django的配置文件具体在哪,后来终于终于找到了</p>
+<h2 id="HUE文件路径"><a href="#HUE文件路径" class="headerlink" title="HUE文件路径:"></a>HUE文件路径:</h2><p><code>/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop</code></p>
+<h3 id="desktop-core-src-desktop-middleware-py"><a href="#desktop-core-src-desktop-middleware-py" class="headerlink" title="desktop/core/src/desktop/middleware.py"></a>desktop/core/src/desktop/middleware.py</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> import inspect</div><div class="line"> import json</div><div class="line"> import logging</div><div class="line">+import mimetypes</div><div class="line"> import os.path</div><div class="line"> import re</div><div class="line"> import tempfile</div><div class="line">@@ -683,4 +684,22 @@ def process_response(self, request, response):</div><div class="line">     if self.secure_content_security_policy and not &apos;Content-Security-Policy&apos; in response:</div><div class="line">       response[&quot;Content-Security-Policy&quot;] = self.secure_content_security_policy</div><div class="line"> </div><div class="line">-    return response </div><div class="line">+    return response</div><div class="line">+</div><div class="line">+</div><div class="line">+class MimeTypeJSFileFixStreamingMiddleware(object):</div><div class="line">+  &quot;&quot;&quot;</div><div class="line">+  Middleware to detect and fix &quot;.js&quot; mimetype. SLES 11SP4 as example OS which detect js file</div><div class="line">+  as &quot;text/x-js&quot; and if strict X-Content-Type-Options=nosniff is set then browser fails to</div><div class="line">+  execute javascript file.</div><div class="line">+  &quot;&quot;&quot;</div><div class="line">+  def __init__(self):</div><div class="line">+    jsmimetypes = [&apos;application/javascript&apos;, &apos;application/ecmascript&apos;]</div><div class="line">+    if mimetypes.guess_type(&quot;dummy.js&quot;)[0] in jsmimetypes:</div><div class="line">+      LOG.info(&apos;Unloading MimeTypeJSFileFixStreamingMiddleware&apos;)</div><div class="line">+      raise exceptions.MiddlewareNotUsed</div><div class="line">+</div><div class="line">+  def process_response(self, request, response):</div><div class="line">+    if request.path_info.endswith(&apos;.js&apos;):</div><div class="line">+      response[&apos;Content-Type&apos;] = &quot;application/javascript&quot;</div><div class="line">+    return response</div></pre></td></tr></table></figure>
+</p>
+<h3 id="desktop-core-src-desktop-settings-py"><a href="#desktop-core-src-desktop-settings-py" class="headerlink" title="desktop/core/src/desktop/settings.py"></a>desktop/core/src/desktop/settings.py</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    &apos;django.middleware.http.ConditionalGetMiddleware&apos;,</div><div class="line">     &apos;axes.middleware.FailedLoginMiddleware&apos;,</div><div class="line">+    &apos;desktop.middleware.MimeTypeJSFileFixStreamingMiddleware&apos;,</div><div class="line"> ]</div><div class="line"> </div><div class="line"> # if os.environ.get(ENV_DESKTOP_DEBUG):</div></pre></td></tr></table></figure>
+</p>
+<h3 id="cloudera-HUE配置文件路径"><a href="#cloudera-HUE配置文件路径" class="headerlink" title="cloudera HUE配置文件路径"></a>cloudera HUE配置文件路径</h3><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/</div><div class="line">LICENSE.txt         Makefile.buildvars  Makefile.vars       NOTICE.txt          VERSION             apps/               cloudera/           ext/                </div><div class="line">Makefile            Makefile.sdk        Makefile.vars.priv  README              app.reg             build/              desktop/            tools/              </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/app</div><div class="line">app.reg  apps/    </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/apps/</div><div class="line">Makefile     beeswax/     hbase/       impala/      jobsub/      oozie/       proxy/       search/      spark/       useradmin/   </div><div class="line">about/       filebrowser/ help/        jobbrowser/  metastore/   pig/         rdbms/       security/    sqoop/       zookeeper/   </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/</div><div class="line">Makefile    conf/       core/       desktop.db  libs/       logs/       </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop</div><div class="line">desktop/          desktop.egg-info/ </div><div class="line">ddp-cm:~ # vi /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/mi</div><div class="line">middleware.py       middleware_test.py  migrations/         </div><div class="line">ddp-cm:~ # cd  /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop/</div><div class="line">ddp-cm:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop # cp middleware.py middleware.py.bak</div><div class="line">ddp-cm:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop # vi middleware.py</div><div class="line">ddp-cm:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hue/desktop/core/src/desktop # vi settings.py</div></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1334,6 +1702,10 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1346,13 +1718,19 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/HBase入门.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]swap 系统值修改.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1366,25 +1744,52 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/HBase/HBase入门.html" itemprop="url">HBase入门</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[Linux]swap 系统值修改.html" itemprop="url">
+                  swap 系统值修改
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
             
           </span>
 
@@ -1397,25 +1802,17 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
-                    <span itemprop="name">HBase</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -1440,6 +1837,9 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1448,35 +1848,28 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
       
         
           
-          HBase入门HBase概述–Hbase表特点
-大:一个表可以有数十亿行,上百万列
-面向列:面向列(族)的存储和权限访问,列(族)独立索引
-稀疏:对于为空(null)的列,并不占用存储空间,因此,表可以设计的非常稀疏
-数据类型单一:HBase的数据类型都是字符串
-无模式:每行都有一个可以排序的主键和
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/HBase/HBase入门.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="Impala-swapp系统值修改"><a href="#Impala-swapp系统值修改" class="headerlink" title="Impala swapp系统值修改"></a>Impala swapp系统值修改</h1><blockquote>
+<p>部分组件HDFS,YARN,HBAS有黄色警告是因为系统默认SWAP默认值为60</p>
+</blockquote>
+<p>导致内存未使用满便使用swap memory导致的，已经修改过配对应系统的配置值为SWAP=0。</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo 0 &gt;/proc/sys/vm/swappiness</div><div class="line">echo &apos;vm.swappiness=0&apos;&gt;&gt; /etc/sysctl.conf</div><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1490,6 +1883,10 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1502,13 +1899,19 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/HBase架构详解.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1522,25 +1925,52 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/HBase/HBase架构详解.html" itemprop="url">HBase架构详解</a></h1>
+                <a class="post-title-link" href="/CDH/HBase/HBase架构详解.html" itemprop="url">
+                  HBase架构详解
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1553,25 +1983,17 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
-                    <span itemprop="name">HBase</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/HBase/" itemprop="url" rel="index"><span itemprop="name">HBase</span></a></span>
 
                 
                 
@@ -1596,6 +2018,9 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1604,35 +2029,139 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
       
         
           
-          HBase架构详解Hbase架构Hbase组件client
-整个Hbase集群的入口
-使用Hbase RPC机制与HMaster和HRegionserver通信
-与HMaster通信进行管理类的操作
-与HRegionserver通信进行读写类操作
-包含访问HBase的接口,并维护cache来加快对H
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/HBase/HBase架构详解.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="HBase架构详解"><a href="#HBase架构详解" class="headerlink" title="HBase架构详解"></a>HBase架构详解</h1><h2 id="Hbase架构"><a href="#Hbase架构" class="headerlink" title="Hbase架构"></a>Hbase架构</h2><h3 id="Hbase组件"><a href="#Hbase组件" class="headerlink" title="Hbase组件"></a>Hbase组件</h3><h4 id="client"><a href="#client" class="headerlink" title="client"></a>client</h4><ul>
+<li>整个Hbase集群的入口</li>
+<li>使用Hbase RPC机制与HMaster和HRegionserver通信</li>
+<li>与HMaster通信进行管理类的操作</li>
+<li>与HRegionserver通信进行读写类操作</li>
+<li>包含访问HBase的接口,并维护cache来加快对HBase的访问,与HRegionserver交互</li>
+</ul>
+<h4 id="程序协调服务ZooKeeper"><a href="#程序协调服务ZooKeeper" class="headerlink" title="程序协调服务ZooKeeper"></a>程序协调服务ZooKeeper</h4><ul>
+<li>保证任何时候,集群中只有一个Master(HA)</li>
+<li>存贮所有Region的寻址入口</li>
+<li>实时监控Region server的上线和下线信息.并实时通知给Master</li>
+<li>存储Hbase的schema和table元数据</li>
+</ul>
+<h4 id="Hbase主节点Master"><a href="#Hbase主节点Master" class="headerlink" title="Hbase主节点Master"></a>Hbase主节点Master</h4><ul>
+<li>管理用户对Table的增删改查操作</li>
+<li>管理HRegionServer的负载均衡,调整Region分布</li>
+<li>在Region Split后,负责新Region的分配</li>
+<li>在HRegionServer停机后,负责失效HRegionServer上的Region迁移</li>
+<li>HHMaster失效仅会导致所有元数据无法被修改,表的数据读写还是可以正常进行</li>
+</ul>
+<h4 id="HRegionServer节点"><a href="#HRegionServer节点" class="headerlink" title="HRegionServer节点"></a>HRegionServer节点</h4><ul>
+<li>维护Hregion并往HDFS中写数据</li>
+<li>当表的大小超过设置值的时候,Split Hregion</li>
+<li>在HRegionServer停机后,负责失效HRegionServer上的Region迁移</li>
+</ul>
+<h3 id="Hbase架构-1"><a href="#Hbase架构-1" class="headerlink" title="Hbase架构"></a>Hbase架构</h3><h4 id="Hbase与ZooKeeper"><a href="#Hbase与ZooKeeper" class="headerlink" title="Hbase与ZooKeeper"></a>Hbase与ZooKeeper</h4><ul>
+<li>Hbase元数据存储在ZooKeeper中</li>
+<li>默认情况下,HBase管理ZooKeeper实例,比如,启动或者停止ZooKeeper</li>
+<li>Zookeeper解决HBase单节点故障问题</li>
+<li>HMaster与HRegionserver启动时会向Zookeeper注册</li>
+</ul>
+<h4 id="寻找RegionServer过程详解"><a href="#寻找RegionServer过程详解" class="headerlink" title="寻找RegionServer过程详解"></a>寻找RegionServer过程详解</h4><ul>
+<li>ZooKeeper (读取Zookeeper找到-ROOT-表的位置)</li>
+<li>-ROOT-(-ROOT-表包含.METAA.表所在的region列表,该表只会有一个Region;Zookeeper中记录了-ROOT-表的location)</li>
+<li>.META.(.META.表包含所有的用户空间region列表,以及RegionServer的服务器地址)</li>
+<li>用户表</li>
+<li>Client第一次操作后,会将-ROOT-和.META.缓存到本地,不需要再访问Zookeeper</li>
+</ul>
+<h3 id="Hbase容错性"><a href="#Hbase容错性" class="headerlink" title="Hbase容错性"></a>Hbase容错性</h3><ul>
+<li>Master容错: Zookeeper 重新选择一个新的Master<ul>
+<li>无Master过程中,数据读取仍照正常进行</li>
+<li>无Master过程中,region切分,负载均衡等无法进行</li>
+</ul>
+</li>
+<li>RegionServer容错: 定时向Zookeeper汇报心跳,如果一段时间内出现心跳<ul>
+<li>Master将该RegionServer上的Region重新分配到其他RegionServer上</li>
+<li>失效服务器上”预写”日志由主服务器进行分割并派送给新的RegionServer</li>
+</ul>
+</li>
+<li>Zookeeper容错<ul>
+<li>Zookeeper高可靠的服务,不存在单点故障</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hbase数据存储"><a href="#Hbase数据存储" class="headerlink" title="Hbase数据存储"></a>Hbase数据存储</h2><ul>
+<li>HBase中的所有数据文件都存储在Hadoop HDFS文件系统上,格式主要有两种:<ul>
+<li>HFile: HBase中KeyValue数据的存储格式,HFile是Hadoop的二进制格式文件,实际上StoreFile就是对HFile做了轻量级包装,即StoreFile底层就是HFile</li>
+<li>HLog File: HBase 中WAL(Write Ahead Log)的存储格式,物理上是Hadoop的Sequence File带项目符号的内容 </li>
+</ul>
+</li>
+</ul>
+<h3 id="HRegionServer"><a href="#HRegionServer" class="headerlink" title="HRegionServer"></a>HRegionServer</h3><ul>
+<li>HRegionServer管理一些列HRegion对象</li>
+<li>每个HRegion对应Table中的一个Region,HRegion由多个HStore组成</li>
+<li>每个HStore对应Table中一个Column Family的存储</li>
+<li>Column Family就是一个集中的额存储单元,故将具有相同IO特性的Column放在一个Column Family会更高效</li>
+</ul>
+<h3 id="HStore-MemStore-和-StoreFile"><a href="#HStore-MemStore-和-StoreFile" class="headerlink" title="HStore (MemStore 和 StoreFile)"></a>HStore (MemStore 和 StoreFile)</h3><ul>
+<li>Client写入 -&gt; 存储MemStore,一直到MemStore满 -&gt; Flush成一个StoreFile,直至增长到一定阈值 -&gt; 触发Compact合并操作 -&gt; 多个StoreFile合并成一个StoreFile,同时进行版本合并和数据删除 -&gt; 当StoreFiles Compact后,逐步形成越来越大的StoreFile -&gt; 单个StoreFile大小超过一定阈值后,触发Split操作,把当前Region Split成2个Region,被分割的Region会下线,新Split出2个子Region会被HMaster分配到相应的HRegionServer上,使得原先1个Region的压力得以分流到2个Region上</li>
+<li>HBase只是增加数据,所有的更新和删除操作,都是在Compact阶段做的,所以,用户写操作只需要进入到内存即可立即返回,从而保证I/O高性能</li>
+</ul>
+<h4 id="StoreFile文件结构"><a href="#StoreFile文件结构" class="headerlink" title="StoreFile文件结构"></a>StoreFile文件结构</h4><ul>
+<li>StoreFile以HFile格式保存在HDFS上</li>
+<li>Data Block段:保存表中的额数据,这部分可以被压缩</li>
+<li>Meta Block段(可选的):保存用户自定义的kv对,可以被压缩</li>
+<li>File Info 段:Hfile的元信息,不压缩 ,用户也可以在这一部分添加自己的元信息</li>
+<li>Data Block Index 段:Data Block的索引.每条索引的key是被索引的block的第一条记录的key</li>
+<li>Meta Block Index段(可选的):Meta Block的索引</li>
+<li>Trailer:这一段是定长的,保存的是每一段的偏移量</li>
+</ul>
+<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><ul>
+<li>HFile的Data Block,Meta Block通常采用压缩方式存储<ul>
+<li>好处: 压缩之后可以大大减小网络IO和磁盘IO</li>
+<li>坏处: 需要花费CPU进行压缩和解压缩</li>
+</ul>
+</li>
+<li>Hfile支持的压缩格式: Gzip,Lzo,Snappy…</li>
+</ul>
+<h3 id="KeyValue-存储结构"><a href="#KeyValue-存储结构" class="headerlink" title="KeyValue 存储结构"></a>KeyValue 存储结构</h3><ul>
+<li>HFile里面的每个KeyValue对就是一个简单的byte数组</li>
+<li>KeyLength和ValueLength: 两个固定的长度,分别代表key和value的长度</li>
+<li>Key部分: RowLength是固定长度的数值,表示RowKey的长度,Row就是RowKey</li>
+<li>Column Family Length是固定长度的数值,表示Family的长度,接着就是Column Family,再接着就是Qualifier,然后是两个固定长度的数值,表示Time Stamp和Key Type(Put/Delete)</li>
+<li>Value部分没有这么复杂的结构,就是纯粹的二进制数据</li>
+</ul>
+<h3 id="HLog文件结构"><a href="#HLog文件结构" class="headerlink" title="HLog文件结构"></a>HLog文件结构</h3><ul>
+<li>HLog文件就是一个普通的Hadoop sequence File,Sequence File 的Key就是HLogKey对象,HLogkey中记录了写入数据的归属信息,除了table和region名字外,同时还包括sequence number和timestamp,timestamp是”写入时间”,sequence number的起始值为0,或者是最近一次存入文件系统中sequence number.</li>
+<li>HLog Sequece File的Value是HBase的KeyValue对象,即对应HFile中的KeyValue</li>
+</ul>
+<h2 id="Hbase内部表"><a href="#Hbase内部表" class="headerlink" title="Hbase内部表"></a>Hbase内部表</h2><h3 id="Hbase内部表-1"><a href="#Hbase内部表-1" class="headerlink" title="Hbase内部表"></a>Hbase内部表</h3><ul>
+<li>-ROOT-表<ul>
+<li>存储.meta.表信息,-ROOT-表中仅有一行数据</li>
+<li>Zookeeper中存储了-ROOT-表的位置信息</li>
+</ul>
+</li>
+<li>.META.表<ul>
+<li>主要存储HRegin的列表和HRegionServer的服务器地址</li>
+</ul>
+</li>
+<li>Namespace表<ul>
+<li>存储命名空间</li>
+</ul>
+</li>
+</ul>
+<h3 id="hbck修复错误表"><a href="#hbck修复错误表" class="headerlink" title="hbck修复错误表"></a>hbck修复错误表</h3><p>hbase hbck -fix</p>
+<h2 id="Hbase管理命令"><a href="#Hbase管理命令" class="headerlink" title="Hbase管理命令"></a>Hbase管理命令</h2><h3 id="Flush"><a href="#Flush" class="headerlink" title="Flush"></a>Flush</h3><p>把内存中的数据写入硬盘</p>
+<h3 id="Compact"><a href="#Compact" class="headerlink" title="Compact"></a>Compact</h3><h3 id="Region"><a href="#Region" class="headerlink" title="Region"></a>Region</h3>
+          
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1646,6 +2175,10 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1658,13 +2191,19 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/MapReduce on HBase.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/java/java笔记.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1678,25 +2217,52 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/HBase/MapReduce on HBase.html" itemprop="url">MapReduce on HBase</a></h1>
+                <a class="post-title-link" href="/java/java笔记.html" itemprop="url">
+                  java笔记
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1709,25 +2275,10 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
-                    <span itemprop="name">HBase</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
@@ -1752,6 +2303,9 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1760,31 +2314,45 @@ GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩�
       
         
           
-          MapReduce on HBaseHBase自带MapReduce工具使用导入环境变量 HADOOP_HOME HBASE_HOME
-HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导入HBaseHBase BulkLoadBulkLoad源码分析
+            <p>java 是区分单双引号的<br>new 数组是要定义数组个数的 个数值 等于数组最后一个值-1</p>
+<p> 如果方法的返回类型为 void ，则方法中不能使用 return 返回值！<br> 方法的返回值最多只能有一个，不能返回多个值; return 需要带参数!<br>  方法返回值的类型必须兼容，例如，如果返回值类型为 int ，则不能返回 String 型值</p>
+<p>1、 静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员。</p>
+<p>如果希望在静态方法中调用非静态变量，可以通过创建类的对象，然后通过对象来访问非静态变量。</p>
+<p>2、 在普通成员方法中，则可以直接访问同类的非静态变量和静态变量</p>
+<p>3、 静态方法中不能直接调用非静态方法，需要通过对象来访问非静态方法。</p>
+<p>Java 中可以通过初始化块进行数据赋值<br>在类的声明中，可以包含多个初始化块，当创建类的实例时，就会依次执行这些代码块。如果使用 static 修饰初始化块，就称为静态初始化块。</p>
+<p>需要特别注意：静态初始化块只在类加载时执行，且只会执行一次，同时静态初始化块只能给静态变量赋值，不能初始化普通的成员变量。</p>
+<p>程序运行时静态初始化块最先被执行，然后执行普通初始化块，最后才执行构造方法。由于静态初始化块只在类加载时执行一次，所以当再次创建对象 hello2 时并未执行静态初始化块。</p>
+<p>1、 静态内部类不能直接访问外部类的非静态成员，但可以通过 new 外部类().成员 的方式访问 </p>
+<p>2、 如果外部类的静态成员与内部类的成员名称相同，可通过“类名.静态成员”访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</p>
+<p>3、 创建静态内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</p>
+<p>方法内部类就是内部类定义在外部类的方法中，方法内部类只在该方法的内部可见，即只在该方法内可以使用。<br>一定要注意哦：由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类不能使用访问控制符和 static 修饰符。</p>
+<p>String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。</p>
+<p>局部变量不会自动赋初始值</p>
+<p>两类变量同名时局部变量具有更高的优先级</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ol>
+<li>使用new+构造方法 创建一个新的对象</li>
+<li>构造方法是定义在java类中的一个用来初始化对象的方法</li>
+<li>构造方法与类同名且没有返回值</li>
+</ol>
+<hr>
+
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CDH/HBase/MapReduce on HBase.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1798,6 +2366,10 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1806,15 +2378,12 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1830,62 +2399,133 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Nameless13" />
-          <p class="site-author-name" itemprop="name">Nameless13</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nameless13</p>
               <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">153</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
           
 
           
             
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
+          
           
 
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
       </section>
 
       
@@ -1902,30 +2542,41 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.3</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1936,6 +2587,8 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -1956,7 +2609,6 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
 
 
 
-  
 
 
 
@@ -1969,55 +2621,49 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
 
 
 
@@ -2040,25 +2686,25 @@ HBase自带命令Tsv与BulkLoadSqoop集成HBaseHBase表数据迁移HDFS数据导
 
 
 
-  
 
 
 
 
   
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
   
 
   

@@ -1,15 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -36,36 +49,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,36 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
-<meta name="description" content="CDH upgrade alternatives link not updated  There seems to be issues around update-alternatives command.Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero lengt">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CDH upgrade alternatives link not updated">
-<meta property="og:url" content="https://nameless13.github.io/CDH/Error/[CM]CDH upgrade alternatives link not updated.html">
-<meta property="og:site_name" content="Nameless13">
-<meta property="og:description" content="CDH upgrade alternatives link not updated  There seems to be issues around update-alternatives command.Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero lengt">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-23T15:12:06.847Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CDH upgrade alternatives link not updated">
-<meta name="twitter:description" content="CDH upgrade alternatives link not updated  There seems to be issues around update-alternatives command.Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero lengt">
+
+
+
 
 
 
@@ -111,14 +84,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: 'J3OX6892F7',
       apiKey: '38852eb9095216f8f2ada575a06a9cfc',
@@ -130,12 +103,37 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="CDH upgrade alternatives link not updatedThere seems to be issues around update-alternatives command.Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero length,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CDH upgrade alternatives link not updated">
+<meta property="og:url" content="https://nameless13.github.io/CDH/Error/[CM]CDH upgrade alternatives link not updated.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="CDH upgrade alternatives link not updatedThere seems to be issues around update-alternatives command.Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero length,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-29T15:19:59.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CDH upgrade alternatives link not updated">
+<meta name="twitter:description" content="CDH upgrade alternatives link not updatedThere seems to be issues around update-alternatives command.Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero length,">
+
+
+
+
+
 
   <link rel="canonical" href="https://nameless13.github.io/CDH/Error/[CM]CDH upgrade alternatives link not updated.html"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>CDH upgrade alternatives link not updated | Nameless13</title>
   
@@ -148,10 +146,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -162,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -171,19 +191,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -191,106 +209,82 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
+  </li>
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
+    
+
   
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
 
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-
-
-
-
-    </div>
   
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -303,13 +297,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[CM]CDH upgrade alternatives link not updated.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -321,25 +321,50 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CDH upgrade alternatives link not updated</h1>
+          <h1 class="post-title" itemprop="name headline">CDH upgrade alternatives link not updated
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:34+08:00">
-                2018-05-23
-              </time>
+
+              
+                
+              
+
+              <time title="Post created: 2018-05-23 09:57:34" itemprop="dateCreated datePublished" datetime="2018-05-23T09:57:34+08:00">2018-05-23</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
             
           </span>
 
@@ -352,25 +377,17 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  . 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -395,44 +412,43 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>CDH upgrade alternatives link not updated </p>
-<p>There seems to be issues around update-alternatives command.<br>Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero length,see [0]) alternatives configuration file under /var/lib/alternatives,and based on your description it appears to be the former.<br>The root cause is that Cloudera Manager Agents relies in the OS provided binary of update-alternatives,<br>however the binary doesn’t relay feedback on bad entries or problems,<br>therefore we have to resort to manually rectifying issues like these.<br>We have an internal improvement JIRA OPSAPS-39415 to explore options on how to make alternatives updates during upgrades more resilient.<br>To recover from the issue,<br>you would need to remove CDH related entries from alternatives configuration files. </p>
+        <h1 id="CDH-upgrade-alternatives-link-not-updated"><a href="#CDH-upgrade-alternatives-link-not-updated" class="headerlink" title="CDH upgrade alternatives link not updated"></a>CDH upgrade alternatives link not updated</h1><p>There seems to be issues around update-alternatives command.<br>Which is often caused by a broken alternatives link under /etc/alternatives/ or a bad (zero length,see [0]) alternatives configuration file under /var/lib/alternatives,and based on your description it appears to be the former.<br>The root cause is that Cloudera Manager Agents relies in the OS provided binary of update-alternatives,<br>however the binary doesn’t relay feedback on bad entries or problems,<br>therefore we have to resort to manually rectifying issues like these.<br>We have an internal improvement JIRA OPSAPS-39415 to explore options on how to make alternatives updates during upgrades more resilient.<br>To recover from the issue,<br>you would need to remove CDH related entries from alternatives configuration files. </p>
 <p>[0] <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1016725" target="_blank" rel="noopener">https://bugzilla.redhat.com/show_bug.cgi?id=1016725</a><br>= = = = = = = </p>
-<h1 id="Stop-CM-agent-service-on-node-service-cloudera-scm-agent-stop"><a href="#Stop-CM-agent-service-on-node-service-cloudera-scm-agent-stop" class="headerlink" title="Stop CM agent service on node service cloudera-scm-agent stop"></a>Stop CM agent service on node service cloudera-scm-agent stop</h1><h1 id="Delete-hadoop-etc-alternatives-below-will-displays-the-rm-command-you’ll-need-to-issue"><a href="#Delete-hadoop-etc-alternatives-below-will-displays-the-rm-command-you’ll-need-to-issue" class="headerlink" title="Delete hadoop /etc/alternatives - below will displays the rm command you’ll need to issue."></a>Delete hadoop /etc/alternatives - below will displays the rm command you’ll need to issue.</h1><p><code>ls -l /etc/alternatives/ | grep &quot;\/opt\/cloudera&quot; | awk {&#39;print $9&#39;} | while read m; do if [[ -e /var/lib/alternatives/${m} ]]; then echo &quot;rm -fv /var/lib/alternatives/${m}&quot;; fi; echo &quot;rm -fv /etc/alternatives/${m}&quot;; done</code></p>
-<h1 id="Remove-0-byte-var-lib-alternatives"><a href="#Remove-0-byte-var-lib-alternatives" class="headerlink" title="Remove 0 byte /var/lib/alternatives"></a>Remove 0 byte /var/lib/alternatives</h1><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /var/lib/alternatives </div><div class="line">find . -size 0 | awk &apos;&#123;print $1 &quot; &quot;&#125;&apos; | tr -d &apos;\n&apos;</div></pre></td></tr></table></figure>
+<ol>
+<li>Stop CM agent service on node service cloudera-scm-agent stop<br><code>service cloudera-scm-agent stop</code></li>
+<li>Delete hadoop /etc/alternatives - below will displays the rm command you’ll need to issue.<br><code>ls -l /etc/alternatives/ | grep &quot;\/opt\/cloudera&quot; | awk {&#39;print $9&#39;} | while read m; do if [[ -e /var/lib/alternatives/${m} ]]; then echo &quot;rm -fv /var/lib/alternatives/${m}&quot;; fi; echo &quot;rm -fv /etc/alternatives/${m}&quot;; done</code></li>
+<li><p>Remove 0 byte /var/lib/alternatives </p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /var/lib/alternatives </div><div class="line">find . -size 0 | awk &apos;&#123;print $1 &quot; &quot;&#125;&apos; | tr -d &apos;\n&apos;</div></pre></td></tr></table></figure>
 </p>
-<h1 id="The-above-command-will-give-you-a-multi-line-output-of-all-0-byte-files-in-var-lib-alternatives-Copy-all-the-files"><a href="#The-above-command-will-give-you-a-multi-line-output-of-all-0-byte-files-in-var-lib-alternatives-Copy-all-the-files" class="headerlink" title="The above command will give you a multi-line output of all 0 byte files in /var/lib/alternatives. Copy all the files,"></a>The above command will give you a multi-line output of all 0 byte files in /var/lib/alternatives. Copy all the files,</h1><p>and put into the rm -f rm -f </p>
-<h1 id="Start-CM-agent-service-cloudera-scm-agent-start"><a href="#Start-CM-agent-service-cloudera-scm-agent-start" class="headerlink" title="Start CM agent service cloudera-scm-agent start"></a>Start CM agent service cloudera-scm-agent start</h1><p>= = = = = = =</p>
+</li>
+<li><p>The above command will give you a multi-line output of all 0 byte files in /var/lib/alternatives. Copy all the files,and put into the rm -f rm -f </p>
+</li>
+<li>Start CM agent service cloudera-scm-agent start<br><code>service cloudera-scm-agent start</code><br>= = = = = = =</li>
+</ol>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -445,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CDH/CM/Windows Kerberos客户端配置并访问CDH.html" rel="next" title="Windows Kerberos客户端配置并访问CDH">
-                <i class="fa fa-chevron-left"></i> Windows Kerberos客户端配置并访问CDH
+              <a href="/CDH/Error/[CM]主机心跳显示host id 不被识别.html" rel="next" title="主机心跳显示host id 不被识别">
+                <i class="fa fa-chevron-left"></i> 主机心跳显示host id 不被识别
               </a>
             
           </div>
@@ -455,8 +471,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CDH/Error/[CM]主机心跳显示host id 不被识别.html" rel="prev" title="主机心跳显示host id 不被识别">
-                主机心跳显示host id 不被识别 <i class="fa fa-chevron-right"></i>
+              <a href="/CDH/CM/Windows Kerberos客户端配置并访问CDH.html" rel="prev" title="Windows Kerberos客户端配置并访问CDH">
+                Windows Kerberos客户端配置并访问CDH <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,6 +482,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -479,11 +499,8 @@
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -499,71 +516,142 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Nameless13" />
-          <p class="site-author-name" itemprop="name">Nameless13</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nameless13</p>
               <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">153</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
           
 
           
             
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
+          
           
 
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
       </section>
 
       
@@ -576,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stop-CM-agent-service-on-node-service-cloudera-scm-agent-stop"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Stop-CM-agent-service-on-node-service-cloudera-scm-agent-stop" class="headerlink" title="Stop CM agent service on node service cloudera-scm-agent stop"></a>Stop CM agent service on node service cloudera-scm-agent stop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Delete-hadoop-etc-alternatives-below-will-displays-the-rm-command-you’ll-need-to-issue"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Delete-hadoop-etc-alternatives-below-will-displays-the-rm-command-you&#x2019;ll-need-to-issue" class="headerlink" title="Delete hadoop /etc/alternatives - below will displays the rm command you&#x2019;ll need to issue."></a>Delete hadoop /etc/alternatives - below will displays the rm command you&#x2019;ll need to issue.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-0-byte-var-lib-alternatives"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Remove-0-byte-var-lib-alternatives" class="headerlink" title="Remove 0 byte /var/lib/alternatives"></a>Remove 0 byte /var/lib/alternatives</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-above-command-will-give-you-a-multi-line-output-of-all-0-byte-files-in-var-lib-alternatives-Copy-all-the-files"><span class="nav-number">4.</span> <span class="nav-text"><a href="#The-above-command-will-give-you-a-multi-line-output-of-all-0-byte-files-in-var-lib-alternatives-Copy-all-the-files" class="headerlink" title="The above command will give you a multi-line output of all 0 byte files in /var/lib/alternatives. Copy all the files,"></a>The above command will give you a multi-line output of all 0 byte files in /var/lib/alternatives. Copy all the files,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Start-CM-agent-service-cloudera-scm-agent-start"><span class="nav-number">5.</span> <span class="nav-text"><a href="#Start-CM-agent-service-cloudera-scm-agent-start" class="headerlink" title="Start CM agent service cloudera-scm-agent start"></a>Start CM agent service cloudera-scm-agent start</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CDH-upgrade-alternatives-link-not-updated"><span class="nav-number">1.</span> <span class="nav-text"><a href="#CDH-upgrade-alternatives-link-not-updated" class="headerlink" title="CDH upgrade alternatives link not updated"></a>CDH upgrade alternatives link not updated</span></a></li></ol></div>
             
 
           </div>
@@ -596,30 +684,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.3</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -630,6 +729,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -650,7 +751,6 @@
 
 
 
-  
 
 
 
@@ -663,55 +763,53 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
 
 
-  
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
+
+
+  
 
 
 
@@ -734,25 +832,25 @@
 
 
 
-  
 
 
 
 
   
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
   
 
   
