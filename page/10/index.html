@@ -1,15 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -36,36 +49,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,35 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
-<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nameless13">
-<meta property="og:url" content="https://nameless13.github.io/page/10/index.html">
-<meta property="og:site_name" content="Nameless13">
-<meta property="og:description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nameless13">
-<meta name="twitter:description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+
 
 
 
@@ -110,14 +84,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: 'J3OX6892F7',
       apiKey: '38852eb9095216f8f2ada575a06a9cfc',
@@ -129,12 +103,36 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nameless13">
+<meta property="og:url" content="https://nameless13.github.io/page/10/index.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nameless13">
+<meta name="twitter:description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+
+
+
+
+
 
   <link rel="canonical" href="https://nameless13.github.io/page/10/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Nameless13</title>
   
@@ -147,10 +145,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -162,8 +182,7 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -172,19 +191,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -192,58 +209,109 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -256,13 +324,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/impala hdfs hbase等用户的nproc的设置.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[CM]CM日志迁移.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -276,11 +350,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/CM/impala hdfs hbase等用户的nproc的设置.html" itemprop="url">impala hdfs hbase等用户的nproc的设置</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[CM]CM日志迁移.html" itemprop="url">
+                  CM日志迁移
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -288,13 +372,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
             
           </span>
 
@@ -310,22 +411,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
-                    <span itemprop="name">CM</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -350,6 +443,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -358,25 +454,33 @@
       
         
           
-            <p><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_ig_hbase_config.html" target="_blank" rel="noopener">请参考下面的方法，检查一下impala／hdfs／hbase等用户的nproc的设置是否符合cloudera推荐的值</a></p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-cm:/dev/shm # vi /etc/security/limits.conf </div><div class="line"></div><div class="line"># /etc/security/limits.conf</div><div class="line">#</div><div class="line">#Each line describes a limit for a user in the form:</div><div class="line">#</div><div class="line">#&lt;domain&gt;        &lt;type&gt;  &lt;item&gt;  &lt;value&gt;</div><div class="line">#</div><div class="line">#Where:</div><div class="line">#&lt;domain&gt; can be:</div><div class="line">#        - an user name</div><div class="line">#        - a group name, with @group syntax</div><div class="line">#        - the wildcard *, for default entry</div><div class="line">#        - the wildcard %, can be also used with %group syntax,</div><div class="line">#                 for maxlogin limit</div><div class="line">#</div><div class="line">#&lt;type&gt; can have the two values:</div><div class="line">#        - &quot;soft&quot; for enforcing the soft limits</div><div class="line">#        - &quot;hard&quot; for enforcing hard limits</div><div class="line">#</div><div class="line">#&lt;item&gt; can be one of the following:</div><div class="line">#        - core - limits the core file size (KB)</div><div class="line">#        - data - max data size (KB)</div><div class="line">#        - fsize - maximum filesize (KB)</div><div class="line">#        - memlock - max locked-in-memory address space (KB)</div><div class="line">#        - nofile - max number of open files</div><div class="line">#        - rss - max resident set size (KB)</div><div class="line">#        - stack - max stack size (KB)</div><div class="line">#        - cpu - max CPU time (MIN)</div><div class="line">#        - nproc - max number of processes</div><div class="line">#        - as - address space limit (KB)</div><div class="line">#        - maxlogins - max number of logins for this user</div><div class="line">#        - maxsyslogins - max number of logins on the system</div><div class="line">#        - priority - the priority to run user process with</div><div class="line">#        - locks - max number of file locks the user can hold</div><div class="line">#        - sigpending - max number of pending signals</div><div class="line">#        - msgqueue - max memory used by POSIX message queues (bytes)</div><div class="line">#        - nice - max nice priority allowed to raise to values: [-20, 19]</div><div class="line">#        - rtprio - max realtime priority</div><div class="line">#</div><div class="line">#&lt;domain&gt;      &lt;type&gt;  &lt;item&gt;         &lt;value&gt;</div><div class="line">#</div><div class="line"></div><div class="line">#*               soft    core            0</div><div class="line">#*               hard    rss             10000</div><div class="line">#@student        hard    nproc           20</div><div class="line">#@faculty        soft    nproc           20</div><div class="line">#@faculty        hard    nproc           50</div><div class="line">#ftp             hard    nproc           0</div><div class="line">#@student        -       maxlogins       4</div><div class="line"></div><div class="line"># End of file</div><div class="line"></div><div class="line">oracle           soft    nproc   2047</div><div class="line">oracle           hard    nproc   16384</div><div class="line">oracle           soft    nofile  1024</div><div class="line">oracle           hard    nofile  65536</div></pre></td></tr></table></figure></p>
+            <h2 id="CM日志迁移"><a href="#CM日志迁移" class="headerlink" title="CM日志迁移"></a>CM日志迁移</h2><ol>
+<li>先停  Cloudera Management Service. Actions &gt; Stop.</li>
+<li>改log 地址配置</li>
+<li><code>sudo service cloudera-scm-server stop</code></li>
+<li><code>parted -s $DEVICE mklabel gpt mkpart primary ext3 0% 100%</code></li>
+<li>改回权限</li>
+<li>重启 <code>service cloudera-scm-server start</code></li>
+<li>重启 <code>Cloudera Management Service</code></li>
+<li>最后通过更改部分日志存储路径解决</li>
+</ol>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -390,6 +494,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -402,13 +510,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/HBase入门.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -422,11 +536,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/HBase/HBase入门.html" itemprop="url">HBase入门</a></h1>
+                <a class="post-title-link" href="/CDH/HBase/HBase入门.html" itemprop="url">
+                  HBase入门
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -434,13 +558,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -456,22 +597,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
-                    <span itemprop="name">HBase</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/HBase/" itemprop="url" rel="index"><span itemprop="name">HBase</span></a></span>
 
                 
                 
@@ -496,6 +629,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -583,17 +719,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -607,6 +743,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -619,609 +759,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Spark]spark-streaming 与kafka的结合.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Error/[Spark]spark-streaming 与kafka的结合.html" itemprop="url">spark-streaming 与kafka的结合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="spark-streaming-与kafka的结合"><a href="#spark-streaming-与kafka的结合" class="headerlink" title="spark-streaming 与kafka的结合"></a>spark-streaming 与kafka的结合</h1><p>升级CDH到5.10后 spark-steaming 从kafka获取消息就报错</p>
-<p><strong>原因:高版本的kafka从低版本的kafka server端连接不兼容</strong></p>
-<p>因为在使用spark-streaming调用kafka的时候,会由cloudera来调用相应的组件,其中就有kafka的客户端,并且优先级较高,继而不会调用我们自己的kafka客户端,导致报错<br>后来原厂的人重新编译路径指向后解决</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
   
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/选择和配置数据压缩.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/CM/选择和配置数据压缩.html" itemprop="url">选择和配置数据压缩</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
-                    <span itemprop="name">CM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="选择和配置数据压缩"><a href="#选择和配置数据压缩" class="headerlink" title="选择和配置数据压缩"></a>选择和配置数据压缩</h1><h2 id="选择压缩类型的指导"><a href="#选择压缩类型的指导" class="headerlink" title="选择压缩类型的指导"></a>选择压缩类型的指导</h2><ul>
-<li>GZIP压缩比Snappy或LZO使用更多的CPU资源，但提供了更高的压缩比。GZip通常是冷数据的不错选择，不经常访问。 Snappy或LZO是热门数据的更好选择，频繁访问。</li>
-<li>对于某些类型的文件，BZip2还可以产生比GZip更多的压缩，压缩和解压缩时需要一定的速度。 HBase不支持BZip2压缩。</li>
-<li>Snappy经常表现比LZO好。</li>
-<li>对于MapReduce，如果您需要压缩数据是可拆分的，则可以拆分BZip2和LZO格式。 Snappy和GZip块不是可拆分的，但是可以拆分诸如SequenceFile或Avro之类的容器文件格式的Snappy块的文件</li>
-<li>Snappy旨在与容器格式（如SequenceFiles或Avro数据文件）一起使用，而不是直接用于纯文本，例如，由于后者不可分割，并且不能使用MapReduce并行处理。可分离性与HBase数据无关。</li>
-<li></li>
-</ul>
-<h2 id="配置数据压缩"><a href="#配置数据压缩" class="headerlink" title="配置数据压缩"></a>配置数据压缩</h2><h3 id="使用Cloudera-Manager配置数据压缩"><a href="#使用Cloudera-Manager配置数据压缩" class="headerlink" title="使用Cloudera Manager配置数据压缩"></a>使用Cloudera Manager配置数据压缩</h3><p>要使用Cloudera Manager配置对LZO的支持，您必须安装GPL Extras Parcle，然后配置服务才能使用。请参阅<br><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_install_gpl_extras.html#xd_583c10bfdbd326ba-3ca24a24-13d80143249--7ec6" target="_blank" rel="noopener">安装GPL附加包</a></p>
-<p><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cm_mc_gpl_extras.html#xd_583c10bfdbd326ba--6eed2fb8-14349d04bee--7c3e" target="_blank" rel="noopener">配置服务以使用GPL附加包裹</a></p>
-<h3 id="Configuring-Data-Compression-Using-the-Command-Line"><a href="#Configuring-Data-Compression-Using-the-Command-Line" class="headerlink" title="Configuring Data Compression Using the Command Line"></a>Configuring Data Compression Using the Command Line</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/MapReduce on HBase.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/HBase/MapReduce on HBase.html" itemprop="url">MapReduce on HBase</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
-                    <span itemprop="name">HBase</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="MapReduce-on-HBase"><a href="#MapReduce-on-HBase" class="headerlink" title="MapReduce on HBase"></a>MapReduce on HBase</h1><h2 id="HBase自带MapReduce工具使用"><a href="#HBase自带MapReduce工具使用" class="headerlink" title="HBase自带MapReduce工具使用"></a>HBase自带MapReduce工具使用</h2><p>导入环境变量 HADOOP_HOME HBASE_HOME</p>
-<h3 id="HBase自带命令"><a href="#HBase自带命令" class="headerlink" title="HBase自带命令"></a>HBase自带命令</h3><h3 id="Tsv与BulkLoad"><a href="#Tsv与BulkLoad" class="headerlink" title="Tsv与BulkLoad"></a>Tsv与BulkLoad</h3><h3 id="Sqoop集成HBase"><a href="#Sqoop集成HBase" class="headerlink" title="Sqoop集成HBase"></a>Sqoop集成HBase</h3><h2 id="HBase表数据迁移"><a href="#HBase表数据迁移" class="headerlink" title="HBase表数据迁移"></a>HBase表数据迁移</h2><h2 id="HDFS数据导入HBase"><a href="#HDFS数据导入HBase" class="headerlink" title="HDFS数据导入HBase"></a>HDFS数据导入HBase</h2><h2 id="HBase-BulkLoad"><a href="#HBase-BulkLoad" class="headerlink" title="HBase BulkLoad"></a>HBase BulkLoad</h2><h2 id="BulkLoad源码分析"><a href="#BulkLoad源码分析" class="headerlink" title="BulkLoad源码分析"></a>BulkLoad源码分析</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Error/[Zabbix]大数据平台-Zabbix agent恢复.html" itemprop="url">大数据平台-Zabbix agent恢复</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="zabbix-agent-进程恢复"><a href="#zabbix-agent-进程恢复" class="headerlink" title="zabbix agent 进程恢复"></a>zabbix agent 进程恢复</h1><blockquote>
-<p><strong>v1.1</strong> updated:2017-05-30 Nameless13</p>
-</blockquote>
-<h2 id="因系统重启后-zabbix-agent没有设置开机启动所以会导致监控失效"><a href="#因系统重启后-zabbix-agent没有设置开机启动所以会导致监控失效" class="headerlink" title="因系统重启后,zabbix agent没有设置开机启动所以会导致监控失效"></a>因系统重启后,zabbix agent没有设置开机启动所以会导致监控失效</h2><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ps aux |grep zabbix</div><div class="line"><span class="built_in">cd</span> /etc/init.d/</div><div class="line">ls |grep zabbix</div><div class="line"><span class="built_in">cd</span> /etc/init.d &amp;&amp; wget http://10.200.58.25/zabbix/zabbix_agentd &amp;&amp; chkconfig zabbix_agentd 2345 &amp;&amp; service </div><div class="line">chmod +x zabbix_agentd </div><div class="line">service zabbix_agentd start</div><div class="line">chkconfig zabbix_agentd on</div><div class="line">chkconfig --list</div><div class="line">chkconfig zabbix_agentd 2345</div><div class="line">chkconfig --list</div><div class="line">ps aux |grep zabbix</div></pre></td></tr></table></figure>
-</p>
-<h3 id="zabbix-agentd"><a href="#zabbix-agentd" class="headerlink" title="zabbix_agentd"></a>zabbix_agentd</h3><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#! /bin/sh</span></div><div class="line"><span class="comment"># Copyright (c) 07/2004 A.Tophofen, Germany</span></div><div class="line"><span class="comment"># Modified for Zabbix 1.1alpha7 and SuSE Linux 9.2</span></div><div class="line"><span class="comment"># April 2005, A. Kiepe, Switzerland</span></div><div class="line"><span class="comment"># Modified for Zabbix 2.0.0</span></div><div class="line"><span class="comment"># May 2012, Zabbix SIA</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># init.d/zabbix_agentd</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">### BEGIN INIT INFO</span></div><div class="line"><span class="comment"># Provides:       zabbix_agentd</span></div><div class="line"><span class="comment"># Required-Start: $network $remote_fs $syslog</span></div><div class="line"><span class="comment"># Required-Stop:</span></div><div class="line"><span class="comment"># Default-Start:  3 </span></div><div class="line"><span class="comment"># Default-Stop:</span></div><div class="line"><span class="comment"># Description:    Starts Zabbix_Agentd</span></div><div class="line"><span class="comment">### END INIT INFO</span></div><div class="line"></div><div class="line">. /etc/rc.status</div><div class="line">rc_reset</div><div class="line">NAME=<span class="string">"zabbix_agentd"</span></div><div class="line"></div><div class="line">ZABBIX_BIN=<span class="string">"/usr/local/sbin/zabbix_agentd"</span></div><div class="line">ZABBIX_PID=<span class="string">"/tmp/zabbix_agentd.pid"</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ ! -x <span class="variable">$&#123;ZABBIX_BIN&#125;</span> ] ; <span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> -n <span class="string">"<span class="variable">$&#123;ZABBIX_BIN&#125;</span> not installed! "</span></div><div class="line">        <span class="comment"># Tell the user this has skipped</span></div><div class="line">        rc_status -s</div><div class="line">        <span class="built_in">exit</span> 5</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/sbin</div><div class="line"></div><div class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">    start)</div><div class="line">        <span class="built_in">echo</span> -n <span class="string">"Starting <span class="variable">$&#123;NAME&#125;</span> "</span></div><div class="line">        checkproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span> <span class="variable">$&#123;ZABBIX_BIN&#125;</span></div><div class="line">        <span class="keyword">case</span> $? <span class="keyword">in</span></div><div class="line">                0) <span class="built_in">echo</span> -n <span class="string">"- Warning: <span class="variable">$&#123;NAME&#125;</span> already running! "</span> ;;</div><div class="line">                1) <span class="built_in">echo</span> -n <span class="string">"- Warning: <span class="variable">$&#123;ZABBIX_PID&#125;</span> exists! "</span> ;;</div><div class="line">        <span class="keyword">esac</span></div><div class="line"></div><div class="line">        startproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span>  <span class="variable">$&#123;ZABBIX_BIN&#125;</span></div><div class="line">        rc_status -v</div><div class="line">        ;;</div><div class="line">    stop)</div><div class="line">        <span class="built_in">echo</span> -n <span class="string">"Shutting down <span class="variable">$&#123;NAME&#125;</span>"</span></div><div class="line">        checkproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span> <span class="variable">$&#123;ZABBIX_BIN&#125;</span> || <span class="built_in">echo</span> -n <span class="string">"- Warning: <span class="variable">$&#123;NAME&#125;</span> not running! "</span></div><div class="line">        killproc -p <span class="variable">$&#123;ZABBIX_PID&#125;</span> -TERM <span class="variable">$&#123;ZABBIX_BIN&#125;</span></div><div class="line">        rc_status -v</div><div class="line">        ;;</div><div class="line">    restart)</div><div class="line">        <span class="variable">$0</span> stop</div><div class="line">        sleep 10</div><div class="line">        <span class="variable">$0</span> start</div><div class="line">        rc_status</div><div class="line">        ;;</div><div class="line">        *)</div><div class="line">        <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> &#123;start|stop|restart&#125;"</span></div><div class="line">        <span class="built_in">exit</span> 1</div><div class="line">        ;;</div><div class="line"><span class="keyword">esac</span></div><div class="line">rc_exit</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/HBase架构详解.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1235,11 +785,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/HBase/HBase架构详解.html" itemprop="url">HBase架构详解</a></h1>
+                <a class="post-title-link" href="/CDH/HBase/HBase架构详解.html" itemprop="url">
+                  HBase架构详解
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1247,13 +807,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1269,22 +846,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/HBase/" itemprop="url" rel="index">
-                    <span itemprop="name">HBase</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/HBase/" itemprop="url" rel="index"><span itemprop="name">HBase</span></a></span>
 
                 
                 
@@ -1309,6 +878,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1439,17 +1011,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1463,6 +1035,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1475,13 +1051,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/sed/sed.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/HBase/MapReduce on HBase.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1495,11 +1077,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Linux/sed/sed.html" itemprop="url">sed</a></h1>
+                <a class="post-title-link" href="/CDH/HBase/MapReduce on HBase.html" itemprop="url">
+                  MapReduce on HBase
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1507,13 +1099,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1529,22 +1138,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/sed/" itemprop="url" rel="index">
-                    <span itemprop="name">sed</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/HBase/" itemprop="url" rel="index"><span itemprop="name">HBase</span></a></span>
 
                 
                 
@@ -1569,6 +1170,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1577,59 +1181,24 @@
       
         
           
-            <h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><h2 id="流处理编辑器"><a href="#流处理编辑器" class="headerlink" title="流处理编辑器"></a>流处理编辑器</h2><ol>
-<li>文本或管道输入</li>
-<li>读入一行到模式空间(临时缓冲区)</li>
-<li>sed命令处理(处理后接着读下一行)</li>
-<li>输出到屏幕</li>
-</ol>
-<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><p>正则选定文本<br>sed进行处理</p>
-<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><ul>
-<li>命令行格式<ul>
-<li><code>$sed [option] &#39;command&#39; file(s)</code></li>
-<li>optians: -e ; -n</li>
-<li>command: 行定位(正则) + sed命令(操作)</li>
-<li><code>$sed -n &#39;/root/p&#39;</code></li>
-<li><code>$sed -e &#39;10,20d&#39; -e &#39;s/false/true/g&#39;</code></li>
-</ul>
-</li>
-<li>脚本格式<ul>
-<li><code>$sed -f scriptfile file(s)</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><ul>
-<li>基本操作命令<ul>
-<li>-p 打印相关的行</li>
-<li>行定位<ul>
-<li>定位一行 : x; /patten/</li>
-<li>定位几行 : x,y; /patten/,x;</li>
-<li>定位间隔几行: first~step</li>
-</ul>
-</li>
-<li>-a 新增行 / -i 插入行</li>
-<li>-c 替代行</li>
-<li>-d 删除行</li>
-</ul>
-</li>
-</ul>
-
+            <h1 id="MapReduce-on-HBase"><a href="#MapReduce-on-HBase" class="headerlink" title="MapReduce on HBase"></a>MapReduce on HBase</h1><h2 id="HBase自带MapReduce工具使用"><a href="#HBase自带MapReduce工具使用" class="headerlink" title="HBase自带MapReduce工具使用"></a>HBase自带MapReduce工具使用</h2><p>导入环境变量 HADOOP_HOME HBASE_HOME</p>
+<h3 id="HBase自带命令"><a href="#HBase自带命令" class="headerlink" title="HBase自带命令"></a>HBase自带命令</h3><h3 id="Tsv与BulkLoad"><a href="#Tsv与BulkLoad" class="headerlink" title="Tsv与BulkLoad"></a>Tsv与BulkLoad</h3><h3 id="Sqoop集成HBase"><a href="#Sqoop集成HBase" class="headerlink" title="Sqoop集成HBase"></a>Sqoop集成HBase</h3><h2 id="HBase表数据迁移"><a href="#HBase表数据迁移" class="headerlink" title="HBase表数据迁移"></a>HBase表数据迁移</h2><h2 id="HDFS数据导入HBase"><a href="#HDFS数据导入HBase" class="headerlink" title="HDFS数据导入HBase"></a>HDFS数据导入HBase</h2><h2 id="HBase-BulkLoad"><a href="#HBase-BulkLoad" class="headerlink" title="HBase BulkLoad"></a>HBase BulkLoad</h2><h2 id="BulkLoad源码分析"><a href="#BulkLoad源码分析" class="headerlink" title="BulkLoad源码分析"></a>BulkLoad源码分析</h2>
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1643,6 +1212,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1655,13 +1228,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hadoop/HQL执行过程.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[CM]License消除方案.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1675,11 +1254,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Hadoop/HQL执行过程.html" itemprop="url">HQL执行过程</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[CM]License消除方案.html" itemprop="url">
+                  License消除方案
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1687,13 +1276,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
             
           </span>
 
@@ -1709,22 +1315,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -1749,6 +1347,386 @@
       </header>
     
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="License过期后强制前端消除不显示"><a href="#License过期后强制前端消除不显示" class="headerlink" title="License过期后强制前端消除不显示"></a>License过期后强制前端消除不显示</h1><h2 id="License-告警提示文字消除"><a href="#License-告警提示文字消除" class="headerlink" title="License 告警提示文字消除"></a>License 告警提示文字消除</h2><p>解压 <code>tar -xf properties.0508.tar</code><br>在路径<code>/usr/share/cmf/</code>下替换<br>备份原文件:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">cp message_zh_CN.properties message_zh_CN.properties.bak</div><div class="line">cp message_en.properties message_en.properties.bak</div><div class="line">cp message.properties message.properties.bak</div><div class="line">cp label.properties label.properties.bak</div><div class="line">cp label_en.properties label_en.properties.bak</div><div class="line">cp label_zh_CN.properties label_zh_CN.properties.bak</div></pre></td></tr></table></figure></p>
+<p>替换:<code>cp /tmp/cloudera-temp/*.properties ./</code><br>重启服务 <code>/etc/init.d/cloudera-scm-server restart</code></p>
+<h2 id="License-div-消除方案"><a href="#License-div-消除方案" class="headerlink" title="License div 消除方案"></a>License div 消除方案</h2><ol>
+<li>cloudera manage SERVER的页面时由路径<code>/usr/share/cmf/common_jars</code>下<strong>server-5.10.0.jar</strong>这个jar包动态生成的 </li>
+<li>解压 <code>jar xf server-5.10.0.jar</code> </li>
+<li><p>通过定位CSS样式中的class</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep -Iwr <span class="string">"alert alert-error"</span> .</div><div class="line">grep -Iwr <span class="string">"alert-error"</span> .</div><div class="line">grep -Iwr <span class="string">"LicenseStatus"</span> .</div></pre></td></tr></table></figure>
+</p>
+</li>
+<li><p>在解压缩后的 <strong>com/cloudera/server/web/cmf</strong> 目录里找到<strong>LicenseStatusImpl.class</strong>将其download到本地</p>
+</li>
+<li>在解压缩后的 <strong>com/cloudera/server/web/common</strong> 目录里找到<strong>SimpleBaseImpl.class</strong>将其download到本地</li>
+<li>用<strong>rej_v0.7_bin</strong>反编译这两个class文件 删除其中的<strong>LicenseStatus alert alert-error</strong></li>
+<li>本地编译后重新上传到服务器中项目原本的路径下</li>
+<li>重新编译jar包<code>jar cf server-5.10.0.jar com/ bin/ META-INF/</code></li>
+<li>再把<code>/usr/share/cmf/common_jars/server-5.10.0.jar</code>包 替换为刚刚重新编译后的jar包 </li>
+<li>重启SERVER服务<code>service cloudera-scm-server restart</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[CM]cloudera-scm-agent 服务挂掉.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[CM]cloudera-scm-agent 服务挂掉.html" itemprop="url">
+                  cloudera-scm-agent 服务挂掉
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="cloudera-scm-agent-服务挂掉"><a href="#cloudera-scm-agent-服务挂掉" class="headerlink" title="cloudera-scm-agent 服务挂掉"></a>cloudera-scm-agent 服务挂掉</h1><h2 id="cloudera-scm-agent日志查看需要sudo权限"><a href="#cloudera-scm-agent日志查看需要sudo权限" class="headerlink" title="cloudera-scm-agent日志查看需要sudo权限"></a>cloudera-scm-agent日志查看需要sudo权限</h2><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo ls -l /var/<span class="built_in">log</span>/cloudera-scm-agent/</div><div class="line">cloudera-scm-agent.log	cloudera-scm-agent.out	cmf_listener.log  supervisord.log  supervisord.out</div><div class="line">sudo tail -300 /var/<span class="built_in">log</span>/cloudera-scm-agent/cloudera-scm-agent.log</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread agent        ERROR    Could not contact supervisor.</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;/usr/lib64/cmf/agent/src/cmf/agent.py&quot;, line 832, in get_supervisor_data</div><div class="line">    supervisor_info = sup.getAllProcessInfo()</div><div class="line">  File &quot;/usr/lib64/python2.6/xmlrpclib.py&quot;, line 1199, in __call__</div><div class="line">    return self.__send(self.__name, args)</div><div class="line">  File &quot;/usr/lib64/python2.6/xmlrpclib.py&quot;, line 1489, in __request</div><div class="line">    verbose=self.__verbose</div><div class="line">  File &quot;/usr/lib64/cmf/agent/build/env/lib/python2.6/site-packages/supervisor-3.0-py2.6.egg/supervisor/xmlrpc.py&quot;, line 460, in request</div><div class="line">    self.connection.request(&apos;POST&apos;, handler, request_body, self.headers)</div><div class="line">  File &quot;/usr/lib64/python2.6/httplib.py&quot;, line 914, in request</div><div class="line">    self._send_request(method, url, body, headers)</div><div class="line">  File &quot;/usr/lib64/python2.6/httplib.py&quot;, line 951, in _send_request</div><div class="line">    self.endheaders()</div><div class="line">  File &quot;/usr/lib64/python2.6/httplib.py&quot;, line 908, in endheaders</div><div class="line">    self._send_output()</div><div class="line">  File &quot;/usr/lib64/python2.6/httplib.py&quot;, line 780, in _send_output</div><div class="line">    self.send(msg)</div><div class="line">  File &quot;/usr/lib64/python2.6/httplib.py&quot;, line 739, in send</div><div class="line">    self.connect()</div><div class="line">  File &quot;/usr/lib64/python2.6/httplib.py&quot;, line 720, in connect</div><div class="line">    self.timeout)</div><div class="line">  File &quot;/usr/lib64/python2.6/socket.py&quot;, line 561, in create_connection</div><div class="line">    raise error, msg</div><div class="line">error: [Errno 111] Connection refused</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread agent        ERROR    Failed to contact supervisor after 6 attempts. Agent will exit.</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread agent        INFO     Stopping agent...</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread agent        INFO     No extant cgroups; unmounting any cgroup roots</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread agent        INFO     3 processes are being managed; Supervisor will continue to run.</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Bus STOPPING</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer((&apos;ddp-dn-114.cmdmp.com&apos;, 9000)) shut down</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Stopped thread &apos;_TimeoutMonitor&apos;.</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Bus STOPPED</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Bus STOPPING</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer((&apos;ddp-dn-114.cmdmp.com&apos;, 9000)) already shut down</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE No thread running for None.</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Bus STOPPED</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Bus EXITING</div><div class="line">[23/Mar/2017 14:50:57 +0000] 4871 MainThread _cplogging   INFO     [23/Mar/2017:14:50:57] ENGINE Bus EXITED</div></pre></td></tr></table></figure>
+</p>
+<h2 id="cloudera-scm-agent-服务启动"><a href="#cloudera-scm-agent-服务启动" class="headerlink" title="cloudera-scm-agent 服务启动"></a>cloudera-scm-agent 服务启动</h2><p>root 用户下:<br><code>service  cloudera-scm-agent restart</code></p>
+<p>sudo 权限用户:<br><code>ll /etc/init.d/ |grep cloudera</code><br>-rwxr-xr-x 1 root      root       6656 Sep 16  2015 cloudera-scm-agent</p>
+<p><code>/etc/init.d/cloudera-scm-agent restart</code></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hadoop/HQL执行过程.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Hadoop/HQL执行过程.html" itemprop="url">
+                  HQL执行过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1809,17 +1787,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1833,6 +1811,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1845,13 +1827,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hadoop/Hadoop 用户行为分析项目之应用概述.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1865,11 +1853,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Hadoop/Hadoop 用户行为分析项目之应用概述.html" itemprop="url">Hadoop 用户行为分析项目之应用概述</a></h1>
+                <a class="post-title-link" href="/CDH/Hadoop/Hadoop 用户行为分析项目之应用概述.html" itemprop="url">
+                  Hadoop 用户行为分析项目之应用概述
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1877,13 +1875,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1899,22 +1914,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a></span>
 
                 
                 
@@ -1939,6 +1946,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1974,17 +1984,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1998,6 +2008,374 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hadoop/Hadoop性能调优与运维.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Hadoop/Hadoop性能调优与运维.html" itemprop="url">
+                  Hadoop 性能调优与运维
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Hadoop-性能调优与运维"><a href="#Hadoop-性能调优与运维" class="headerlink" title="Hadoop 性能调优与运维"></a>Hadoop 性能调优与运维</h1>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Hadoop/Hadoop构造.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Hadoop/Hadoop构造.html" itemprop="url">
+                  Hadoop构造
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Hadoop的组成"><a href="#Hadoop的组成" class="headerlink" title="Hadoop的组成"></a>Hadoop的组成</h2><ul>
+<li>HDFS:分布式文件系统,存储海量的数据</li>
+<li>MapReduce:并行处理框架,实现任务分解和调度</li>
+<li>搭建大学数据仓库,PB级数据的存储,处理,分析,统计的业务</li>
+</ul>
+<hr>
+<p>HIVE 只需编写SQL语句转化为Hadoop任务执行</p>
+<p>HBASE 放弃事务特性 追求更高的扩展</p>
+<ul>
+<li>提供数据的随机读写和实时访问,实现对表数据的读写功能</li>
+</ul>
+<p>Zookeeper</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2006,15 +2384,12 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2030,62 +2405,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Nameless13" />
-          <p class="site-author-name" itemprop="name">Nameless13</p>
-           
-              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Nameless13" />
+            
+              <p class="site-author-name" itemprop="name">Nameless13</p>
+              <p class="site-description motion-element" itemprop="description">─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后</p>
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">164</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
           
 
           
             
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
+          
           
 
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
       </section>
 
       
@@ -2102,30 +2552,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.3</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2136,6 +2597,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -2156,7 +2619,6 @@
 
 
 
-  
 
 
 
@@ -2169,55 +2631,49 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
 
 
 
@@ -2240,12 +2696,38 @@
 
 
 
+
+
+
+
   
 
 
 
 
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
 
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
   
 
   

@@ -1,15 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -36,36 +49,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,35 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
-<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nameless13">
-<meta property="og:url" content="https://nameless13.github.io/page/17/index.html">
-<meta property="og:site_name" content="Nameless13">
-<meta property="og:description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nameless13">
-<meta name="twitter:description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+
 
 
 
@@ -110,14 +84,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: 'J3OX6892F7',
       apiKey: '38852eb9095216f8f2ada575a06a9cfc',
@@ -129,12 +103,36 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nameless13">
+<meta property="og:url" content="https://nameless13.github.io/page/17/index.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nameless13">
+<meta name="twitter:description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+
+
+
+
+
 
   <link rel="canonical" href="https://nameless13.github.io/page/17/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Nameless13</title>
   
@@ -147,10 +145,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -162,8 +182,7 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -172,19 +191,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -192,58 +209,109 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -256,13 +324,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux系统管理技术手册第二章.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis-conf-笔记/redis_version_3.2.4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -276,11 +350,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Linux/Linux系统管理技术手册第二章.html" itemprop="url">Linux系统管理技术手册第二章</a></h1>
+                <a class="post-title-link" href="/Redis/redis-conf-笔记/redis_version_3.2.4.html" itemprop="url">
+                  redis_version_3.2.4
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -288,13 +372,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
-                2016-09-07
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -310,11 +411,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/redis-conf-笔记/" itemprop="url" rel="index"><span itemprop="name">redis-conf-笔记</span></a></span>
 
                 
                 
@@ -339,6 +443,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -347,33 +454,34 @@
       
         
           
-            <h1 id="Linux系统管理技术手册第二章"><a href="#Linux系统管理技术手册第二章" class="headerlink" title="Linux系统管理技术手册第二章"></a>Linux系统管理技术手册第二章</h1><p>开机时,计算机执行存储在ROM中的引导代码,这些代码及诶奥莱尝试确定如何加载并启动内核,内核检测系统的硬件,如何产生系统的<code>init</code>进程,这个进程总是PID1.</p>
-<h2 id="引导过程的步骤"><a href="#引导过程的步骤" class="headerlink" title="引导过程的步骤"></a>引导过程的步骤</h2><p>Linux系统典型的引导过程由6个不同阶段组成</p>
-<ul>
-<li>加载并初始化内核</li>
-<li>检查和配置设备</li>
-<li>创建内核线程</li>
-<li>操作员干预(仅用于手工引导)</li>
-<li>执行系统启动脚本</li>
-<li>多用户模式运行</li>
-</ul>
+            <p>redis_version:3.2.4                                                                                     //Redis 服务器版本<br>redis_git_sha1:00000000                                                                                     //Git SHA1<br>redis_git_dirty:0                                                                                   //Git dirty flag<br>redis_build_id:96326b2f9b8cf2d2<br>redis_mode:standalone<br>os:Linux 3.10.0-327.el7.x86_64 x86_64                                                                                   //Redis 服务器的宿主操作系统<br>arch_bits:64                                                                                    // 架构（32 或 64 位）<br>multiplexing_api:epoll                                                                                      // Redis 所使用的事件处理机制<br>gcc_version:4.8.5                                                                                       //编译 Redis 时所使用的 GCC 版本<br>process_id:23278                                                                                    //服务器进程的 PID<br>run_id:f5284394b52327c8697f7bff3995643dcbc2af7b                                                                                     //Redis 服务器的随机标识符（用于 Sentinel 和集群）<br>tcp_port:7380                                                                                   //TCP/IP 监听端口<br>uptime_in_seconds:617                                                                                       //自 Redis 服务器启动以来，经过的秒数<br>uptime_in_days:0                                                                                        // 自 Redis 服务器启动以来，经过的天数<br>hz:10<br>lru_clock:16720581                                                                                      //以分钟为单位进行自增的时钟，用于 LRU 管理<br>executable:/root/redis-server<br>config_file:/etc/redis/7380.conf</p>
+<h1 id="Clients"><a href="#Clients" class="headerlink" title="Clients"></a>Clients</h1><p>connected_clients:7                                                  : 已连接客户端的数量（不包括通过从属服务器连接的客户端）<br>client_longest_output_list:0                                                 : 当前连接的客户端当中，最长的输出列表<br>client_biggest_input_buf:0                                                   : 当前连接的客户端当中，最大输入缓存<br>blocked_clients:0                                                : 正在等待阻塞命令（BLPOP、BRPOP、BRPOPLPUSH）的客户端的数量</p>
+<h1 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h1><p>used_memory:6210872                                                  : 由 Redis 分配器分配的内存总量，以字节（byte）为单位<br>used_memory_human:5.92M                                                  : 以人类可读的格式返回 Redis 分配的内存总量<br>used_memory_rss:2621440                                                  : 从操作系统的角度，返回 Redis 已分配的内存总量（俗称常驻集大小）。这个值和 top 、 ps 等命令的输出一致。<br>used_memory_rss_human:2.50M<br>used_memory_peak:6332792                                                 : Redis 的内存消耗峰值（以字节为单位）<br>used_memory_peak_human:6.04M<br>total_system_memory:8087961600<br>total_system_memory_human:7.53G<br>used_memory_lua:37888    Lua 引擎所使用的内存大小（以字节为单位）<br>used_memory_lua_human:37.00K<br>maxmemory:2147483648<br>maxmemory_human:2.00G<br>maxmemory_policy:noeviction<br>mem_fragmentation_ratio:0.42                                                 : used_memory_rss 和 used_memory 之间的比率<br>mem_allocator:jemalloc-4.0.3                                                 : 在编译时指定的， Redis 所使用的内存分配器。可以是 libc 、 jemalloc 或者 tcmalloc </p>
+<pre><code>在理想情况下， used_memory_rss 的值应该只比 used_memory 稍微高一点儿。
 
+</code></pre><p>当 rss &gt; used ，且两者的值相差较大时，表示存在（内部或外部的）内存碎片。<br>内存碎片的比率可以通过 mem_fragmentation_ratio 的值看出。<br>当 used &gt; rss 时，表示 Redis 的部分内存被操作系统换出到交换空间了，在这种情况下，操作可能会产生明显的延迟。<br>        Because Redis does not have control over how its allocations are mapped to memory pages, high used_memory_rss is often the result of a spike in memory usage.<br>当 Redis 释放内存时，分配器可能会，也可能不会，将内存返还给操作系统。<br>如果 Redis 释放了内存，却没有将内存返还给操作系统，那么 used_memory 的值可能和操作系统显示的 Redis 内存占用并不一致。<br>查看 used_memory_peak 的值可以验证这种情况是否发生。</p>
+<h1 id="Persistence-RDB-和-AOF-的相关信息"><a href="#Persistence-RDB-和-AOF-的相关信息" class="headerlink" title="Persistence                                                    : RDB 和 AOF 的相关信息"></a>Persistence                                                    : RDB 和 AOF 的相关信息</h1><p>loading:0<br>rdb_changes_since_last_save:0<br>rdb_bgsave_in_progress:0<br>rdb_last_save_time:1476337757<br>rdb_last_bgsave_status:ok<br>rdb_last_bgsave_time_sec:0<br>rdb_current_bgsave_time_sec:-1<br>aof_enabled:1<br>aof_rewrite_in_progress:0<br>aof_rewrite_scheduled:0<br>aof_last_rewrite_time_sec:-1<br>aof_current_rewrite_time_sec:-1<br>aof_last_bgrewrite_status:ok<br>aof_last_write_status:ok<br>aof_current_size:0<br>aof_base_size:0<br>aof_pending_rewrite:0<br>aof_buffer_length:0<br>aof_rewrite_buffer_length:0<br>aof_pending_bio_fsync:0<br>aof_delayed_fsync:0</p>
+<h1 id="Stats-一般统计信息"><a href="#Stats-一般统计信息" class="headerlink" title="Stats                                                  : 一般统计信息"></a>Stats                                                  : 一般统计信息</h1><p>total_connections_received:9<br>total_commands_processed:3497<br>instantaneous_ops_per_sec:6<br>total_net_input_bytes:180031<br>total_net_output_bytes:12844181<br>instantaneous_input_kbps:0.35<br>instantaneous_output_kbps:1.08<br>rejected_connections:0<br>sync_full:1<br>sync_partial_ok:0<br>sync_partial_err:0<br>expired_keys:0<br>evicted_keys:0<br>keyspace_hits:0<br>keyspace_misses:0<br>pubsub_channels:1<br>pubsub_patterns:0<br>latest_fork_usec:83<br>migrate_cached_sockets:0</p>
+<h1 id="Replication-主-从复制信息"><a href="#Replication-主-从复制信息" class="headerlink" title="Replication                                                : 主/从复制信息"></a>Replication                                                : 主/从复制信息</h1><p>role:master<br>connected_slaves:1<br>slave0:ip=192.168.29.136,port=7381,state=online,offset=128863,lag=0<br>master_repl_offset:128863<br>repl_backlog_active:1<br>repl_backlog_size:5242880<br>repl_backlog_first_byte_offset:2<br>repl_backlog_histlen:128862</p>
+<h1 id="CPU-CPU-计算量统计信息"><a href="#CPU-CPU-计算量统计信息" class="headerlink" title="CPU                                                : CPU 计算量统计信息"></a>CPU                                                : CPU 计算量统计信息</h1><p>used_cpu_sys:0.33<br>used_cpu_user:0.20<br>used_cpu_sys_children:0.00<br>used_cpu_user_children:0.00</p>
+<h1 id="Cluster-Redis-集群信息"><a href="#Cluster-Redis-集群信息" class="headerlink" title="Cluster                                                : Redis 集群信息"></a>Cluster                                                : Redis 集群信息</h1><p>cluster_enabled:0</p>
+<h1 id="Keyspace"><a href="#Keyspace" class="headerlink" title="Keyspace"></a>Keyspace</h1>
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -387,6 +495,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -399,299 +511,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Linux/Linux Performance Observability Tools.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux/Linux Performance Observability Tools.html" itemprop="url">Linux Performance Observability Tools</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
-                2016-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="agenda"><a href="#agenda" class="headerlink" title="agenda"></a>agenda</h2><p>a brief discussion of 6 facets of Linux performance:</p>
-<ol>
-<li>observalility</li>
-<li>Methodologies</li>
-<li>benchmarking</li>
-<li>profiling</li>
-<li>tracing</li>
-<li>tuning</li>
-</ol>
-<hr>
-<h3 id="observability-tools"><a href="#observability-tools" class="headerlink" title="observability tools"></a>observability tools</h3><ul>
-<li>Tools showcase common metrics<ul>
-<li>lenrning linux tools is useful even if you never use them:<br>the same metrics are in GUIs</li>
-</ul>
-</li>
-<li>we usually use these metrics via:<ul>
-<li>netflix atlas: cloud-wide monitoring</li>
-<li>netflix vector: instance analysis</li>
-</ul>
-</li>
-<li>Linux has many tools<ul>
-<li>plus many extra kernel sourcse of data that lack tools,are harder to use ,and are practically undocumented</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><ul>
-<li>one way to print load averages:</li>
-<li>a measure of resource demand: CPUs + disk<ul>
-<li>other OSes only show CPUs: easier to interpret</li>
-</ul>
-</li>
-<li>exponentially-damped moving averages</li>
-<li>time constants of 1,5,and 15 minutes<ul>
-<li>historic trend without the line graph</li>
-</ul>
-</li>
-<li>Load &gt; # of CPUs,may mean CPU saturation<ul>
-<li>Don’t spent more than 5 seconds studying these </li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="top-or-htop"><a href="#top-or-htop" class="headerlink" title="top (or htop)"></a>top (or htop)</h4><ul>
-<li>system and per-process interval summary:</li>
-<li>%CPU is summed across all CPUs</li>
-<li>Can miss short-lives processes(atop won’t)</li>
-<li>Can consume noticeable CPU to read/proc</li>
-</ul>
-<hr>
-<h4 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h4><ul>
-<li>Virtual memory statistics and more:</li>
-<li>USAGE:vmstat [interval[count]]</li>
-<li>First output line has some summary since boot values <ul>
-<li>Should be all;partial is confusing</li>
-</ul>
-</li>
-<li>High level CPU summary<ul>
-<li>“r” is runnable tasks</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h4><ul>
-<li>Block I/O (disk)stats.1st output is since boot.</li>
-<li>very useful set of stats</li>
-</ul>
-<hr>
-<h4 id="free"><a href="#free" class="headerlink" title="free"></a>free</h4><ul>
-<li>Main memory usage:</li>
-<li>buffers: block device I/O cache</li>
-<li>cached: virtua; page cache</li>
-</ul>
-<hr>
-<h4 id="strace"><a href="#strace" class="headerlink" title="strace"></a>strace</h4><ul>
-<li>System call tracer:</li>
-<li>Eg, -ttt:time (us) since epoch;-T:syscall time(s)</li>
-<li>Translates syscall arges<ul>
-<li>very helpful for solving system usage issues</li>
-</ul>
-</li>
-<li>Currently has massive overhead(ptrace based)<ul>
-<li>can slow the target by &gt; 100x.Use extreme caution.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h4><ul>
-<li>sniff network packets for post analysis:</li>
-<li>study packet sequences with timestamps(us)</li>
-<li>CPU overhead optimized (socket ring buffers),but can still be significant.use caution.</li>
-</ul>
-<hr>
-<p>netstat</p>
-<ul>
-<li>various network protocol statistics using -s:</li>
-<li>a multi-tool:<ul>
-<li>i:interface stats</li>
-<li>r:route table<br>default:list conns</li>
-</ul>
-</li>
-<li>netstat -p:shows process details!</li>
-<li>Per-second interval with -c</li>
-</ul>
-<hr>
-<h4 id="slabtop"><a href="#slabtop" class="headerlink" title="slabtop"></a>slabtop</h4><ul>
-<li>Kernel slab allocator memory usage</li>
-</ul>
-<hr>
-<h4 id="pcstat"><a href="#pcstat" class="headerlink" title="pcstat"></a>pcstat</h4><ul>
-<li>show page cache residency </li>
-<li>Uses the mincore(2)syscall.Useful for database performance analysis.</li>
-</ul>
-<hr>
-<h4 id="perf-events"><a href="#perf-events" class="headerlink" title="perf_events"></a>perf_events</h4><ul>
-<li>Provides the “perf” command</li>
-<li>in Linux source code:tools/perf<ul>
-<li>Usually pkg added by linux-tools-common.etc.</li>
-</ul>
-</li>
-<li><code>Multi-tool</code> with many capabilities<ul>
-<li>CPU profiling</li>
-<li>PMC profiling</li>
-<li>Static &amp; dynamic tracing</li>
-</ul>
-</li>
-<li>Covered later in Profiling &amp; Tracing</li>
-</ul>
-<hr>
-<h3 id="Methodologies"><a href="#Methodologies" class="headerlink" title="Methodologies"></a>Methodologies</h3><h4 id="anti-Methodologies"><a href="#anti-Methodologies" class="headerlink" title="anti-Methodologies"></a>anti-Methodologies</h4><ul>
-<li>The lack of a deliberate methodology…</li>
-<li>Street Light Anti-Method:<ol>
-<li>Pick observability tools that are<ul>
-<li>Familiar</li>
-<li>Found on the Internet</li>
-<li>Found at random</li>
-</ul>
-</li>
-<li>Run tools</li>
-<li>Look for obvious issues</li>
-</ol>
-</li>
-<li>Drunk Man Anti-Method:<ul>
-<li>Tune things at random until the problem goes away</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>在Linux世界，进程不能直接访问硬件设备，当进程需要访问硬件设备(比如读取磁盘文件，接收网络数据等等)时，必须由用户态模式切换至内核态模式，通 过系统调用访问硬件设备。strace可以跟踪到一个进程产生的系统调用,包括参数，返回值，执行消耗的时间。</p>
-<hr>
-<h4 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h4><p>ss -l 显示本地打开的所有端口<br>ss -pl 显示每个进程具体打开的socket<br>ss -t -a 显示所有tcp socket<br>ss -u -a 显示所有的UDP Socekt<br>ss -o state established ‘( dport = :smtp or sport = :smtp )’ 显示所有已建立的SMTP连接<br>ss -o state established ‘( dport = :http or sport = :http )’ 显示所有已建立的HTTP连接<br>ss -x src /tmp/.X11-unix/* 找出所有连接X服务器的进程<br>ss -s 列出当前socket详细信息:</p>
-<hr>
-<h4 id="strace-1"><a href="#strace-1" class="headerlink" title="strace"></a>strace</h4><p>-c 统计每一系统调用的所执行的时间,次数和出错的次数等.<br>-d 输出strace关于标准错误的调试信息.<br>-f 跟踪由fork调用所产生的子进程.<br>-ff 如果提供-o filename,则所有进程的跟踪结果输出到相应的filename.pid中,pid是各进程的进程号.<br>-F 尝试跟踪vfork调用.在-f时,vfork不被跟踪.<br>-h 输出简要的帮助信息.<br>-i 输出系统调用的入口指针.<br>-q 禁止输出关于脱离的消息.<br>-r 打印出相对时间关于,,每一个系统调用.<br>-t 在输出中的每一行前加上时间信息.<br>-tt 在输出中的每一行前加上时间信息,微秒级.<br>-ttt 微秒级输出,以秒了表示时间.<br>-T 显示每一调用所耗的时间.<br>-v 输出所有的系统调用.一些调用关于环境变量,状态,输入输出等调用由于使用频繁,默认不输出.<br>-V 输出strace的版本信息.<br>-x 以十六进制形式输出非标准字符串<br>-xx 所有字符串以十六进制形式输出.<br>-a column<br>设置返回值的输出位置.默认 为40.<br>-e expr<br>指定一个表达式,用来控制如何跟踪.格式如下:<br>[qualifier=][!]value1[,value2]…<br>qualifier只能是 trace,abbrev,verbose,raw,signal,read,write其中之一.value是用来限定的符号或数字.默认的 qualifier是 trace.感叹号是否定符号.例如:<br>-eopen等价于 -e trace=open,表示只跟踪open调用.而-etrace!=open表示跟踪除了open以外的其他调用.有两个特殊的符号 all 和 none.<br>注意有些shell使用!来执行历史记录里的命令,所以要使用\.<br>-e trace=set<br>只跟踪指定的系统 调用.例如:-e trace=open,close,rean,write表示只跟踪这四个系统调用.默认的为set=all.<br>-e trace=file<br>只跟踪有关文件操作的系统调用.<br>-e trace=process<br>只跟踪有关进程控制的系统调用.<br>-e trace=network<br>跟踪与网络有关的所有系统调用.<br>-e strace=signal<br>跟踪所有与系统信号有关的 系统调用<br>-e trace=ipc<br>跟踪所有与进程通讯有关的系统调用<br>-e abbrev=set<br>设定 strace输出的系统调用的结果集.-v 等与 abbrev=none.默认为abbrev=all.<br>-e raw=set<br>将指 定的系统调用的参数以十六进制显示.<br>-e signal=set<br>指定跟踪的系统信号.默认为all.如 signal=!SIGIO(或者signal=!io),表示不跟踪SIGIO信号.<br>-e read=set<br>输出从指定文件中读出 的数据.例如:<br>-e read=3,5<br>-e write=set<br>输出写入到指定文件中的数据.<br>-o filename<br>将strace的输出写入文件filename<br>-p pid<br>跟踪指定的进程pid.<br>-s strsize<br>指定输出的字符串的最大长度.默认为32.文件名一直全部输出.<br>-u username<br>以username 的UID和GID执行被跟踪的命令</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
   
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis服务搭建/Redis Sentinel.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -705,11 +537,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Redis/redis服务搭建/Redis Sentinel.html" itemprop="url">Redis Sentinel</a></h1>
+                <a class="post-title-link" href="/Redis/redis服务搭建/Redis Sentinel.html" itemprop="url">
+                  Redis Sentinel
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -717,13 +559,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
-                2016-09-07
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -739,22 +598,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/redis服务搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">redis服务搭建</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/redis服务搭建/" itemprop="url" rel="index"><span itemprop="name">redis服务搭建</span></a></span>
 
                 
                 
@@ -779,6 +630,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -896,17 +750,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -920,6 +774,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -932,13 +790,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis服务搭建/redis-sentinel docker集群.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -952,11 +816,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Redis/redis-conf-笔记/redis_version_3.2.4-sc.html" itemprop="url">redis_version_3.2.4-sc</a></h1>
+                <a class="post-title-link" href="/Redis/redis服务搭建/redis-sentinel docker集群.html" itemprop="url">
+                  redis-sentinel docker集群
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -964,13 +838,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">
-                2016-09-07
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -986,22 +877,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/redis-conf-笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">redis-conf-笔记</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/redis服务搭建/" itemprop="url" rel="index"><span itemprop="name">redis服务搭建</span></a></span>
 
                 
                 
@@ -1026,6 +909,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1034,33 +920,33 @@
       
         
           
-            <p>127.0.0.1:6379&gt; info</p>
-<h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><p>redis_version:3.2.3<br>redis_git_sha1:00000000<br>redis_git_dirty:0<br>redis_build_id:276113d15453bda8<br>redis_mode:cluster<br>os:Linux 3.0.76-0.11-default x86_64<br>arch_bits:64<br>multiplexing_api:epoll<br>gcc_version:4.3.4<br>process_id:21542<br>run_id:9bb6d2f200729eb837c86510afcc7025dec26586<br>tcp_port:6379<br>uptime_in_seconds:6130854<br>uptime_in_days:70<br>hz:10<br>lru_clock:16723061<br>executable:/usr/local/bin/redis-server<br>config_file:/etc/redis/redis.conf</p>
-<h1 id="Clients"><a href="#Clients" class="headerlink" title="Clients"></a>Clients</h1><p>connected_clients:358<br>client_longest_output_list:0<br>client_biggest_input_buf:0<br>blocked_clients:0</p>
-<h1 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h1><p>used_memory:151730448<br>used_memory_human:144.70M<br>used_memory_rss:159973376<br>used_memory_rss_human:152.56M<br>used_memory_peak:677126784<br>used_memory_peak_human:645.76M<br>total_system_memory:16686497792<br>total_system_memory_human:15.54G<br>used_memory_lua:37888<br>used_memory_lua_human:37.00K<br>maxmemory:8589934592<br>maxmemory_human:8.00G<br>maxmemory_policy:noeviction<br>mem_fragmentation_ratio:1.05<br>mem_allocator:jemalloc-4.0.3</p>
-<h1 id="Persistence"><a href="#Persistence" class="headerlink" title="Persistence"></a>Persistence</h1><p>loading:0<br>rdb_changes_since_last_save:11820<br>rdb_bgsave_in_progress:0<br>rdb_last_save_time:1476340843<br>rdb_last_bgsave_status:ok<br>rdb_last_bgsave_time_sec:1<br>rdb_current_bgsave_time_sec:-1<br>aof_enabled:0<br>aof_rewrite_in_progress:0<br>aof_rewrite_scheduled:0<br>aof_last_rewrite_time_sec:-1<br>aof_current_rewrite_time_sec:-1<br>aof_last_bgrewrite_status:ok<br>aof_last_write_status:ok</p>
-<h1 id="Stats"><a href="#Stats" class="headerlink" title="Stats"></a>Stats</h1><p>total_connections_received:136623<br>total_commands_processed:3090632890<br>instantaneous_ops_per_sec:1288<br>total_net_input_bytes:274676332779<br>total_net_output_bytes:20528196260<br>instantaneous_input_kbps:108.62<br>instantaneous_output_kbps:8.95<br>rejected_connections:0<br>sync_full:0<br>sync_partial_ok:0<br>sync_partial_err:0<br>expired_keys:43<br>evicted_keys:0<br>keyspace_hits:512379822<br>keyspace_misses:419500843<br>pubsub_channels:0<br>pubsub_patterns:0<br>latest_fork_usec:3517<br>migrate_cached_sockets:0</p>
-<h1 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h1><p>role:master<br>connected_slaves:0<br>master_repl_offset:0<br>repl_backlog_active:0<br>repl_backlog_size:1048576<br>repl_backlog_first_byte_offset:0<br>repl_backlog_histlen:0</p>
-<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><p>used_cpu_sys:51186.74<br>used_cpu_user:45645.72<br>used_cpu_sys_children:2273.35<br>used_cpu_user_children:58689.30</p>
-<h1 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h1><p>cluster_enabled:1</p>
-<h1 id="Keyspace"><a href="#Keyspace" class="headerlink" title="Keyspace"></a>Keyspace</h1><p>db0:keys=3,expires=2,avg_ttl=86397596</p>
+            <h2 id="redis-master"><a href="#redis-master" class="headerlink" title="redis-master"></a>redis-master</h2><p><code>docker run --name redis-master -v /home/testuser/docker/master-redis.conf:/usr/local/etc/master-redis.conf -d -p 16397:16379 redis redis-server /usr/local/etc/master-redis.conf</code></p>
+<h2 id="redis-slave"><a href="#redis-slave" class="headerlink" title="redis-slave"></a>redis-slave</h2><p><code>docker run --link redis-master:redis-master -v /home/testuser/docker/slave-redis.conf:/usr/local/etc/slave-redis.conf --name redis-slave1 -d redis redis-server /usr/local/etc/slave-redis.conf</code></p>
+<p><code>docker run --link redis-master:redis-master -v /home/testuser/docker/slave-redis.conf:/usr/local/etc/slave-redis.conf --name redis-slave2 -d redis redis-server /usr/local/etc/slave-redis.conf</code></p>
+<h4 id="宿主机上如何获得-docker-container-容器的-ip-地址？"><a href="#宿主机上如何获得-docker-container-容器的-ip-地址？" class="headerlink" title="宿主机上如何获得 docker container 容器的 ip 地址？"></a>宿主机上如何获得 docker container 容器的 ip 地址？</h4><p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker inspect --format=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> [<span class="variable">$CONTAINER_ID</span>]</div></pre></td></tr></table></figure>
+</p>
+<p>172.17.0.51 mster<br>172.17.0.55 slave1<br>56  2<br>57  3</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker inspect -f <span class="string">'&#123;&#123;.Id&#125;&#125;'</span> [获取的名称或者id]</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[testuser@CentOS1 docker]$ redis-sentinel 3sentinel.conf &amp;</div><div class="line">[3] 28932</div><div class="line">[testuser@CentOS1 docker]$                 _._                                                  </div><div class="line">           _.-``__ <span class="string">''</span>-._                                             </div><div class="line">      _.-``    `.  `_.  <span class="string">''</span>-._           Redis 3.0.7 (00000000/0) 64 bit</div><div class="line">  .-`` .-```.  ```\/    _.,_ <span class="string">''</span>-._                                   </div><div class="line"> (    <span class="string">'      ,       .-`  | `,    )     Running in sentinel mode</span></div><div class="line"> |`-._`-...-` __...-.``-._|'` _.-<span class="string">'|     Port: 26383</span></div><div class="line"> |    `-._   `._    /     _.-'    |     PID: 28932</div><div class="line">  `-._    `-._  `-./  _.-<span class="string">'    _.-'</span>                                   </div><div class="line"> |`-._`-._    `-.__.-<span class="string">'    _.-'</span>_.-<span class="string">'|                                  </span></div><div class="line"> |    `-._`-._        _.-'_.-<span class="string">'    |           http://redis.io        </span></div><div class="line">  `-._    `-._`-.__.-'_.-<span class="string">'    _.-'</span>                                   </div><div class="line"> |`-._`-._    `-.__.-<span class="string">'    _.-'</span>_.-<span class="string">'|                                  </span></div><div class="line"> |    `-._`-._        _.-'_.-<span class="string">'    |                                  </span></div><div class="line">  `-._    `-._`-.__.-'_.-<span class="string">'    _.-'</span>                                   </div><div class="line">      `-._    `-.__.-<span class="string">'    _.-'</span>                                       </div><div class="line">          `-._        _.-<span class="string">'                                           </span></div><div class="line">              `-.__.-'                                               </div><div class="line"></div><div class="line">28932:X 05 Sep 16:10:12.875 <span class="comment"># Sentinel runid is d1d5d361d1d4c9576d64ab274571361ac963351f</span></div><div class="line">28932:X 05 Sep 16:10:12.875 <span class="comment"># +monitor master redis-master 172.17.0.62 16379 quorum 2</span></div><div class="line">28932:X 05 Sep 16:10:12.876 * +slave slave 172.17.0.63:16379 172.17.0.63 16379 @ redis-master 172.17.0.62 16379</div><div class="line">28932:X 05 Sep 16:10:12.908 * +slave slave 172.17.0.64:16379 172.17.0.64 16379 @ redis-master 172.17.0.62 16379</div><div class="line">28932:X 05 Sep 16:10:12.933 * +sentinel sentinel 172.17.42.1:26381 172.17.42.1 26381 @ redis-master 172.17.0.62 16379</div><div class="line">28932:X 05 Sep 16:10:13.009 * +sentinel sentinel 172.17.42.1:26382 172.17.42.1 26382 @ redis-master 172.17.0.62 16379</div></pre></td></tr></table></figure>
+</p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1074,6 +960,433 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Redis/redis服务搭建/redis服务搭建.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Redis/redis服务搭建/redis服务搭建.html" itemprop="url">
+                  redis服务搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-07T00:00:00+08:00">2016-09-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/redis服务搭建/" itemprop="url" rel="index"><span itemprop="name">redis服务搭建</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="redis服务搭建"><a href="#redis服务搭建" class="headerlink" title="redis服务搭建"></a>redis服务搭建</h1><h2 id="主机命名"><a href="#主机命名" class="headerlink" title="主机命名"></a>主机命名</h2><ol>
+<li>确定操作系统类型<br><code>cat  /etc/issue</code></li>
+<li><p>查看当前系统的主机名<code>hostname</code></p>
+</li>
+<li><p>改/etc/sysconfig下的network文件<code>vi /etc/sysconfig/network</code></p>
+<p>把HOSTNAME后面的值改为想要设置的主机名<br><code>NETWORKING=yes
+HOSTNAME=CentOS2</code></p>
+</li>
+</ol>
+<p>system network reset</p>
+<p>exit 验证</p>
+<p>不得重启</p>
+<ol>
+<li><p>更改/etc下的hosts文件</p>
+<p><code>vi /etc/hosts</code><br>然后将localhost.localdomain改为想要设置的主机名。</p>
+<pre><code>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.29.136  CentOS1
+192.168.29.135  CentOS2
+192.168.29.134  CentOS3
+
+
+
+
+</code></pre></li>
+</ol>
+<ol>
+<li><code>reboot</code></li>
+<li>检查<code>hostname</code></li>
+</ol>
+<h2 id="时钟同步"><a href="#时钟同步" class="headerlink" title="时钟同步"></a>时钟同步</h2><h3 id="CentOS6"><a href="#CentOS6" class="headerlink" title="CentOS6"></a>CentOS6</h3><ol>
+<li><p>检查是否启动时钟同步服务<br>service检查:  <code>service ntpd status</code><br>job 检查 :    <code>crontab -l</code><br>修改定时任务: <code>crontab -e</code> </p>
+</li>
+<li><p>设置时钟同步:</p>
+<ul>
+<li>修改 /etc/ntp.conf  加入 ntp server ip<br><code>vi /etc/ntp.conf</code> <code>server 10.200.92.18</code></li>
+<li>启动ntp服务:<br><code>service ntpd start</code></li>
+<li>设置服务自动启动: <ol>
+<li>设置 <code>chkconfig ntpd on</code></li>
+<li>检查 <code>chkconfig -list ntpd</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h3><ul>
+<li>使用rpm检查ntp包是否安装<br>[root@CentOS3 home]# rpm -q ntp<br>ntp-4.2.6p5-22.el7.centos.x86_64</li>
+<li>如果已经安装则略过此步，否则使用yum进行安装，并设置系统开机自动启动并启动服务<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">yum -y install ntp</div><div class="line">systemctl enable ntpd</div><div class="line">systemctl start ntpd</div></pre></td></tr></table></figure>
+</p>
+</li>
+</ul>
+<p>修改完成后重启ntpd服务systemctl restart ntpd</p>
+<p>使用ntpq -p 查看网络中的NTP服务器，同时显示客户端和每个服务器的关系</p>
+<p>使用ntpstat 命令查看时间同步状态，这个一般需要5-10分钟后才能成功连接和同步。所以，服务器启动后需要稍等下：<br>刚启动的时候，一般是：</p>
+<pre><code>unsynchronised
+  time server re-starting
+   polling server every 8 s
+
+
+
+
+
+</code></pre><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>CentOS release 6.8 (Final)</p>
+<p>CentOS 7</p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="CentOS-6-8"><a href="#CentOS-6-8" class="headerlink" title="CentOS 6.8:"></a>CentOS 6.8:</h3><pre><code>- 防火墙:
+    - 即使生效,重启后失效
+        开启: service iptables start
+        关闭: service iptables stop
+    - 重启后生效
+        开启: chkconfig iptables on
+        关闭: chkconfig iptables off
+- 开启了防火墙时,做如下设置可以仅开启相关端口:
+    修改/etc/sysconfig/iptables 文件,添加以下内容:
+        -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT 
+        -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+
+
+</code></pre><h3 id="CentOS-7-0"><a href="#CentOS-7-0" class="headerlink" title="CentOS 7.0:"></a>CentOS 7.0:</h3><p>CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙。<br>firewall：</p>
+<pre><code>systemctl start firewalld.service#启动firewall
+
+systemctl stop firewalld.service#停止firewall
+
+systemctl disable firewalld.service#禁止firewall开机启动
+
+
+
+</code></pre><h2 id="源码安装redis"><a href="#源码安装redis" class="headerlink" title="源码安装redis"></a>源码安装redis</h2><pre><code>wget http://download.redis.io/releases/redis-3.2.4.tar.gz
+tar xzf redis-3.2.4.tar.gz
+cd redis-3.2.4
+make
+make test   //只用单核运行 make test：taskset -c 1 sudo make test
+make install
+mv redis-3.2.4 redis
+mv redis /usr/local/
+
+
+
+</code></pre><h2 id="修复3个redis-server-启动警告"><a href="#修复3个redis-server-启动警告" class="headerlink" title="修复3个redis-server 启动警告"></a>修复3个redis-server 启动警告</h2><pre><code>echo 1 &gt; /proc/sys/vm/overcommit_memory
+echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled
+echo 511 &gt; /proc/sys/net/core/somaxconn
+
+
+</code></pre><h2 id="开机启动redis"><a href="#开机启动redis" class="headerlink" title="开机启动redis"></a>开机启动redis</h2><p><code>/usr/local/redis/utils/install_server.sh</code><br>第一个参数分别选择7380 7381 26379</p>
+<h3 id="26379"><a href="#26379" class="headerlink" title="26379"></a>26379</h3><pre><code>Please select the redis executable path [/usr/local/bin/redis-server] 
++  /usr/local/bin/redis-sentinel
+
+
+
+</code></pre><h3 id="关闭实例"><a href="#关闭实例" class="headerlink" title="关闭实例"></a>关闭实例</h3><pre><code>[root@CentOS3 redis]# ps aux|grep redis
+root     19874  0.0  0.0 136912  7528 ?        Ssl  15:43   0:00 /usr/local/bin/redis-server 127.0.0.1:7380
+root     20178  0.0  0.0 136912  7528 ?        Ssl  15:43   0:00 /usr/local/bin/redis-server 127.0.0.1:7381
+root     20541  0.0  0.0 136912  7528 ?        Ssl  15:47   0:00 /usr/local/bin/redis-server 127.0.0.1:26379
+root     20705  0.0  0.0 112644   992 pts/2    S+   15:48   0:00 grep --color=auto redis
+[root@CentOS3 redis]# redis-cli -p 7380 shutdown
+[root@CentOS3 redis]# redis-cli -p 7381 shutdown
+[root@CentOS3 redis]# redis-cli -p 26379 shutdown
+[root@CentOS3 redis]# ps aux|grep redis
+root     20721  0.0  0.0 112644   996 pts/2    S+   15:49   0:00 grep --color=auto redis
+
+
+</code></pre><p><code>redis-cli -p 7380 shutdown &amp;&amp; redis-cli -p 7381 shutdown &amp;&amp; redis-cli -p 26379 shutdown</code></p>
+<h3 id="修改sentinel启动脚本"><a href="#修改sentinel启动脚本" class="headerlink" title="修改sentinel启动脚本"></a>修改sentinel启动脚本</h3><p><code>vim /etc/init.d/redis_26379</code></p>
+<pre><code>+  REDISHOSTNAME=&quot;192.168.29.134&quot;
+
+-   $CLIEXEC -p $REDISPORT shutdown
++   $CLIEXEC -h $REDISHOSTNAME -p $REDISPORT shutdown
+
+
+</code></pre><h2 id="resid-service-config-135-7380"><a href="#resid-service-config-135-7380" class="headerlink" title="resid-service config (135:7380)"></a>resid-service config (135:7380)</h2><pre><code>-  bind 127.0.0.1
++  bind 192.168.29.135   
+
+-  protected-mode yes
++  protected-mode no
+
+-  # unixsocket /tmp/redis.sock
+-  # unixsocketperm 700
++  unixsocket /tmp/redis.sock
++  unixsocketperm 700
+
+-  timeout 0 
++  timeout 300
+
+-  tcp-keepalive 300
++  tcp-keepalive 0
+
+-  save 900 1
+-  save 300 10
+-  save 60 10000
++  #save 900 1
++  #save 300 10
++  #save 60 10000
+
+-  stop-writes-on-bgsave-error yes
++  stop-writes-on-bgsave-error no
+
+-  #repl-ping-slave-period 10
++  repl-ping-slave-period 10
+
+-  # repl-backlog-size 1mb
++  repl-backlog-size 5mb
+-  # repl-backlog-ttl 3600
++  repl-backlog-ttl 600
+
+-  #maxclients 10000
++  maxclients 10000
+
+-  # maxmemory &lt;bytes&gt;
++  maxmemory 2gb
+
+-  appendonly no
++  appendonly yes 
+
+
+</code></pre><h3 id="resid-service-config-135-7381"><a href="#resid-service-config-135-7381" class="headerlink" title="resid-service config (135:7381)"></a>resid-service config (135:7381)</h3><pre><code>cp /etc/redis/7380.conf /etc/redis/7381.conf
+vim  /etc/redis/7381.conf
+
+    `:%s/7380/7381/g`   //替换所有的7380为7381
+
+
+</code></pre><h2 id="redis-sentinal-config-135-26379"><a href="#redis-sentinal-config-135-26379" class="headerlink" title="redis-sentinal config (135:26379)"></a>redis-sentinal config (135:26379)</h2><pre><code>rm -f /etc/redis/26379.conf
+cp /usr/local/redis/sentinel.conf /etc/redis/26379.conf
+vim /usr/local/redis/26379.conf
+
+    +  daemonize yes
+    -  #protected-mode no
+    +  protected-mode no
+    -  dir /tmp
+    +  dir /var/lib/redis/26379
+    +  logfile /var/log/redis_26379.log
+
+    -  sentinel monitor mymaster 127.0.0.1 6379 2
+    +  sentinel monitor redis136 192.168.29.136 7380 2
+    -  sentinel down-after-milliseconds mymaster 30000
+    +  sentinel down-after-milliseconds redis136 5000        
+    -  sentinel parallel-syncs mymaster 1
+    +  sentinel parallel-syncs redis136 1 
+    -  sentinel failover-timeout mymaster 180000
+    +  sentinel failover-timeout redis136 60000
+
+    +  sentinel monitor redis135 192.168.29.135 7380 2
+    +  sentinel down-after-milliseconds redis135 5000
+    +  sentinel failover-timeout redis135 60000
+    +  sentinel parallel-syncs redis135 1
+
+    +  sentinel monitor redis134 192.168.29.134 7380 2
+    +  sentinel down-after-milliseconds redis134 5000
+    +  sentinel failover-timeout redis134 60000
+    +  sentinel parallel-syncs redis134 1
+
+
+
+</code></pre><h2 id="redis部署"><a href="#redis部署" class="headerlink" title="redis部署"></a>redis部署</h2><h3 id="预定分配方案"><a href="#预定分配方案" class="headerlink" title="预定分配方案:"></a>预定分配方案:</h3><pre><code>            192.168.29.134
+             +---------+  
+             | M1 7380 |
+             | R3 7381 |
+             | S1      |
+             +---------+
+192.168.29.136    |    192.168.29.135
+  +---------+     |     +---------+
+  | M3 7380 |     |     | M2 7380 |  
+  | R2 7381 |-----------| R1 7381 |
+  | S3      |           | S2      |
+  +---------+           +---------+
+
+  Configuration: quorum = 2
+
+
+
+
+</code></pre><h3 id="redis-server实例启动"><a href="#redis-server实例启动" class="headerlink" title="redis-server实例启动:"></a>redis-server实例启动:</h3><pre><code>redis-server /etc/redis/7380.conf
+redis-server /etc/redis/7381.conf
+
+netstat -lntpa |grep redis 
+
+</code></pre><h3 id="主从分配"><a href="#主从分配" class="headerlink" title="主从分配"></a>主从分配</h3><p>三台主机实例均启动之后,进行主从配置:</p>
+<pre><code>redis-cli -h 192.168.29.134 -p 7381 slaveof 192.168.29.136 7380
+redis-cli -h 192.168.29.135 -p 7381 slaveof 192.168.29.134 7380
+redis-cli -h 192.168.29.136 -p 7381 slaveof 192.168.29.135 7380
+
+
+</code></pre><h3 id="redis-sentinel实例启动"><a href="#redis-sentinel实例启动" class="headerlink" title="redis-sentinel实例启动:"></a>redis-sentinel实例启动:</h3><p>最后在三台主机上启动sentinel</p>
+<p><code>redis-sentinel /etc/redis/26379.conf</code></p>
+<h2 id="检查failover"><a href="#检查failover" class="headerlink" title="检查failover"></a>检查failover</h2><pre><code>redis-cli -h 192.168.29.135 -p 7380  debug sleep 300s
+redis-cli -p 26379 sentinel master redis135
+
+
+
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1082,15 +1395,12 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1106,62 +1416,137 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Nameless13" />
-          <p class="site-author-name" itemprop="name">Nameless13</p>
-           
-              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Nameless13" />
+            
+              <p class="site-author-name" itemprop="name">Nameless13</p>
+              <p class="site-description motion-element" itemprop="description">─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后</p>
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">164</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
           
 
           
             
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
+          
           
 
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
       </section>
 
       
@@ -1178,30 +1563,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.3</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1212,6 +1608,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -1232,7 +1630,6 @@
 
 
 
-  
 
 
 
@@ -1245,55 +1642,49 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
 
 
 
@@ -1316,12 +1707,38 @@
 
 
 
+
+
+
+
   
 
 
 
 
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
 
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
   
 
   

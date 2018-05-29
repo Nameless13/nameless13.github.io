@@ -1,15 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -36,36 +49,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,35 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
-<meta name="description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nameless13">
-<meta property="og:url" content="https://nameless13.github.io/page/15/index.html">
-<meta property="og:site_name" content="Nameless13">
-<meta property="og:description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nameless13">
-<meta name="twitter:description" content="90后，桶装水保洁工程狮，ಥ_ಥ">
+
+
+
 
 
 
@@ -110,14 +84,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: 'J3OX6892F7',
       apiKey: '38852eb9095216f8f2ada575a06a9cfc',
@@ -129,12 +103,36 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nameless13">
+<meta property="og:url" content="https://nameless13.github.io/page/15/index.html">
+<meta property="og:site_name" content="Nameless13">
+<meta property="og:description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nameless13">
+<meta name="twitter:description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+
+
+
+
+
 
   <link rel="canonical" href="https://nameless13.github.io/page/15/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Nameless13</title>
   
@@ -147,10 +145,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -162,8 +182,7 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -172,19 +191,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nameless13</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -192,58 +209,109 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -256,436 +324,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Linux]swap 系统值修改.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/Error/[Linux]swap 系统值修改.html" itemprop="url">swap 系统值修改</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Impala-swapp系统值修改"><a href="#Impala-swapp系统值修改" class="headerlink" title="Impala swapp系统值修改"></a>Impala swapp系统值修改</h1><blockquote>
-<p>部分组件HDFS,YARN,HBAS有黄色警告是因为系统默认SWAP默认值为60</p>
-</blockquote>
-<p>导致内存未使用满便使用swap memory导致的，已经修改过配对应系统的配置值为SWAP=0。</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo 0 &gt;/proc/sys/vm/swappiness</div><div class="line">echo &apos;vm.swappiness=0&apos;&gt;&gt; /etc/sysctl.conf</div><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
   
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/CM/Cloudera Manager和CDH快速入门指南.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nameless13">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CDH/CM/Cloudera Manager和CDH快速入门指南.html" itemprop="url">Cloudera Manager和CDH快速入门指南</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/CM/" itemprop="url" rel="index">
-                    <span itemprop="name">CM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Cloudera-Manager和CDH快速入门指南"><a href="#Cloudera-Manager和CDH快速入门指南" class="headerlink" title="Cloudera Manager和CDH快速入门指南"></a>Cloudera Manager和CDH快速入门指南</h1><p>本快速入门指南介绍如何在四台主机的集群上快速创建Cloudera Manager 5，CDH 5和托管服务的新安装。生成的部署可用于演示和概念验证应用程序，但不推荐用于生产。</p>
-<p>继续阅读：</p>
-<ul>
-<li>快速启动群集主机要求</li>
-<li>下载并运行Cloudera Manager服务器安装程序</li>
-<li>在RHEL 5和CentOS 5上，安装Python 2.6或2.7</li>
-<li>启动Cloudera Manager管理控制台</li>
-<li>使用Cloudera Manager向导安装和配置软件<ul>
-<li>选择Cloudera Manager Edition和指定主机</li>
-<li>安装CDH和托管服务软件</li>
-<li>添加和配置服务</li>
-</ul>
-</li>
-<li>测试安装<ul>
-<li>运行MapReduce作业</li>
-<li>使用Hue测试</li>
-</ul>
-</li>
-</ul>
-<h2 id="快速启动群集主机要求"><a href="#快速启动群集主机要求" class="headerlink" title="快速启动群集主机要求"></a>快速启动群集主机要求</h2><p>集群中的四台主机必须满足以下要求：</p>
-<ul>
-<li>主机必须至少有10 GB RAM。</li>
-<li>您必须对主机具有root或无密码sudo访问权限。</li>
-<li>如果使用root，主机必须接受相同的root密码。</li>
-<li>主机必须具有Internet访问权限才能允许向导从中安装软件 archive.cloudera.com。</li>
-<li>运行支持的操作系统：<ul>
-<li>请参阅CDH 5和Cloudera Manager 5要求和支持的版本。</li>
-<li>SLES - SUSE Linux Enterprise Server 11,64位。需要Service Pack 2或更高版本。Updates存储库必须是活动的，并且需要SUSE Linux Enterprise Software Development Kit 11 SP1。</li>
-<li>Debian - Wheezy（7.0和7.1），64位。</li>
-<li>Ubuntu - Trusty（14.04）和（Precise）12.04,64位。</li>
-</ul>
-</li>
-</ul>
-<p>如果您的环境不满足这些要求，则本指南中描述的过程可能无法正常工作。有关其他Cloudera Manager安装选项和要求的信息，请参阅 安装Cloudera Manager和CDH。</p>
-<h2 id="下载并运行Cloudera-Manager服务器安装程序"><a href="#下载并运行Cloudera-Manager服务器安装程序" class="headerlink" title="下载并运行Cloudera Manager服务器安装程序"></a>下载并运行Cloudera Manager服务器安装程序</h2><p>将Cloudera Manager安装程序下载到要安装Cloudera Manager Server的集群主机：</p>
-<ol>
-<li>在Web浏览器中打开Cloudera Manager下载。</li>
-<li>在Cloudera Manager框中，单击立即下载。</li>
-<li><p>单击下载Cloudera Manager以下载最新版本的安装程序或单击选择不同的版本以下载较早版本。<br>将显示产品兴趣对话框。</p>
-</li>
-<li><p>点击登录并输入您的电子邮件地址和密码，或填写产品兴趣表单，然后点击继续。<br>将显示Cloudera标准许可证页面。</p>
-</li>
-<li><p>接受许可协议并单击提交。<br>显示自动安装说明。您还可以查看系统要求和发行说明，您可以转到文档。</p>
-</li>
-<li><p>下载安装程序：<br><code>$ wget https://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer.bin</code></p>
-</li>
-<li>更改 cloudera-manager-installer.bin 具有可执行权限：<br><code>$ chmod u + x cloudera-manager-installer.bin</code></li>
-<li>通过执行以下操作之一运行Cloudera Manager Server安装程序：<ul>
-<li>从Internet安装Cloudera Manager软件包：<code>$ sudo ./cloudera-manager-installer.bin</code></li>
-<li>从本地存储库安装Cloudera Manager软件包：<code>$ sudo ./cloudera-manager-installer.bin --skip_repo_package = 1</code></li>
-</ul>
-</li>
-<li>阅读Cloudera Manager README，然后按Return或Enter选择Next。</li>
-<li>阅读Cloudera Express许可证，然后按Return或Enter选择下一步。使用箭头键，然后按Return或Enter选择是以确认您接受许可证。</li>
-<li>阅读Oracle二进制代码许可协议，然后按Return或Enter选择 Next。</li>
-<li>使用箭头键，然后按Return或Enter选择是以确认您接受Oracle二进制代码许可协议。发生以下情况：<ul>
-<li>安装程序将安装Oracle JDK和Cloudera Manager存储库文件。</li>
-<li>安装程序将安装Cloudera Manager Server和嵌入式PostgreSQL软件包。</li>
-<li>安装程序启动Cloudera Manager Server和嵌入式PostgreSQL数据库。</li>
-</ul>
-</li>
-<li>安装完成后，将显示Cloudera Manager管理控制台的完整URL，包括端口号，默认情况下为7180。按Return或Enter选择确定继续。</li>
-<li>按Return或Enter选择确定以退出安装程序。</li>
-</ol>
-<h2 id="在RHEL-5和CentOS-5上，安装Python-2-6或2-7"><a href="#在RHEL-5和CentOS-5上，安装Python-2-6或2-7" class="headerlink" title="在RHEL 5和CentOS 5上，安装Python 2.6或2.7"></a>在RHEL 5和CentOS 5上，安装Python 2.6或2.7</h2><p>CDH 5 Hue仅与安装在其上的操作系统的默认系统Python版本一起工作。例如，在RHEL / CentOS 6上，您需要使用Python 2.6启动Hue。<br>要从EPEL存储库安装软件包，请将相应的软件包RPM软件包下载到您的计算机，然后使用安装Python yum。例如，对RHEL 5或CentOS 5使用以下命令：</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ su -c&apos;rpm -Uvh http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm&apos;</div><div class="line">... ...</div><div class="line">$ yum install python26</div></pre></td></tr></table></figure>
-</p>
-<h2 id="启动Cloudera-Manager管理控制台"><a href="#启动Cloudera-Manager管理控制台" class="headerlink" title="启动Cloudera Manager管理控制台"></a>启动Cloudera Manager管理控制台</h2><ol>
-<li>等待几分钟，Cloudera Manager Server启动。要观察启动过程，请运行tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log在Cloudera Manager Server主机上。如果Cloudera Manager Server未启动，请参阅 排除安装和升级问题。</li>
-<li>在Web浏览器中，输入 http：// 服务器主机：7180，其中Server主机是运行Cloudera Manager Server的主机的FQDN或IP地址。<br>将显示Cloudera Manager管理控制台的登录屏幕。</li>
-<li>使用凭据登录到Cloudera Manager管理控制台：<strong>用户名</strong>： 管理员 <strong>密码</strong>： 管理员。</li>
-<li>登录后，将显示“ <strong>Cloudera Manager最终用户许可条款和条件</strong>”页面。阅读条款和条件，然后选择是接受它们。</li>
-<li>单击<strong>继续</strong>。将显示<strong>欢迎使用Cloudera Manager</strong>页面。</li>
-</ol>
-<h2 id="使用Cloudera-Manager向导安装和配置软件"><a href="#使用Cloudera-Manager向导安装和配置软件" class="headerlink" title="使用Cloudera Manager向导安装和配置软件"></a>使用Cloudera Manager向导安装和配置软件</h2><p>在群集主机上安装和配置Cloudera Manager，CDH和托管服务软件涉及以下主要步骤。</p>
-<p>继续阅读：</p>
-<ul>
-<li>选择Cloudera Manager Edition和指定主机</li>
-<li>安装CDH和托管服务软件</li>
-<li>添加和配置服务</li>
-</ul>
-<h3 id="选择Cloudera-Manager-Edition和指定主机"><a href="#选择Cloudera-Manager-Edition和指定主机" class="headerlink" title="选择Cloudera Manager Edition和指定主机"></a>选择Cloudera Manager Edition和指定主机</h3><ol>
-<li>选择Cloudera企业 数据中心版试用版，它不需要许可证，但在60天后过期，无法续订。试用版允许您创建Cloudera Manager支持的所有CDH和托管服务。单击继续。</li>
-<li>将显示信息，指示将安装Cloudera Manager的哪个版本以及您可以选择的服务。单击继续。将显示“指定CDH群集安装的主机”屏幕。</li>
-<li>指定要在其上安装CDH和托管服务的四个主机。您可以指定主机名或IP地址和范围，例如：10.1.1。[1-4]或主机[1-3] .company.com。您可以通过用逗号，分号，制表符或空格分隔多个地址和地址范围，或将它们放在单独的行上。</li>
-<li>单击搜索。Cloudera Manager标识集群上的主机。验证显示的主机数量与要安装服务的主机数量匹配。清除不存在的主机条目，并清除不想安装服务的主机。单击继续。将显示“选择存储库”屏幕。</li>
-</ol>
-<h3 id="安装CDH和托管服务软件"><a href="#安装CDH和托管服务软件" class="headerlink" title="安装CDH和托管服务软件"></a>安装CDH和托管服务软件</h3><ol>
-<li>保留默认分发方法使用宗地和CDH的默认版本5.将“其他宗地”选项保留为“无”。</li>
-<li>对于Cloudera Manager Agent，保留此Cloudera Manager Server的默认匹配版本。单击继续。将显示“JDK安装选项”屏幕。</li>
-<li>选择安装Oracle Java SE开发工具包（JDK）复选框以允许Cloudera Manager在每个群集主机上安装JDK或取消选中是否打算自行安装。保持安装Java无限强度加密策略文件复选框。单击继续。将显示“启用单用户模式”屏幕。</li>
-<li>将单用户模式复选框清除，然后单击继续。此时将显示“提供SSH登录凭据”页面。</li>
-<li>指定主机SSH登录属性：</li>
-<li>保留默认登录根目录或输入具有无密码sudo权限的帐户的用户名。</li>
-<li>如果选择使用密码验证，请输入并确认密码。</li>
-<li>单击继续。Cloudera Manager在每个主机上安装Oracle JDK和Cloudera Manager Agent软件包，并启动代理。</li>
-<li>单击继续。将显示“安装所选宗地”屏幕。Cloudera Manager安装CDH。在包裹安装过程中，会在单独的进度条中指示包裹安装过程的各个阶段的进度。当屏幕底部的继续按钮变为蓝色时，安装过程完成。</li>
-<li>单击继续。主机检查器运行以验证安装，并提供其查找的摘要，包括已安装组件的所有版本。单击“完成”。将显示群集设置屏幕。</li>
-</ol>
-<h3 id="添加和配置服务"><a href="#添加和配置服务" class="headerlink" title="添加和配置服务"></a>添加和配置服务</h3><ol>
-<li>选择所有服务以创建HDFS，YARN（包括MapReduce 2），ZooKeeper，Oozie，Hive，Hue，Sqoop，HBase，Impala，Solr，Spark和Key-Value Store Indexer服务。单击继续。将显示自定义角色分配屏幕。</li>
-<li>配置以下角色分配：<ul>
-<li>单击HBase Thrift Server角色下的文本字段。在显示的主机选择对话框中，选中任何主机旁边的复选框，然后单击右下角的确定 。</li>
-<li>单击ZooKeeper服务的服务器角色下的文本字段。在显示的主机选择对话框中，取消选中默认分配的主机（主主机）旁边的复选框，并选中其余三台主机旁边的复选框。单击右下角的确定。</li>
-</ul>
-</li>
-<li>单击继续。显示数据库设置屏幕。</li>
-<li>保留使用嵌入式数据库的默认设置，以使Cloudera Manager在嵌入式PostgreSQL数据库中创建和配置所有必需的数据库。单击测试连接。测试完成后，单击继续。将显示“查看更改”屏幕。</li>
-<li>查看要应用的配置更改。单击继续。将显示“命令进度”页面。</li>
-<li>向导将执行32个步骤来配置和启动服务。启动完成后，单击继续。</li>
-<li>将显示一条成功消息，指示集群已成功启动。单击完成以继续到首页 &gt; 状态选项卡。</li>
-</ol>
-<h2 id="测试安装"><a href="#测试安装" class="headerlink" title="测试安装"></a>测试安装</h2><p>在屏幕的左侧是当前运行的服务及其状态信息的列表。所有服务应以良好 运行状态运行，但是可能有少量配置警告由扳手图标和数字指示，您可以忽略它。</p>
-<p>您可以单击每个服务以查看有关服务的更多详细信息。您还可以通过运行MapReduce作业或使用Hue应用程序与群集交互来测试安装。</p>
-<h3 id="运行MapReduce作业"><a href="#运行MapReduce作业" class="headerlink" title="运行MapReduce作业"></a>运行MapReduce作业</h3><ol>
-<li>登录到群集主机。</li>
-<li><p>运行Hadoop PiEstimator示例：</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo -u hdfs hadoop jar \</div><div class="line">/opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar \</div><div class="line">pi 10 100</div></pre></td></tr></table></figure>
-</p>
-</li>
-<li><p>通过从Cloudera Manager管理控制台顶部导航栏中选择以下内容来查看运行作业的结果：集群 &gt; 集群名称 &gt; YARN应用程序。您将看到如下所示的条目：<br>&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;</p>
-</li>
-</ol>
-<h3 id="使用Hue测试"><a href="#使用Hue测试" class="headerlink" title="使用Hue测试"></a>使用Hue测试</h3><p>测试集群的一个好方法是运行作业。此外，您可以通过运行其中一个Hue Web应用程序来测试集群。Hue是一个图形用户界面，允许您通过运行允许浏览HDFS，管理Hive元数据转储，运行Hive，Impala和搜索查询，Pig脚本和Oozie工作流的应用程序与群集进行交互。</p>
-<ol>
-<li>在Cloudera Manager管理控制台首页 &gt; 状态选项卡中，单击Hue服务。</li>
-<li>单击Hue Web UI链接，它将在新窗口中打开Hue。</li>
-<li>使用凭据登录，用户名： hdfs，密码： hdfs。</li>
-<li>在浏览器窗口顶部的导航栏中选择一个应用程序。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Shell/SUSE开机启动脚本配置文件.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -699,11 +350,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Shell/SUSE开机启动脚本配置文件.html" itemprop="url">SUSE开机启动脚本配置文件</a></h1>
+                <a class="post-title-link" href="/CDH/Shell/SUSE开机启动脚本配置文件.html" itemprop="url">
+                  SUSE开机启动脚本配置文件
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -711,13 +372,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
-                2017-05-24
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -733,22 +411,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Shell/" itemprop="url" rel="index">
-                    <span itemprop="name">Shell</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a></span>
 
                 
                 
@@ -773,6 +443,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -797,17 +470,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -821,6 +494,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -833,13 +510,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]执行数据节点的磁盘热插拔.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Spark]spark-streaming 与kafka的结合.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -853,11 +536,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[HDFS]执行数据节点的磁盘热插拔.html" itemprop="url">执行数据节点的磁盘热插拔</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[Spark]spark-streaming 与kafka的结合.html" itemprop="url">
+                  spark-streaming 与kafka的结合
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -865,13 +558,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T00:00:00+08:00">
-                2017-04-01
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
             
           </span>
 
@@ -887,22 +597,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -927,6 +629,372 @@
       </header>
     
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="spark-streaming-与kafka的结合"><a href="#spark-streaming-与kafka的结合" class="headerlink" title="spark-streaming 与kafka的结合"></a>spark-streaming 与kafka的结合</h1><p>升级CDH到5.10后 spark-steaming 从kafka获取消息就报错</p>
+<p><strong>原因:高版本的kafka从低版本的kafka server端连接不兼容</strong></p>
+<p>因为在使用spark-streaming调用kafka的时候,会由cloudera来调用相应的组件,其中就有kafka的客户端,并且优先级较高,继而不会调用我们自己的kafka客户端,导致报错<br>后来原厂的人重新编译路径指向后解决</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Hive]hive LZO压缩格式支持.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[Hive]hive LZO压缩格式支持.html" itemprop="url">
+                  hive LZO压缩格式支持
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-24 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">2017-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://www.cloudera.com/documentation/enterprise/latest/topics/admin_data_compression_performance.html" target="_blank" rel="noopener">LZO配置</a></p>
+</blockquote>
+<h2 id="hive-因为仅仅添加了LZO压缩格式的配置路径-却没有导入"><a href="#hive-因为仅仅添加了LZO压缩格式的配置路径-却没有导入" class="headerlink" title="hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入"></a>hive 因为仅仅添加了LZO压缩格式的配置路径,却没有导入</h2><p>暂时先删除LZO配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ddp-hb-01:~ # beeline -u &apos;jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM&apos;</div><div class="line">scan complete in 3ms</div><div class="line">Connecting to jdbc:hive2://10.200.60.99:10000/yanfa;principal=hive/ddp-hb-01.cmdmp.com@CMDMP.COM</div><div class="line">Connected to: Apache Hive (version 1.1.0-cdh5.4.7)</div><div class="line">Driver: Hive JDBC (version 1.1.0-cdh5.4.7)</div><div class="line">Transaction isolation: TRANSACTION_REPEATABLE_READ</div><div class="line">Beeline version 1.1.0-cdh5.4.7 by Apache Hive</div><div class="line">[INFO] Unable to bind key for unsupported operation: backward-delete-word</div><div class="line">[INFO] Unable to bind key for unsupported operation: backward-delete-word</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: up-history</div><div class="line">[INFO] Unable to bind key for unsupported operation: down-history</div><div class="line">0: jdbc:hive2://10.200.60.99:10000/yanfa&gt; show databases;</div><div class="line">0: jdbc:hive2://10.200.60.99:10000/yanfa&gt; show tables;</div><div class="line">0: jdbc:hive2://10.200.60.99:10000/yanfa&gt; select * from tk_user_his limit 10;</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">11	11	</div><div class="line">     &lt;value&gt;1&lt;/value&gt;</div><div class="line">12	12	</div><div class="line">   &lt;/property&gt;</div><div class="line">13	13	</div><div class="line">   &lt;property&gt;</div><div class="line">14	14	</div><div class="line">     &lt;name&gt;io.compression.codecs&lt;/name&gt;</div><div class="line">15		</div><div class="line">-    &lt;value&gt;org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.DeflateCodec,org.apache.hadoop.io.compress.SnappyCodec,org.apache.hadoop.io.compress.Lz4Codec&lt;/value&gt;</div><div class="line">15	</div><div class="line">+    &lt;value&gt;org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.DeflateCodec,org.apache.hadoop.io.compress.SnappyCodec,org.apache.hadoop.io.compress.Lz4Codec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec&lt;/value&gt;</div><div class="line">16	16	</div><div class="line">   &lt;/property&gt;</div><div class="line">17	17	</div><div class="line">   &lt;property&gt;</div><div class="line">18	18	</div><div class="line">     &lt;name&gt;hadoop.security.authentication&lt;/name&gt;</div><div class="line">19	19	</div><div class="line">     &lt;value&gt;kerberos&lt;/value&gt;</div></pre></td></tr></table></figure>
+</p>
+<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">93	93	</div><div class="line">   &lt;node name=&quot;ddp-dn-041.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">94	94	</div><div class="line">   &lt;node name=&quot;10.200.60.123&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">95	95	</div><div class="line">   &lt;node name=&quot;ddp-dn-042.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">96	96	</div><div class="line">   &lt;node name=&quot;10.200.60.124&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">97		</div><div class="line">-  &lt;node name=&quot;ddp-dn-043.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">98		</div><div class="line">-  &lt;node name=&quot;10.200.60.125&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">99	97	</div><div class="line">   &lt;node name=&quot;ddp-dn-044.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">100	98	</div><div class="line">   &lt;node name=&quot;10.200.60.126&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">101	99	</div><div class="line">   &lt;node name=&quot;ddp-dn-045.cmdmp.com&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">102	100	</div><div class="line">   &lt;node name=&quot;10.200.60.127&quot; rack=&quot;/A21&quot;/&gt;</div><div class="line">...	...	</div><div class="line">@@ -339,8 +337,10 @@</div><div class="line">339	337	</div><div class="line">   &lt;node name=&quot;ddp-dn-170.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">340	338	</div><div class="line">   &lt;node name=&quot;10.200.60.81&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">341	339	</div><div class="line">   &lt;node name=&quot;ddp-dn-171.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">342	340	</div><div class="line">   &lt;node name=&quot;10.200.60.82&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">341	</div><div class="line">+  &lt;node name=&quot;ddp-dn-172.cmdmp.com&quot; rack=&quot;/default&quot;/&gt;</div><div class="line">342	</div><div class="line">+  &lt;node name=&quot;10.200.60.83&quot; rack=&quot;/default&quot;/&gt;</div><div class="line">343	343	</div><div class="line">   &lt;node name=&quot;ddp-dn-173.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">344	344	</div><div class="line">   &lt;node name=&quot;10.200.60.84&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">345	345	</div><div class="line">   &lt;node name=&quot;ddp-dn-174.cmdmp.com&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">346	346	</div><div class="line">   &lt;node name=&quot;10.200.60.85&quot; rack=&quot;/A15&quot;/&gt;</div><div class="line">```     </div><div class="line"></div><div class="line">3月 22, 下午2点53:37.282	WARN	org.apache.hive.service.cli.thrift.ThriftCLIService	</div><div class="line">Error fetching results: </div><div class="line">org.apache.hive.service.cli.HiveSQLException: java.io.IOException: java.lang.RuntimeException: Error in configuring object</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation.getNextRowSet(SQLOperation.java:329)</div><div class="line">	at org.apache.hive.service.cli.operation.OperationManager.getOperationNextRowSet(OperationManager.java:250)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionImpl.fetchResults(HiveSessionImpl.java:699)</div><div class="line">	at sun.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:78)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy.access$000(HiveSessionProxy.java:36)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy$1.run(HiveSessionProxy.java:63)</div><div class="line">	at java.security.AccessController.doPrivileged(Native Method)</div><div class="line">	at javax.security.auth.Subject.doAs(Subject.java:415)</div><div class="line">	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1671)</div><div class="line">	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:59)</div><div class="line">	at com.sun.proxy.$Proxy23.fetchResults(Unknown Source)</div><div class="line">	at org.apache.hive.service.cli.CLIService.fetchResults(CLIService.java:438)</div><div class="line">	at org.apache.hive.service.cli.thrift.ThriftCLIService.FetchResults(ThriftCLIService.java:676)</div><div class="line">	at org.apache.hive.service.cli.thrift.TCLIService$Processor$FetchResults.getResult(TCLIService.java:1553)</div><div class="line">	at org.apache.hive.service.cli.thrift.TCLIService$Processor$FetchResults.getResult(TCLIService.java:1538)</div><div class="line">	at org.apache.thrift.ProcessFunction.process(ProcessFunction.java:39)</div><div class="line">	at org.apache.thrift.TBaseProcessor.process(TBaseProcessor.java:39)</div><div class="line">	at org.apache.hadoop.hive.thrift.HadoopThriftAuthBridge$Server$TUGIAssumingProcessor.process(HadoopThriftAuthBridge.java:692)</div><div class="line">	at org.apache.thrift.server.TThreadPoolServer$WorkerProcess.run(TThreadPoolServer.java:285)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)</div><div class="line">	at java.lang.Thread.run(Thread.java:745)</div><div class="line">Caused by: java.io.IOException: java.lang.RuntimeException: Error in configuring object</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getNextRow(FetchOperator.java:507)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.pushRow(FetchOperator.java:414)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchTask.fetch(FetchTask.java:138)</div><div class="line">	at org.apache.hadoop.hive.ql.Driver.getResults(Driver.java:1655)</div><div class="line">	at org.apache.hive.service.cli.operation.SQLOperation.getNextRowSet(SQLOperation.java:324)</div><div class="line">	... 24 more</div><div class="line">Caused by: java.lang.RuntimeException: Error in configuring object</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:109)</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:75)</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:133)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getInputFormatFromCache(FetchOperator.java:206)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getNextSplits(FetchOperator.java:360)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getRecordReader(FetchOperator.java:294)</div><div class="line">	at org.apache.hadoop.hive.ql.exec.FetchOperator.getNextRow(FetchOperator.java:445)</div><div class="line">	... 28 more</div><div class="line">Caused by: java.lang.reflect.InvocationTargetException</div><div class="line">	at sun.reflect.GeneratedMethodAccessor43.invoke(Unknown Source)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:106)</div><div class="line">	... 34 more</div><div class="line">Caused by: java.lang.IllegalArgumentException: Compression codec com.hadoop.compression.lzo.LzoCodec not found.</div><div class="line">	at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:135)</div><div class="line">	at org.apache.hadoop.io.compress.CompressionCodecFactory.&lt;init&gt;(CompressionCodecFactory.java:175)</div><div class="line">	at org.apache.hadoop.mapred.TextInputFormat.configure(TextInputFormat.java:45)</div><div class="line">	... 38 more</div><div class="line">Caused by: java.lang.ClassNotFoundException: Class com.hadoop.compression.lzo.LzoCodec not found</div><div class="line">	at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2018)</div><div class="line">	at org.apache.hadoop.io.compress.CompressionCodecFactory.getCodecClasses(CompressionCodecFactory.java:128)</div><div class="line">	... 40 more</div></pre></td></tr></table></figure>
+</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[HDFS]执行数据节点的磁盘热插拔.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nameless13">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nameless13">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CDH/Error/[HDFS]执行数据节点的磁盘热插拔.html" itemprop="url">
+                  执行数据节点的磁盘热插拔
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-01T00:00:00+08:00">2017-04-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-29 23:19:59" itemprop="dateModified" datetime="2018-05-29T23:19:59+08:00">2018-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1013,17 +1081,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1037,6 +1105,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1049,13 +1121,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Error/[Impala]Impala复杂查询报错.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1069,11 +1147,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Error/[Impala]Impala复杂查询报错.html" itemprop="url">Impala复杂查询报错</a></h1>
+                <a class="post-title-link" href="/CDH/Error/[Impala]Impala复杂查询报错.html" itemprop="url">
+                  Impala复杂查询报错
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1081,13 +1169,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T00:00:00+08:00">
-                2017-03-30
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-30 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-30T00:00:00+08:00">2017-03-30</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-23 01:22:01" itemprop="dateModified" datetime="2018-05-23T01:22:01+08:00">2018-05-23</time>
+              
             
           </span>
 
@@ -1103,22 +1208,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Error</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Error/" itemprop="url" rel="index"><span itemprop="name">Error</span></a></span>
 
                 
                 
@@ -1143,6 +1240,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1178,17 +1278,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1202,6 +1302,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1214,13 +1318,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/CDH/Upgrade/使用Packages升级到CDH 5.10.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1234,11 +1344,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CDH/Upgrade/使用Packages升级到CDH 5.10.html" itemprop="url">使用Packages升级到CDH 5.10</a></h1>
+                <a class="post-title-link" href="/CDH/Upgrade/使用Packages升级到CDH 5.10.html" itemprop="url">
+                  使用Packages升级到CDH 5.10
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1246,13 +1366,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-22T00:00:00+08:00">
-                2017-03-22
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-22 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-22T00:00:00+08:00">2017-03-22</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1268,22 +1405,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/" itemprop="url" rel="index"><span itemprop="name">CDH</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH/Upgrade/" itemprop="url" rel="index">
-                    <span itemprop="name">Upgrade</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CDH/Upgrade/" itemprop="url" rel="index"><span itemprop="name">Upgrade</span></a></span>
 
                 
                 
@@ -1308,6 +1437,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1551,17 +1683,17 @@ CDH 5.2或5.3至5.4或更高
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1575,6 +1707,10 @@ CDH 5.2或5.3至5.4或更高
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1587,13 +1723,19 @@ CDH 5.2或5.3至5.4或更高
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/12-20 微信商学院-开发者培训班.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1607,11 +1749,21 @@ CDH 5.2或5.3至5.4或更高
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/12-20 微信商学院-开发者培训班.html" itemprop="url">12-20 微信商学院-开发者培训班</a></h1>
+                <a class="post-title-link" href="/Document/12-20 微信商学院-开发者培训班.html" itemprop="url">
+                  12-20 微信商学院-开发者培训班
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1619,13 +1771,30 @@ CDH 5.2或5.3至5.4或更高
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
-                2016-12-20
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-20 00:00:00" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">2016-12-20</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1641,11 +1810,7 @@ CDH 5.2或5.3至5.4或更高
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
 
                 
                 
@@ -1670,6 +1835,9 @@ CDH 5.2或5.3至5.4或更高
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1807,17 +1975,17 @@ CDH 5.2或5.3至5.4或更高
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1831,6 +1999,10 @@ CDH 5.2或5.3至5.4或更高
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1843,13 +2015,19 @@ CDH 5.2或5.3至5.4或更高
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/weixin.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1863,11 +2041,21 @@ CDH 5.2或5.3至5.4或更高
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/weixin.html" itemprop="url">weixin</a></h1>
+                <a class="post-title-link" href="/Document/weixin.html" itemprop="url">
+                  weixin
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1875,13 +2063,30 @@ CDH 5.2或5.3至5.4或更高
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
-                2016-12-20
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-20 00:00:00" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">2016-12-20</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -1897,11 +2102,7 @@ CDH 5.2或5.3至5.4或更高
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
 
                 
                 
@@ -1926,6 +2127,9 @@ CDH 5.2或5.3至5.4或更高
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1943,17 +2147,17 @@ CDH 5.2或5.3至5.4或更高
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1967,6 +2171,10 @@ CDH 5.2或5.3至5.4或更高
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1979,13 +2187,19 @@ CDH 5.2或5.3至5.4或更高
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/mongod error.html">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/Docker入门到实践.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1999,11 +2213,21 @@ CDH 5.2或5.3至5.4或更高
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/mongod error.html" itemprop="url">mongod error</a></h1>
+                <a class="post-title-link" href="/Document/Docker入门到实践.html" itemprop="url">
+                  Docker入门到实践
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -2011,13 +2235,30 @@ CDH 5.2或5.3至5.4或更高
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">
-                2016-10-20
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-20 00:00:00" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">2016-10-20</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -2033,11 +2274,7 @@ CDH 5.2或5.3至5.4或更高
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
 
                 
                 
@@ -2062,6 +2299,9 @@ CDH 5.2或5.3至5.4或更高
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2070,42 +2310,135 @@ CDH 5.2或5.3至5.4或更高
       
         
           
-            <p>mongod start<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">about to fork child process, waiting until server is ready for connections.</div><div class="line">forked process: 23987</div><div class="line">ERROR: child process failed, exited with error number 100</div></pre></td></tr></table></figure></p>
-<p>没有正常关闭mongod服务,导致mongod被锁.删除掉mongod里的mongod.lock 文件.重新启动服务就行了.</p>
+            <h1 id="Docker–入门到实践"><a href="#Docker–入门到实践" class="headerlink" title="Docker–入门到实践"></a>Docker–入门到实践</h1><p>Virtuial Machines<br>each virtualized application includes not nonly the application - which may be only 10s of MB -and the necessary binaries,but also an entire guest operating system - which may weigh 10s of GB</p>
 <hr>
-<p>/sys/kernel/mm/transparent_hugepage/defrag is ‘always’.</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/enabled; then  </div><div class="line">   echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled  </div><div class="line">fi  </div><div class="line">if test -f /sys/kernel/mm/transparent_hugepage/defrag; then  </div><div class="line">   echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag  </div><div class="line">fi</div></pre></td></tr></table></figure>
+<p>Docker<br>The Docker Engine container comprises just the application and its dependencies. it runs aas an isolated process in userspace on the host operating system,sharing the kernel with other containers. Thus,it enjoys the resource and allocation benefits of VMs but is much more portable and efficient.</p>
+<hr>
+<p>容器除了运行其中的应用外,基本不消耗额外的系统资源,使得应用性能很高,同事系统的开销尽量小,相比传统虚拟机方式运行10个不同的应用要起10个虚拟机,而Docker只需要启动10个隔离应用即可.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">容器</th>
+<th style="text-align:left">虚拟机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">启动</td>
+<td style="text-align:left">秒级</td>
+<td style="text-align:left">分钟级</td>
+</tr>
+<tr>
+<td style="text-align:left">硬盘使用</td>
+<td style="text-align:left">一般为MB</td>
+<td style="text-align:left">一般为GB</td>
+</tr>
+<tr>
+<td style="text-align:left">性能</td>
+<td style="text-align:left">接近原生</td>
+<td style="text-align:left">弱于</td>
+</tr>
+<tr>
+<td style="text-align:left">系统支持量</td>
+<td style="text-align:left">单机支持上千个容器</td>
+<td style="text-align:left">一般几十个</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>镜像(Image)</li>
+</ul>
+<p>Docker镜像就是一个只读的模版,如可以包含一个完整的操作系统里面仅安装了Apache<br>镜像可以用来创建Docker容器<br>Docker提供了一个很简单的机制来创建镜像或者更新现有镜像,或者拿一个做好的镜像直接使用</p>
+<hr>
+<ul>
+<li>容器(Container)</li>
+</ul>
+<p>Docker利用容器俩运行运用<br>容器是从镜像创建的运行实例.可以被启动,开始停止,删除.每个容器容器都是相互隔离的,保证安全的平台<br>可以把容器看作是一个简易版的Linux环境 (包括root用户权限,进程空间,用户空间和网络空间等)和运行在其中的应用程序</p>
+<p>// 镜像是只读的,容器在启动的时候创建一层<code>可写层</code>作为最上层</p>
+<hr>
+<ul>
+<li>仓库(Repository)</li>
+</ul>
+<p>仓库是几种存放镜像文件的场所.仓库注册服务器上往往存放多个仓库,每个仓库中又包含多个镜像,每个镜像有不同的标签(tag)</p>
+<p>仓库分为公开仓库(Public)和私有仓库(Private)</p>
+<p>最大的公开仓库是Docker Hub,国内公开仓库有Docker Pool</p>
+<p>用户可以本地网络内创建一个私有仓库,当创建了自己的镜像后可使用<code>push</code>命令上传到仓库,命令<code>pull</code>从仓库下载</p>
+<hr>
+<h2 id="CentOS-系列安装Docker"><a href="#CentOS-系列安装Docker" class="headerlink" title="CentOS 系列安装Docker"></a>CentOS 系列安装Docker</h2><p><code>docker pull hub.c.163.com/public/&lt;centos:7 class=&quot;0&quot;&gt;&lt;/centos:7&gt;</code></p>
+<p><code>docker run -t -i hub.c.163.com/public/centos:7.0 /bin/bash</code><br>-t  选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，  -i  则让容器的标准输入保持打开</p>
+<p><code>docker run -t -i training/sinatra /bin/bash</code>  //会下载一个新的…镜像</p>
+<p>当利用<code>docker run</code> 创建容器时,Docker在后台运行的标准是:</p>
+<ul>
+<li>检查本地是否存在指定的镜像,不存在就从公有仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统,并在只读的镜像层外面挂载一层可读写成</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中去</li>
+<li>从地址池配置一个IP地址给容器</li>
+<li>执行用户指定的应用程序</li>
+</ul>
+<p><code>docker commit -m &quot;Added git&quot; -a &quot;Docker Newbee&quot; 40c9fe0a35ef centos:v2</code></p>
+<hr>
+<p><code>docker run -t -i hub.c.163.com/public/centos:7.0 /bin/bash</code><br><code>-t 让Docker分配一个伪终端(pseudo-tty)并绑定到容器的标准输入上,-i 让容器的标准输入保持打开</code></p>
+<p>当利用docker run 创建容器时,Docker在后台运行的标准操作包括:</p>
+<ul>
+<li>检查本地是否存在指定的镜像,不存在就从公有仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统,并在只读的镜像层外面挂载一层可读写层</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中去</li>
+<li>从地址池配置一个ip地址给容器</li>
+<li>执行用户指定的应用程序</li>
+<li>执行完毕后容器被终止</li>
+</ul>
+<h4 id="启动已终止容器"><a href="#启动已终止容器" class="headerlink" title="启动已终止容器"></a>启动已终止容器</h4><p>利用 <code>docker start</code> ,直接将一个已经终止的容器启动运行<br>容器的核心为所执行的应用程序,所需要的资源都是应用程序运行必需的.</p>
+<h4 id="后台background运行"><a href="#后台background运行" class="headerlink" title="后台background运行"></a>后台background运行</h4><p>需要让docker在后台运行</p>
+<hr>
+<p>安装 `.bashrc_docker</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">wget -P ~ https://github.com/yeasy/docker_practice/raw/master/_local/.bashrc_docker</div><div class="line"><span class="built_in">echo</span> <span class="string">"[ -f ~/.bashrc_docker ] &amp;&amp; . ~/.bashrc_docker"</span> &gt;&gt; ~/.bashrc; <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="built_in">echo</span> $(docker-pid docker)</div></pre></td></tr></table></figure>
 </p>
 <hr>
-<p><code>** WARNING: soft rlimits too low. rlimits set to 1024 processes, 100032 files. Number of processes should be at least 50016 : 0.5 times number of files</code></p>
+<h2 id="redis-master"><a href="#redis-master" class="headerlink" title="redis-master"></a>redis-master</h2><p><code>docker run --name redis-master -v /home/testuser/docker/master-redis.conf:/usr/local/etc/master-redis.conf -d -p 16397:16379 redis redis-server /usr/local/etc/master-redis.conf</code></p>
+<h2 id="redis-slave"><a href="#redis-slave" class="headerlink" title="redis-slave"></a>redis-slave</h2><p><code>docker run --link redis-master:redis-master -v /home/testuser/docker/slave-redis.conf:/usr/local/etc/slave-redis.conf --name redis-slave1 -d redis redis-server /usr/local/etc/slave-redis.conf</code></p>
+<h4 id="宿主机上如何获得-docker-container-容器的-ip-地址？"><a href="#宿主机上如何获得-docker-container-容器的-ip-地址？" class="headerlink" title="宿主机上如何获得 docker container 容器的 ip 地址？"></a>宿主机上如何获得 docker container 容器的 ip 地址？</h4><p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">docker inspect --format=&apos;&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;&apos; $CONTAINER_ID</div></pre></td></tr></table></figure>
+</p>
+<h3 id="在Docker容器内外互相拷贝数据"><a href="#在Docker容器内外互相拷贝数据" class="headerlink" title="在Docker容器内外互相拷贝数据"></a>在Docker容器内外互相拷贝数据</h3><h4 id="从容器内拷贝文件到主机上"><a href="#从容器内拷贝文件到主机上" class="headerlink" title="从容器内拷贝文件到主机上"></a>从容器内拷贝文件到主机上</h4><p><code>docker cp &lt;containerId&gt;:/file/path/within/container /host/path/target</code></p>
+<p>没试验过</p>
+<h4 id="从主机上拷贝文件到容器内"><a href="#从主机上拷贝文件到容器内" class="headerlink" title="从主机上拷贝文件到容器内"></a>从主机上拷贝文件到容器内</h4><ol>
+<li><p>用-v挂载主机数据卷到容器内<br><code>docker run -v /path/to/hostdir:/mnt $container</code><br>在容器内拷贝<br><code>cp /mnt/sourcefile /path/to/destfile</code></p>
+</li>
+<li><p>直接在主机上拷贝到容器物理存储系统</p>
 <ol>
-<li><p>查看当前mongodb进程信息</p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ps -ef | grep mongod</div><div class="line">testuser 24763  3.5  0.4 394264 35708 ?        Sl   09:56   0:00 mongod --config /etc/mongo/mongodb.conf</div></pre></td></tr></table></figure>
+<li>获取容器名称或者id : <code>docker ps</code></li>
+<li><p>获取整个容器的id: </p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker inspect -f   <span class="string">'&#123;&#123;.Id&#125;&#125;'</span>  [获取的名称或者id]</div></pre></td></tr></table></figure>
 </p>
 </li>
-<li><p>cat /proc/24763/limits </p>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Limit                     Soft Limit           Hard Limit           Units     </div><div class="line">Max cpu time              unlimited            unlimited            seconds   </div><div class="line">Max file size             unlimited            unlimited            bytes     </div><div class="line">Max data size             unlimited            unlimited            bytes     </div><div class="line">Max stack size            10485760             unlimited            bytes     </div><div class="line">Max core file size        0                    unlimited            bytes     </div><div class="line">Max resident set          unlimited            unlimited            bytes     </div><div class="line">Max processes             1024                 30921                processes </div><div class="line">Max open files            100032               100032               files     </div><div class="line">Max locked memory         65536                65536                bytes     </div><div class="line">Max address space         unlimited            unlimited            bytes     </div><div class="line">Max file locks            unlimited            unlimited            locks     </div><div class="line">Max pending signals       30921                30921                signals   </div><div class="line">Max msgqueue size         819200               819200               bytes     </div><div class="line">Max nice priority         0                    0                    </div><div class="line">Max realtime priority     0                    0                    </div><div class="line">Max realtime timeout      unlimited            unlimited            us</div></pre></td></tr></table></figure>
-</p>
+<li><p>在主机上拷贝文件: <code>cp path-file-host /var/lib/docker/devicemapper/mnt/[获取的名称或者id]/rootfs/root</code></p>
 </li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> $ mongod --oplogSize 40 --port 20000 --noprealloc --smallfiles --replSet testReplSet --dbpath /data/db/testReplSet-0 --setParameter enalbeTestCommands=1</div><div class="line"></div><div class="line">    BadValue: Illegal --setParameter parameter: &quot;enalbeTestCommands&quot;</div><div class="line"> </div><div class="line">    try &apos;mongod --help&apos; for more information</div><div class="line"></div><div class="line">$ mongod --oplogSize 40 --port 20000 --noprealloc --smallfiles --replSet testReplSet --dbpath /data/db/testReplSet-0 --setParameter enableTestCommands=1</div><div class="line"></div><div class="line">rs.help()</div><div class="line"> rs.conf()</div><div class="line"> rs.initiate()</div><div class="line">rs.conf()</div><div class="line">rs.help()</div><div class="line">rs.add(&quot;CentOS2:27017&quot;)</div><div class="line">rs.add(&quot;CentOS3:27017&quot;)</div><div class="line">rs.conf()</div><div class="line">rs.status()</div><div class="line"></div><div class="line"></div><div class="line">port=27017</div><div class="line">bing_ip=</div><div class="line">logpath=</div><div class="line">dbpath=</div><div class="line">logappend=true</div><div class="line">pidfilepath=/usr/local/mongodb/data/</div><div class="line">fork=true</div><div class="line">oplogSize=1024</div><div class="line">replSet=rs1</div></pre></td></tr></table></figure></p>
+</li>
+</ol>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"></div><div class="line">1.</div><div class="line">[testuser@CentOS1 docker]<span class="variable">$docker</span> ps</div><div class="line">CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                                NAMES</div><div class="line">01a349ea86bd        redis               <span class="string">"docker-entrypoint.s   42 minutes ago      Up 42 minutes       6379/tcp                             redis-slave3        </span></div><div class="line">bd45650a61f6        redis               "docker-entrypoint.s   43 minutes ago      Up 43 minutes       6379/tcp                             redis-slave2        </div><div class="line">ce2321f0d4d5        redis               <span class="string">"docker-entrypoint.s   46 minutes ago      Up 46 minutes       6379/tcp                             redis-slave1        </span></div><div class="line">9408dd71f9e9        redis               "docker-entrypoint.s   54 minutes ago      Up 54 minutes       6379/tcp, 0.0.0.0:16397-&gt;16379/tcp   redis-master </div><div class="line"></div><div class="line"></div><div class="line">2. </div><div class="line">[testuser@CentOS1 docker]$ docker inspect -f <span class="string">'&#123;&#123;.Id&#125;&#125;'</span> 9408dd71f9e9</div><div class="line">9408dd71f9e943b6ed08dd146e20700439eef280db7ce914852452340bfbfbbe</div><div class="line"></div><div class="line"></div><div class="line">3.</div><div class="line">[root@CentOS1 ~]<span class="comment">#cp sentinel.conf /var/lib/docker/devicemapper/mnt/9408dd71f9e943b6ed08dd146e20700439eef280db7ce914852452340bfbfbbe/rootfs/root/</span></div></pre></td></tr></table></figure>
+</p>
+<h4 id="退出容器而不停止容器"><a href="#退出容器而不停止容器" class="headerlink" title="退出容器而不停止容器"></a>退出容器而不停止容器</h4><p>组合键：Ctrl+P+Q</p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2119,6 +2452,10 @@ CDH 5.2或5.3至5.4或更高
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2131,13 +2468,19 @@ CDH 5.2或5.3至5.4或更高
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nameless13.github.io/Document/ubuntu的网络配置.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nameless13">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2151,11 +2494,21 @@ CDH 5.2或5.3至5.4或更高
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Document/ubuntu的网络配置.html" itemprop="url">ubuntu的网络配置</a></h1>
+                <a class="post-title-link" href="/Document/ubuntu的网络配置.html" itemprop="url">
+                  ubuntu的网络配置
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -2163,13 +2516,30 @@ CDH 5.2或5.3至5.4或更高
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">
-                2016-10-20
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-20 00:00:00" itemprop="dateCreated datePublished" datetime="2016-10-20T00:00:00+08:00">2016-10-20</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-09-24 13:58:04" itemprop="dateModified" datetime="2017-09-24T13:58:04+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -2185,11 +2555,7 @@ CDH 5.2或5.3至5.4或更高
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index">
-                    <span itemprop="name">Document</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a></span>
 
                 
                 
@@ -2214,6 +2580,9 @@ CDH 5.2或5.3至5.4或更高
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2258,17 +2627,17 @@ iface eth0 inet manual
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2282,6 +2651,10 @@ iface eth0 inet manual
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2290,15 +2663,12 @@ iface eth0 inet manual
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2314,62 +2684,137 @@ iface eth0 inet manual
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Nameless13" />
-          <p class="site-author-name" itemprop="name">Nameless13</p>
-           
-              <p class="site-description motion-element" itemprop="description">90后，桶装水保洁工程狮，ಥ_ಥ</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Nameless13" />
+            
+              <p class="site-author-name" itemprop="name">Nameless13</p>
+              <p class="site-description motion-element" itemprop="description">─=≡Σ((( つ•̀ω•́)つ，大数据运维工程狮，90后</p>
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">164</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
           
 
           
             
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
+          
           
 
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
       </section>
 
       
@@ -2386,30 +2831,41 @@ iface eth0 inet manual
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nameless13</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.3</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2420,6 +2876,8 @@ iface eth0 inet manual
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -2440,7 +2898,6 @@ iface eth0 inet manual
 
 
 
-  
 
 
 
@@ -2453,55 +2910,49 @@ iface eth0 inet manual
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
 
 
 
@@ -2524,12 +2975,38 @@ iface eth0 inet manual
 
 
 
+
+
+
+
   
 
 
 
 
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
 
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
   
 
   
